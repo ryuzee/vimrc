@@ -46,16 +46,20 @@ filetype plugin indent on
 
 "=============================================================
 " 言語別
-"=============================================================
 " 拡張子.phpの場合の設定
+"=============================================================
 " makeコマンドを入力すると、PHPの構文エラーがないかどうかもチェック可能
 :autocmd FileType php set tabstop=4 shiftwidth=4 expandtab makeprg=php\ -l\ % errorformat=%m\ in\ %f\ on\ line\ %l 
 " 文字列の中のSQLをハイライトする
-let php_sql_query=1
+:autocmd FileType php let php_sql_query=1
 " 文字列の中のHTMLをハイライトする
-let php_htmlInStrings=1
+:autocmd FileType php let php_htmlInStrings=1
 " ショートタグのハイライトを無効にする
-let php_noShortTags=1
+:autocmd FileType php let php_noShortTags=1
+
+" 辞書から関数を選択できるようにする
+" キーワード上でctrl + x ctrl + kを入力
+:autocmd FileType php set dictionary=~/.vim/dictionary/PHP.dict
 
 "=============================================================
 " クラスと関数の折り畳みを許可する
