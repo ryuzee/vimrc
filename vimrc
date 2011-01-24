@@ -47,7 +47,26 @@ filetype plugin indent on
 "=============================================================
 " 言語別
 "=============================================================
-:autocmd FileType php set tabstop=4 shiftwidth=4 expandtab
+" 拡張子.phpの場合の設定
+" makeコマンドを入力すると、PHPの構文エラーがないかどうかもチェック可能
+:autocmd FileType php set tabstop=4 shiftwidth=4 expandtab makeprg=php\ -l\ % errorformat=%m\ in\ %f\ on\ line\ %l 
+" 文字列の中のSQLをハイライトする
+let php_sql_query=1
+" 文字列の中のHTMLをハイライトする
+let php_htmlInStrings=1
+" ショートタグのハイライトを無効にする
+let php_noShortTags=1
+
+"=============================================================
+" クラスと関数の折り畳みを許可する
+" zo 折り畳みを開く
+" zc 折り畳みを閉じる
+" zR 全部開く
+" zM 全部閉じる
+" zj 次の折り畳みに移動
+" zk 前の折り畳みに移動
+"=============================================================
+let php_folding=1
 
 "=============================================================
 " タブ設定
