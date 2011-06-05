@@ -1,6 +1,10 @@
 set nocompatible
 set tags=~/.tags
 
+let g:quickrun_config={'*': {'split': ''}}
+set splitbelow
+set splitright
+
 :imap <C-z> <C-y>
 
 "=============================================================
