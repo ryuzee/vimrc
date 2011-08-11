@@ -8,6 +8,33 @@ set splitright
 :imap <C-z> <C-y>
 
 "=============================================================
+" (),[],{},<>,””,’’,“入力+()の中にカーソル戻す
+"=============================================================
+imap { {}<LEFT>
+imap [ []<LEFT>
+imap ( ()<LEFT>
+imap <> <><Left>
+imap "" ""<Left>
+imap '' ''<Left>
+
+
+"=============================================================
+" Windowの形状設定 
+"=============================================================
+if has("gui_running")
+  " GUIモードの時はフルスクリーンで起動する
+  "set fuoptions=maxvert,maxhorz
+  "au GUIEnter * set fullscreen
+endif
+
+if has('gui_macvim')
+  set showtabline=2  " タブを常に表示
+  set imdisable  " IMを無効化
+  set transparency=0  " 透明度を指定
+  set guioptions-=T   " ツールバー非表示
+endif
+
+"=============================================================
 " ハイライト 
 "=============================================================
 :syntax on
@@ -16,37 +43,33 @@ set splitright
 " 背景色の設定
 "=============================================================
 if has('gui_macvim')
-:colorscheme evening
-":colorscheme desert
-":colorscheme slate 
-":colorscheme elflord
-
+:colorscheme evening 
 endif
 
 "=============================================================
 " クリップボードの設定
 "=============================================================
 if has('gui_macvim')
-	set clipboard=unnamed
+  set clipboard=unnamed
 endif
 
 "=============================================================
 " フォント設定
 "=============================================================
 if has('gui_macvim')
-	set guifont=Inconsolata:h12
-	set guifontwide=Courier:h12
-"	set guifont=Courier:h12
-"	set guifontwide=Courier:h12
-	set antialias
+  set guifont=Inconsolata:h12
+  set guifontwide=Courier:h12
+"  set guifont=Courier:h12
+"  set guifontwide=Courier:h12
+  set antialias
 endif
 
 "=============================================================
 " 幅など
 "=============================================================
 if has('gui_running')
-set columns=120
-set lines=50
+  set columns=120
+  set lines=50
 endif
 
 "=============================================================
@@ -271,3 +294,4 @@ set fileformats=unix,dos,mac
 if exists('&ambiwidth')
   set ambiwidth=double
 endif
+
