@@ -1,11 +1,24 @@
 set nocompatible
 set tags=~/.tags
 
+call pathogen#runtime_append_all_bundles()
+
 let g:quickrun_config={'*': {'split': ''}}
 set splitbelow
 set splitright
 
 :imap <C-z> <C-y>
+
+"=============================================================
+" フォーカスがあたっていない場合は透明にする
+"=============================================================
+augroup hack234
+  autocmd!
+    if has('mac')
+        autocmd FocusGained * set transparency=10
+        autocmd FocusLost * set transparency=30
+    endif
+augroup END
 
 "=============================================================
 " (),[],{},<>,””,’’,“入力+()の中にカーソル戻す
@@ -29,6 +42,7 @@ set splitright
 if has("gui_running")
   " GUIモードの時はフルスクリーンで起動する
   "set fuoptions=maxvert,maxhorz
+  "set fuoptions=maxvert
   "au GUIEnter * set fullscreen
 endif
 
@@ -102,7 +116,7 @@ set lcs=tab:>.,trail:_,extends:\
 "全角スペースの位置を表示
 "=============================================================
 highlight JpSpace cterm=underline ctermfg=Blue guifg=Blue
-au BufRead,BufNew * match JpSpace /　/
+" au BufRead,BufNew * match JpSpace /　/
 
 "=============================================================
 " ファイル種類別にインデントする
