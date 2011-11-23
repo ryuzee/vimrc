@@ -3,11 +3,67 @@ set tags=~/.tags
 
 call pathogen#runtime_append_all_bundles()
 
-let g:quickrun_config={'*': {'split': ''}}
 set splitbelow
 set splitright
 
 :imap <C-z> <C-y>
+
+"=============================================================
+" Vundle設定 
+"=============================================================
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+"github repository
+Bundle 'Shougo/neocomplcache'
+Bundle 'gmarik/vundle'
+Bundle 'vim-scripts/SQLUtilities'
+Bundle 'vim-scripts/Align'
+Bundle 'vim-scripts/YankRing.vim'
+Bundle 'msanders/snipmate.vim'
+Bundle 'scrooloose/nerdcommenter'
+Bundle 'nishigori/neocomplcache_phpunit_snippet'
+Bundle 'thinca/vim-quickrun'
+Bundle 'thinca/vim-ref'
+Bundle 'kana/vim-smartchr'
+Bundle 'tpope/vim-surround'
+Bundle 'mattn/zencoding-vim'
+Bundle 'git://repo.or.cz/vcscommand'
+Bundle 'ndreynolds/vim-cakephp'
+
+"=============================================================
+" ファイル種類別にインデントする
+"=============================================================
+filetype plugin indent on
+
+"=============================================================
+" 起動位置
+"=============================================================
+if has('gui_macvim')
+:winpos 2 777
+endif
+
+"=============================================================
+" 幅など
+"=============================================================
+if has('gui_running')
+  set columns=120
+  set lines=55
+endif
+
+"=============================================================
+" neocomplcacheを有効にする
+"=============================================================
+let g:neocomplcache_enable_at_startup = 1
+" 大文字小文字を区別する
+let g:NeoComplCache_SmartCase = 1
+" キャメルケース補完を有効にする
+let g:NeoComplCache_EnableCamelCaseCompletion = 1
+" アンダーバー補完を有効にする
+let g:NeoComplCache_EnableUnderbarCompletion = 1
+" <C-k> にマッピング
+imap <C-k> <Plug>(neocomplcache_snippets_expand)
+smap <C-k> <Plug>(neocomplcache_snippets_expand)
 
 "=============================================================
 " フォーカスがあたっていない場合は透明にする
@@ -62,9 +118,8 @@ endif
 " 背景色の設定
 "=============================================================
 if has('gui_macvim')
-":colorscheme evening 
-:colorscheme Dark 
-":colorscheme LightGreen 
+":colorscheme Dark2 
+:colorscheme evening 
 endif
 
 "=============================================================
@@ -90,13 +145,7 @@ if has('gui_macvim')
   set antialias
 endif
 
-"=============================================================
-" 幅など
-"=============================================================
-if has('gui_running')
-  set columns=120
-  set lines=50
-endif
+
 
 "=============================================================
 " ファイル読み込みと保存関連 
@@ -118,10 +167,7 @@ set lcs=tab:>.,trail:_,extends:\
 highlight JpSpace cterm=underline ctermfg=Blue guifg=Blue
 " au BufRead,BufNew * match JpSpace /　/
 
-"=============================================================
-" ファイル種類別にインデントする
-"=============================================================
-filetype plugin indent on
+
 
 "=============================================================
 " vim-refの設定
@@ -138,8 +184,9 @@ let g:ref_phpmanual_path = $HOME . '/.vim/others/phpmanual'
 
 "=============================================================
 " makeコマンドを入力すると、PHPの構文エラーがないかどうかもチェック可能
+" expandtab を設定するとタブをスペースに展開する
 "=============================================================
-:autocmd FileType php set tabstop=4 shiftwidth=4 expandtab makeprg=php\ -l\ % errorformat=%m\ in\ %f\ on\ line\ %l 
+:autocmd FileType php set tabstop=4 shiftwidth=4 makeprg=php\ -l\ % errorformat=%m\ in\ %f\ on\ line\ %l 
 
 "=============================================================
 " 文字列の中のSQLをハイライトする
@@ -165,9 +212,8 @@ let g:ref_phpmanual_path = $HOME . '/.vim/others/phpmanual'
 "=============================================================
 " cakephpのスニペットを有効にする
 "=============================================================
-:autocmd FileType php set ft=php.cakephp
+":autocmd FileType php set ft=php.cakephp
 :autocmd FileType ctp set ft=php.cakephp
-
 
 "=============================================================
 " python
