@@ -62,8 +62,10 @@ let g:NeoComplCache_EnableCamelCaseCompletion = 1
 " アンダーバー補完を有効にする
 let g:NeoComplCache_EnableUnderbarCompletion = 1
 " <C-k> にマッピング
-imap <C-k> <Plug>(neocomplcache_snippets_expand)
-smap <C-k> <Plug>(neocomplcache_snippets_expand)
+"imap <C-k> <Plug>(neocomplcache_snippets_expand)
+"smap <C-k> <Plug>(neocomplcache_snippets_expand)
+imap <C-s> <Plug>(neocomplcache_snippets_expand)
+smap <C-s> <Plug>(neocomplcache_snippets_expand)
 
 "=============================================================
 " フォーカスがあたっていない場合は透明にする
@@ -367,3 +369,48 @@ if exists('&ambiwidth')
   set ambiwidth=double
 endif
 
+"=============================================================
+" QuickRunによる設定
+"=============================================================
+" 初期化
+let g:quickrun_config = {}
+
+augroup QuickRunPHPUnit
+  autocmd!
+  autocmd BufWinEnter,BufNewFile *Test.php set filetype=php.phpunit
+augroup END
+
+" make outputter for coloring output message.
+let phpunit_outputter = quickrun#outputter#buffer#new()
+function! phpunit_outputter.init(session)
+  " call original process
+  call call(quickrun#outputter#buffer#new().init, [a:session], self)
+endfunction
+
+function! phpunit_outputter.finish(session)
+  " set color 
+  highlight default PhpUnitOK         ctermbg=Green ctermfg=White
+  highlight default PhpUnitFail       ctermbg=Red   ctermfg=White
+  highlight default PhpUnitAssertFail ctermfg=Red
+  call matchadd("PhpUnitFail","^FAILURES.*$")
+  call matchadd("PhpUnitOK","^OK.*$")
+  call matchadd("PhpUnitAssertFail","^Failed.*$")
+  call call(quickrun#outputter#buffer#new().finish, [a:session], self)
+endfunction
+
+" regist outputter to quickrun
+call quickrun#register_outputter("phpunit_outputter", phpunit_outputter)
+
+" PHPUnit
+let g:quickrun_config['php.phpunit'] = {
+	\ 'command': 'phpunit', 
+	\ 'cmdopt': '--stop-on-failure',
+	\ 'outputter': 'phpunit_outputter'
+	\ }
+let g:quickrun_config['php.phpunit_cov'] = {
+	\ 'command': 'phpunit', 
+	\ 'outputter': 'phpunit_outputter', 
+	\ 'cmdopt': '--stop-on-failure --coverage-html /tmp/result'
+	\ }
+" 面倒なのでrrでquickrun実行
+silent! nmap <unique> <C-r> <Plug>(quickrun)
