@@ -30,6 +30,9 @@ Bundle 'tpope/vim-surround'
 Bundle 'mattn/zencoding-vim'
 Bundle 'git://repo.or.cz/vcscommand'
 Bundle 'ndreynolds/vim-cakephp'
+Bundle 'ryuzee/neocomplcache_php_selenium_snippet'
+Bundle 'vim-scripts/Diablo3.git'
+Bundle 'scrooloose/syntastic.git'
 
 "=============================================================
 " ファイル種類別にインデントする
@@ -62,10 +65,10 @@ let g:NeoComplCache_EnableCamelCaseCompletion = 1
 " アンダーバー補完を有効にする
 let g:NeoComplCache_EnableUnderbarCompletion = 1
 " <C-k> にマッピング
-"imap <C-k> <Plug>(neocomplcache_snippets_expand)
-"smap <C-k> <Plug>(neocomplcache_snippets_expand)
-imap <C-s> <Plug>(neocomplcache_snippets_expand)
-smap <C-s> <Plug>(neocomplcache_snippets_expand)
+imap <C-k> <Plug>(neocomplcache_snippets_expand)
+smap <C-k> <Plug>(neocomplcache_snippets_expand)
+"imap <C-s> <Plug>(neocomplcache_snippets_expand)
+"smap <C-s> <Plug>(neocomplcache_snippets_expand)
 
 "=============================================================
 " フォーカスがあたっていない場合は透明にする
@@ -121,7 +124,8 @@ endif
 "=============================================================
 if has('gui_macvim')
 ":colorscheme Dark2 
-:colorscheme evening 
+":colorscheme evening 
+:colorscheme Diablo3
 endif
 
 "=============================================================
