@@ -38,10 +38,13 @@ Bundle 'ryuzee/neocomplcache_php_selenium_snippet'
 Bundle 'vim-scripts/Diablo3.git'
 Bundle 'scrooloose/syntastic.git'
 
-" http://www.vim.org/scripts/script.php?script_id=273
-" http://www.vim.org/scripts/download_script.php?src_id=7701
-" copy to .vim/vundle/
+" vim-script
+" :Tlistでタグを表示する
 Bundle 'taglist.vim'
+" SourceExplorer
+" :TrinityToggleAllで4ペインでソースコードを閲覧可能にする
+Bundle 'trinity.vim'
+Bundle 'Source-Explorer-srcexpl.vim'
 
 "=============================================================
 " ファイル種類別にインデントする
