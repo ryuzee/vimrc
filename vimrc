@@ -18,8 +18,13 @@ set splitright
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
+" vimprocはインストールしたあと、cd bundle/vimproc/にてmake -f
+" make_xxx.makしてビルドすること
+
 "github repository
 Bundle 'Shougo/neocomplcache'
+Bundle 'Shougo/vimproc'
+Bundle 'Shougo/vimshell'
 Bundle 'gmarik/vundle'
 Bundle 'vim-scripts/SQLUtilities'
 Bundle 'vim-scripts/Align'
