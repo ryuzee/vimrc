@@ -38,6 +38,11 @@ Bundle 'ryuzee/neocomplcache_php_selenium_snippet'
 Bundle 'vim-scripts/Diablo3.git'
 Bundle 'scrooloose/syntastic.git'
 
+" http://www.vim.org/scripts/script.php?script_id=273
+" http://www.vim.org/scripts/download_script.php?src_id=7701
+" copy to .vim/vundle/
+Bundle 'taglist.vim'
+
 "=============================================================
 " ファイル種類別にインデントする
 "=============================================================
