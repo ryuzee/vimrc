@@ -1,6 +1,10 @@
 set nocompatible
 set tags=~/.tags
 
+"=============================================================
+" bundle/vim-pathogen/autoload以下にあるpathogen.vimの
+" シンボリックリンクを~/.vim/autoloadに配置しておくこと
+"=============================================================
 call pathogen#runtime_append_all_bundles()
 
 set splitbelow
