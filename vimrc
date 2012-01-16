@@ -76,11 +76,26 @@ endif
 "=============================================================
 let g:neocomplcache_enable_at_startup = 1
 " 大文字小文字を区別する
-let g:NeoComplCache_SmartCase = 1
+let g:neocomplcache_SmartCase = 1
 " キャメルケース補完を有効にする
-let g:NeoComplCache_EnableCamelCaseCompletion = 1
+let g:neocomplcache_enable_camel_case_completion = 1
 " アンダーバー補完を有効にする
 let g:NeoComplCache_EnableUnderbarCompletion = 1
+"ポップアップメニューで表示される候補の数。初期値は100
+let g:neocomplcache_max_list = 20
+"自動補完を行う入力数を設定。初期値は2
+let g:neocomplcache_auto_completion_start_length = 4 
+"手動補完時に補完を行う入力数を制御。値を小さくすると文字の削除時に重くなる
+let g:neocomplcache_manual_completion_start_length = 3
+"バッファや辞書ファイル中で、補完の対象となるキーワードの最小長さ。初期値は4。
+let g:neocomplcache_min_keyword_length = 4
+"シンタックスファイル中で、補完の対象となるキーワードの最小長さ。初期値は4。
+let g:neocomplcache_min_syntax_length = 4
+"1:補完候補検索時に大文字・小文字を無視する
+let g:neocomplcache_enable_ignore_case = 1
+"入力に大文字が入力されている場合、大文字小文字の区別をする
+let g:neocomplcache_enable_smart_case = 1
+
 " <C-k> にマッピング
 imap <C-k> <Plug>(neocomplcache_snippets_expand)
 smap <C-k> <Plug>(neocomplcache_snippets_expand)
