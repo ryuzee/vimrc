@@ -252,6 +252,12 @@ highlight JpSpace cterm=underline ctermfg=Blue guifg=Blue
 " vim-refの設定
 "=============================================================
 let g:ref_phpmanual_path = $HOME . '/.vim/others/phpmanual'
+"nnoremap <silent> <Space>K :<C-u>call ref#jump('normal', 'alc')<CR>
+"vnoremap <silent> <Space>K :<C-u>call ref#jump('visual', 'alc')<CR>
+
+" カーソル位置の単語をalcで検索する。カーソルがある状態で:alcで実行
+nnoremap <silent> :alc :<C-u>call ref#jump('normal', 'alc')<CR>
+vnoremap <silent> :alc :<C-u>call ref#jump('visual', 'alc')<CR>
 
 "=============================================================
 " 言語別
