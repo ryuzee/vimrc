@@ -35,6 +35,18 @@ Bundle 'nishigori/neocomplcache_phpunit_snippet'
 Bundle 'thinca/vim-quickrun'
 Bundle 'thinca/vim-ref'
 Bundle 'kana/vim-smartchr'
+" 文字列の囲み関係の処理
+" iw (単語)
+" aw (単語+次の文字までの空白)
+" it (タグの内部 <strong>hoge</strong> の hoge)
+" at (直近の外側にあるタグ含む文字列 <p><strong>hoge</strong></p> の場合、
+"    hoge や、strong 上でコマンドを入力すれば、<strong>hoge</strong> が対象になる)
+" i( (括弧内を以下略。 ib でも可。)
+" a( (括弧含め以下略。 ab でも可。 b は多分ブラケットの b です)
+" 例)
+" ysiw" --> "で文字列を囲む
+" ys$"　--> カーソルから行末までを"で囲む
+" cs"'　--> "で囲まれているものを'に変える
 Bundle 'tpope/vim-surround'
 Bundle 'mattn/zencoding-vim'
 Bundle 'git://repo.or.cz/vcscommand'
@@ -75,6 +87,8 @@ endif
 """ unite.vim
 " 入力モードで開始する
 " let g:unite_enable_start_insert=1
+let g:unite_enable_split_vertically = 1 "縦分割で開く
+let g:unite_winwidth = 40
 " バッファ一覧
 nnoremap <silent> ,ub :<C-u>Unite buffer<CR>
 " ファイル一覧
@@ -182,9 +196,9 @@ endif
 " 背景色の設定
 "=============================================================
 if has('gui_macvim')
-":colorscheme Dark2 
-":colorscheme evening 
-:colorscheme Diablo3
+  :colorscheme Diablo3
+elseif has('gui')
+  :colorscheme evening 
 endif
 
 "=============================================================
