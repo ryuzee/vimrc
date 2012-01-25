@@ -7,8 +7,10 @@ set tags=~/.tags
 "=============================================================
 call pathogen#runtime_append_all_bundles()
 
+if 0 
 set splitbelow
 set splitright
+endif
 
 :imap <C-z> <C-y>
 
@@ -22,6 +24,7 @@ call vundle#rc()
 " make_xxx.makしてビルドすること
 
 "github repository
+Bundle 'thinca/vim-quickrun'
 Bundle 'Shougo/neocomplcache'
 Bundle 'Shougo/vimproc'
 Bundle 'Shougo/vimshell'
@@ -32,7 +35,6 @@ Bundle 'vim-scripts/YankRing.vim'
 Bundle 'msanders/snipmate.vim'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'nishigori/neocomplcache_phpunit_snippet'
-Bundle 'thinca/vim-quickrun'
 Bundle 'thinca/vim-ref'
 Bundle 'kana/vim-smartchr'
 " 文字列の囲み関係の処理
@@ -55,6 +57,7 @@ Bundle 'ryuzee/neocomplcache_php_selenium_snippet'
 Bundle 'vim-scripts/Diablo3.git'
 Bundle 'scrooloose/syntastic.git'
 
+
 " vim-script
 " :Tlistでタグを表示する
 Bundle 'taglist.vim'
@@ -64,6 +67,57 @@ Bundle 'trinity.vim'
 Bundle 'Source-Explorer-srcexpl.vim'
 Bundle 'unite.vim'
 Bundle 'sudo.vim'
+
+"=============================================================
+" QuickRunによる設定
+"=============================================================
+" 初期化
+let g:quickrun_config = {}
+let g:quickrun_config['*'] = {'split': ''}
+
+augroup QuickRunPHPUnit
+  autocmd!
+  autocmd BufWinEnter,BufNewFile *Test.php set filetype=php.phpunit
+augroup END
+
+let phpunit_outputter = quickrun#outputter#buffer#new()
+let phpunit_outputter.config.targets = ["buffer"]
+
+" make outputter for coloring output message.
+function! phpunit_outputter.init(session)
+  " call original process
+  call call(quickrun#outputter#buffer#new().init, [a:session], self)
+endfunction
+
+function! phpunit_outputter.finish(session)
+  " set color 
+  highlight default PhpUnitOK         ctermbg=Green ctermfg=White
+  highlight default PhpUnitFail       ctermbg=Red   ctermfg=White
+  highlight default PhpUnitAssertFail ctermfg=Red
+  "highlight default dollar ctermfg=Red
+  call matchadd("PhpUnitFail","^FAILURES.*$")
+  call matchadd("PhpUnitOK","^OK.*$")
+  call matchadd("PhpUnitAssertFail","^Failed.*$")
+  "call matchadd("dollar","assert.*$")
+  call call(quickrun#outputter#buffer#new().finish, [a:session], self)
+endfunction
+
+" regist outputter to quickrun
+call quickrun#register_outputter("phpunit_outputter", phpunit_outputter)
+
+" PHPUnit
+let g:quickrun_config['php.phpunit'] = {
+	\ 'command': 'phpunit', 
+	\ 'cmdopt': '--stop-on-failure',
+	\ 'outputter': 'phpunit_outputter'
+	\ }
+let g:quickrun_config['php.phpunit_cov'] = {
+	\ 'command': 'phpunit', 
+	\ 'outputter': 'phpunit_outputter', 
+	\ 'cmdopt': '--stop-on-failure --coverage-html /tmp/result'
+	\ }
+" 面倒なのでrrでquickrun実行
+silent! nmap <unique> <C-r> <Plug>(quickrun)
 
 "=============================================================
 " ファイル種類別にインデントする
@@ -364,7 +418,7 @@ set laststatus=2
 "=============================================================
 " Status行
 "=============================================================
-set statusline=%<%f\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%=%l,%c%V%8P
+set statusline=%<%f\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ft.']['.&ff.']'}%=%l,%c%V%8P
 
 "=============================================================
 " ビープ音いらない 
@@ -453,48 +507,3 @@ if exists('&ambiwidth')
   set ambiwidth=double
 endif
 
-"=============================================================
-" QuickRunによる設定
-"=============================================================
-" 初期化
-let g:quickrun_config = {}
-
-augroup QuickRunPHPUnit
-  autocmd!
-  autocmd BufWinEnter,BufNewFile *Test.php set filetype=php.phpunit
-augroup END
-
-" make outputter for coloring output message.
-let phpunit_outputter = quickrun#outputter#buffer#new()
-function! phpunit_outputter.init(session)
-  " call original process
-  call call(quickrun#outputter#buffer#new().init, [a:session], self)
-endfunction
-
-function! phpunit_outputter.finish(session)
-  " set color 
-  highlight default PhpUnitOK         ctermbg=Green ctermfg=White
-  highlight default PhpUnitFail       ctermbg=Red   ctermfg=White
-  highlight default PhpUnitAssertFail ctermfg=Red
-  call matchadd("PhpUnitFail","^FAILURES.*$")
-  call matchadd("PhpUnitOK","^OK.*$")
-  call matchadd("PhpUnitAssertFail","^Failed.*$")
-  call call(quickrun#outputter#buffer#new().finish, [a:session], self)
-endfunction
-
-" regist outputter to quickrun
-call quickrun#register_outputter("phpunit_outputter", phpunit_outputter)
-
-" PHPUnit
-let g:quickrun_config['php.phpunit'] = {
-	\ 'command': 'phpunit', 
-	\ 'cmdopt': '--stop-on-failure',
-	\ 'outputter': 'phpunit_outputter'
-	\ }
-let g:quickrun_config['php.phpunit_cov'] = {
-	\ 'command': 'phpunit', 
-	\ 'outputter': 'phpunit_outputter', 
-	\ 'cmdopt': '--stop-on-failure --coverage-html /tmp/result'
-	\ }
-" 面倒なのでrrでquickrun実行
-silent! nmap <unique> <C-r> <Plug>(quickrun)
