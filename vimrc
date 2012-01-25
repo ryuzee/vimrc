@@ -7,7 +7,7 @@ set tags=~/.tags
 "=============================================================
 call pathogen#runtime_append_all_bundles()
 
-if 0 
+if 1 
 set splitbelow
 set splitright
 endif
