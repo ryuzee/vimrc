@@ -80,40 +80,13 @@ augroup QuickRunPHPUnit
   autocmd BufWinEnter,BufNewFile *Test.php set filetype=php.phpunit
 augroup END
 
-let phpunit_outputter = quickrun#outputter#buffer#new()
-let phpunit_outputter.config.targets = ["buffer"]
-
-" make outputter for coloring output message.
-function! phpunit_outputter.init(session)
-  " call original process
-  call call(quickrun#outputter#buffer#new().init, [a:session], self)
-endfunction
-
-function! phpunit_outputter.finish(session)
-  " set color 
-  highlight default PhpUnitOK         ctermbg=Green ctermfg=White
-  highlight default PhpUnitFail       ctermbg=Red   ctermfg=White
-  highlight default PhpUnitAssertFail ctermfg=Red
-  "highlight default dollar ctermfg=Red
-  call matchadd("PhpUnitFail","^FAILURES.*$")
-  call matchadd("PhpUnitOK","^OK.*$")
-  call matchadd("PhpUnitAssertFail","^Failed.*$")
-  "call matchadd("dollar","assert.*$")
-  call call(quickrun#outputter#buffer#new().finish, [a:session], self)
-endfunction
-
-" regist outputter to quickrun
-call quickrun#register_outputter("phpunit_outputter", phpunit_outputter)
-
 " PHPUnit
 let g:quickrun_config['php.phpunit'] = {
 	\ 'command': 'phpunit', 
-	\ 'cmdopt': '--stop-on-failure',
-	\ 'outputter': 'phpunit_outputter'
+	\ 'cmdopt': '--stop-on-failure'
 	\ }
 let g:quickrun_config['php.phpunit_cov'] = {
 	\ 'command': 'phpunit', 
-	\ 'outputter': 'phpunit_outputter', 
 	\ 'cmdopt': '--stop-on-failure --coverage-html /tmp/result'
 	\ }
 " 面倒なのでrrでquickrun実行
@@ -370,7 +343,7 @@ vnoremap <silent> :alc :<C-u>call ref#jump('visual', 'alc')<CR>
 " zj 次の折り畳みに移動
 " zk 前の折り畳みに移動
 "=============================================================
-let php_folding=1
+let php_folding=3
 
 "#############################################################
 " // phpの設定ここまで
