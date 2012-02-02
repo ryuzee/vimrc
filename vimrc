@@ -230,15 +230,16 @@ endif
 "=============================================================
 " 背景色の設定
 "=============================================================
-Bundle 'altercation/vim-colors-solarized'
-syntax enable
-set background=dark
-colorscheme solarized
+"Bundle 'altercation/vim-colors-solarized'
+"syntax enable
+"set background=dark
+"colorscheme solarized
 
-"if has('gui')
-"  ":colorscheme Diablo3
-"  :colorscheme evening
-"endif
+if has('gui_macvim')
+  :colorscheme Diablo3
+elseif has('gui')
+  :colorscheme evening
+endif
 
 "=============================================================
 " コメント行をグレー表示する(コンソール）
