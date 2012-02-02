@@ -10,8 +10,10 @@ call pathogen#runtime_append_all_bundles()
 "=============================================================
 " 標準で下分割、右分割にするよ
 "=============================================================
+if 0
 set splitbelow
 set splitright
+endif
 
 :imap <C-z> <C-y>
 
@@ -101,7 +103,8 @@ filetype plugin indent on
 "=============================================================
 " 起動位置
 "=============================================================
-if has('gui_macvim')
+"if has('gui_macvim')
+if has('gui')
 :winpos 2 777
 endif
 
@@ -209,11 +212,14 @@ if has("gui_running")
   "au GUIEnter * set fullscreen
 endif
 
-if has('gui_macvim')
+if has('gui')
   set showtabline=2  " タブを常に表示
   set imdisable  " IMを無効化
-  set transparency=0  " 透明度を指定
   set guioptions-=T   " ツールバー非表示
+endif
+
+if has('gui_macvim')
+  set transparency=0  " 透明度を指定
 endif
 
 "=============================================================
@@ -224,11 +230,15 @@ endif
 "=============================================================
 " 背景色の設定
 "=============================================================
-if has('gui_macvim')
-  :colorscheme Diablo3
-elseif has('gui')
-  :colorscheme evening 
-endif
+Bundle 'altercation/vim-colors-solarized'
+syntax enable
+set background=dark
+colorscheme solarized
+
+"if has('gui')
+"  ":colorscheme Diablo3
+"  :colorscheme evening
+"endif
 
 "=============================================================
 " コメント行をグレー表示する(コンソール）
