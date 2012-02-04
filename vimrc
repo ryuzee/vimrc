@@ -98,25 +98,34 @@ silent! nmap <unique> <C-r> <Plug>(quickrun)
 filetype plugin indent on
 
 "=============================================================
-" 起動位置
+" gvimでウインドウの位置とサイズを記憶する
+" http://vim-users.jp/2010/01/hack120/
 "=============================================================
-"if has('gui_macvim')
-if has('gui')
-  :winpos 2 777
+let g:save_window_file = expand('~/.vimwinpos')
+augroup SaveWindow
+  autocmd!
+  autocmd VimLeavePre * call s:save_window()
+  function! s:save_window()
+    let options = [
+      \ 'set columns=' . &columns,
+      \ 'set lines=' . &lines,
+      \ 'winpos ' . getwinposx() . ' ' . getwinposy(),
+      \ ]
+    call writefile(options, g:save_window_file)
+  endfunction
+augroup END
+if filereadable(g:save_window_file)
+  execute 'source' g:save_window_file
 endif
 
 "=============================================================
-" 幅など
+" unite.vim
 "=============================================================
-if has('gui_running')
-  set columns=120
-  set lines=55
-endif
-
-""" unite.vim
 " 入力モードで開始する
-" let g:unite_enable_start_insert=1
-let g:unite_enable_split_vertically = 1 "縦分割で開く
+let g:unite_enable_start_insert=1
+" 縦分割で開く
+let g:unite_enable_split_vertically = 1 
+" Windowの幅
 let g:unite_winwidth = 40
 " バッファ一覧
 nnoremap <silent> ,ub :<C-u>Unite buffer<CR>
@@ -137,9 +146,16 @@ au FileType unite inoremap <silent> <buffer> <expr> <C-j> unite#do_action('split
 " ウィンドウを縦に分割して開く
 au FileType unite nnoremap <silent> <buffer> <expr> <C-l> unite#do_action('vsplit')
 au FileType unite inoremap <silent> <buffer> <expr> <C-l> unite#do_action('vsplit')
-" ESCキーを2回押すと終了する
-au FileType unite nnoremap <silent> <buffer> <ESC><ESC> q
-au FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>q
+
+" unite.vim上でのキーマッピング
+autocmd FileType unite call s:unite_my_settings()
+function! s:unite_my_settings()
+  " 単語単位からパス単位で削除するように変更
+  imap <buffer> <C-w> <Plug>(unite_delete_backward_path)
+  " ESCキーを2回押すと終了する
+  nmap <silent><buffer> <ESC><ESC> q
+  imap <silent><buffer> <ESC><ESC> <ESC>q
+endfunction
 
 "=============================================================
 " neocomplcacheを有効にする
@@ -202,13 +218,6 @@ augroup END
 "=============================================================
 " Windowの形状設定 
 "=============================================================
-if has("gui_running")
-  " GUIモードの時はフルスクリーンで起動する
-  "set fuoptions=maxvert,maxhorz
-  "set fuoptions=maxvert
-  "au GUIEnter * set fullscreen
-endif
-
 if has('gui')
   set showtabline=2  " タブを常に表示
   set imdisable  " IMを無効化
