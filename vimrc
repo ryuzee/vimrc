@@ -10,10 +10,8 @@ call pathogen#runtime_append_all_bundles()
 "=============================================================
 " 標準で下分割、右分割にするよ
 "=============================================================
-if 0
 set splitbelow
 set splitright
-endif
 
 :imap <C-z> <C-y>
 
@@ -60,7 +58,6 @@ Bundle 'ryuzee/neocomplcache_php_selenium_snippet'
 Bundle 'vim-scripts/Diablo3.git'
 Bundle 'scrooloose/syntastic.git'
 
-
 " vim-script
 " :Tlistでタグを表示する
 Bundle 'taglist.vim'
@@ -85,13 +82,13 @@ augroup END
 
 " PHPUnit
 let g:quickrun_config['php.phpunit'] = {
-	\ 'command': 'phpunit', 
-	\ 'cmdopt': '--stop-on-failure'
-	\ }
+  \ 'command': 'phpunit', 
+  \ 'cmdopt': '--stop-on-failure'
+  \ }
 let g:quickrun_config['php.phpunit_cov'] = {
-	\ 'command': 'phpunit', 
-	\ 'cmdopt': '--stop-on-failure --coverage-html /tmp/result'
-	\ }
+  \ 'command': 'phpunit', 
+  \ 'cmdopt': '--stop-on-failure --coverage-html /tmp/result'
+  \ }
 " 面倒なのでrrでquickrun実行
 silent! nmap <unique> <C-r> <Plug>(quickrun)
 
@@ -105,7 +102,7 @@ filetype plugin indent on
 "=============================================================
 "if has('gui_macvim')
 if has('gui')
-:winpos 2 777
+  :winpos 2 777
 endif
 
 "=============================================================
@@ -181,8 +178,8 @@ smap <C-k> <Plug>(neocomplcache_snippets_expand)
 augroup hack234
   autocmd!
     if has('mac')
-        autocmd FocusGained * set transparency=10
-        autocmd FocusLost * set transparency=30
+      autocmd FocusGained * set transparency=10
+      autocmd FocusLost * set transparency=30
     endif
 augroup END
 
@@ -259,12 +256,10 @@ endif
 if has('gui_macvim')
   set guifont=Inconsolata:h12
   set guifontwide=Courier:h12
-"  set guifont=Courier:h12
-"  set guifontwide=Courier:h12
   set antialias
+elseif has('gui_running')
+  set gfn=Takaoゴシック\ 11
 endif
-
-
 
 "=============================================================
 " ファイル読み込みと保存関連 
@@ -285,8 +280,6 @@ set lcs=tab:>.,trail:_,extends:\
 "=============================================================
 highlight JpSpace cterm=underline ctermfg=Blue guifg=Blue
 " au BufRead,BufNew * match JpSpace /　/
-
-
 
 "=============================================================
 " vim-refの設定
@@ -414,7 +407,6 @@ set vb t_vb=
 " 起動時のメッセージいらない 
 "=============================================================
 set shortmess+=I
-
 
 "=============================================================
 " 検索 
