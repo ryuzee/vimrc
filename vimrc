@@ -67,6 +67,7 @@ Bundle 'trinity.vim'
 Bundle 'Source-Explorer-srcexpl.vim'
 Bundle 'unite.vim'
 Bundle 'sudo.vim'
+Bundle 'tyru/open-browser.vim'
 
 "=============================================================
 " QuickRunによる設定
@@ -493,3 +494,9 @@ if exists('&ambiwidth')
   set ambiwidth=double
 endif
 
+"=============================================================
+" URLの上でgxと押すとブラウザを開く
+"=============================================================
+let g:netrw_nogx = 1 " disable netrw's gx mapping.
+nmap br <Plug>(openbrowser-smart-search)
+vmap br <Plug>(openbrowser-smart-search)
