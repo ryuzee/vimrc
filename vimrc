@@ -21,12 +21,10 @@ set splitright
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
-" vimprocはインストールしたあと、cd bundle/vimproc/にてmake -f
-" make_xxx.makしてビルドすること
-
-"github repository
 Bundle 'thinca/vim-quickrun'
 Bundle 'Shougo/neocomplcache'
+" vimprocはインストールしたあと、cd bundle/vimproc/にてmake -f
+" make_xxx.makしてビルドすること
 Bundle 'Shougo/vimproc'
 Bundle 'Shougo/vimshell'
 Bundle 'gmarik/vundle'
@@ -56,7 +54,6 @@ Bundle 'git://repo.or.cz/vcscommand'
 Bundle 'ndreynolds/vim-cakephp'
 Bundle 'ryuzee/neocomplcache_php_selenium_snippet'
 Bundle 'scrooloose/syntastic.git'
-
 " vim-script
 " :Tlistでタグを表示する
 Bundle 'taglist.vim'
@@ -66,24 +63,95 @@ Bundle 'trinity.vim'
 Bundle 'Source-Explorer-srcexpl.vim'
 Bundle 'sudo.vim'
 Bundle 'tyru/open-browser.vim'
-
-"{{{ colorscheme
+" colorscheme
+"{{{
 Bundle 'vim-scripts/Diablo3.git'
 Bundle 'vim-scripts/Lucius'
 Bundle 'vim-scripts/mrkn256.vim'
 Bundle 'jnurmine/Zenburn'
 "}}}
-
-"{{{ unite
+" unite
+"{{{
 Bundle 'unite.vim'
 Bundle 'ujihisa/unite-colorscheme' 
 Bundle 'ujihisa/unite-font' 
 Bundle 'oppara/vim-unite-cake' 
 "}}}
 
+"-------------------------------------------------------------
+" Look and Feel
+"-------------------------------------------------------------
+"{{{
+
+"=============================================================
+" gvimでウインドウの位置とサイズを記憶する
+" http://vim-users.jp/2010/01/hack120/
+"=============================================================
+"{{{
+let g:save_window_file = expand('~/.vimwinpos')
+augroup SaveWindow
+  autocmd!
+  autocmd VimLeavePre * call s:save_window()
+  function! s:save_window()
+    let options = [
+      \ 'set columns=' . &columns,
+      \ 'set lines=' . &lines,
+      \ 'winpos ' . getwinposx() . ' ' . getwinposy(),
+      \ ]
+    call writefile(options, g:save_window_file)
+  endfunction
+augroup END
+if filereadable(g:save_window_file)
+  execute 'source' g:save_window_file
+endif
+"}}}
+
+"=============================================================
+" フォーカスがあたっていない場合は透明にする
+"=============================================================
+"{{{
+augroup hack234
+  autocmd!
+    if has('mac')
+      autocmd FocusGained * set transparency=10
+      autocmd FocusLost * set transparency=30
+    endif
+augroup END
+"}}}
+
+"=============================================================
+" Windowの形状設定 
+"=============================================================
+"{{{
+if has('gui')
+  set showtabline=2  " タブを常に表示
+  set imdisable  " IMを無効化
+  set guioptions-=T   " ツールバー非表示
+endif
+if has('gui_macvim')
+  set transparency=0  " 透明度を指定
+endif
+"}}}
+
+"=============================================================
+" フォント設定
+"=============================================================
+"{{{
+if has('gui_macvim')
+  set guifont=Inconsolata:h12
+  set guifontwide=Courier:h12
+  set antialias
+elseif has('gui_running')
+  set gfn=Takaoゴシック\ 11
+endif
+"}}}
+
+"}}} // Look and Feel
+
 "=============================================================
 " QuickRunによる設定
 "=============================================================
+"{{{
 " 初期化
 let g:quickrun_config = {}
 let g:quickrun_config['*'] = {'split': ''}
@@ -104,6 +172,7 @@ let g:quickrun_config['php.phpunit_cov'] = {
   \ }
 " 面倒なのでrrでquickrun実行
 silent! nmap <unique> <C-r> <Plug>(quickrun)
+"}}}
 
 "=============================================================
 " ファイル種類別にインデントする
@@ -111,29 +180,9 @@ silent! nmap <unique> <C-r> <Plug>(quickrun)
 filetype plugin indent on
 
 "=============================================================
-" gvimでウインドウの位置とサイズを記憶する
-" http://vim-users.jp/2010/01/hack120/
-"=============================================================
-let g:save_window_file = expand('~/.vimwinpos')
-augroup SaveWindow
-  autocmd!
-  autocmd VimLeavePre * call s:save_window()
-  function! s:save_window()
-    let options = [
-      \ 'set columns=' . &columns,
-      \ 'set lines=' . &lines,
-      \ 'winpos ' . getwinposx() . ' ' . getwinposy(),
-      \ ]
-    call writefile(options, g:save_window_file)
-  endfunction
-augroup END
-if filereadable(g:save_window_file)
-  execute 'source' g:save_window_file
-endif
-
-"=============================================================
 " unite.vim
 "=============================================================
+"{{{
 " 入力モードで開始する
 let g:unite_enable_start_insert=1
 " 縦分割で開く(オフにする)
@@ -173,10 +222,12 @@ function! s:unite_my_settings()
   nmap <silent><buffer> <ESC><ESC> q
   imap <silent><buffer> <ESC><ESC> <ESC>q
 endfunction
+"}}}
 
 "=============================================================
 " neocomplcacheを有効にする
 "=============================================================
+"{{{
 let g:neocomplcache_enable_at_startup = 1
 " 大文字小文字を区別する
 let g:neocomplcache_SmartCase = 1
@@ -204,46 +255,23 @@ imap <C-k> <Plug>(neocomplcache_snippets_expand)
 smap <C-k> <Plug>(neocomplcache_snippets_expand)
 "imap <C-s> <Plug>(neocomplcache_snippets_expand)
 "smap <C-s> <Plug>(neocomplcache_snippets_expand)
-
-"=============================================================
-" フォーカスがあたっていない場合は透明にする
-"=============================================================
-augroup hack234
-  autocmd!
-    if has('mac')
-      autocmd FocusGained * set transparency=10
-      autocmd FocusLost * set transparency=30
-    endif
-augroup END
+"}}}
 
 "=============================================================
 " (),[],{},<>,””,’’,“入力+()の中にカーソル戻す
 "=============================================================
-"imap {} {}<LEFT>
-"imap [] []<LEFT>
-"imap () ()<LEFT>
-"imap <> <><Left>
-"imap "" ""<Left>
-"imap '' ''<Left>
+imap {} {}<LEFT>
+imap [] []<LEFT>
+imap () ()<LEFT>
+imap <> <><Left>
+imap "" ""<Left>
+imap '' ''<Left>
 
 "============================================================
 " カーソル位置と現在行を示す
 "============================================================
 :set cursorline
 :highlight CursorLine term=reverse cterm=reverse
-
-"=============================================================
-" Windowの形状設定 
-"=============================================================
-if has('gui')
-  set showtabline=2  " タブを常に表示
-  set imdisable  " IMを無効化
-  set guioptions-=T   " ツールバー非表示
-endif
-
-if has('gui_macvim')
-  set transparency=0  " 透明度を指定
-endif
 
 "=============================================================
 " ハイライト 
@@ -273,17 +301,6 @@ hi Comment ctermfg=7
 "=============================================================
 if has('gui')
   set clipboard=unnamed
-endif
-
-"=============================================================
-" フォント設定
-"=============================================================
-if has('gui_macvim')
-  set guifont=Inconsolata:h12
-  set guifontwide=Courier:h12
-  set antialias
-elseif has('gui_running')
-  set gfn=Takaoゴシック\ 11
 endif
 
 "=============================================================
@@ -374,6 +391,7 @@ vnoremap <silent> :alc :<C-u>call ref#jump('visual', 'alc')<CR>
 " zk 前の折り畳みに移動
 "=============================================================
 let php_folding=3
+set foldmethod=marker
 
 "#############################################################
 " // phpの設定ここまで
@@ -444,6 +462,7 @@ set hlsearch
 "=============================================================
 " 文字コードの自動認識
 "=============================================================
+"{{{
 if &encoding !=# 'utf-8'
   set encoding=japan
   set fileencoding=japan
@@ -484,10 +503,12 @@ if has('iconv')
   unlet s:enc_euc
   unlet s:enc_jis
 endif
+"}}}
 
 "=============================================================
 " 日本語を含まない場合は fileencoding に encoding を使うようにする
 "=============================================================
+"{{{
 if has('autocmd')
   function! AU_ReCheck_FENC()
     if &fileencoding =~# 'iso-2022-jp' && search("[^\x01-\x7e]", 'n') == 0
@@ -496,6 +517,7 @@ if has('autocmd')
   endfunction
   autocmd BufReadPost * call AU_ReCheck_FENC()
 endif
+"}}}
 
 "=============================================================
 " 改行コードの自動認識
@@ -510,8 +532,10 @@ if exists('&ambiwidth')
 endif
 
 "=============================================================
-" URLの上でbrと押すとブラウザを開く
+" URLの上でと押すとブラウザを開く
 "=============================================================
+"{{{
 let g:netrw_nogx = 1 " disable netrw's gx mapping.
 nmap br <Plug>(openbrowser-smart-search)
 vmap br <Plug>(openbrowser-smart-search)
+"}}}
