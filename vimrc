@@ -55,7 +55,6 @@ Bundle 'mattn/zencoding-vim'
 Bundle 'git://repo.or.cz/vcscommand'
 Bundle 'ndreynolds/vim-cakephp'
 Bundle 'ryuzee/neocomplcache_php_selenium_snippet'
-Bundle 'vim-scripts/Diablo3.git'
 Bundle 'scrooloose/syntastic.git'
 
 " vim-script
@@ -65,9 +64,21 @@ Bundle 'taglist.vim'
 " :TrinityToggleAllで4ペインでソースコードを閲覧可能にする
 Bundle 'trinity.vim'
 Bundle 'Source-Explorer-srcexpl.vim'
-Bundle 'unite.vim'
 Bundle 'sudo.vim'
 Bundle 'tyru/open-browser.vim'
+
+"{{{ colorscheme
+Bundle 'vim-scripts/Diablo3.git'
+Bundle 'vim-scripts/Lucius'
+Bundle 'vim-scripts/mrkn256.vim'
+Bundle 'jnurmine/Zenburn'
+"}}}
+
+"{{{ unite
+Bundle 'unite.vim'
+Bundle 'ujihisa/unite-colorscheme' 
+Bundle 'ujihisa/unite-font' 
+"}}}
 
 "=============================================================
 " QuickRunによる設定
@@ -140,6 +151,8 @@ nnoremap <silent> ,um :<C-u>Unite -no-quit file_mru<CR>
 nnoremap <silent> ,uu :<C-u>Unite -no-quit buffer file_mru<CR>
 " 全部乗せ
 nnoremap <silent> ,ua :<C-u>UniteWithBufferDir -no-quit -buffer-name=files buffer file_mru bookmark file<CR>
+" colorscheme 
+nnoremap <silent> ,uc :<C-u>Unite colorscheme<CR>
 
 " ウィンドウを分割して開く
 au FileType unite nnoremap <silent> <buffer> <expr> <C-j> unite#do_action('split')
@@ -242,6 +255,7 @@ endif
 "set background=dark
 "colorscheme solarized
 
+" lucius / mrkn256 / zenburn
 if has('gui_macvim')
   :colorscheme Diablo3
 elseif has('gui')
@@ -256,7 +270,7 @@ hi Comment ctermfg=7
 "=============================================================
 " クリップボードの設定
 "=============================================================
-if has('gui_macvim')
+if has('gui')
   set clipboard=unnamed
 endif
 
