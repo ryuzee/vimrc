@@ -78,6 +78,7 @@ Bundle 'jnurmine/Zenburn'
 Bundle 'unite.vim'
 Bundle 'ujihisa/unite-colorscheme' 
 Bundle 'ujihisa/unite-font' 
+Bundle 'oppara/vim-unite-cake' 
 "}}}
 
 "=============================================================
@@ -135,10 +136,12 @@ endif
 "=============================================================
 " 入力モードで開始する
 let g:unite_enable_start_insert=1
-" 縦分割で開く
-let g:unite_enable_split_vertically = 1 
+" 縦分割で開く(オフにする)
+let g:unite_enable_split_vertically = 0 
 " Windowの幅
 let g:unite_winwidth = 40
+" Window
+let g:unite_winheight = 10
 " バッファ一覧
 nnoremap <silent> ,ub :<C-u>Unite buffer<CR>
 " ファイル一覧
@@ -255,11 +258,9 @@ endif
 "set background=dark
 "colorscheme solarized
 
-" lucius / mrkn256 / zenburn
-if has('gui_macvim')
-  :colorscheme Diablo3
-elseif has('gui')
-  :colorscheme evening
+" evening / lucius / mrkn256 / zenburn / Diablo3
+if has('gui')
+  :colorscheme mrkn256 
 endif
 
 "=============================================================
@@ -509,7 +510,7 @@ if exists('&ambiwidth')
 endif
 
 "=============================================================
-" URLの上でgxと押すとブラウザを開く
+" URLの上でbrと押すとブラウザを開く
 "=============================================================
 let g:netrw_nogx = 1 " disable netrw's gx mapping.
 nmap br <Plug>(openbrowser-smart-search)
