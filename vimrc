@@ -22,7 +22,6 @@ set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
 Bundle 'thinca/vim-quickrun'
-Bundle 'Shougo/neocomplcache'
 " vimprocはインストールしたあと、cd bundle/vimproc/にてmake -f
 " make_xxx.makしてビルドすること
 Bundle 'Shougo/vimproc'
@@ -33,7 +32,6 @@ Bundle 'vim-scripts/Align'
 Bundle 'vim-scripts/YankRing.vim'
 Bundle 'msanders/snipmate.vim'
 Bundle 'scrooloose/nerdcommenter'
-Bundle 'nishigori/neocomplcache_phpunit_snippet'
 Bundle 'thinca/vim-ref'
 Bundle 'kana/vim-smartchr'
 " 文字列の囲み関係の処理
@@ -52,7 +50,6 @@ Bundle 'tpope/vim-surround'
 Bundle 'mattn/zencoding-vim'
 Bundle 'git://repo.or.cz/vcscommand'
 Bundle 'ndreynolds/vim-cakephp'
-Bundle 'ryuzee/neocomplcache_php_selenium_snippet'
 Bundle 'scrooloose/syntastic.git'
 " vim-script
 " :Tlistでタグを表示する
@@ -63,19 +60,38 @@ Bundle 'trinity.vim'
 Bundle 'Source-Explorer-srcexpl.vim'
 Bundle 'sudo.vim'
 Bundle 'tyru/open-browser.vim'
+
+" neocomplcache
+"{{{
+Bundle 'Shougo/neocomplcache'
+Bundle 'nishigori/neocomplcache_phpunit_snippet'
+Bundle 'ryuzee/neocomplcache_php_selenium_snippet'
+"}}}
+
 " colorscheme
 "{{{
 Bundle 'vim-scripts/Diablo3.git'
 Bundle 'vim-scripts/Lucius'
 Bundle 'vim-scripts/mrkn256.vim'
 Bundle 'jnurmine/Zenburn'
+Bundle 'tomasr/molokai'
 "}}}
+
+" required by unite-vim_hacks
+Bundle 'mattn/webapi-vim'
+Bundle 'thinca/vim-openbuf'
+
 " unite
 "{{{
 Bundle 'unite.vim'
 Bundle 'ujihisa/unite-colorscheme' 
 Bundle 'ujihisa/unite-font' 
 Bundle 'oppara/vim-unite-cake' 
+Bundle 'h1mesuke/unite-outline'
+Bundle 'ujihisa/unite-locate'
+Bundle 'kmnk/vim-unite-svn'
+Bundle 'choplin/unite-vim_hacks'
+Bundle 'tsukkee/unite-help'
 "}}}
 
 "-------------------------------------------------------------
@@ -286,7 +302,7 @@ imap '' ''<Left>
 "set background=dark
 "colorscheme solarized
 
-" evening / lucius / mrkn256 / zenburn / Diablo3
+" evening / lucius / mrkn256 / zenburn / Diablo3 / molokai
 if has('gui')
   :colorscheme mrkn256 
 endif
