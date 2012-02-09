@@ -60,10 +60,6 @@ Bundle 'Lokaltog/vim-easymotion'
 " vim-script
 " :Tlistでタグを表示する
 Bundle 'taglist.vim'
-" SourceExplorer
-" :TrinityToggleAllで4ペインでソースコードを閲覧可能にする
-Bundle 'trinity.vim'
-Bundle 'Source-Explorer-srcexpl.vim'
 Bundle 'sudo.vim'
 Bundle 'tyru/open-browser.vim'
 
@@ -99,6 +95,10 @@ Bundle 'kmnk/vim-unite-svn'
 Bundle 'choplin/unite-vim_hacks'
 Bundle 'tsukkee/unite-help'
 "}}}
+"
+" http://kien.github.com/ctrlp.vim/
+" http://mattn.kaoriya.net/software/vim/20111228013428.htm
+Bundle 'kien/ctrlp.vim'
 
 "-------------------------------------------------------------
 " Look and Feel
