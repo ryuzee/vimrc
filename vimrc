@@ -70,8 +70,9 @@ Bundle 'nishigori/neocomplcache_phpunit_snippet'
 Bundle 'ryuzee/neocomplcache_php_selenium_snippet'
 "}}}
 
-" colorscheme
+" colorscheme etc
 "{{{
+Bundle 'thinca/vim-guicolorscheme'
 Bundle 'vim-scripts/Diablo3.git'
 Bundle 'vim-scripts/Lucius'
 Bundle 'vim-scripts/mrkn256.vim'
@@ -95,6 +96,10 @@ Bundle 'kmnk/vim-unite-svn'
 Bundle 'choplin/unite-vim_hacks'
 Bundle 'tsukkee/unite-help'
 "}}}
+
+" zoom
+Bundle 'thinca/vim-fontzoom'
+
 "
 " http://kien.github.com/ctrlp.vim/
 " http://mattn.kaoriya.net/software/vim/20111228013428.htm
@@ -110,6 +115,7 @@ Bundle 'kien/ctrlp.vim'
 " http://vim-users.jp/2010/01/hack120/
 "=============================================================
 "{{{
+if has('gui')
 let g:save_window_file = expand('~/.vimwinpos')
 augroup SaveWindow
   autocmd!
@@ -125,6 +131,7 @@ augroup SaveWindow
 augroup END
 if filereadable(g:save_window_file)
   execute 'source' g:save_window_file
+endif
 endif
 "}}}
 
