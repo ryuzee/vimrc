@@ -17,6 +17,7 @@ set ignorecase		" 大文字小文字を無視して検索
 set smartcase		" 大文字を入力すると大文字小文字無視を解除
 set wrapscan		" 先頭に戻って検索
 set hlsearch		" 前回の検索結果が残ってればハイライトする
+set textwidth=0		" 自動改行させない
 
 "=============================================================
 " bundle/vim-pathogen/autoload以下にあるpathogen.vimの
@@ -275,7 +276,7 @@ let g:neocomplcache_max_list = 20
 "自動補完を行う入力数を設定。初期値は2
 let g:neocomplcache_auto_completion_start_length = 4 
 "手動補完時に補完を行う入力数を制御。値を小さくすると文字の削除時に重くなる
-let g:neocomplcache_manual_completion_start_length = 3
+let g:neocomplcache_manual_completion_start_length = 5
 "バッファや辞書ファイル中で、補完の対象となるキーワードの最小長さ。初期値は4。
 let g:neocomplcache_min_keyword_length = 4
 "シンタックスファイル中で、補完の対象となるキーワードの最小長さ。初期値は4。
@@ -354,6 +355,7 @@ highlight JpSpace cterm=underline ctermfg=Blue guifg=Blue
 "=============================================================
 " vim-refの設定
 "=============================================================
+let g:ref_alc_cmd='lynx -dump -nonumbers %s'
 let g:ref_phpmanual_path = $HOME . '/.vim/others/phpmanual'
 "nnoremap <silent> <Space>K :<C-u>call ref#jump('normal', 'alc')<CR>
 "vnoremap <silent> <Space>K :<C-u>call ref#jump('visual', 'alc')<CR>
