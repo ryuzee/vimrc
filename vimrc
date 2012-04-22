@@ -445,6 +445,13 @@ set laststatus=2
 "=============================================================
 set statusline=%<%f\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ft.']['.&ff.']'}%=%l,%c%V%8P
 
+" 挿入モードかどうかで色を変える
+augroup InsertHook
+autocmd!
+autocmd InsertEnter * highlight StatusLine guifg=#ccdc90 guibg=#2E4340
+autocmd InsertLeave * highlight StatusLine guifg=#2E4340 guibg=#ccdc90
+augroup END
+
 "=============================================================
 " 文字コードの自動認識
 "=============================================================
