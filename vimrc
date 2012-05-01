@@ -23,7 +23,7 @@ set textwidth=0		" 自動改行させない
 " bundle/vim-pathogen/autoload以下にあるpathogen.vimの
 " シンボリックリンクを~/.vim/autoloadに配置しておくこと
 "=============================================================
-call pathogen#runtime_append_all_bundles()
+"call pathogen#runtime_append_all_bundles()
 
 :imap <C-z> <C-y>
 
