@@ -5,6 +5,7 @@ set shortmess+=I	" 起動時のメッセージいらない
 set hidden
 set nobackup		" バックアップ作らない
 set noswapfile		" swapファイル作らない
+set autoread		" 他で書き換えられたら自動で読み直す
 set splitbelow		" 標準で下分割
 set splitright		" 右分割にする
 set showmatch		" 括弧入力時に対応する括弧を表示
@@ -18,12 +19,12 @@ set smartcase		" 大文字を入力すると大文字小文字無視を解除
 set wrapscan		" 先頭に戻って検索
 set hlsearch		" 前回の検索結果が残ってればハイライトする
 set textwidth=0		" 自動改行させない
-
-"=============================================================
-" bundle/vim-pathogen/autoload以下にあるpathogen.vimの
-" シンボリックリンクを~/.vim/autoloadに配置しておくこと
-"=============================================================
-"call pathogen#runtime_append_all_bundles()
+set shellslash		" Windowsでもパス区切りにスラッシュを使える
+set lazyredraw		" Dont redraw screen while Macro proceeding
+set backspace=indent,eol,start	" バックスペースでなんでも消せるように
+set formatoptions+=m		" 整形オプション，マルチバイト系を追加
+set wildmenu		" コマンド補完を強化
+set wildmode=list:full	" リスト表示，最長マッチ
 
 :imap <C-z> <C-y>
 
