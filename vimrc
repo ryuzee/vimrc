@@ -130,14 +130,11 @@ Bundle 'kien/ctrlp.vim'
 "=============================================================
 " 背景色の設定
 "=============================================================
-"Bundle 'altercation/vim-colors-solarized'
-"syntax enable
-"set background=dark
-"colorscheme solarized
-
 " evening / lucius / mrkn256 / zenburn / Diablo3 / molokai
 if has('gui')
   :colorscheme mrkn256 
+else
+  :colorscheme blue
 endif
 
 Bundle 'nathanaelkane/vim-indent-guides'
