@@ -112,6 +112,28 @@ Bundle 'thinca/vim-fontzoom'
 " http://mattn.kaoriya.net/software/vim/20111228013428.htm
 Bundle 'kien/ctrlp.vim'
 
+"=============================================================
+" 背景色の設定
+"=============================================================
+"Bundle 'altercation/vim-colors-solarized'
+"syntax enable
+"set background=dark
+"colorscheme solarized
+
+" evening / lucius / mrkn256 / zenburn / Diablo3 / molokai
+if has('gui')
+  :colorscheme mrkn256 
+endif
+
+Bundle 'nathanaelkane/vim-indent-guides'
+let g:indent_guids_enable_on_vim_startup = 1
+let g:indent_guides_auto_colors = 1
+let g:indent_guides_color_change_percent = 30
+let g:indent_guides_guide_size = 1
+set background=dark
+autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=red   ctermbg=3
+autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=4
+
 "-------------------------------------------------------------
 " Look and Feel
 "-------------------------------------------------------------
@@ -314,18 +336,6 @@ imap '' ''<Left>
 "=============================================================
 :syntax on
 
-"=============================================================
-" 背景色の設定
-"=============================================================
-"Bundle 'altercation/vim-colors-solarized'
-"syntax enable
-"set background=dark
-"colorscheme solarized
-
-" evening / lucius / mrkn256 / zenburn / Diablo3 / molokai
-if has('gui')
-  :colorscheme mrkn256 
-endif
 
 "=============================================================
 " コメント行をグレー表示する(コンソール）
