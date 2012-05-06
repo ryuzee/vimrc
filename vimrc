@@ -1,10 +1,12 @@
 set nocompatible
+filetype off
 set tags=~/.tags
 set vb t_vb=  		" ビープ音いらない 
 set shortmess+=I	" 起動時のメッセージいらない 
 set hidden
 set nobackup		" バックアップ作らない
 set noswapfile		" swapファイル作らない
+set autoread		" 他で書き換えられたら自動で読み直す
 set splitbelow		" 標準で下分割
 set splitright		" 右分割にする
 set showmatch		" 括弧入力時に対応する括弧を表示
@@ -18,12 +20,21 @@ set smartcase		" 大文字を入力すると大文字小文字無視を解除
 set wrapscan		" 先頭に戻って検索
 set hlsearch		" 前回の検索結果が残ってればハイライトする
 set textwidth=0		" 自動改行させない
+set shellslash		" Windowsでもパス区切りにスラッシュを使える
+set lazyredraw		" Dont redraw screen while Macro proceeding
+set backspace=indent,eol,start	" バックスペースでなんでも消せるように
+set formatoptions+=m		" 整形オプション，マルチバイト系を追加
+set wildmenu			" コマンド補完を強化
+set wildmode=list:full		" リスト表示，最長マッチ
+set fileformats=unix,dos,mac	" 改行コードの自動認識
 
-"=============================================================
-" bundle/vim-pathogen/autoload以下にあるpathogen.vimの
-" シンボリックリンクを~/.vim/autoloadに配置しておくこと
-"=============================================================
-call pathogen#runtime_append_all_bundles()
+set list			" タブなどの制御文字を表示
+set lcs=tab:>.,trail:_,extends:\	" タブを表示する。改行文字は表示しない
+
+set laststatus=2		"常にステータス行を表示
+set statusline=%<%f\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ft.']['.&ff.']'}%=%l,%c%V%8P
+
+:syntax on		" シンタックスハイライトを有効にする
 
 :imap <C-z> <C-y>
 
@@ -332,10 +343,12 @@ imap '' ''<Left>
 :highlight CursorLine term=reverse cterm=reverse
 
 "=============================================================
-" ハイライト 
+" 背景色の設定
 "=============================================================
-:syntax on
-
+" evening / lucius / mrkn256 / zenburn / Diablo3 / molokai
+if has('gui')
+  :colorscheme mrkn256 
+endif
 
 "=============================================================
 " コメント行をグレー表示する(コンソール）
@@ -348,13 +361,6 @@ hi Comment ctermfg=7
 if has('gui')
   set clipboard=unnamed
 endif
-
-"=============================================================
-" タブなどの制御文字を表示
-"=============================================================
-set list
-"　タブを表示する。改行文字は表示しない
-set lcs=tab:>.,trail:_,extends:\
 
 "=============================================================
 "全角スペースの位置を表示
@@ -437,24 +443,6 @@ set foldmethod=marker
 " // phpの設定ここまで
 "#############################################################
 
-"=============================================================
-" タブ設定
-"=============================================================
-"set expandtab
-"set tabstop=4
-"set softtabstop=4
-"set shiftwidth=4
-
-"=============================================================
-"常にステータス行を表示
-"=============================================================
-set laststatus=2
-
-"=============================================================
-" Status行
-"=============================================================
-set statusline=%<%f\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ft.']['.&ff.']'}%=%l,%c%V%8P
-
 " 挿入モードかどうかで色を変える
 augroup InsertHook
 autocmd!
@@ -521,11 +509,6 @@ if has('autocmd')
   autocmd BufReadPost * call AU_ReCheck_FENC()
 endif
 "}}}
-
-"=============================================================
-" 改行コードの自動認識
-"=============================================================
-set fileformats=unix,dos,mac
 
 "=============================================================
 " □とか○の文字があってもカーソル位置がずれないようにする
