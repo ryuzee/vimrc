@@ -38,18 +38,22 @@ set statusline=%<%f\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ft.']['.&ff.']'}
 
 :imap <C-z> <C-y>
 
+"{{{
 "=============================================================
 " Vundle設定 
+" BundleInstallでうまくいかない場合はコマンドラインで
+" vim +BundleInstall +qall
 "=============================================================
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
+Bundle 'gmarik/vundle'
+"}}}
 
 Bundle 'thinca/vim-quickrun'
 " vimprocはインストールしたあと、cd bundle/vimproc/にてmake -f
 " make_xxx.makしてビルドすること
 Bundle 'Shougo/vimproc'
 Bundle 'Shougo/vimshell'
-Bundle 'gmarik/vundle'
 Bundle 'vim-scripts/SQLUtilities'
 Bundle 'vim-scripts/Align'
 Bundle 'vim-scripts/YankRing.vim'
