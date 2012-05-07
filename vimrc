@@ -11,10 +11,10 @@ set splitbelow		" 標準で下分割
 set splitright		" 右分割にする
 set showmatch		" 括弧入力時に対応する括弧を表示
 set cindent
-set ruler		" ルーラー表示
-set showcmd		" コマンドをステータス行に表示
-set title		" タイトルを表示
-set number		" 行番号表示
+set ruler			" ルーラー表示
+set showcmd			" コマンドをステータス行に表示
+set title			" タイトルを表示
+set number			" 行番号表示
 set ignorecase		" 大文字小文字を無視して検索 
 set smartcase		" 大文字を入力すると大文字小文字無視を解除
 set wrapscan		" 先頭に戻って検索
@@ -23,18 +23,18 @@ set textwidth=0		" 自動改行させない
 set shellslash		" Windowsでもパス区切りにスラッシュを使える
 set lazyredraw		" Dont redraw screen while Macro proceeding
 set backspace=indent,eol,start	" バックスペースでなんでも消せるように
-set formatoptions+=m		" 整形オプション，マルチバイト系を追加
-set wildmenu			" コマンド補完を強化
-set wildmode=list:full		" リスト表示，最長マッチ
+set formatoptions+=m			" 整形オプション，マルチバイト系を追加
+set wildmenu					" コマンド補完を強化
+set wildmode=list:full			" リスト表示，最長マッチ
 set fileformats=unix,dos,mac	" 改行コードの自動認識
-
 set list			" タブなどの制御文字を表示
+set tabstop=4
 set lcs=tab:>.,trail:_,extends:\	" タブを表示する。改行文字は表示しない
 
-set laststatus=2		"常にステータス行を表示
+set laststatus=2	"常にステータス行を表示
 set statusline=%<%f\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ft.']['.&ff.']'}%=%l,%c%V%8P
 
-:syntax on		" シンタックスハイライトを有効にする
+:syntax on			" シンタックスハイライトを有効にする
 
 :imap <C-z> <C-y>
 
@@ -50,8 +50,6 @@ Bundle 'gmarik/vundle'
 "}}}
 
 Bundle 'thinca/vim-quickrun'
-" vimprocはインストールしたあと、cd bundle/vimproc/にてmake -f
-" make_xxx.makしてビルドすること
 Bundle 'Shougo/vimproc'
 Bundle 'Shougo/vimshell'
 Bundle 'vim-scripts/SQLUtilities'
@@ -61,26 +59,14 @@ Bundle 'msanders/snipmate.vim'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'thinca/vim-ref'
 Bundle 'kana/vim-smartchr'
-" 文字列の囲み関係の処理
-" iw (単語)
-" aw (単語+次の文字までの空白)
-" it (タグの内部 <strong>hoge</strong> の hoge)
-" at (直近の外側にあるタグ含む文字列 <p><strong>hoge</strong></p> の場合、
-"    hoge や、strong 上でコマンドを入力すれば、<strong>hoge</strong> が対象になる)
-" i( (括弧内を以下略。 ib でも可。)
-" a( (括弧含め以下略。 ab でも可。 b は多分ブラケットの b です)
-" 例)
-" ysiw" --> "で文字列を囲む
-" ys$"　--> カーソルから行末までを"で囲む
-" cs"'　--> "で囲まれているものを'に変える
 Bundle 'tpope/vim-surround'
 Bundle 'mattn/zencoding-vim'
 Bundle 'git://repo.or.cz/vcscommand'
 Bundle 'ndreynolds/vim-cakephp'
 Bundle 'scrooloose/syntastic.git'
 Bundle 'Lokaltog/vim-easymotion'
+
 " vim-script
-" :Tlistでタグを表示する
 Bundle 'taglist.vim'
 Bundle 'sudo.vim'
 Bundle 'tyru/open-browser.vim'
@@ -117,39 +103,40 @@ Bundle 'ujihisa/unite-locate'
 Bundle 'kmnk/vim-unite-svn'
 Bundle 'choplin/unite-vim_hacks'
 Bundle 'tsukkee/unite-help'
+Bundle 'h1mesuke/unite-outline'
 "}}}
 
 " zoom
 Bundle 'thinca/vim-fontzoom'
 
-"
 " http://kien.github.com/ctrlp.vim/
 " http://mattn.kaoriya.net/software/vim/20111228013428.htm
 Bundle 'kien/ctrlp.vim'
 
-"=============================================================
-" 背景色の設定
-"=============================================================
-" evening / lucius / mrkn256 / zenburn / Diablo3 / molokai
-if has('gui')
-  :colorscheme mrkn256 
-else
-  :colorscheme blue
-endif
-
 Bundle 'nathanaelkane/vim-indent-guides'
-let g:indent_guids_enable_on_vim_startup = 1
-let g:indent_guides_auto_colors = 1
-let g:indent_guides_color_change_percent = 30
-let g:indent_guides_guide_size = 1
-set background=dark
-autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=red   ctermbg=3
-autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=4
 
 "-------------------------------------------------------------
 " Look and Feel
 "-------------------------------------------------------------
 "{{{
+"
+"=============================================================
+" 背景色の設定
+"=============================================================
+" evening / lucius / mrkn256 / zenburn / Diablo3 / molokai
+if has('gui')
+  :colorscheme molokai 
+else
+  :colorscheme blue
+endif
+let g:indent_guides_enable_on_vim_startup = 1
+let g:indent_guides_auto_colors = 1
+let g:indent_guides_color_change_percent = 30
+let g:indent_guides_guide_size = 1
+"set background=dark
+autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=red   ctermbg=3
+autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=4
+
 
 "=============================================================
 " gvimでウインドウの位置とサイズを記憶する
@@ -275,6 +262,8 @@ nnoremap <silent> ,uu :<C-u>Unite -no-quit buffer file_mru<CR>
 nnoremap <silent> ,ua :<C-u>UniteWithBufferDir -no-quit -buffer-name=files buffer file_mru bookmark file<CR>
 " colorscheme 
 nnoremap <silent> ,uc :<C-u>Unite colorscheme<CR>
+" outline 
+nnoremap <silent> ,uo :<C-u>Unite outline<CR>
 
 " ウィンドウを分割して開く
 au FileType unite nnoremap <silent> <buffer> <expr> <C-j> unite#do_action('split')
@@ -344,14 +333,6 @@ imap '' ''<Left>
 :highlight CursorLine term=reverse cterm=reverse
 
 "=============================================================
-" 背景色の設定
-"=============================================================
-" evening / lucius / mrkn256 / zenburn / Diablo3 / molokai
-if has('gui')
-  :colorscheme mrkn256 
-endif
-
-"=============================================================
 " コメント行をグレー表示する(コンソール）
 "=============================================================
 hi Comment ctermfg=7
@@ -388,6 +369,7 @@ vnoremap <silent> :alc :<C-u>call ref#jump('visual', 'alc')<CR>
 "#############################################################
 " 拡張子.phpの場合の設定
 "#############################################################
+"{{{
 
 "=============================================================
 " makeコマンドを入力すると、PHPの構文エラーがないかどうかもチェック可能
@@ -423,12 +405,6 @@ vnoremap <silent> :alc :<C-u>call ref#jump('visual', 'alc')<CR>
 :autocmd FileType ctp set ft=php.cakephp
 
 "=============================================================
-" python
-"=============================================================
-:autocmd FileType py set tabstop=4 shiftwidth=4 expandtab 
-:autocmd FileType javascript set tabstop=4 shiftwidth=4 expandtab fileencoding=utf-8
-
-"=============================================================
 " クラスと関数の折り畳みを許可する
 " zo 折り畳みを開く
 " zc 折り畳みを閉じる
@@ -443,6 +419,13 @@ set foldmethod=marker
 "#############################################################
 " // phpの設定ここまで
 "#############################################################
+"}}}
+
+"=============================================================
+" python
+"=============================================================
+:autocmd FileType py set tabstop=4 shiftwidth=4 expandtab 
+:autocmd FileType javascript set tabstop=4 shiftwidth=4 expandtab fileencoding=utf-8
 
 " 挿入モードかどうかで色を変える
 augroup InsertHook
@@ -525,4 +508,17 @@ endif
 let g:netrw_nogx = 1 " disable netrw's gx mapping.
 nmap br <Plug>(openbrowser-smart-search)
 vmap br <Plug>(openbrowser-smart-search)
+"}}}
+
+
+"=============================================================
+" Nerd_Commenter の基本設定
+"=============================================================
+"{{{
+let g:NERDCreateDefaultMappings = 0
+let NERDSpaceDelims = 1
+nmap <Leader>/ <Plug>NERDCommenterToggle
+vmap <Leader>/ <Plug>NERDCommenterToggle
+nmap <leader>/9 <Plug>NERDCommenterToEOL	" カーソル位置以降
+vmap <Leader>/s <Plug>NERDCommenterSexy
 "}}}
