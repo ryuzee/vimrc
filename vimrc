@@ -86,6 +86,7 @@ Bundle 'vim-scripts/Lucius'
 Bundle 'vim-scripts/mrkn256.vim'
 Bundle 'jnurmine/Zenburn'
 Bundle 'tomasr/molokai'
+Bundle 'inkpot'
 "}}}
 
 " required by unite-vim_hacks
@@ -125,17 +126,18 @@ Bundle 'nathanaelkane/vim-indent-guides'
 "=============================================================
 " evening / lucius / mrkn256 / zenburn / Diablo3 / molokai
 if has('gui')
-  :colorscheme molokai 
+  ":colorscheme molokai 
+  :colorscheme inkpot
 else
   :colorscheme blue
 endif
 let g:indent_guides_enable_on_vim_startup = 1
-let g:indent_guides_auto_colors = 1
+let g:indent_guides_auto_colors = 1 
 let g:indent_guides_color_change_percent = 30
 let g:indent_guides_guide_size = 1
 "set background=dark
-autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=red   ctermbg=3
-autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=4
+"autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=red   ctermbg=3
+"autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=4
 
 
 "=============================================================
