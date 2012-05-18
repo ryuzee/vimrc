@@ -283,10 +283,9 @@ let g:neocomplcache_enable_ignore_case = 1
 let g:neocomplcache_enable_smart_case = 1
 
 " <C-k> にマッピング
+" Snippetの候補の選択およびプレースホルダーの移動は以下のコマンドで行う
 imap <C-k> <Plug>(neocomplcache_snippets_expand)
 smap <C-k> <Plug>(neocomplcache_snippets_expand)
-"imap <C-s> <Plug>(neocomplcache_snippets_expand)
-"smap <C-s> <Plug>(neocomplcache_snippets_expand)
 "}}}
 
 " (),[],{},<>,””,’’,“入力+()の中にカーソル戻す {{{
