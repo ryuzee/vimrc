@@ -1,3 +1,5 @@
+" 一般的な設定 {{{
+"=============================================================
 set nocompatible
 filetype off
 set tags=~/.tags
@@ -30,25 +32,22 @@ set fileformats=unix,dos,mac	" 改行コードの自動認識
 set list			" タブなどの制御文字を表示
 set tabstop=4
 set lcs=tab:>.,trail:_,extends:\	" タブを表示する。改行文字は表示しない
-
 set laststatus=2	"常にステータス行を表示
 set statusline=%<%f\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ft.']['.&ff.']'}%=%l,%c%V%8P
-
 :syntax on			" シンタックスハイライトを有効にする
-
 :imap <C-z> <C-y>
-
-"{{{
 "=============================================================
-" Vundle設定 
+"}}}
+
+" Vundle設定 {{{
 " BundleInstallでうまくいかない場合はコマンドラインで
 " vim +BundleInstall +qall
-"=============================================================
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 Bundle 'gmarik/vundle'
 "}}}
 
+" Vundleで読み込むプラグインの設定 {{{
 Bundle 'thinca/vim-quickrun'
 Bundle 'Shougo/vimproc'
 Bundle 'Shougo/vimshell'
@@ -71,15 +70,13 @@ Bundle 'taglist.vim'
 Bundle 'sudo.vim'
 Bundle 'tyru/open-browser.vim'
 
-" neocomplcache
-"{{{
+" neocomplcache {{{
 Bundle 'Shougo/neocomplcache'
 Bundle 'nishigori/neocomplcache_phpunit_snippet'
 Bundle 'ryuzee/neocomplcache_php_selenium_snippet'
 "}}}
 
-" colorscheme etc
-"{{{
+" colorscheme etc {{{
 Bundle 'thinca/vim-guicolorscheme'
 Bundle 'vim-scripts/Diablo3.git'
 Bundle 'vim-scripts/Lucius'
@@ -89,12 +86,12 @@ Bundle 'tomasr/molokai'
 Bundle 'inkpot'
 "}}}
 
-" required by unite-vim_hacks
+" required by unite-vim_hacks {{{
 Bundle 'mattn/webapi-vim'
 Bundle 'thinca/vim-openbuf'
+"}}}
 
-" unite
-"{{{
+" unite {{{
 Bundle 'unite.vim'
 Bundle 'ujihisa/unite-colorscheme' 
 Bundle 'ujihisa/unite-font' 
@@ -107,23 +104,20 @@ Bundle 'tsukkee/unite-help'
 Bundle 'h1mesuke/unite-outline'
 "}}}
 
-" zoom
+" zoom {{{
 Bundle 'thinca/vim-fontzoom'
+"}}}
 
 " http://kien.github.com/ctrlp.vim/
 " http://mattn.kaoriya.net/software/vim/20111228013428.htm
 Bundle 'kien/ctrlp.vim'
 
 Bundle 'nathanaelkane/vim-indent-guides'
+"}}}
 
-"-------------------------------------------------------------
-" Look and Feel
-"-------------------------------------------------------------
-"{{{
+" Look and Feel {{{
 "
-"=============================================================
-" 背景色の設定
-"=============================================================
+" 背景色の設定 {{{
 " evening / lucius / mrkn256 / zenburn / Diablo3 / molokai
 if has('gui')
   ":colorscheme molokai 
@@ -138,13 +132,10 @@ let g:indent_guides_guide_size = 1
 "set background=dark
 "autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=red   ctermbg=3
 "autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=4
+"}}}
 
-
-"=============================================================
-" gvimでウインドウの位置とサイズを記憶する
+" gvimでウインドウの位置とサイズを記憶する {{{
 " http://vim-users.jp/2010/01/hack120/
-"=============================================================
-"{{{
 if has('gui')
 let g:save_window_file = expand('~/.vimwinpos')
 augroup SaveWindow
@@ -165,10 +156,7 @@ endif
 endif
 "}}}
 
-"=============================================================
-" フォーカスがあたっていない場合は透明にする
-"=============================================================
-"{{{
+" フォーカスがあたっていない場合は透明にする {{{
 augroup hack234
   autocmd!
     if has('mac')
@@ -178,10 +166,7 @@ augroup hack234
 augroup END
 "}}}
 
-"=============================================================
-" Windowの形状設定 
-"=============================================================
-"{{{
+" Windowの形状設定 {{{
 if has('gui')
   set showtabline=2  " タブを常に表示
   set imdisable  " IMを無効化
@@ -192,10 +177,7 @@ if has('gui_macvim')
 endif
 "}}}
 
-"=============================================================
-" フォント設定
-"=============================================================
-"{{{
+" フォント設定 {{{
 if has('gui_macvim')
   set guifont=Inconsolata:h12
   set guifontwide=Courier:h12
@@ -207,11 +189,9 @@ endif
 
 "}}} // Look and Feel
 
-"=============================================================
-" QuickRunによる設定
-"=============================================================
-"{{{
-" 初期化
+" QuickRunによる設定 {{{
+
+" 初期化 {{{
 let g:quickrun_config = {}
 let g:quickrun_config['*'] = {'split': ''}
 
@@ -219,8 +199,9 @@ augroup QuickRunPHPUnit
   autocmd!
   autocmd BufWinEnter,BufNewFile *Test.php set filetype=php.phpunit
 augroup END
+"}}} 
 
-" PHPUnit
+" PHPUnit {{{
 let g:quickrun_config['php.phpunit'] = {
   \ 'command': 'phpunit', 
   \ 'cmdopt': '--stop-on-failure'
@@ -232,16 +213,11 @@ let g:quickrun_config['php.phpunit_cov'] = {
 " 面倒なのでrrでquickrun実行
 silent! nmap <unique> <C-r> <Plug>(quickrun)
 "}}}
+"}}}
 
-"=============================================================
-" ファイル種類別にインデントする
-"=============================================================
-filetype plugin indent on
+filetype plugin indent on		" ファイル種類別にインデントする
 
-"=============================================================
-" unite.vim
-"=============================================================
-"{{{
+" unite.vim {{{
 " 入力モードで開始する
 let g:unite_enable_start_insert=1
 " 縦分割で開く(オフにする)
@@ -285,10 +261,7 @@ function! s:unite_my_settings()
 endfunction
 "}}}
 
-"=============================================================
-" neocomplcacheを有効にする
-"=============================================================
-"{{{
+" neocomplcacheを有効にする {{{
 let g:neocomplcache_enable_at_startup = 1
 " 大文字小文字を区別する
 let g:neocomplcache_SmartCase = 1
@@ -318,43 +291,36 @@ smap <C-k> <Plug>(neocomplcache_snippets_expand)
 "smap <C-s> <Plug>(neocomplcache_snippets_expand)
 "}}}
 
-"=============================================================
-" (),[],{},<>,””,’’,“入力+()の中にカーソル戻す
-"=============================================================
+" (),[],{},<>,””,’’,“入力+()の中にカーソル戻す {{{
 imap {} {}<LEFT>
 imap [] []<LEFT>
 imap () ()<LEFT>
 imap <> <><Left>
 imap "" ""<Left>
 imap '' ''<Left>
+"}}}
 
-"============================================================
-" カーソル位置と現在行を示す
-"============================================================
+" カーソル位置と現在行を示す {{{
 :set cursorline
 :highlight CursorLine term=reverse cterm=reverse
+"}}}
 
-"=============================================================
-" コメント行をグレー表示する(コンソール）
-"=============================================================
+" コメント行をグレー表示する(コンソール）{{{
 hi Comment ctermfg=7
+"}}}
 
-"=============================================================
-" クリップボードの設定
-"=============================================================
+" クリップボードの設定 {{{
 if has('gui')
   set clipboard=unnamed
 endif
+"}}}
 
-"=============================================================
-"全角スペースの位置を表示
-"=============================================================
+"全角スペースの位置を表示 {{{
 highlight JpSpace cterm=underline ctermfg=Blue guifg=Blue
 " au BufRead,BufNew * match JpSpace /　/
+"}}}
 
-"=============================================================
-" vim-refの設定
-"=============================================================
+" vim-refの設定 {{{
 let g:ref_alc_cmd='lynx -dump -nonumbers %s'
 let g:ref_phpmanual_path = $HOME . '/.vim/others/phpmanual'
 "nnoremap <silent> <Space>K :<C-u>call ref#jump('normal', 'alc')<CR>
@@ -363,15 +329,10 @@ let g:ref_phpmanual_path = $HOME . '/.vim/others/phpmanual'
 " カーソル位置の単語をalcで検索する。カーソルがある状態で:alcで実行
 nnoremap <silent> :alc :<C-u>call ref#jump('normal', 'alc')<CR>
 vnoremap <silent> :alc :<C-u>call ref#jump('visual', 'alc')<CR>
+"}}}
 
-"=============================================================
-" 言語別
-"=============================================================
-
-"#############################################################
-" 拡張子.phpの場合の設定
-"#############################################################
-"{{{
+" 言語別 {{{
+" php {{{
 
 "=============================================================
 " makeコマンドを入力すると、PHPの構文エラーがないかどうかもチェック可能
@@ -403,7 +364,6 @@ vnoremap <silent> :alc :<C-u>call ref#jump('visual', 'alc')<CR>
 "=============================================================
 " cakephpのスニペットを有効にする
 "=============================================================
-":autocmd FileType php set ft=php.cakephp
 :autocmd FileType ctp set ft=php.cakephp
 
 "=============================================================
@@ -423,23 +383,22 @@ set foldmethod=marker
 "#############################################################
 "}}}
 
-"=============================================================
-" python
-"=============================================================
+" python {{{
 :autocmd FileType py set tabstop=4 shiftwidth=4 expandtab 
 :autocmd FileType javascript set tabstop=4 shiftwidth=4 expandtab fileencoding=utf-8
+"}}}
 
-" 挿入モードかどうかで色を変える
+"}}}
+
+" 挿入モードかどうかで色を変える {{{
 augroup InsertHook
 autocmd!
 autocmd InsertEnter * highlight StatusLine guifg=#ccdc90 guibg=#2E4340
 autocmd InsertLeave * highlight StatusLine guifg=#2E4340 guibg=#ccdc90
 augroup END
+"}}}
 
-"=============================================================
-" 文字コードの自動認識
-"=============================================================
-"{{{
+" 文字コードの自動認識 {{{
 if &encoding !=# 'utf-8'
   set encoding=japan
   set fileencoding=japan
@@ -482,10 +441,7 @@ if has('iconv')
 endif
 "}}}
 
-"=============================================================
-" 日本語を含まない場合は fileencoding に encoding を使うようにする
-"=============================================================
-"{{{
+" 日本語を含まない場合は fileencoding に encoding を使うようにする {{{
 if has('autocmd')
   function! AU_ReCheck_FENC()
     if &fileencoding =~# 'iso-2022-jp' && search("[^\x01-\x7e]", 'n') == 0
@@ -496,27 +452,19 @@ if has('autocmd')
 endif
 "}}}
 
-"=============================================================
-" □とか○の文字があってもカーソル位置がずれないようにする
-"=============================================================
+" □とか○の文字があってもカーソル位置がずれないようにする {{{
 if exists('&ambiwidth')
   set ambiwidth=double
 endif
+"}}}
 
-"=============================================================
-" URLの上でと押すとブラウザを開く
-"=============================================================
-"{{{
+" URLの上でと押すとブラウザを開く {{{
 let g:netrw_nogx = 1 " disable netrw's gx mapping.
 nmap br <Plug>(openbrowser-smart-search)
 vmap br <Plug>(openbrowser-smart-search)
 "}}}
 
-
-"=============================================================
-" Nerd_Commenter の基本設定
-"=============================================================
-"{{{
+" Nerd_Commenter の基本設定 {{{
 let g:NERDCreateDefaultMappings = 0
 let NERDSpaceDelims = 1
 nmap <Leader>/ <Plug>NERDCommenterToggle
