@@ -71,8 +71,8 @@ Bundle 'sudo.vim'
 Bundle 'tyru/open-browser.vim'
 " neocomplcache {{{
 Bundle 'Shougo/neocomplcache'
-Bundle 'nishigori/neocomplcache_phpunit_snippet'
 Bundle 'ryuzee/neocomplcache_php_selenium_snippet'
+Bundle 'Shougo/neocomplcache-snippets-complete'
 "}}}
 " colorscheme etc {{{
 Bundle 'thinca/vim-guicolorscheme'
