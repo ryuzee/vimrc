@@ -64,18 +64,16 @@ Bundle 'git://repo.or.cz/vcscommand'
 Bundle 'ndreynolds/vim-cakephp'
 Bundle 'scrooloose/syntastic.git'
 Bundle 'Lokaltog/vim-easymotion'
-
+Bundle 'nathanaelkane/vim-indent-guides'
 " vim-script
 Bundle 'taglist.vim'
 Bundle 'sudo.vim'
 Bundle 'tyru/open-browser.vim'
-
 " neocomplcache {{{
 Bundle 'Shougo/neocomplcache'
 Bundle 'nishigori/neocomplcache_phpunit_snippet'
 Bundle 'ryuzee/neocomplcache_php_selenium_snippet'
 "}}}
-
 " colorscheme etc {{{
 Bundle 'thinca/vim-guicolorscheme'
 Bundle 'vim-scripts/Diablo3.git'
@@ -85,12 +83,10 @@ Bundle 'jnurmine/Zenburn'
 Bundle 'tomasr/molokai'
 Bundle 'inkpot'
 "}}}
-
 " required by unite-vim_hacks {{{
 Bundle 'mattn/webapi-vim'
 Bundle 'thinca/vim-openbuf'
 "}}}
-
 " unite {{{
 Bundle 'unite.vim'
 Bundle 'ujihisa/unite-colorscheme' 
@@ -103,16 +99,14 @@ Bundle 'choplin/unite-vim_hacks'
 Bundle 'tsukkee/unite-help'
 Bundle 'h1mesuke/unite-outline'
 "}}}
-
 " zoom {{{
 Bundle 'thinca/vim-fontzoom'
 "}}}
-
+" ctrlp {{{
 " http://kien.github.com/ctrlp.vim/
 " http://mattn.kaoriya.net/software/vim/20111228013428.htm
 Bundle 'kien/ctrlp.vim'
-
-Bundle 'nathanaelkane/vim-indent-guides'
+"}}}
 "}}}
 
 " Look and Feel {{{
