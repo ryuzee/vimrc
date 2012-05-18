@@ -111,6 +111,10 @@ Bundle 'kien/ctrlp.vim'
 
 " Look and Feel {{{
 "
+if !has('gui')
+  set t_Co=256
+endif
+
 " 背景色の設定 {{{
 " evening / lucius / mrkn256 / zenburn / Diablo3 / molokai
 if has('gui')
