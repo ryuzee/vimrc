@@ -107,6 +107,9 @@ Bundle 'thinca/vim-fontzoom'
 " http://mattn.kaoriya.net/software/vim/20111228013428.htm
 Bundle 'kien/ctrlp.vim'
 "}}}
+" PHPUnit formatter http://www.karakaram.com/vim/phpunit-location-list/ {{{
+Bundle 'karakaram/vim-quickrun-phpunit'
+"}}}
 "}}}
 
 " Look and Feel {{{
@@ -188,29 +191,20 @@ endif
 "}}} // Look and Feel
 
 " QuickRunによる設定 {{{
-
-" 初期化 {{{
 let g:quickrun_config = {}
 let g:quickrun_config['*'] = {'split': ''}
 
 augroup QuickRunPHPUnit
   autocmd!
-  autocmd BufWinEnter,BufNewFile *Test.php set filetype=php.phpunit
+  autocmd BufWinEnter,BufNewFile *Test.php set filetype=phpunit
 augroup END
-"}}} 
 
-" PHPUnit {{{
-let g:quickrun_config['php.phpunit'] = {
-  \ 'command': 'phpunit', 
-  \ 'cmdopt': '--stop-on-failure'
-  \ }
-let g:quickrun_config['php.phpunit_cov'] = {
-  \ 'command': 'phpunit', 
-  \ 'cmdopt': '--stop-on-failure --coverage-html /tmp/result'
-  \ }
+let g:quickrun_config['phpunit'] = {}
+let g:quickrun_config['phpunit']['outputter'] = 'phpunit'
+let g:quickrun_config['phpunit']['command'] = 'phpunit'
+let g:quickrun_config['phpunit']['exec'] = '%c %o %s'
 " 面倒なのでrrでquickrun実行
 silent! nmap <unique> <C-r> <Plug>(quickrun)
-"}}}
 "}}}
 
 filetype plugin indent on		" ファイル種類別にインデントする
