@@ -49,8 +49,10 @@ Bundle 'gmarik/vundle'
 
 " Vundleで読み込むプラグインの設定 {{{
 Bundle 'thinca/vim-quickrun'
+if v:version >= 703
 Bundle 'Shougo/vimproc'
 Bundle 'Shougo/vimshell'
+endif
 Bundle 'vim-scripts/SQLUtilities'
 Bundle 'vim-scripts/Align'
 Bundle 'vim-scripts/YankRing.vim'
@@ -70,9 +72,11 @@ Bundle 'taglist.vim'
 Bundle 'sudo.vim'
 Bundle 'tyru/open-browser.vim'
 " neocomplcache {{{
+if v:version >= 703
 Bundle 'Shougo/neocomplcache'
 Bundle 'ryuzee/neocomplcache_php_selenium_snippet'
 Bundle 'Shougo/neocomplcache-snippets-complete'
+endif
 "}}}
 " colorscheme etc {{{
 Bundle 'thinca/vim-guicolorscheme'
@@ -88,6 +92,7 @@ Bundle 'mattn/webapi-vim'
 Bundle 'thinca/vim-openbuf'
 "}}}
 " unite {{{
+if v:version >= 703
 Bundle 'unite.vim'
 Bundle 'ujihisa/unite-colorscheme' 
 Bundle 'ujihisa/unite-font' 
@@ -98,6 +103,7 @@ Bundle 'kmnk/vim-unite-svn'
 Bundle 'choplin/unite-vim_hacks'
 Bundle 'tsukkee/unite-help'
 Bundle 'h1mesuke/unite-outline'
+endif
 "}}}
 " zoom {{{
 Bundle 'thinca/vim-fontzoom'
@@ -126,13 +132,16 @@ if has('gui')
 else
   :colorscheme blue
 endif
-let g:indent_guides_enable_on_vim_startup = 1
-let g:indent_guides_auto_colors = 1 
-let g:indent_guides_color_change_percent = 30
-let g:indent_guides_guide_size = 1
-"set background=dark
-"autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=red   ctermbg=3
-"autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=4
+
+if v:version >= 703
+  let g:indent_guides_enable_on_vim_startup = 1
+  let g:indent_guides_auto_colors = 1 
+  let g:indent_guides_color_change_percent = 30
+  let g:indent_guides_guide_size = 1
+  "set background=dark
+  "autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=red   ctermbg=3
+  "autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=4
+endif
 "}}}
 
 " gvimでウインドウの位置とサイズを記憶する {{{
@@ -254,32 +263,34 @@ endfunction
 "}}}
 
 " neocomplcacheを有効にする {{{
-let g:neocomplcache_enable_at_startup = 1
-" 大文字小文字を区別する
-let g:neocomplcache_SmartCase = 1
-" キャメルケース補完を有効にする
-let g:neocomplcache_enable_camel_case_completion = 1
-" アンダーバー補完を有効にする
-let g:NeoComplCache_EnableUnderbarCompletion = 1
-"ポップアップメニューで表示される候補の数。初期値は100
-let g:neocomplcache_max_list = 20
-"自動補完を行う入力数を設定。初期値は2
-let g:neocomplcache_auto_completion_start_length = 4 
-"手動補完時に補完を行う入力数を制御。値を小さくすると文字の削除時に重くなる
-let g:neocomplcache_manual_completion_start_length = 5
-"バッファや辞書ファイル中で、補完の対象となるキーワードの最小長さ。初期値は4。
-let g:neocomplcache_min_keyword_length = 4
-"シンタックスファイル中で、補完の対象となるキーワードの最小長さ。初期値は4。
-let g:neocomplcache_min_syntax_length = 4
-"1:補完候補検索時に大文字・小文字を無視する
-let g:neocomplcache_enable_ignore_case = 1
-"入力に大文字が入力されている場合、大文字小文字の区別をする
-let g:neocomplcache_enable_smart_case = 1
+if v:version >= 703
+  let g:neocomplcache_enable_at_startup = 1
+  " 大文字小文字を区別する
+  let g:neocomplcache_SmartCase = 1
+  " キャメルケース補完を有効にする
+  let g:neocomplcache_enable_camel_case_completion = 1
+  " アンダーバー補完を有効にする
+  let g:NeoComplCache_EnableUnderbarCompletion = 1
+  "ポップアップメニューで表示される候補の数。初期値は100
+  let g:neocomplcache_max_list = 20
+  "自動補完を行う入力数を設定。初期値は2
+  let g:neocomplcache_auto_completion_start_length = 4 
+  "手動補完時に補完を行う入力数を制御。値を小さくすると文字の削除時に重くなる
+  let g:neocomplcache_manual_completion_start_length = 5
+  "バッファや辞書ファイル中で、補完の対象となるキーワードの最小長さ。初期値は4。
+  let g:neocomplcache_min_keyword_length = 4
+  "シンタックスファイル中で、補完の対象となるキーワードの最小長さ。初期値は4。
+  let g:neocomplcache_min_syntax_length = 4
+  "1:補完候補検索時に大文字・小文字を無視する
+  let g:neocomplcache_enable_ignore_case = 1
+  "入力に大文字が入力されている場合、大文字小文字の区別をする
+  let g:neocomplcache_enable_smart_case = 1
 
-" <C-k> にマッピング
-" Snippetの候補の選択およびプレースホルダーの移動は以下のコマンドで行う
-imap <C-k> <Plug>(neocomplcache_snippets_expand)
-smap <C-k> <Plug>(neocomplcache_snippets_expand)
+  " <C-k> にマッピング
+  " Snippetの候補の選択およびプレースホルダーの移動は以下のコマンドで行う
+  imap <C-k> <Plug>(neocomplcache_snippets_expand)
+  smap <C-k> <Plug>(neocomplcache_snippets_expand)
+endif
 "}}}
 
 " (),[],{},<>,””,’’,“入力+()の中にカーソル戻す {{{
