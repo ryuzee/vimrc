@@ -42,8 +42,14 @@ set statusline=%<%f\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ft.']['.&ff.']'}
 " Vundle設定 {{{
 " BundleInstallでうまくいかない場合はコマンドラインで
 " vim +BundleInstall +qall
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+if has("win32") || has("win64")
+  au FileType vundle setlocal noshellslash
+  set rtp+=~/vimfiles/bundle/vundle/
+  call vundle#rc('~/vimfiles/bundle')
+else
+  set rtp+=~/.vim/bundle/vundle/
+  call vundle#rc()
+end
 Bundle 'gmarik/vundle'
 "}}}
 
