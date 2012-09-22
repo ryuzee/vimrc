@@ -308,6 +308,16 @@ imap "" ""<Left>
 imap '' ''<Left>
 "}}}
 
+" Shift + Tab でタブ移動、Tab + Tab で左移動する {{{
+if v:version >= 703
+  nnoremap <S-Tab> gt
+  nnoremap <Tab><Tab> gT
+  for i in range(1, 9)
+    execute 'nnoremap <Tab>' . i . ' ' . i . 'gt'
+  endfor
+endif
+"}}}
+
 " カーソル位置と現在行を示す {{{
 :set cursorline
 :highlight CursorLine term=reverse cterm=reverse
