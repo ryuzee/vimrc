@@ -1,4 +1,4 @@
-" 一般的な設定 {{{
+" 一般的な設定 
 "=============================================================
 set nocompatible
 filetype off
@@ -37,9 +37,9 @@ set statusline=%<%f\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ft.']['.&ff.']'}
 :syntax on			" シンタックスハイライトを有効にする
 :imap <C-z> <C-y>
 "=============================================================
-"}}}
 
-" Vundle設定 {{{
+
+" Vundle設定 
 " BundleInstallでうまくいかない場合はコマンドラインで
 " vim +BundleInstall +qall
 if has("win32") || has("win64")
@@ -51,9 +51,9 @@ else
   call vundle#rc()
 end
 Bundle 'gmarik/vundle'
-"}}}
 
-" Vundleで読み込むプラグインの設定 {{{
+
+" Vundleで読み込むプラグインの設定 
 Bundle 'thinca/vim-quickrun'
 if v:version >= 703
 Bundle 'Shougo/vimproc'
@@ -70,21 +70,22 @@ Bundle 'tpope/vim-surround'
 Bundle 'mattn/zencoding-vim'
 Bundle 'git://repo.or.cz/vcscommand'
 Bundle 'ndreynolds/vim-cakephp'
-Bundle 'scrooloose/syntastic.git'
+" 構文チェックを自動で行う。https://github.com/scrooloose/syntastic
+" Bundle 'scrooloose/syntastic.git'
 Bundle 'Lokaltog/vim-easymotion'
 Bundle 'nathanaelkane/vim-indent-guides'
 " vim-script
 Bundle 'taglist.vim'
 Bundle 'sudo.vim'
 Bundle 'tyru/open-browser.vim'
-" neocomplcache {{{
+" neocomplcache 
 if v:version >= 703
 Bundle 'Shougo/neocomplcache'
 Bundle 'ryuzee/neocomplcache_php_selenium_snippet'
 Bundle 'Shougo/neocomplcache-snippets-complete'
 endif
-"}}}
-" colorscheme etc {{{
+
+" colorscheme etc 
 Bundle 'thinca/vim-guicolorscheme'
 Bundle 'vim-scripts/Diablo3.git'
 Bundle 'vim-scripts/Lucius'
@@ -92,12 +93,12 @@ Bundle 'vim-scripts/mrkn256.vim'
 Bundle 'jnurmine/Zenburn'
 Bundle 'tomasr/molokai'
 Bundle 'inkpot'
-"}}}
-" required by unite-vim_hacks {{{
+
+" required by unite-vim_hacks 
 Bundle 'mattn/webapi-vim'
 Bundle 'thinca/vim-openbuf'
-"}}}
-" unite {{{
+
+" unite 
 if v:version >= 703
 Bundle 'unite.vim'
 Bundle 'ujihisa/unite-colorscheme' 
@@ -110,27 +111,27 @@ Bundle 'choplin/unite-vim_hacks'
 Bundle 'tsukkee/unite-help'
 Bundle 'h1mesuke/unite-outline'
 endif
-"}}}
-" zoom {{{
+
+" zoom 
 Bundle 'thinca/vim-fontzoom'
-"}}}
-" ctrlp {{{
+
+" ctrlp 
 " http://kien.github.com/ctrlp.vim/
 " http://mattn.kaoriya.net/software/vim/20111228013428.htm
 Bundle 'kien/ctrlp.vim'
-"}}}
-" PHPUnit formatter http://www.karakaram.com/vim/phpunit-location-list/ {{{
-Bundle 'karakaram/vim-quickrun-phpunit'
-"}}}
-"}}}
 
-" Look and Feel {{{
+" PHPUnit formatter http://www.karakaram.com/vim/phpunit-location-list/ 
+Bundle 'karakaram/vim-quickrun-phpunit'
+
+
+
+" Look and Feel 
 "
 if !has('gui')
   set t_Co=256
 endif
 
-" 背景色の設定 {{{
+" 背景色の設定 
 " evening / lucius / mrkn256 / zenburn / Diablo3 / molokai
 if has('gui')
   ":colorscheme molokai 
@@ -148,9 +149,9 @@ if v:version >= 703
   "autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=red   ctermbg=3
   "autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=4
 endif
-"}}}
 
-" gvimでウインドウの位置とサイズを記憶する {{{
+
+" gvimでウインドウの位置とサイズを記憶する 
 " http://vim-users.jp/2010/01/hack120/
 if has('gui')
 let g:save_window_file = expand('~/.vimwinpos')
@@ -170,9 +171,9 @@ if filereadable(g:save_window_file)
   execute 'source' g:save_window_file
 endif
 endif
-"}}}
 
-" フォーカスがあたっていない場合は透明にする {{{
+
+" フォーカスがあたっていない場合は透明にする 
 augroup hack234
   autocmd!
     if has('mac')
@@ -180,9 +181,9 @@ augroup hack234
       autocmd FocusLost * set transparency=30
     endif
 augroup END
-"}}}
 
-" Windowの形状設定 {{{
+
+" Windowの形状設定 
 if has('gui')
   set showtabline=2  " タブを常に表示
   set imdisable  " IMを無効化
@@ -191,9 +192,9 @@ endif
 if has('gui_macvim')
   set transparency=0  " 透明度を指定
 endif
-"}}}
 
-" フォント設定 {{{
+
+" フォント設定 
 if has('gui_macvim')
   set guifont=Inconsolata:h12
   set guifontwide=Courier:h12
@@ -201,11 +202,11 @@ if has('gui_macvim')
 elseif has('gui_running')
   set gfn=Takaoゴシック\ 11
 endif
-"}}}
 
-"}}} // Look and Feel
 
-" QuickRunによる設定 {{{
+ "// Look and Feel
+
+" QuickRunによる設定 
 let g:quickrun_config = {}
 let g:quickrun_config['*'] = {'split': ''}
 
@@ -220,11 +221,11 @@ let g:quickrun_config['phpunit']['command'] = 'phpunit'
 let g:quickrun_config['phpunit']['exec'] = '%c %o %s'
 " 面倒なのでrrでquickrun実行
 silent! nmap <unique> <C-r> <Plug>(quickrun)
-"}}}
+
 
 filetype plugin indent on		" ファイル種類別にインデントする
 
-" unite.vim {{{
+" unite.vim 
 " 入力モードで開始する
 let g:unite_enable_start_insert=1
 " 縦分割で開く(オフにする)
@@ -266,9 +267,9 @@ function! s:unite_my_settings()
   nmap <silent><buffer> <ESC><ESC> q
   imap <silent><buffer> <ESC><ESC> <ESC>q
 endfunction
-"}}}
 
-" neocomplcacheを有効にする {{{
+
+" neocomplcacheを有効にする 
 if v:version >= 703
   let g:neocomplcache_enable_at_startup = 1
   " 大文字小文字を区別する
@@ -297,18 +298,18 @@ if v:version >= 703
   imap <C-k> <Plug>(neocomplcache_snippets_expand)
   smap <C-k> <Plug>(neocomplcache_snippets_expand)
 endif
-"}}}
 
-" (),[],{},<>,””,’’,“入力+()の中にカーソル戻す {{{
+
+" (),[],{},<>,””,’’,“入力+()の中にカーソル戻す 
 imap {} {}<LEFT>
 imap [] []<LEFT>
 imap () ()<LEFT>
 imap <> <><Left>
 imap "" ""<Left>
 imap '' ''<Left>
-"}}}
 
-" Shift + Tab でタブ移動、Tab + Tab で左移動する {{{
+
+" Shift + Tab でタブ移動、Tab + Tab で左移動する 
 if v:version >= 703
   nnoremap <S-Tab> gt
   nnoremap <Tab><Tab> gT
@@ -380,29 +381,29 @@ function! MyTabLabel(n)
  
   return altbuf
 endfunction
-"}}}
 
-" カーソル位置と現在行を示す {{{
+
+" カーソル位置と現在行を示す 
 :set cursorline
 :highlight CursorLine term=reverse cterm=reverse
-"}}}
 
-" コメント行をグレー表示する(コンソール）{{{
+
+" コメント行をグレー表示する(コンソール）
 hi Comment ctermfg=7
-"}}}
 
-" クリップボードの設定 {{{
+
+" クリップボードの設定 
 if has('gui')
   set clipboard=unnamed
 endif
-"}}}
 
-"全角スペースの位置を表示 {{{
+
+"全角スペースの位置を表示 
 highlight JpSpace cterm=underline ctermfg=Blue guifg=Blue
 " au BufRead,BufNew * match JpSpace /　/
-"}}}
 
-" vim-refの設定 {{{
+
+" vim-refの設定 
 let g:ref_alc_cmd='lynx -dump -nonumbers %s'
 let g:ref_phpmanual_path = $HOME . '/.vim/others/phpmanual'
 "nnoremap <silent> <Space>K :<C-u>call ref#jump('normal', 'alc')<CR>
@@ -411,10 +412,10 @@ let g:ref_phpmanual_path = $HOME . '/.vim/others/phpmanual'
 " カーソル位置の単語をalcで検索する。カーソルがある状態で:alcで実行
 nnoremap <silent> :alc :<C-u>call ref#jump('normal', 'alc')<CR>
 vnoremap <silent> :alc :<C-u>call ref#jump('visual', 'alc')<CR>
-"}}}
 
-" 言語別 {{{
-" php {{{
+
+" 言語別 
+" php 
 
 "=============================================================
 " makeコマンドを入力すると、PHPの構文エラーがないかどうかもチェック可能
@@ -463,24 +464,24 @@ set foldmethod=marker
 "#############################################################
 " // phpの設定ここまで
 "#############################################################
-"}}}
 
-" python {{{
+
+" python 
 :autocmd FileType py set tabstop=4 shiftwidth=4 expandtab 
 :autocmd FileType javascript set tabstop=4 shiftwidth=4 expandtab fileencoding=utf-8
-"}}}
 
-"}}}
 
-" 挿入モードかどうかで色を変える {{{
+
+
+" 挿入モードかどうかで色を変える 
 augroup InsertHook
 autocmd!
 autocmd InsertEnter * highlight StatusLine guifg=#ccdc90 guibg=#2E4340
 autocmd InsertLeave * highlight StatusLine guifg=#2E4340 guibg=#ccdc90
 augroup END
-"}}}
 
-" 文字コードの自動認識 {{{
+
+" 文字コードの自動認識 
 if &encoding !=# 'utf-8'
   set encoding=japan
   set fileencoding=japan
@@ -521,9 +522,9 @@ if has('iconv')
   unlet s:enc_euc
   unlet s:enc_jis
 endif
-"}}}
 
-" 日本語を含まない場合は fileencoding に encoding を使うようにする {{{
+
+" 日本語を含まない場合は fileencoding に encoding を使うようにする 
 if has('autocmd')
   function! AU_ReCheck_FENC()
     if &fileencoding =~# 'iso-2022-jp' && search("[^\x01-\x7e]", 'n') == 0
@@ -532,25 +533,30 @@ if has('autocmd')
   endfunction
   autocmd BufReadPost * call AU_ReCheck_FENC()
 endif
-"}}}
 
-" □とか○の文字があってもカーソル位置がずれないようにする {{{
+
+" □とか○の文字があってもカーソル位置がずれないようにする 
 if exists('&ambiwidth')
   set ambiwidth=double
 endif
-"}}}
 
-" URLの上でと押すとブラウザを開く {{{
+
+" URLの上でと押すとブラウザを開く 
 let g:netrw_nogx = 1 " disable netrw's gx mapping.
 nmap br <Plug>(openbrowser-smart-search)
 vmap br <Plug>(openbrowser-smart-search)
-"}}}
 
-" Nerd_Commenter の基本設定 {{{
+
+" Nerd_Commenter の基本設定 
 let g:NERDCreateDefaultMappings = 0
 let NERDSpaceDelims = 1
 nmap <Leader>/ <Plug>NERDCommenterToggle
 vmap <Leader>/ <Plug>NERDCommenterToggle
 nmap <leader>/9 <Plug>NERDCommenterToEOL	" カーソル位置以降
 vmap <Leader>/s <Plug>NERDCommenterSexy
-"}}}
+
+" PHPのコードを整形する http://docs.komagata.org/4988
+Bundle 'stephpy/vim-php-cs-fixer'
+let g:php_cs_fixer_path = "/usr/local/bin/php-cs-fixer"
+nnoremap <silent><leader>pcd :call PhpCsFixerFixDirectory()<CR>
+nnoremap <silent><leader>pcf :call PhpCsFixerFixFile()<CR>
