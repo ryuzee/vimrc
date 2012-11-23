@@ -70,7 +70,8 @@ Bundle 'kana/vim-smartchr'
 Bundle 'tpope/vim-surround'
 Bundle 'mattn/zencoding-vim'
 Bundle 'git://repo.or.cz/vcscommand'
-Bundle 'ndreynolds/vim-cakephp'
+" http://d.hatena.ne.jp/yuhei_kagaya/20111216/1324023977
+Bundle 'violetyk/cake.vim'
 " 構文チェックを自動で行う。https://github.com/scrooloose/syntastic
 " Bundle 'scrooloose/syntastic.git'
 Bundle 'Lokaltog/vim-easymotion'
