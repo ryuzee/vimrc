@@ -129,17 +129,17 @@ Bundle 'karakaram/vim-quickrun-phpunit'
 
 " Look and Feel 
 "
-if !has('gui')
+if !has('gui_running')
   set t_Co=256
 endif
 
 " 背景色の設定 
 " evening / lucius / mrkn256 / zenburn / Diablo3 / molokai
-if has('gui')
-  ":colorscheme molokai 
+if has('gui_running')
   :colorscheme inkpot
 else
-  :colorscheme blue
+  :colorscheme molokai 
+  ":colorscheme blue
 endif
 
 if v:version >= 703
@@ -155,7 +155,7 @@ endif
 
 " gvimでウインドウの位置とサイズを記憶する 
 " http://vim-users.jp/2010/01/hack120/
-if has('gui')
+if has('gui_running')
 let g:save_window_file = expand('~/.vimwinpos')
 augroup SaveWindow
   autocmd!
@@ -236,22 +236,24 @@ let g:unite_enable_split_vertically = 0
 let g:unite_winwidth = 40
 " Window
 let g:unite_winheight = 10
-" バッファ一覧
-nnoremap <silent> ,ub :<C-u>Unite buffer<CR>
-" ファイル一覧
-nnoremap <silent> ,uf :<C-u>UniteWithBufferDir -no-quit -buffer-name=files file<CR>
-" レジスタ一覧
-nnoremap <silent> ,ur :<C-u>Unite -no-quit -buffer-name=register register<CR>
-" 最近使用したファイル一覧
-nnoremap <silent> ,um :<C-u>Unite -no-quit file_mru<CR>
-" 常用セット
-nnoremap <silent> ,uu :<C-u>Unite -no-quit buffer file_mru<CR>
 " 全部乗せ
 nnoremap <silent> ,ua :<C-u>UniteWithBufferDir -no-quit -buffer-name=files buffer file_mru bookmark file<CR>
+" バッファ一覧
+nnoremap <silent> ,ub :<C-u>Unite buffer<CR>
 " colorscheme 
 nnoremap <silent> ,uc :<C-u>Unite colorscheme<CR>
+" ファイル一覧
+nnoremap <silent> ,uf :<C-u>UniteWithBufferDir -no-quit -buffer-name=files file<CR>
+" 最近使用したファイル一覧
+nnoremap <silent> ,um :<C-u>Unite -no-quit file_mru<CR>
 " outline 
 nnoremap <silent> ,uo :<C-u>Unite outline<CR>
+" レジスタ一覧
+nnoremap <silent> ,ur :<C-u>Unite -no-quit -buffer-name=register register<CR>
+" スニペット一覧 
+nnoremap <silent> ,us :<C-u>Unite snippet<CR>
+" 常用セット
+nnoremap <silent> ,uu :<C-u>Unite -no-quit buffer file_mru<CR>
 
 " ウィンドウを分割して開く
 au FileType unite nnoremap <silent> <buffer> <expr> <C-j> unite#do_action('split')
