@@ -3,39 +3,39 @@
 set nocompatible
 filetype off
 set tags=~/.tags
-set vb t_vb=  		" ビープ音いらない 
-set shortmess+=I	" 起動時のメッセージいらない 
+set vb t_vb=      " ビープ音いらない 
+set shortmess+=I  " 起動時のメッセージいらない 
 set hidden
-set nobackup		" バックアップ作らない
-set noswapfile		" swapファイル作らない
-set autoread		" 他で書き換えられたら自動で読み直す
-set splitbelow		" 標準で下分割
-set splitright		" 右分割にする
-set showmatch		" 括弧入力時に対応する括弧を表示
+set nobackup    " バックアップ作らない
+set noswapfile    " swapファイル作らない
+set autoread    " 他で書き換えられたら自動で読み直す
+set splitbelow    " 標準で下分割
+set splitright    " 右分割にする
+set showmatch    " 括弧入力時に対応する括弧を表示
 set cindent
-set ruler			" ルーラー表示
-set showcmd			" コマンドをステータス行に表示
-set title			" タイトルを表示
-set number			" 行番号表示
-set ignorecase		" 大文字小文字を無視して検索 
-set smartcase		" 大文字を入力すると大文字小文字無視を解除
-set wrapscan		" 先頭に戻って検索
-set hlsearch		" 前回の検索結果が残ってればハイライトする
-set textwidth=0		" 自動改行させない
-set shellslash		" Windowsでもパス区切りにスラッシュを使える
-set lazyredraw		" Dont redraw screen while Macro proceeding
-set backspace=indent,eol,start	" バックスペースでなんでも消せるように
-set formatoptions+=m			" 整形オプション，マルチバイト系を追加
-set wildmenu					" コマンド補完を強化
-set wildmode=list:full			" リスト表示，最長マッチ
-set fileformats=unix,dos,mac	" 改行コードの自動認識
-set list			" タブなどの制御文字を表示
+set ruler      " ルーラー表示
+set showcmd      " コマンドをステータス行に表示
+set title      " タイトルを表示
+set number      " 行番号表示
+set ignorecase    " 大文字小文字を無視して検索 
+set smartcase    " 大文字を入力すると大文字小文字無視を解除
+set wrapscan    " 先頭に戻って検索
+set hlsearch    " 前回の検索結果が残ってればハイライトする
+set textwidth=0    " 自動改行させない
+set shellslash    " Windowsでもパス区切りにスラッシュを使える
+set lazyredraw    " Dont redraw screen while Macro proceeding
+set backspace=indent,eol,start  " バックスペースでなんでも消せるように
+set formatoptions+=m      " 整形オプション，マルチバイト系を追加
+set wildmenu          " コマンド補完を強化
+set wildmode=list:full      " リスト表示，最長マッチ
+set fileformats=unix,dos,mac  " 改行コードの自動認識
+set list      " タブなどの制御文字を表示
 set tabstop=4
-set lcs=tab:>.,trail:_,extends:\	" タブを表示する。改行文字は表示しない
-set laststatus=2	"常にステータス行を表示
+set lcs=tab:>.,trail:_,extends:\  " タブを表示する。改行文字は表示しない
+set laststatus=2  "常にステータス行を表示
 set statusline=%<%f\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ft.']['.&ff.']'}%=%l,%c%V%8P
 set listchars=tab:»-,trail:-,eol:↲,extends:»,precedes:«,nbsp:%
-:syntax on			" シンタックスハイライトを有効にする
+:syntax on      " シンタックスハイライトを有効にする
 :imap <C-z> <C-y>
 "=============================================================
 
@@ -225,7 +225,7 @@ let g:quickrun_config['phpunit']['exec'] = '%c %o %s'
 silent! nmap <unique> <C-r> <Plug>(quickrun)
 
 
-filetype plugin indent on		" ファイル種類別にインデントする
+filetype plugin indent on    " ファイル種類別にインデントする
 
 " unite.vim 
 " 入力モードで開始する
@@ -472,7 +472,52 @@ set foldmethod=marker
 :autocmd FileType py set tabstop=4 shiftwidth=4 expandtab 
 :autocmd FileType javascript set tabstop=4 shiftwidth=4 expandtab fileencoding=utf-8
 
-
+"#############################################################
+" // ruby
+"#############################################################
+" ruby
+:autocmd FileType ruby set tabstop=2 shiftwidth=2 expandtab fileencoding=utf-8
+autocmd BufNewFile,BufRead *.rb,*.rbw,*.gemspec    set filetype=ruby
+" Ruby on Rails
+autocmd BufNewFile,BufRead *.builder,*.rxml,*.rjs  set filetype=ruby
+" Rakefile
+autocmd BufNewFile,BufRead [rR]akefile,*.rake      set filetype=ruby
+" Rantfile
+autocmd BufNewFile,BufRead [rR]antfile,*.rant      set filetype=ruby
+" IRB config
+autocmd BufNewFile,BufRead .irbrc,irbrc            set filetype=ruby
+" Pry config
+autocmd BufNewFile,BufRead .pryrc                  set filetype=ruby
+" Rackup
+autocmd BufNewFile,BufRead *.ru                    set filetype=ruby
+" Capistrano
+autocmd BufNewFile,BufRead Capfile                 set filetype=ruby
+" Bundler
+autocmd BufNewFile,BufRead Gemfile                 set filetype=ruby
+" Guard
+autocmd BufNewFile,BufRead Guardfile,.Guardfile    set filetype=ruby
+" Chef
+autocmd BufNewFile,BufRead Cheffile                set filetype=ruby
+autocmd BufNewFile,BufRead Berksfile               set filetype=ruby
+" Vagrant
+autocmd BufNewFile,BufRead [vV]agrantfile          set filetype=ruby
+" Autotest
+autocmd BufNewFile,BufRead .autotest               set filetype=ruby
+" eRuby
+autocmd BufNewFile,BufRead *.erb,*.rhtml           set filetype=eruby
+" Thor
+autocmd BufNewFile,BufRead [tT]horfile,*.thor      set filetype=ruby
+" Rabl
+autocmd BufNewFile,BufRead *.rabl                  set filetype=ruby
+" Jbuilder
+autocmd BufNewFile,BufRead *.jbuilder              set filetype=ruby
+" Puppet librarian
+autocmd BufNewFile,BufRead Puppetfile              set filetype=ruby
+" Buildr Buildfile
+autocmd BufNewFile,BufRead [Bb]uildfile            set filetype=ruby
+"#############################################################
+" // rubyここまで
+"#############################################################
 
 
 " 挿入モードかどうかで色を変える 
@@ -554,7 +599,7 @@ let g:NERDCreateDefaultMappings = 0
 let NERDSpaceDelims = 1
 nmap <Leader>/ <Plug>NERDCommenterToggle
 vmap <Leader>/ <Plug>NERDCommenterToggle
-nmap <leader>/9 <Plug>NERDCommenterToEOL	" カーソル位置以降
+nmap <leader>/9 <Plug>NERDCommenterToEOL  " カーソル位置以降
 vmap <Leader>/s <Plug>NERDCommenterSexy
 
 " PHPのコードを整形する http://docs.komagata.org/4988
