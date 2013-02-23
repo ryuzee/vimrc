@@ -69,7 +69,7 @@ Bundle 'tpope/vim-surround'
 Bundle 'mattn/zencoding-vim'
 Bundle 'git://repo.or.cz/vcscommand'
 " http://d.hatena.ne.jp/yuhei_kagaya/20111216/1324023977
-Bundle 'violetyk/cake.vim'
+Bundle 'oppara/vim-unite-cake'
 " 構文チェックを自動で行う。https://github.com/scrooloose/syntastic
 " Bundle 'scrooloose/syntastic.git'
 Bundle 'Lokaltog/vim-easymotion'
@@ -114,6 +114,7 @@ Bundle 'kmnk/vim-unite-svn'
 Bundle 'choplin/unite-vim_hacks'
 Bundle 'tsukkee/unite-help'
 Bundle 'h1mesuke/unite-outline'
+Bundle 'tsukkee/unite-tag'
 endif
 
 " zoom 
@@ -298,7 +299,7 @@ if v:version >= 703
   imap <C-k> <Plug>(neosnippet_expand_or_jump)
   smap <C-k> <Plug>(neosnippet_expand_or_jump)
   imap <C-s> <Plug>(neosnippet_start_unite_snippet)
-""  let g:neosnippet#snippets_directory='~/.vim/bundle/snipmate-snippets/snippets'
+  let g:neosnippet#snippets_directory='~/.vim/bundle/neosnippet/autoload/neosnippet/snippets'
 endif
 
 
