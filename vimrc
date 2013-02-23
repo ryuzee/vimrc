@@ -35,6 +35,8 @@ set lcs=tab:>.,trail:_,extends:\  " タブを表示する。改行文字は表�
 set laststatus=2  "常にステータス行を表示
 set statusline=%<%f\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ft.']['.&ff.']'}%=%l,%c%V%8P
 set listchars=tab:»-,trail:-,eol:↲,extends:»,precedes:«,nbsp:%
+set modeline
+set modelines=5
 :syntax on      " シンタックスハイライトを有効にする
 :imap <C-z> <C-y>
 "=============================================================
@@ -300,7 +302,7 @@ if v:version >= 703
   imap <C-k> <Plug>(neosnippet_expand_or_jump)
   smap <C-k> <Plug>(neosnippet_expand_or_jump)
   imap <C-s> <Plug>(neosnippet_start_unite_snippet)
-  let g:neosnippet#snippets_directory='~/.vim/bundle/neosnippet/autoload/neosnippet/snippets'
+  let g:neosnippet#snippets_directory='~/.vim/bundle/neosnippet/autoload/neosnippet/snippets,~/.vim/bundle/neosnippet_chef_recipe_snippet/autoload/neosnippet/snippets'
 endif
 
 
