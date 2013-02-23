@@ -63,7 +63,7 @@ endif
 Bundle 'vim-scripts/SQLUtilities'
 Bundle 'vim-scripts/Align'
 Bundle 'vim-scripts/YankRing.vim'
-Bundle 'msanders/snipmate.vim'
+"Bundle 'msanders/snipmate.vim'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'thinca/vim-ref'
 Bundle 'kana/vim-smartchr'
@@ -84,8 +84,12 @@ Bundle 'tyru/open-browser.vim'
 if v:version >= 703
 Bundle 'Shougo/neocomplcache'
 Bundle 'ryuzee/neocomplcache_php_selenium_snippet'
-Bundle 'Shougo/neocomplcache-snippets-complete'
+" Bundle 'Shougo/neocomplcache-snippets-complete'
+Bundle 'Shougo/neosnippet'
 endif
+
+" forked from 'honza/snipmate-snippets'
+Bundle 'ryuzee/snipmate-snippets'
 
 " colorscheme etc 
 Bundle 'thinca/vim-guicolorscheme'
@@ -299,8 +303,9 @@ if v:version >= 703
 
   " <C-k> にマッピング
   " Snippetの候補の選択およびプレースホルダーの移動は以下のコマンドで行う
-  imap <C-k> <Plug>(neocomplcache_snippets_expand)
-  smap <C-k> <Plug>(neocomplcache_snippets_expand)
+  imap <C-k> <Plug>(neosnippet_expand_or_jump)
+  smap <C-k> <Plug>(neosnippet_expand_or_jump)
+  let g:neosnippet#snippets_directory='~/.vim/bundle/snipmate-snippets/snippets'
 endif
 
 
