@@ -530,6 +530,7 @@ autocmd BufNewFile,BufRead [Bb]uildfile            set filetype=ruby
 "#############################################################
 " // rubyここまで
 "#############################################################
+autocmd BufNewFile,BufRead *.md,*.rdoc             set fileencoding=utf-8
 
 
 " 挿入モードかどうかで色を変える 
