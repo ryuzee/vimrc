@@ -69,6 +69,7 @@ Bundle 'tpope/vim-surround'
 Bundle 'mattn/zencoding-vim'
 Bundle 'git://repo.or.cz/vcscommand'
 " http://d.hatena.ne.jp/yuhei_kagaya/20111216/1324023977
+Bundle 'violetyk/cake.vim'
 Bundle 'oppara/vim-unite-cake'
 " 構文チェックを自動で行う。https://github.com/scrooloose/syntastic
 " Bundle 'scrooloose/syntastic.git'
@@ -451,6 +452,13 @@ vnoremap <silent> :alc :<C-u>call ref#jump('visual', 'alc')<CR>
 " cakephpのスニペットを有効にする
 "=============================================================
 :autocmd FileType ctp set ft=php.cakephp
+
+"=============================================================
+" cake.vimの設定 
+"=============================================================
+" 自動でルートディレクトリを決める
+" 詳細は :help cake
+let g:cakephp_enable_auto_mode = 1
 
 "=============================================================
 " クラスと関数の折り畳みを許可する
