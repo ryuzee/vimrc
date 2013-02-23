@@ -53,7 +53,6 @@ else
 end
 Bundle 'gmarik/vundle'
 
-
 " Vundleで読み込むプラグインの設定 
 Bundle 'thinca/vim-quickrun'
 if v:version >= 703
@@ -63,7 +62,6 @@ endif
 Bundle 'vim-scripts/SQLUtilities'
 Bundle 'vim-scripts/Align'
 Bundle 'vim-scripts/YankRing.vim'
-"Bundle 'msanders/snipmate.vim'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'thinca/vim-ref'
 Bundle 'kana/vim-smartchr'
@@ -89,7 +87,7 @@ Bundle 'Shougo/neosnippet'
 endif
 
 " forked from 'honza/snipmate-snippets'
-Bundle 'ryuzee/snipmate-snippets'
+" Bundle 'ryuzee/snipmate-snippets'
 
 " colorscheme etc 
 Bundle 'thinca/vim-guicolorscheme'
@@ -143,7 +141,6 @@ if has('gui_running')
   :colorscheme inkpot
 else
   :colorscheme molokai 
-  ":colorscheme blue
 endif
 
 if v:version >= 703
@@ -151,9 +148,6 @@ if v:version >= 703
   let g:indent_guides_auto_colors = 1 
   let g:indent_guides_color_change_percent = 30
   let g:indent_guides_guide_size = 1
-  "set background=dark
-  "autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=red   ctermbg=3
-  "autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=4
 endif
 
 
@@ -254,8 +248,6 @@ nnoremap <silent> ,um :<C-u>Unite -no-quit file_mru<CR>
 nnoremap <silent> ,uo :<C-u>Unite outline<CR>
 " レジスタ一覧
 nnoremap <silent> ,ur :<C-u>Unite -no-quit -buffer-name=register register<CR>
-" スニペット一覧 
-nnoremap <silent> ,us :<C-u>Unite snippet<CR>
 " 常用セット
 nnoremap <silent> ,uu :<C-u>Unite -no-quit buffer file_mru<CR>
 
@@ -305,7 +297,8 @@ if v:version >= 703
   " Snippetの候補の選択およびプレースホルダーの移動は以下のコマンドで行う
   imap <C-k> <Plug>(neosnippet_expand_or_jump)
   smap <C-k> <Plug>(neosnippet_expand_or_jump)
-  let g:neosnippet#snippets_directory='~/.vim/bundle/snipmate-snippets/snippets'
+  imap <C-s> <Plug>(neosnippet_start_unite_snippet)
+""  let g:neosnippet#snippets_directory='~/.vim/bundle/snipmate-snippets/snippets'
 endif
 
 
