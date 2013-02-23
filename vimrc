@@ -87,6 +87,7 @@ Bundle 'Shougo/neocomplcache'
 Bundle 'ryuzee/neocomplcache_php_selenium_snippet'
 " Bundle 'Shougo/neocomplcache-snippets-complete'
 Bundle 'Shougo/neosnippet'
+Bundle 'ryuzee/neosnippet_chef_recipe_snippet'
 endif
 
 " forked from 'honza/snipmate-snippets'
