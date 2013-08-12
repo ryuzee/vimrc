@@ -37,6 +37,7 @@ set statusline=%<%f\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ft.']['.&ff.']'}
 set listchars=tab:»-,trail:-,eol:↲,extends:»,precedes:«,nbsp:%
 set modeline
 set modelines=5
+set complete+=k		" ctrl + n で補完
 :syntax on      " シンタックスハイライトを有効にする
 :imap <C-z> <C-y>
 "=============================================================
@@ -106,6 +107,8 @@ Bundle 'inkpot'
 Bundle 'mattn/webapi-vim'
 Bundle 'thinca/vim-openbuf'
 
+Bundle "markcornick/vim-vagrant"
+
 " unite 
 if v:version >= 703
 Bundle 'unite.vim'
@@ -132,7 +135,7 @@ Bundle 'kien/ctrlp.vim'
 " PHPUnit formatter http://www.karakaram.com/vim/phpunit-location-list/ 
 Bundle 'karakaram/vim-quickrun-phpunit'
 
-
+Bundle 'OpsRockin/opscode_chef.vim_dict'
 
 " Look and Feel 
 "
@@ -620,3 +623,10 @@ Bundle 'stephpy/vim-php-cs-fixer'
 let g:php_cs_fixer_path = "/usr/local/bin/php-cs-fixer"
 nnoremap <silent><leader>pcd :call PhpCsFixerFixDirectory()<CR>
 nnoremap <silent><leader>pcf :call PhpCsFixerFixFile()<CR>
+
+" load_or remove chef_dict
+if has("win32") || has("win64")
+  autocmd FileType ruby set dictionary+=~/vimfiles/bundle/opscode_chef.vim_dict/*.dict
+else
+  autocmd FileType ruby set dictionary+=~/.vim/bundle/opscode_chef.vim_dict/*.dict
+end
