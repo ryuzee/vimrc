@@ -61,6 +61,8 @@ Bundle 'thinca/vim-quickrun'
 if v:version >= 703
 Bundle 'Shougo/vimproc'
 Bundle 'Shougo/vimshell'
+" http://d.hatena.ne.jp/yuhei_kagaya/20111216/1324023977
+Bundle 'violetyk/cake.vim'
 endif
 Bundle 'vim-scripts/SQLUtilities'
 Bundle 'vim-scripts/Align'
@@ -71,8 +73,6 @@ Bundle 'kana/vim-smartchr'
 Bundle 'tpope/vim-surround'
 Bundle 'mattn/zencoding-vim'
 Bundle 'git://repo.or.cz/vcscommand'
-" http://d.hatena.ne.jp/yuhei_kagaya/20111216/1324023977
-Bundle 'violetyk/cake.vim'
 Bundle 'oppara/vim-unite-cake'
 " 構文チェックを自動で行う。https://github.com/scrooloose/syntastic
 " Bundle 'scrooloose/syntastic.git'
