@@ -1,3 +1,9 @@
+" Setup
+"=============================================================
+" 辞書ファイル追加
+" git clone https://github.com/OpsRockin/opscode_chef.vim_dict.git ~/.vim/dictionary/opscode_chef.dict
+" Bundleのインストール
+
 " 一般的な設定 
 "=============================================================
 set nocompatible
@@ -41,7 +47,6 @@ set complete+=k		" ctrl + n で補完
 :syntax on      " シンタックスハイライトを有効にする
 :imap <C-z> <C-y>
 "=============================================================
-
 
 " Vundle設定 
 " BundleInstallでうまくいかない場合はコマンドラインで
