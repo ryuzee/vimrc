@@ -135,8 +135,6 @@ Bundle 'kien/ctrlp.vim'
 " PHPUnit formatter http://www.karakaram.com/vim/phpunit-location-list/ 
 Bundle 'karakaram/vim-quickrun-phpunit'
 
-Bundle 'OpsRockin/opscode_chef.vim_dict'
-
 " Look and Feel 
 "
 if !has('gui_running')
@@ -626,7 +624,7 @@ nnoremap <silent><leader>pcf :call PhpCsFixerFixFile()<CR>
 
 " load_or remove chef_dict
 if has("win32") || has("win64")
-  autocmd FileType ruby set dictionary+=~/vimfiles/bundle/opscode_chef.vim_dict/*.dict
+  autocmd FileType ruby set dictionary+=~/vimfiles/dictionary/opscode_chef.vim_dict/*.dict
 else
-  autocmd FileType ruby set dictionary+=~/.vim/bundle/opscode_chef.vim_dict/*.dict
+  autocmd FileType ruby set dictionary+=~/.vim/dictionary/opscode_chef.vim_dict/*.dict
 end
