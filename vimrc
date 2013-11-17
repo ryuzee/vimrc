@@ -96,9 +96,6 @@ Bundle 'Shougo/neosnippet'
 Bundle 'ryuzee/neosnippet_chef_recipe_snippet'
 endif
 
-" forked from 'honza/snipmate-snippets'
-" Bundle 'ryuzee/snipmate-snippets'
-
 " colorscheme etc 
 Bundle 'thinca/vim-guicolorscheme'
 Bundle 'vim-scripts/Diablo3.git'
