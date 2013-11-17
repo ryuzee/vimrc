@@ -79,8 +79,6 @@ Bundle 'tpope/vim-surround'
 Bundle 'mattn/zencoding-vim'
 Bundle 'git://repo.or.cz/vcscommand'
 Bundle 'oppara/vim-unite-cake'
-" 構文チェックを自動で行う。https://github.com/scrooloose/syntastic
-" Bundle 'scrooloose/syntastic.git'
 Bundle 'Lokaltog/vim-easymotion'
 Bundle 'nathanaelkane/vim-indent-guides'
 " vim-script
@@ -89,11 +87,10 @@ Bundle 'sudo.vim'
 Bundle 'tyru/open-browser.vim'
 " neocomplcache 
 if v:version >= 703
-Bundle 'Shougo/neocomplcache'
-Bundle 'ryuzee/neocomplcache_php_selenium_snippet'
-" Bundle 'Shougo/neocomplcache-snippets-complete'
-Bundle 'Shougo/neosnippet'
-Bundle 'ryuzee/neosnippet_chef_recipe_snippet'
+  Bundle 'Shougo/neocomplcache'
+  Bundle 'ryuzee/neocomplcache_php_selenium_snippet'
+  Bundle 'Shougo/neosnippet'
+  Bundle 'ryuzee/neosnippet_chef_recipe_snippet'
 endif
 
 " colorscheme etc 
@@ -113,17 +110,17 @@ Bundle "markcornick/vim-vagrant"
 
 " unite 
 if v:version >= 703
-Bundle 'unite.vim'
-Bundle 'ujihisa/unite-colorscheme' 
-Bundle 'ujihisa/unite-font' 
-Bundle 'oppara/vim-unite-cake' 
-Bundle 'h1mesuke/unite-outline'
-Bundle 'ujihisa/unite-locate'
-Bundle 'kmnk/vim-unite-svn'
-Bundle 'choplin/unite-vim_hacks'
-Bundle 'tsukkee/unite-help'
-Bundle 'h1mesuke/unite-outline'
-Bundle 'tsukkee/unite-tag'
+  Bundle 'unite.vim'
+  Bundle 'ujihisa/unite-colorscheme' 
+  Bundle 'ujihisa/unite-font' 
+  Bundle 'oppara/vim-unite-cake' 
+  Bundle 'h1mesuke/unite-outline'
+  Bundle 'ujihisa/unite-locate'
+  Bundle 'kmnk/vim-unite-svn'
+  Bundle 'choplin/unite-vim_hacks'
+  Bundle 'tsukkee/unite-help'
+  Bundle 'h1mesuke/unite-outline'
+  Bundle 'tsukkee/unite-tag'
 endif
 
 " zoom 
@@ -289,7 +286,7 @@ if v:version >= 703
   "ポップアップメニューで表示される候補の数。初期値は100
   let g:neocomplcache_max_list = 20
   "自動補完を行う入力数を設定。初期値は2
-  let g:neocomplcache_auto_completion_start_length = 4 
+  let g:neocomplcache_auto_completion_start_length = 2 
   "手動補完時に補完を行う入力数を制御。値を小さくすると文字の削除時に重くなる
   let g:neocomplcache_manual_completion_start_length = 5
   "バッファや辞書ファイル中で、補完の対象となるキーワードの最小長さ。初期値は4。
@@ -303,6 +300,7 @@ if v:version >= 703
 
   " <C-k> にマッピング
   " Snippetの候補の選択およびプレースホルダーの移動は以下のコマンドで行う
+  " ★なお展開前に候補が出るのでC-nで選択することが必要★
   imap <C-k> <Plug>(neosnippet_expand_or_jump)
   smap <C-k> <Plug>(neosnippet_expand_or_jump)
   imap <C-s> <Plug>(neosnippet_start_unite_snippet)
