@@ -140,6 +140,11 @@ Bundle 'kien/ctrlp.vim'
 " PHPUnit formatter http://www.karakaram.com/vim/phpunit-location-list/ 
 Bundle 'karakaram/vim-quickrun-phpunit'
 
+" Markdown
+Bundle 'plasticboy/vim-markdown'
+Bundle 'kannokanno/previm'
+Bundle 'tyru/open-browser.vim'
+
 " Look and Feel 
 "
 if !has('gui_running')
@@ -538,6 +543,10 @@ autocmd BufNewFile,BufRead [Bb]uildfile            set filetype=ruby
 "#############################################################
 autocmd BufNewFile,BufRead *.md,*.rdoc             set fileencoding=utf-8
 
+"#############################################################
+" // markdown 
+"#############################################################
+au BufRead,BufNewFile *.md set filetype=markdown
 
 " 挿入モードかどうかで色を変える 
 augroup InsertHook
