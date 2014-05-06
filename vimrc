@@ -114,7 +114,7 @@ if v:version >= 703
   Bundle 'ujihisa/unite-colorscheme' 
   Bundle 'ujihisa/unite-font' 
   Bundle 'oppara/vim-unite-cake' 
-  Bundle 'h1mesuke/unite-outline'
+  Bundle 'Shougo/unite-outline'
   Bundle 'ujihisa/unite-locate'
   Bundle 'kmnk/vim-unite-svn'
   Bundle 'choplin/unite-vim_hacks'
@@ -256,6 +256,7 @@ nnoremap <silent> ,uf :<C-u>UniteWithBufferDir -no-quit -buffer-name=files file<
 nnoremap <silent> ,um :<C-u>Unite -no-quit file_mru<CR>
 " outline 
 nnoremap <silent> ,uo :<C-u>Unite outline<CR>
+nnoremap <silent> ,uol :<C-u>Unite -vertical -no-quit -winwidth=30 outline<CR>
 " レジスタ一覧
 nnoremap <silent> ,ur :<C-u>Unite -no-quit -buffer-name=register register<CR>
 " 常用セット
