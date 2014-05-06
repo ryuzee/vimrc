@@ -252,8 +252,10 @@ nnoremap <silent> ,ub :<C-u>Unite buffer<CR>
 nnoremap <silent> ,uc :<C-u>Unite colorscheme<CR>
 " ファイル一覧
 nnoremap <silent> ,uf :<C-u>UniteWithBufferDir -no-quit -buffer-name=files file<CR>
+nnoremap <silent> ,ufl :<C-u>UniteWithBufferDir -vertical -winwidth=30 -no-quit -buffer-name=files file<CR>
 " 最近使用したファイル一覧
 nnoremap <silent> ,um :<C-u>Unite -no-quit file_mru<CR>
+nnoremap <silent> ,uml :<C-u>Unite -no-quit -vertical -winwidth=30 file_mru<CR>
 " outline 
 nnoremap <silent> ,uo :<C-u>Unite outline<CR>
 nnoremap <silent> ,uol :<C-u>Unite -vertical -no-quit -winwidth=30 outline<CR>
