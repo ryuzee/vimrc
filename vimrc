@@ -1,7 +1,5 @@
 " ryuzee's vimrc 
 
-
-
 " 一般的な設定 {{{
 set nocompatible
 filetype off
@@ -76,22 +74,29 @@ Bundle 'kana/vim-smartchr'
 Bundle 'tpope/vim-surround'
 Bundle 'mattn/zencoding-vim'
 Bundle 'git://repo.or.cz/vcscommand'
-Bundle 'oppara/vim-unite-cake'
 Bundle 'Lokaltog/vim-easymotion'
-Bundle 'nathanaelkane/vim-indent-guides'
 " vim-script
 Bundle 'taglist.vim'
 Bundle 'sudo.vim'
 Bundle 'tyru/open-browser.vim'
-" neocomplcache 
-if v:version >= 703
-  Bundle 'Shougo/neocomplcache'
-  Bundle 'ryuzee/neocomplcache_php_selenium_snippet'
-  Bundle 'Shougo/neosnippet'
-  Bundle 'ryuzee/neosnippet_chef_recipe_snippet'
-endif
+" required by unite-vim_hacks 
+Bundle 'mattn/webapi-vim'
+Bundle 'thinca/vim-openbuf'
+Bundle "markcornick/vim-vagrant"
+" zoom 
+Bundle 'thinca/vim-fontzoom'
+" ctrlp 
+" http://kien.github.com/ctrlp.vim/
+" http://mattn.kaoriya.net/software/vim/20111228013428.htm
+Bundle 'kien/ctrlp.vim'
+" PHPUnit formatter http://www.karakaram.com/vim/phpunit-location-list/ 
+Bundle 'karakaram/vim-quickrun-phpunit'
+"}}}
 
-" colorscheme etc 
+" Look and Feel {{{
+
+" 背景色の設定 {{{
+" evening / lucius / mrkn256 / zenburn / Diablo3 / molokai
 Bundle 'thinca/vim-guicolorscheme'
 Bundle 'vim-scripts/Diablo3.git'
 Bundle 'vim-scripts/Lucius'
@@ -99,68 +104,26 @@ Bundle 'vim-scripts/mrkn256.vim'
 Bundle 'jnurmine/Zenburn'
 Bundle 'tomasr/molokai'
 Bundle 'inkpot'
-
-" required by unite-vim_hacks 
-Bundle 'mattn/webapi-vim'
-Bundle 'thinca/vim-openbuf'
-
-Bundle "markcornick/vim-vagrant"
-
-" unite 
-if v:version >= 703
-  Bundle 'unite.vim'
-  Bundle 'ujihisa/unite-colorscheme' 
-  Bundle 'ujihisa/unite-font' 
-  Bundle 'oppara/vim-unite-cake' 
-  Bundle 'Shougo/unite-outline'
-  Bundle 'ujihisa/unite-locate'
-  Bundle 'kmnk/vim-unite-svn'
-  Bundle 'choplin/unite-vim_hacks'
-  Bundle 'tsukkee/unite-help'
-  Bundle 'h1mesuke/unite-outline'
-  Bundle 'tsukkee/unite-tag'
-endif
-
-" zoom 
-Bundle 'thinca/vim-fontzoom'
-
-" ctrlp 
-" http://kien.github.com/ctrlp.vim/
-" http://mattn.kaoriya.net/software/vim/20111228013428.htm
-Bundle 'kien/ctrlp.vim'
-
-" PHPUnit formatter http://www.karakaram.com/vim/phpunit-location-list/ 
-Bundle 'karakaram/vim-quickrun-phpunit'
-
-" Markdown
-Bundle 'plasticboy/vim-markdown'
-Bundle 'kannokanno/previm'
-Bundle 'tyru/open-browser.vim'
-
-"}}}
-
-" Look and Feel {{{
-if !has('gui_running')
-  set t_Co=256
-endif
-
-" 背景色の設定 
-" evening / lucius / mrkn256 / zenburn / Diablo3 / molokai
-"{{{
 if has('gui_running')
   :colorscheme inkpot
 else
   :colorscheme molokai 
 endif
+
+if !has('gui_running')
+  set t_Co=256
+endif
 "}}}
 
+" インデントをわかりやすく表示する {{{
 if v:version >= 703
+  Bundle 'nathanaelkane/vim-indent-guides'
   let g:indent_guides_enable_on_vim_startup = 1
   let g:indent_guides_auto_colors = 1 
   let g:indent_guides_color_change_percent = 30
   let g:indent_guides_guide_size = 1
 endif
-
+"}}}
 
 " gvimでウインドウの位置とサイズを記憶する 
 " http://vim-users.jp/2010/01/hack120/
@@ -243,54 +206,72 @@ filetype plugin indent on
 "}}}
 
 " unite.vim {{{
-" 入力モードで開始する
-let g:unite_enable_start_insert=1
-" 縦分割で開く(オフにする)
-let g:unite_enable_split_vertically = 0 
-" Windowの幅
-let g:unite_winwidth = 40
-" Window
-let g:unite_winheight = 10
-" 全部乗せ
-nnoremap <silent> ,ua :<C-u>UniteWithBufferDir -no-quit -buffer-name=files buffer file_mru bookmark file<CR>
-" バッファ一覧
-nnoremap <silent> ,ub :<C-u>Unite buffer<CR>
-" colorscheme 
-nnoremap <silent> ,uc :<C-u>Unite colorscheme<CR>
-" ファイル一覧
-nnoremap <silent> ,uf :<C-u>UniteWithBufferDir -no-quit -buffer-name=files file<CR>
-nnoremap <silent> ,ufl :<C-u>UniteWithBufferDir -vertical -winwidth=30 -no-quit -buffer-name=files file<CR>
-" 最近使用したファイル一覧
-nnoremap <silent> ,um :<C-u>Unite -no-quit file_mru<CR>
-nnoremap <silent> ,uml :<C-u>Unite -no-quit -vertical -winwidth=30 file_mru<CR>
-" outline 
-nnoremap <silent> ,uo :<C-u>Unite outline<CR>
-nnoremap <silent> ,uol :<C-u>Unite -vertical -no-quit -winwidth=30 outline<CR>
-" レジスタ一覧
-nnoremap <silent> ,ur :<C-u>Unite -no-quit -buffer-name=register register<CR>
-" 常用セット
-nnoremap <silent> ,uu :<C-u>Unite -no-quit buffer file_mru<CR>
-
-" ウィンドウを分割して開く
-au FileType unite nnoremap <silent> <buffer> <expr> <C-j> unite#do_action('split')
-au FileType unite inoremap <silent> <buffer> <expr> <C-j> unite#do_action('split')
-" ウィンドウを縦に分割して開く
-au FileType unite nnoremap <silent> <buffer> <expr> <C-l> unite#do_action('vsplit')
-au FileType unite inoremap <silent> <buffer> <expr> <C-l> unite#do_action('vsplit')
-
-" unite.vim上でのキーマッピング
-autocmd FileType unite call s:unite_my_settings()
-function! s:unite_my_settings()
-  " 単語単位からパス単位で削除するように変更
-  imap <buffer> <C-w> <Plug>(unite_delete_backward_path)
-  " ESCキーを2回押すと終了する
-  nmap <silent><buffer> <ESC><ESC> q
-  imap <silent><buffer> <ESC><ESC> <ESC>q
-endfunction
+if v:version >= 703
+  Bundle 'unite.vim'
+  Bundle 'ujihisa/unite-colorscheme' 
+  Bundle 'ujihisa/unite-font' 
+  Bundle 'oppara/vim-unite-cake' 
+  Bundle 'Shougo/unite-outline'
+  Bundle 'ujihisa/unite-locate'
+  Bundle 'kmnk/vim-unite-svn'
+  Bundle 'choplin/unite-vim_hacks'
+  Bundle 'tsukkee/unite-help'
+  Bundle 'h1mesuke/unite-outline'
+  Bundle 'tsukkee/unite-tag'
+  Bundle 'oppara/vim-unite-cake'
+  " 入力モードで開始する
+  let g:unite_enable_start_insert=1
+  " 縦分割で開く(オフにする)
+  let g:unite_enable_split_vertically = 0 
+  " Windowの幅
+  let g:unite_winwidth = 40
+  " Window
+  let g:unite_winheight = 10
+  " 全部乗せ
+  nnoremap <silent> ,ua :<C-u>UniteWithBufferDir -no-quit -buffer-name=files buffer file_mru bookmark file<CR>
+  " バッファ一覧
+  nnoremap <silent> ,ub :<C-u>Unite buffer<CR>
+  " colorscheme 
+  nnoremap <silent> ,uc :<C-u>Unite colorscheme<CR>
+  " ファイル一覧
+  nnoremap <silent> ,uf :<C-u>UniteWithBufferDir -no-quit -buffer-name=files file<CR>
+  nnoremap <silent> ,ufl :<C-u>UniteWithBufferDir -vertical -winwidth=30 -no-quit -buffer-name=files file<CR>
+  " 最近使用したファイル一覧
+  nnoremap <silent> ,um :<C-u>Unite -no-quit file_mru<CR>
+  nnoremap <silent> ,uml :<C-u>Unite -no-quit -vertical -winwidth=30 file_mru<CR>
+  " outline 
+  nnoremap <silent> ,uo :<C-u>Unite outline<CR>
+  nnoremap <silent> ,uol :<C-u>Unite -vertical -no-quit -winwidth=30 outline<CR>
+  " レジスタ一覧
+  nnoremap <silent> ,ur :<C-u>Unite -no-quit -buffer-name=register register<CR>
+  " 常用セット
+  nnoremap <silent> ,uu :<C-u>Unite -no-quit buffer file_mru<CR>
+  
+  " ウィンドウを分割して開く
+  au FileType unite nnoremap <silent> <buffer> <expr> <C-j> unite#do_action('split')
+  au FileType unite inoremap <silent> <buffer> <expr> <C-j> unite#do_action('split')
+  " ウィンドウを縦に分割して開く
+  au FileType unite nnoremap <silent> <buffer> <expr> <C-l> unite#do_action('vsplit')
+  au FileType unite inoremap <silent> <buffer> <expr> <C-l> unite#do_action('vsplit')
+  
+  " unite.vim上でのキーマッピング
+  autocmd FileType unite call s:unite_my_settings()
+  function! s:unite_my_settings()
+    " 単語単位からパス単位で削除するように変更
+    imap <buffer> <C-w> <Plug>(unite_delete_backward_path)
+    " ESCキーを2回押すと終了する
+    nmap <silent><buffer> <ESC><ESC> q
+    imap <silent><buffer> <ESC><ESC> <ESC>q
+  endfunction
+endif
 "}}}
 
 " neocomplcacheを有効にする {{{
 if v:version >= 703
+  Bundle 'Shougo/neocomplcache'
+  Bundle 'ryuzee/neocomplcache_php_selenium_snippet'
+  Bundle 'Shougo/neosnippet'
+  Bundle 'ryuzee/neosnippet_chef_recipe_snippet'
   let g:neocomplcache_enable_at_startup = 1
   " 大文字小文字を区別する
   let g:neocomplcache_SmartCase = 1
@@ -554,6 +535,8 @@ end
 "}}}
 
 " 言語別 : markdown {{{
+Bundle 'plasticboy/vim-markdown'
+Bundle 'kannokanno/previm'
 autocmd BufNewFile,BufRead *.md,*.rdoc             set fileencoding=utf-8
 au BufRead,BufNewFile *.md set filetype=markdown
 "}}}
@@ -640,5 +623,3 @@ vmap <Leader>/ <Plug>NERDCommenterToggle
 nmap <leader>/9 <Plug>NERDCommenterToEOL  " カーソル位置以降
 vmap <Leader>/s <Plug>NERDCommenterSexy
 "}}}
-
-
