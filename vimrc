@@ -482,7 +482,7 @@ nnoremap <silent><leader>pcf :call PhpCsFixerFixFile()<CR>
 
 " 言語別 : ruby {{{
 " ruby
-:autocmd FileType ruby set tabstop=2 shiftwidth=2 expandtab fileencoding=utf-8
+:autocmd FileType ruby set tabstop=2 shiftwidth=2 expandtab softtabstop=2 autoindent smartindent fileencoding=utf-8
 autocmd BufNewFile,BufRead *.rb,*.rbw,*.gemspec    set filetype=ruby
 " Ruby on Rails
 autocmd BufNewFile,BufRead *.builder,*.rxml,*.rjs  set filetype=ruby
