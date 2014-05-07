@@ -60,8 +60,6 @@ Bundle 'gmarik/vundle'
 " Vundleで読み込むプラグインの設定 {{{
 Bundle 'thinca/vim-quickrun'
 if v:version >= 703
-  Bundle 'Shougo/vimproc'
-  Bundle 'Shougo/vimshell'
   " http://d.hatena.ne.jp/yuhei_kagaya/20111216/1324023977
   Bundle 'violetyk/cake.vim'
 endif
@@ -622,4 +620,12 @@ nmap <Leader>/ <Plug>NERDCommenterToggle
 vmap <Leader>/ <Plug>NERDCommenterToggle
 nmap <leader>/9 <Plug>NERDCommenterToEOL  " カーソル位置以降
 vmap <Leader>/s <Plug>NERDCommenterSexy
+"}}}
+
+" VimShell {{{
+if v:version >= 703
+  Bundle 'Shougo/vimproc'
+  Bundle 'Shougo/vimshell'
+  let g:vimshell_prompt = '$ '
+endif
 "}}}
