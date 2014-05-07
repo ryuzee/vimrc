@@ -83,10 +83,7 @@ Bundle 'thinca/vim-openbuf'
 Bundle "markcornick/vim-vagrant"
 " zoom 
 Bundle 'thinca/vim-fontzoom'
-" ctrlp 
-" http://kien.github.com/ctrlp.vim/
-" http://mattn.kaoriya.net/software/vim/20111228013428.htm
-Bundle 'kien/ctrlp.vim'
+
 " PHPUnit formatter http://www.karakaram.com/vim/phpunit-location-list/ 
 Bundle 'karakaram/vim-quickrun-phpunit'
 "}}}
@@ -398,7 +395,7 @@ hi Comment ctermfg=7
 
 " クリップボードの設定 {{{
 if has('gui')
-  set clipboard=unnamed
+  set clipboard=unnamed,unnamedplus
 endif
 "}}}
 
@@ -628,4 +625,12 @@ if v:version >= 703
   Bundle 'Shougo/vimshell'
   let g:vimshell_prompt = '$ '
 endif
+"}}}
+
+" ctrlp <c-x> {{{
+" このコマンドを使うと、同一ディレクトリ内のファイルを簡単に
+" リストアップして編集できる
+" http://mattn.kaoriya.net/software/vim/20111228013428.htm
+Bundle 'kien/ctrlp.vim'
+let g:ctrlp_map = '<c-x>'
 "}}}
