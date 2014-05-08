@@ -690,3 +690,8 @@ Bundle 'mattn/emmet-vim'
 Bundle 'tyru/restart.vim'
 let g:restart_sessionoptions = 'blank,curdir,folds,help,localoptions,tabpages'
 "}}}
+
+" vimの戦闘力を明らかにする {{{
+" :Scouterコマンド
+Bundle 'thinca/vim-scouter'
+"}}}
