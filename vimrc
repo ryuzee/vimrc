@@ -59,33 +59,24 @@ Bundle 'gmarik/vundle'
 
 " Vundleで読み込むプラグインの設定 {{{
 Bundle 'thinca/vim-quickrun'
+" PHPUnit formatter http://www.karakaram.com/vim/phpunit-location-list/ 
+Bundle 'karakaram/vim-quickrun-phpunit'
 if v:version >= 703
   " http://d.hatena.ne.jp/yuhei_kagaya/20111216/1324023977
   Bundle 'violetyk/cake.vim'
 endif
-Bundle 'vim-scripts/SQLUtilities'
-Bundle 'vim-scripts/Align'
-Bundle 'vim-scripts/YankRing.vim'
-Bundle 'scrooloose/nerdcommenter'
+
 Bundle 'thinca/vim-ref'
 " See http://vimblog.hatenablog.com/entry/vim_plugin_surround_vim
 Bundle 'tpope/vim-surround'
 Bundle 'mattn/zencoding-vim'
 Bundle 'git://repo.or.cz/vcscommand'
-Bundle 'Lokaltog/vim-easymotion'
-" vim-script
-Bundle 'taglist.vim'
-Bundle 'sudo.vim'
+
 Bundle 'tyru/open-browser.vim'
 " required by unite-vim_hacks 
 Bundle 'mattn/webapi-vim'
 Bundle 'thinca/vim-openbuf'
 Bundle "markcornick/vim-vagrant"
-" zoom 
-Bundle 'thinca/vim-fontzoom'
-
-" PHPUnit formatter http://www.karakaram.com/vim/phpunit-location-list/ 
-Bundle 'karakaram/vim-quickrun-phpunit'
 "}}}
 
 " Look and Feel {{{
@@ -633,4 +624,55 @@ endif
 " http://mattn.kaoriya.net/software/vim/20111228013428.htm
 Bundle 'kien/ctrlp.vim'
 let g:ctrlp_map = '<c-x>'
+"}}}
+
+" Alignでテキスト整形 {{{
+" http://nanasi.jp/articles/vim/align/align_vim_ctrl.html
+Bundle 'vim-scripts/Align'
+"}}}
+
+" SQLを整形 {{{
+Bundle 'vim-scripts/SQLUtilities'
+"}}}
+
+" sudoつけて特権で編集可能にする {{{
+" http://nanasi.jp/articles/vim/sudo_vim.html
+Bundle 'sudo.vim'
+"}}}
+
+" フォントの大小切り替え {{{ 
+" - で縮小、+で拡大、:Fontzoom size指定
+Bundle 'thinca/vim-fontzoom'
+"}}}
+
+" コメントアウトを簡単に実現 {{{
+Bundle 'scrooloose/nerdcommenter'
+let NERDSpaceDelims = 1
+nmap ,, <Plug>NERDCommenterToggle
+vmap ,, <Plug>NERDCommenterToggle
+"}}}
+
+" カーソル移動を楽にする {{{
+" http://blog.remora.cx/2012/08/vim-easymotion.html
+" ; + bwhjklなどで簡単選択
+Bundle 'Lokaltog/vim-easymotion'
+let g:EasyMotion_leader_key=";"
+" ホームポジションに近いキーを使う
+let g:EasyMotion_keys='hjklasdfgyuiopqwertnmzxcvbHJKLASDFGYUIOPQWERTNMZXCVB'
+" 1 ストローク選択を優先する
+let g:EasyMotion_grouping=1
+" カラー設定変更
+hi EasyMotionTarget ctermbg=none ctermfg=red
+hi EasyMotionShade  ctermbg=none ctermfg=blue
+"}}}
+
+" Yankの履歴をいい感じに取り出す{{{
+" 一旦ペーストしたあとCtrl+p または Ctrl + n で入れ替える
+Bundle 'vim-scripts/YankRing.vim'
+"}}}
+
+" メソッドや変数宣言の一覧を表示 {{{
+" vim-script
+" タグを作りたいところで、ctags -R したあとに:TlistすればOK
+Bundle 'taglist.vim'
 "}}}
