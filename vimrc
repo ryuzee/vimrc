@@ -684,3 +684,9 @@ Bundle 'tpope/vim-surround'
 " 例) table>tr*3>td*2<Ctrl+y>, みたいにすると展開される
 Bundle 'mattn/emmet-vim'
 "}}}
+
+" 再起動を簡単にできるようにする {{{
+" :Restart あたりでOK
+Bundle 'tyru/restart.vim'
+let g:restart_sessionoptions = 'blank,curdir,folds,help,localoptions,tabpages'
+"}}}
