@@ -67,11 +67,7 @@ if v:version >= 703
 endif
 
 Bundle 'thinca/vim-ref'
-" See http://vimblog.hatenablog.com/entry/vim_plugin_surround_vim
-Bundle 'tpope/vim-surround'
-Bundle 'mattn/zencoding-vim'
 Bundle 'git://repo.or.cz/vcscommand'
-
 Bundle 'tyru/open-browser.vim'
 " required by unite-vim_hacks 
 Bundle 'mattn/webapi-vim'
@@ -675,4 +671,16 @@ Bundle 'vim-scripts/YankRing.vim'
 " vim-script
 " タグを作りたいところで、ctags -R したあとに:TlistすればOK
 Bundle 'taglist.vim'
+"}}}
+
+" 文字列をいい感じに囲ったり、囲んでるものを外す {{{
+" See http://vimblog.hatenablog.com/entry/vim_plugin_surround_vim
+" 例) 文字列上でdtsとかやるとタグを全部外せる
+Bundle 'tpope/vim-surround'
+"}}}
+
+" zencodingを使って楽にhtmlを書く {{{
+" https://github.com/mattn/emmet-vim/blob/master/doc/emmet.txt
+" 例) table>tr*3>td*2<Ctrl+y>, みたいにすると展開される
+Bundle 'mattn/emmet-vim'
 "}}}
