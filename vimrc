@@ -4,42 +4,42 @@
 set nocompatible
 filetype off
 set tags=~/.tags
-set vb t_vb=      " ビープ音いらない 
-set shortmess+=I  " 起動時のメッセージいらない 
+set vb t_vb=                   " ビープ音いらない
+set shortmess+=I               " 起動時のメッセージいらない
 set hidden
-set nobackup    " バックアップ作らない
-set noswapfile    " swapファイル作らない
-set autoread    " 他で書き換えられたら自動で読み直す
-set splitbelow    " 標準で下分割
-set splitright    " 右分割にする
-set showmatch    " 括弧入力時に対応する括弧を表示
+set nobackup                   " バックアップ作らない
+set noswapfile                 " swapファイル作らない
+set autoread                   " 他で書き換えられたら自動で読み直す
+set splitbelow                 " 標準で下分割
+set splitright                 " 右分割にする
+set showmatch                  " 括弧入力時に対応する括弧を表示
 set cindent
-set ruler      " ルーラー表示
-set showcmd      " コマンドをステータス行に表示
-set title      " タイトルを表示
-set number      " 行番号表示
-set ignorecase    " 大文字小文字を無視して検索 
-set smartcase    " 大文字を入力すると大文字小文字無視を解除
-set wrapscan    " 先頭に戻って検索
-set hlsearch    " 前回の検索結果が残ってればハイライトする
-set textwidth=0    " 自動改行させない
-set shellslash    " Windowsでもパス区切りにスラッシュを使える
-set lazyredraw    " Dont redraw screen while Macro proceeding
-set backspace=indent,eol,start  " バックスペースでなんでも消せるように
-set formatoptions+=m      " 整形オプション，マルチバイト系を追加
-set wildmenu          " コマンド補完を強化
-set wildmode=list:full      " リスト表示，最長マッチ
-set fileformats=unix,dos,mac  " 改行コードの自動認識
-set list      " タブなどの制御文字を表示
+set ruler                      " ルーラー表示
+set showcmd                    " コマンドをステータス行に表示
+set title                      " タイトルを表示
+set number                     " 行番号表示
+set ignorecase                 " 大文字小文字を無視して検索
+set smartcase                  " 大文字を入力すると大文字小文字無視を解除
+set wrapscan                   " 先頭に戻って検索
+set hlsearch                   " 前回の検索結果が残ってればハイライトする
+set textwidth=0                " 自動改行させない
+set shellslash                 " Windowsでもパス区切りにスラッシュを使える
+set lazyredraw                 " Dont redraw screen while Macro proceeding
+set backspace=indent,eol,start " バックスペースでなんでも消せるように
+set formatoptions+=m           " 整形オプション，マルチバイト系を追加
+set wildmenu                   " コマンド補完を強化
+set wildmode=list:full         " リスト表示，最長マッチ
+set fileformats=unix,dos,mac   " 改行コードの自動認識
+set list                       " タブなどの制御文字を表示
 set tabstop=4
 set lcs=tab:>.,trail:_,extends:\  " タブを表示する。改行文字は表示しない
-set laststatus=2  "常にステータス行を表示
+set laststatus=2               "常にステータス行を表示
 set statusline=%<%f\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ft.']['.&ff.']'}%=%l,%c%V%8P
 set listchars=tab:»-,trail:-,eol:↲,extends:»,precedes:«,nbsp:%
 set modeline
 set modelines=5
-set complete+=k		" ctrl + n で補完
-:syntax on      " シンタックスハイライトを有効にする
+set complete+=k                " ctrl + n で補完
+:syntax on                     " シンタックスハイライトを有効にする
 :imap <C-z> <C-y>
 "}}}
 
@@ -625,6 +625,9 @@ let g:ctrlp_map = '<c-x>'
 " Alignでテキスト整形 {{{
 " http://nanasi.jp/articles/vim/align/align_vim_ctrl.html
 Bundle 'vim-scripts/Align'
+" easy-alignに置き換え？
+" http://alpaca.tc/blog/vim/plugins-best-of-vim-1.html
+Bundle 'junegunn/vim-easy-align'
 "}}}
 
 " SQLを整形 {{{
@@ -658,7 +661,7 @@ let g:EasyMotion_keys='hjklasdfgyuiopqwertnmzxcvbHJKLASDFGYUIOPQWERTNMZXCVB'
 " 1 ストローク選択を優先する
 let g:EasyMotion_grouping=1
 " カラー設定変更
-hi EasyMotionTarget ctermbg=none ctermfg=red
+hi EasyMotionTarget ctermbg=white ctermfg=red
 hi EasyMotionShade  ctermbg=none ctermfg=blue
 "}}}
 
