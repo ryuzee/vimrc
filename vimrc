@@ -598,6 +598,8 @@ let g:EasyMotion_leader_key=";"
 let g:EasyMotion_keys='hjklasdfgyuiopqwertnmzxcvbHJKLASDFGYUIOPQWERTNMZXCVB'
 " 1 ストローク選択を優先する
 let g:EasyMotion_grouping=1
+" migemoを使って日本語文字列をアルファベットのまま検索可能にする
+let g:EasyMotion_use_migemo = 1
 " カラー設定変更
 hi EasyMotionTarget ctermbg=white ctermfg=red
 hi EasyMotionShade  ctermbg=none ctermfg=blue
