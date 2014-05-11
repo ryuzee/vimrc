@@ -276,13 +276,27 @@ if v:version >= 703
   "入力に大文字が入力されている場合、大文字小文字の区別をする
   let g:neocomplcache_enable_smart_case = 1
 
+  let g:neosnippet#snippets_directory='~/.vim/bundle/neosnippet/autoload/neosnippet/snippets,~/.vim/bundle/neosnippet_chef_recipe_snippet/autoload/neosnippet/snippets'
+
   " <C-k> にマッピング
   " Snippetの候補の選択およびプレースホルダーの移動は以下のコマンドで行う
   " ★なお展開前に候補が出るのでC-nで選択することが必要★
   imap <C-k> <Plug>(neosnippet_expand_or_jump)
   smap <C-k> <Plug>(neosnippet_expand_or_jump)
   imap <C-s> <Plug>(neosnippet_start_unite_snippet)
-  let g:neosnippet#snippets_directory='~/.vim/bundle/neosnippet/autoload/neosnippet/snippets,~/.vim/bundle/neosnippet_chef_recipe_snippet/autoload/neosnippet/snippets'
+
+  " 展開された後はTabでいい感じにプレースホルダを移動していく
+  imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+  \ "\<Plug>(neosnippet_expand_or_jump)"
+  \: pumvisible() ? "\<C-n>" : "\<TAB>"
+  smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+  \ "\<Plug>(neosnippet_expand_or_jump)"
+  \: "\<TAB>"
+  "
+  " For snippet_complete marker.
+  if has('conceal')
+    set conceallevel=2 concealcursor=i
+  endif
 endif
 "}}}
 
