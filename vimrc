@@ -307,6 +307,10 @@ endif
 
 " Settings for AlirLines {{{
 Bundle 'bling/vim-airline'
+Bundle 'tpope/vim-fugitive'
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#left_sep = ' '
+let g:airline#extensions#tabline#left_alt_sep = '|'
 "}}}
 
 " カーソル位置と現在行を示す {{{
