@@ -305,11 +305,8 @@ if v:version >= 703
 endif
 "}}}
 
-" Settings for Status Lines {{{
-Bundle "Lokaltog/powerline"
-set rtp+=~/.vim/bundle/powerline/powerline/bindings/vim
-let g:use_Powerline_dividers = 0 
-let g:Powerline_symbols = 'compatible'
+" Settings for AlirLines {{{
+Bundle 'bling/vim-airline'
 "}}}
 
 " カーソル位置と現在行を示す {{{
