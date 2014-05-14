@@ -192,13 +192,11 @@ if v:version >= 703
   Bundle 'unite.vim'
   Bundle 'ujihisa/unite-colorscheme' 
   Bundle 'ujihisa/unite-font' 
-  Bundle 'oppara/vim-unite-cake' 
   Bundle 'Shougo/unite-outline'
   Bundle 'ujihisa/unite-locate'
   Bundle 'kmnk/vim-unite-svn'
   Bundle 'choplin/unite-vim_hacks'
   Bundle 'tsukkee/unite-help'
-  Bundle 'h1mesuke/unite-outline'
   Bundle 'tsukkee/unite-tag'
   Bundle 'oppara/vim-unite-cake'
   " 入力モードで開始する
@@ -469,6 +467,11 @@ if has("win32") || has("win64")
 else
   autocmd FileType ruby set dictionary+=~/.vim/dictionary/opscode_chef.vim_dict/*.dict
 end
+
+" Rubocopを使ってソースコードのフォーマットチェック {{{
+Bundle 'ngmy/vim-rubocop'
+"}}}
+
 "}}}
 
 "}}}
