@@ -684,3 +684,8 @@ Bundle 'thinca/vim-scouter'
 " 直近開いたファイルとかを起動時に開く {{{
 Bundle "mhinz/vim-startify" 
 "}}}
+
+" さまざまなファイルのフォーマットチェック系 {{{
+" :SyntasticCheck で実行
+Bundle 'scrooloose/syntastic'
+"}}}
