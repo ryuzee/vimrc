@@ -677,3 +677,7 @@ map <silent> [Tag]p :tabprevious<CR>
 " :Scouterコマンド
 Bundle 'thinca/vim-scouter'
 "}}}
+
+" 直近開いたファイルとかを起動時に開く {{{
+Bundle "mhinz/vim-startify" 
+"}}}
