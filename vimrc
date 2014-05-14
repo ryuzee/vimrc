@@ -253,6 +253,7 @@ if v:version >= 703
   Bundle 'Shougo/neocomplcache'
   Bundle 'ryuzee/neocomplcache_php_selenium_snippet'
   Bundle 'Shougo/neosnippet'
+  Bundle 'Shougo/neosnippet-snippets'
   Bundle 'ryuzee/neosnippet_chef_recipe_snippet'
   let g:neocomplcache_enable_at_startup = 1
   " 大文字小文字を区別する
