@@ -166,7 +166,7 @@ filetype plugin indent on
 
 " unite.vim {{{
 if v:version >= 703
-  Bundle 'unite.vim'
+  Bundle 'Shougo/unite.vim'
   Bundle 'ujihisa/unite-colorscheme' 
   Bundle 'ujihisa/unite-font' 
   Bundle 'Shougo/unite-outline'
