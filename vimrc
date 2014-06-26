@@ -230,6 +230,7 @@ if v:version >= 703
   Bundle 'Shougo/neosnippet'
   Bundle 'Shougo/neosnippet-snippets'
   Bundle 'ryuzee/neosnippet_chef_recipe_snippet'
+  Bundle 'glidenote/serverspec-snippets'
   let g:neocomplcache_enable_at_startup = 1
   " 大文字小文字を区別する
   let g:neocomplcache_SmartCase = 1
@@ -260,6 +261,7 @@ if v:version >= 703
   imap <C-k> <Plug>(neosnippet_expand_or_jump)
   smap <C-k> <Plug>(neosnippet_expand_or_jump)
   imap <C-s> <Plug>(neosnippet_start_unite_snippet)
+  xmap <C-k> <Plug>(neosnippet_expand_target)
 
   " 展開された後はTabでいい感じにプレースホルダを移動していく
   imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
