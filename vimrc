@@ -39,6 +39,7 @@ set listchars=tab:»-,trail:-,eol:↲,extends:»,precedes:«,nbsp:%
 set modeline
 set modelines=5
 set complete+=k                " ctrl + n で補完
+set noundofile                 " undoファイル作りたくないんだよ
 :syntax on                     " シンタックスハイライトを有効にする
 :imap <C-z> <C-y>
 "}}}
