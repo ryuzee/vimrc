@@ -669,3 +669,8 @@ Bundle "mhinz/vim-startify"
 " :SyntasticCheck で実行
 Bundle 'scrooloose/syntastic'
 "}}}
+
+" ファイルの一覧を表示 {{{
+Bundle 'scrooloose/nerdtree'
+nnoremap <silent><C-e> :NERDTreeToggle<CR>
+"}}}
