@@ -341,8 +341,8 @@ vnoremap <silent> :alc :<C-u>call ref#jump('visual', 'alc')<CR>
 
 " 言語別 : php {{{
 " makeコマンドを入力すると、PHPの構文エラーがないかどうかもチェック可能 {{{
-" expandtab を設定するとタブをスペースに展開する
-:autocmd FileType php set tabstop=4 shiftwidth=4 makeprg=php\ -l\ % errorformat=%m\ in\ %f\ on\ line\ %l 
+" PSR2に従いタブからスペースに展開するように変更
+:autocmd FileType php set tabstop=4 shiftwidth=4 expandtab makeprg=php\ -l\ % errorformat=%m\ in\ %f\ on\ line\ %l 
 "}}}
 
 " 文字列の中のSQLをハイライトする {{{
@@ -386,8 +386,8 @@ set foldmethod=marker
 " PHPのコードを整形する http://docs.komagata.org/4988 {{{
 Bundle 'stephpy/vim-php-cs-fixer'
 let g:php_cs_fixer_path = "/usr/local/bin/php-cs-fixer"
-nnoremap <silent><leader>pcd :call PhpCsFixerFixDirectory()<CR>
-nnoremap <silent><leader>pcf :call PhpCsFixerFixFile()<CR>
+nnoremap <silent> :pcd :call PhpCsFixerFixDirectory()<CR>
+nnoremap <silent> :pcf :call PhpCsFixerFixFile()<CR>
 "}}}
 
 "}}}
