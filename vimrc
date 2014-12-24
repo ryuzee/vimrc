@@ -232,6 +232,9 @@ if v:version >= 703
   Bundle 'Shougo/neosnippet-snippets'
   Bundle 'ryuzee/neosnippet_chef_recipe_snippet'
   Bundle 'glidenote/serverspec-snippets'
+  " PHPの標準関数用スニペット
+  Bundle 'tekkoc/PHPSnippetsCreator'
+
   let g:neocomplcache_enable_at_startup = 1
   " 大文字小文字を区別する
   let g:neocomplcache_SmartCase = 1
@@ -254,7 +257,7 @@ if v:version >= 703
   "入力に大文字が入力されている場合、大文字小文字の区別をする
   let g:neocomplcache_enable_smart_case = 1
 
-  let g:neosnippet#snippets_directory='~/.vim/bundle/neosnippet/autoload/neosnippet/snippets,~/.vim/bundle/neosnippet_chef_recipe_snippet/autoload/neosnippet/snippets'
+  let g:neosnippet#snippets_directory='~/.vim/bundle/neosnippet/autoload/neosnippet/snippets,~/.vim/bundle/neosnippet_chef_recipe_snippet/autoload/neosnippet/snippets,~/.vim/bundle/PHPSnippetsCreator/dist'
 
   " <C-k> にマッピング
   " Snippetの候補の選択およびプレースホルダーの移動は以下のコマンドで行う
@@ -673,4 +676,12 @@ Bundle 'scrooloose/syntastic'
 " ファイルの一覧を表示 {{{
 Bundle 'scrooloose/nerdtree'
 nnoremap <silent><C-e> :NERDTreeToggle<CR>
+"}}}
+
+" BootstrapのHTMLを簡単に書けるようにするスニペット {{{
+Bundle 'chrisgillis/vim-bootstrap3-snippets'
+"}}}
+
+" JSONファイルをハイライトしていい感じに表示してくれる {{{
+Bundle 'elzr/vim-json'
 "}}}
