@@ -331,13 +331,18 @@ highlight JpSpace cterm=underline ctermfg=Blue guifg=Blue
 
 " vim-refの設定 {{{
 let g:ref_alc_cmd='lynx -dump -nonumbers %s'
-let g:ref_phpmanual_path = $HOME . '/.vim/others/phpmanual'
-"nnoremap <silent> <Space>K :<C-u>call ref#jump('normal', 'alc')<CR>
-"vnoremap <silent> <Space>K :<C-u>call ref#jump('visual', 'alc')<CR>
+let g:ref_phpmanual_cmd='lynx -dump -nonumbers -display_charset utf-8 %s'
+
+" 以下のコマンドでマニュアルを取得しておく
+" wget --trust-server-names http://jp1.php.net/get/php_manual_ja.tar.gz/from/this/mirror
+" tar xvfz php_manual_ja.tar.gz -C ~/.vim/others/
+" また動作させる環境にlynxが必要なので、Macであれば、brew install lynxとしておく
+"
+let g:ref_phpmanual_path = $HOME . '/.vim/others/php-chunked-xhtml'
 
 " カーソル位置の単語をalcで検索する。カーソルがある状態で:alcで実行 {{{
-nnoremap <silent> :alc :<C-u>call ref#jump('normal', 'alc')<CR>
-vnoremap <silent> :alc :<C-u>call ref#jump('visual', 'alc')<CR>
+nnoremap <silent> :php :<C-u>call ref#jump('normal', 'phpmanual')<CR>
+vnoremap <silent> :php :<C-u>call ref#jump('visual', 'phpmanual')<CR>
 "}}}
 
 "}}}
