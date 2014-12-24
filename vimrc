@@ -87,11 +87,8 @@ Bundle 'vim-scripts/mrkn256.vim'
 Bundle 'jnurmine/Zenburn'
 Bundle 'tomasr/molokai'
 Bundle 'inkpot'
-if has('gui_running')
-  :colorscheme inkpot
-else
-  :colorscheme molokai 
-endif
+Bundle 'nanotech/jellybeans.vim'
+:colorscheme jellybeans
 
 if !has('gui_running')
   set t_Co=256
@@ -113,8 +110,8 @@ endif
 augroup hack234
   autocmd!
     if has('mac')
-      autocmd FocusGained * set transparency=10
-      autocmd FocusLost * set transparency=30
+    "  autocmd FocusGained * set transparency=10
+    "  autocmd FocusLost * set transparency=30
     endif
 augroup END
 "}}}
@@ -128,17 +125,6 @@ if has('gui')
 endif
 if has('gui_macvim')
   set transparency=0  " 透明度を指定
-endif
-"}}}
-
-" フォント設定 
-"{{{
-if has('gui_macvim')
-  set guifont=Inconsolata:h12
-  set guifontwide=Courier:h12
-  set antialias
-elseif has('gui_running')
-  set gfn=Takaoゴシック\ 11
 endif
 "}}}
 
@@ -690,3 +676,14 @@ Bundle 'chrisgillis/vim-bootstrap3-snippets'
 " JSONファイルをハイライトしていい感じに表示してくれる {{{
 Bundle 'elzr/vim-json'
 "}}}
+
+" タグをいい感じに扱う {{{
+Bundle 'xolox/vim-misc'
+Bundle 'xolox/vim-easytags'
+set tags=./.tags;,~/.vim/tags
+" :TagbarToggle コマンドでタグを別窓で表示する
+Bundle 'majutsushi/tagbar'
+let g:tagbar_width = 40
+" Map for toggle
+noremap <silent> :tt :TagbarToggle<CR>
+" }}}
