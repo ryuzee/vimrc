@@ -88,6 +88,7 @@ Bundle 'jnurmine/Zenburn'
 Bundle 'tomasr/molokai'
 Bundle 'inkpot'
 Bundle 'nanotech/jellybeans.vim'
+Bundle 'sickill/vim-monokai'
 :colorscheme jellybeans
 
 if !has('gui_running')
@@ -297,7 +298,7 @@ let g:airline#extensions#tabline#left_alt_sep = '|'
 
 " カーソル位置と現在行を示す {{{
 :set cursorline
-:highlight CursorLine term=reverse cterm=reverse
+:hi CursorLine term=underline cterm=underline guibg=DarkGreen
 "}}}
 
 " コメント行をグレー表示する(コンソール）{{{
@@ -364,6 +365,16 @@ vnoremap <silent> :php :<C-u>call ref#jump('visual', 'phpmanual')<CR>
 " 自動でルートディレクトリを決める
 " 詳細は :help cake
 let g:cakephp_enable_auto_mode = 1
+" コマンド
+" :Cakphp {appディレクトリへのパス}
+" カレントのバッファにコントローラを開く
+" :Ccontroller {controller-name}
+" 上下分割してコントローラを開く
+" :Ccontrollersp {controller-name}
+" 左右分割してコントローラを開く
+" :Ccontrollervsp {controller-name}
+" 新しいタブページにコントローラを開く
+" :Ccontrollertab {controller-name}
 "}}}
 
 " クラスと関数の折り畳みを許可する {{{
