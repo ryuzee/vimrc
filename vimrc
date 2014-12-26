@@ -294,11 +294,12 @@ Bundle 'tpope/vim-fugitive'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_sep = ' '
 let g:airline#extensions#tabline#left_alt_sep = '|'
+" let g:airline#exclude_filenames = ['NERD_Tree_1','default.rb']
 "}}}
 
 " カーソル位置と現在行を示す {{{
 :set cursorline
-:hi CursorLine term=underline cterm=underline guibg=DarkGreen
+:hi CursorLine term=underline cterm=underline
 "}}}
 
 " コメント行をグレー表示する(コンソール）{{{

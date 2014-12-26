@@ -34,3 +34,5 @@ if has('gui_running')
 endif
 "}}}
 
+
+:hi CursorLine guibg=DarkGreen
