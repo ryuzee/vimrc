@@ -63,7 +63,7 @@ Bundle 'gmarik/vundle'
 
 " Vundleで読み込むプラグインの設定 {{{
 Bundle 'thinca/vim-quickrun'
-" PHPUnit formatter http://www.karakaram.com/vim/phpunit-location-list/ 
+" PHPUnit formatter http://www.karakaram.com/vim/phpunit-location-list/
 Bundle 'karakaram/vim-quickrun-phpunit'
 if v:version >= 703
   " http://d.hatena.ne.jp/yuhei_kagaya/20111216/1324023977
@@ -73,7 +73,7 @@ endif
 Bundle 'thinca/vim-ref'
 Bundle 'git://repo.or.cz/vcscommand'
 Bundle 'tyru/open-browser.vim'
-" required by unite-vim_hacks 
+" required by unite-vim_hacks
 Bundle 'mattn/webapi-vim'
 Bundle 'thinca/vim-openbuf'
 Bundle "markcornick/vim-vagrant"
@@ -103,13 +103,13 @@ endif
 if v:version >= 703
   Bundle 'nathanaelkane/vim-indent-guides'
   let g:indent_guides_enable_on_vim_startup = 1
-  let g:indent_guides_auto_colors = 1 
+  let g:indent_guides_auto_colors = 1
   let g:indent_guides_color_change_percent = 30
   let g:indent_guides_guide_size = 1
 endif
 "}}}
 
-" フォーカスがあたっていない場合は透明にする 
+" フォーカスがあたっていない場合は透明にする
 "{{{
 augroup hack234
   autocmd!
@@ -120,7 +120,7 @@ augroup hack234
 augroup END
 "}}}
 
-" Windowの形状設定 
+" Windowの形状設定
 "{{{
 if has('gui')
   set showtabline=2  " タブを常に表示
@@ -158,8 +158,8 @@ filetype plugin indent on
 " unite.vim {{{
 if v:version >= 703
   Bundle 'Shougo/unite.vim'
-  Bundle 'ujihisa/unite-colorscheme' 
-  Bundle 'ujihisa/unite-font' 
+  Bundle 'ujihisa/unite-colorscheme'
+  Bundle 'ujihisa/unite-font'
   Bundle 'Shougo/unite-outline'
   Bundle 'ujihisa/unite-locate'
   Bundle 'kmnk/vim-unite-svn'
@@ -170,7 +170,7 @@ if v:version >= 703
   " 入力モードで開始する
   let g:unite_enable_start_insert=1
   " 縦分割で開く(オフにする)
-  let g:unite_enable_split_vertically = 0 
+  let g:unite_enable_split_vertically = 0
   " Windowの幅
   let g:unite_winwidth = 40
   " Window
@@ -179,7 +179,7 @@ if v:version >= 703
   nnoremap <silent> ,ua :<C-u>UniteWithBufferDir -no-quit -buffer-name=files buffer file_mru bookmark file<CR>
   " バッファ一覧
   nnoremap <silent> ,ub :<C-u>Unite buffer<CR>
-  " colorscheme 
+  " colorscheme
   nnoremap <silent> ,uc :<C-u>Unite colorscheme<CR>
   " ファイル一覧
   nnoremap <silent> ,uf :<C-u>UniteWithBufferDir -no-quit -buffer-name=files file<CR>
@@ -187,21 +187,21 @@ if v:version >= 703
   " 最近使用したファイル一覧
   nnoremap <silent> ,um :<C-u>Unite -no-quit file_mru<CR>
   nnoremap <silent> ,uml :<C-u>Unite -no-quit -vertical -winwidth=30 file_mru<CR>
-  " outline 
+  " outline
   nnoremap <silent> ,uo :<C-u>Unite outline<CR>
   nnoremap <silent> ,uol :<C-u>Unite -vertical -no-quit -winwidth=30 outline<CR>
   " レジスタ一覧
   nnoremap <silent> ,ur :<C-u>Unite -no-quit -buffer-name=register register<CR>
   " 常用セット
   nnoremap <silent> ,uu :<C-u>Unite -no-quit buffer file_mru<CR>
-  
+
   " ウィンドウを分割して開く
   au FileType unite nnoremap <silent> <buffer> <expr> <C-j> unite#do_action('split')
   au FileType unite inoremap <silent> <buffer> <expr> <C-j> unite#do_action('split')
   " ウィンドウを縦に分割して開く
   au FileType unite nnoremap <silent> <buffer> <expr> <C-l> unite#do_action('vsplit')
   au FileType unite inoremap <silent> <buffer> <expr> <C-l> unite#do_action('vsplit')
-  
+
   " unite.vim上でのキーマッピング
   autocmd FileType unite call s:unite_my_settings()
   function! s:unite_my_settings()
@@ -235,7 +235,7 @@ if v:version >= 703
   "ポップアップメニューで表示される候補の数。初期値は100
   let g:neocomplcache_max_list = 20
   "自動補完を行う入力数を設定。初期値は2
-  let g:neocomplcache_auto_completion_start_length = 2 
+  let g:neocomplcache_auto_completion_start_length = 2
   "手動補完時に補完を行う入力数を制御。値を小さくすると文字の削除時に重くなる
   let g:neocomplcache_manual_completion_start_length = 5
   "バッファや辞書ファイル中で、補完の対象となるキーワードの最小長さ。初期値は4。
@@ -316,9 +316,19 @@ endif
 "}}}
 
 "全角スペースの位置を表示 {{{
-highlight JpSpace cterm=underline ctermfg=Blue guifg=Blue
-" au BufRead,BufNew * match JpSpace /　/
-"}}}
+function! ZenkakuSpace()
+  highlight ZenkakuSpace cterm=underline ctermfg=lightblue guibg=yellow
+endfunction
+
+if has('syntax')
+  augroup ZenkakuSpace
+    autocmd!
+    autocmd ColorScheme * call ZenkakuSpace()
+    autocmd VimEnter,WinEnter,BufRead * let w:m1=matchadd('ZenkakuSpace', '　')
+  augroup END
+  call ZenkakuSpace()
+endif
+" }}}
 
 " vim-refの設定 {{{
 let g:ref_alc_cmd='lynx -dump -nonumbers %s'
@@ -341,7 +351,7 @@ vnoremap <silent> :php :<C-u>call ref#jump('visual', 'phpmanual')<CR>
 " 言語別 : php {{{
 " makeコマンドを入力すると、PHPの構文エラーがないかどうかもチェック可能 {{{
 " PSR2に従いタブからスペースに展開するように変更
-:autocmd FileType php set tabstop=4 shiftwidth=4 expandtab makeprg=php\ -l\ % errorformat=%m\ in\ %f\ on\ line\ %l 
+:autocmd FileType php set tabstop=4 shiftwidth=4 expandtab makeprg=php\ -l\ % errorformat=%m\ in\ %f\ on\ line\ %l
 "}}}
 
 " 文字列の中のSQLをハイライトする {{{
@@ -402,7 +412,7 @@ nnoremap <silent> :pcf :call PhpCsFixerFixFile()<CR>
 "}}}
 
 " 言語別 : python {{{
-:autocmd FileType py set tabstop=4 shiftwidth=4 expandtab 
+:autocmd FileType py set tabstop=4 shiftwidth=4 expandtab
 :autocmd FileType javascript set tabstop=4 shiftwidth=4 expandtab fileencoding=utf-8
 "}}}
 
@@ -449,7 +459,7 @@ autocmd BufNewFile,BufRead Puppetfile              set filetype=ruby
 autocmd BufNewFile,BufRead [Bb]uildfile            set filetype=ruby
 
 " chef_dict {{{
-" 辞書ファイル追加 
+" 辞書ファイル追加
 " git clone https://github.com/OpsRockin/opscode_chef.vim_dict.git ~/.vim/dictionary/opscode_chef.dict
 if has("win32") || has("win64")
   autocmd FileType ruby set dictionary+=~/vimfiles/dictionary/opscode_chef.vim_dict/*.dict
@@ -523,7 +533,7 @@ if has('iconv')
 endif
 
 
-" 日本語を含まない場合は fileencoding に encoding を使うようにする 
+" 日本語を含まない場合は fileencoding に encoding を使うようにする
 if has('autocmd')
   function! AU_ReCheck_FENC()
     if &fileencoding =~# 'iso-2022-jp' && search("[^\x01-\x7e]", 'n') == 0
@@ -588,7 +598,7 @@ Bundle 'vim-scripts/SQLUtilities'
 Bundle 'sudo.vim'
 "}}}
 
-" フォントの大小切り替え {{{ 
+" フォントの大小切り替え {{{
 " - で縮小、+で拡大、:Fontzoom size指定
 Bundle 'thinca/vim-fontzoom'
 "}}}
@@ -671,7 +681,7 @@ Bundle 'thinca/vim-scouter'
 "}}}
 
 " 直近開いたファイルとかを起動時に開く {{{
-Bundle "mhinz/vim-startify" 
+Bundle "mhinz/vim-startify"
 "}}}
 
 " さまざまなファイルのフォーマットチェック系 {{{
@@ -701,4 +711,8 @@ Bundle 'majutsushi/tagbar'
 let g:tagbar_width = 40
 " Map for toggle
 noremap <silent> :tt :TagbarToggle<CR>
+" }}}
+
+" Trailing whitespace {{{
+Bundle 'bronson/vim-trailing-whitespace'
 " }}}
