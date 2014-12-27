@@ -716,3 +716,7 @@ noremap <silent> :tt :TagbarToggle<CR>
 " Trailing whitespace {{{
 Bundle 'bronson/vim-trailing-whitespace'
 " }}}
+
+" ログを色付け {{{
+Bundle 'vim-scripts/AnsiEsc.vim'
+" }}}
