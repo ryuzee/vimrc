@@ -715,6 +715,7 @@ noremap <silent> :tt :TagbarToggle<CR>
 
 " Trailing whitespace {{{
 Bundle 'bronson/vim-trailing-whitespace'
+let g:extra_whitespace_ignored_filetypes = ['unite']
 " }}}
 
 " ログを色付け {{{
