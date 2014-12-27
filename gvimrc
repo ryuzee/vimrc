@@ -7,7 +7,7 @@ if has('gui_macvim')
   set guifontwide=Courier:h12
   set antialias
 elseif has('gui_running')
-  set gfn=Takaoゴシック\ 11
+  set gfn=Takaoゴシック\ 10 
 endif
 "}}}
 
