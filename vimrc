@@ -721,3 +721,7 @@ let g:extra_whitespace_ignored_filetypes = ['unite']
 " ログを色付け {{{
 Bundle 'vim-scripts/AnsiEsc.vim'
 " }}}
+
+" {{{ Dim inactive window
+Bundle 'blueyed/vim-diminactive'
+" }}}
