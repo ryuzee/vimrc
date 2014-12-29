@@ -1,4 +1,4 @@
-" ryuzee's vimrc 
+" ryuzee's vimrc
 
 " 一般的な設定 {{{
 set nocompatible
@@ -293,7 +293,26 @@ endif
 
 " Settings for AlirLines {{{
 Bundle 'bling/vim-airline'
+
+" manage git {{{
 Bundle 'tpope/vim-fugitive'
+"：Gstatus
+"    新しい窓を作ってgit statusを表示
+"：Gwrite
+"    現在開いているソースをgit add
+"：Gread
+"    現在開いているソースの直前のコミット時のソースを表示
+"：Gmove destination/path
+"    現在開いているソースをgit mvする
+"：Gremove
+"    現在開いているソースをgit rmする
+"：Gcommit
+"    git commit
+"：Gblame
+"    現在のソースをgit blame。vimが色づけしてくれる
+"：Gdiff
+"    現在のソースの変更点をvimdiffで表示
+" }}}
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_sep = ' '
 let g:airline#extensions#tabline#left_alt_sep = '|'
@@ -476,10 +495,10 @@ Bundle 'ngmy/vim-rubocop'
 "}}}
 
 " 言語別 : markdown {{{
-Bundle 'plasticboy/vim-markdown'
+Bundle 'tpope/vim-markdown'
 Bundle 'kannokanno/previm'
-autocmd BufNewFile,BufRead *.md,*.rdoc             set fileencoding=utf-8
-au BufRead,BufNewFile *.md set filetype=markdown
+autocmd BufNewFile,BufRead *.md,*.rdoc set fileencoding=utf-8
+autocmd BufRead,BufNewFile *.md set filetype=markdown
 "}}}
 
 " 挿入モードかどうかで色を変える {{{
