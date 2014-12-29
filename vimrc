@@ -36,7 +36,16 @@ set list                       " タブなどの制御文字を表示
 set tabstop=4
 set lcs=tab:>.,trail:_,extends:\  " タブを表示する。改行文字は表示しない
 set laststatus=2               "常にステータス行を表示
-set statusline=%<%f\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ft.']['.&ff.']'}%=%l,%c%V%8P
+" %< truncate long  line
+" %f relative filename
+" %m modofication flag
+" %r readonly flag
+" %h help buffer
+" %w preview window flag
+" %= separator between leftside and right side
+" %l cursor position
+" %c column number
+set statusline=%<%f\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).'][%{fugitive#statusline()}]['.&ft.']['.&ff.']'}%=%l,%c%V%8P
 set listchars=tab:»-,trail:-,eol:↲,extends:»,precedes:«,nbsp:%
 set modeline
 set modelines=5
