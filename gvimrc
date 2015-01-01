@@ -1,19 +1,19 @@
-colorscheme jellybeans
+colorscheme molokai
 
-" フォント設定 
-"{{{
+" フォント設定
+
 if has('gui_macvim')
   set guifont=Inconsolata:h12
   set guifontwide=Courier:h12
   set antialias
 elseif has('gui_running')
-  set gfn=Takaoゴシック\ 10 
+  set gfn=Takaoゴシック\ 10
 endif
-"}}}
 
-" gvimでウインドウの位置とサイズを記憶する 
+
+" gvimでウインドウの位置とサイズを記憶する
 " http://vim-users.jp/2010/01/hack120/
-"{{{
+
 if has('gui_running')
   let g:save_window_file = expand('~/.vimwinpos')
   augroup SaveWindow
@@ -32,7 +32,7 @@ if has('gui_running')
     execute 'source' g:save_window_file
   endif
 endif
-"}}}
+
 
 
 :hi CursorLine guibg=DarkGreen

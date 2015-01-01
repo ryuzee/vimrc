@@ -101,7 +101,7 @@ Bundle 'tomasr/molokai'
 Bundle 'inkpot'
 Bundle 'nanotech/jellybeans.vim'
 Bundle 'sickill/vim-monokai'
-:colorscheme jellybeans
+:colorscheme molokai
 
 if !has('gui_running')
   set t_Co=256
@@ -362,7 +362,7 @@ if has('syntax')
 endif
 " }}}
 
-" vim-refの設定 {{{
+" vim-refの設定 ｚR{
 let g:ref_alc_cmd='lynx -dump -nonumbers %s'
 let g:ref_phpmanual_cmd='lynx -dump -nonumbers -display_charset utf-8 %s'
 
@@ -451,6 +451,7 @@ nnoremap <silent> :pcf :call PhpCsFixerFixFile()<CR>
 " 言語別 : ruby {{{
 " ruby
 :autocmd FileType ruby set tabstop=2 shiftwidth=2 expandtab softtabstop=2 autoindent smartindent fileencoding=utf-8
+:autocmd FileType eruby set tabstop=2 shiftwidth=2 expandtab softtabstop=2 autoindent smartindent fileencoding=utf-8
 autocmd BufNewFile,BufRead *.rb,*.rbw,*.gemspec    set filetype=ruby
 " Ruby on Rails
 autocmd BufNewFile,BufRead *.builder,*.rxml,*.rjs  set filetype=ruby
