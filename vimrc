@@ -758,3 +758,12 @@ Bundle 'vim-scripts/AnsiEsc.vim'
 " {{{ Dim inactive window
 Bundle 'blueyed/vim-diminactive'
 " }}}
+
+" Japanese input
+Bundle 'fuenor/im_control.vim'
+" 「日本語入力固定モード」切替キー
+inoremap <silent> <C-j> <C-r>=IMState('FixMode')<CR>
+" PythonによるIBus制御指定
+let IM_CtrlIBusPython = 1
+"バッファ毎に日本語入力固定モードの状態を制御。
+let g:IM_CtrlBufLocalMode = 1
