@@ -56,6 +56,12 @@ set display+=lastline
 :imap <C-z> <C-y>
 "}}}
 
+" クリップボードの設定 {{{
+if has('gui')
+  set clipboard=unnamed,unnamedplus
+endif
+"}}}
+
 " Vundle設定 {{{
 " BundleInstallでうまくいかない場合はコマンドラインで
 " vim +BundleInstall +qall
@@ -139,6 +145,33 @@ endif
 if has('gui_macvim')
   set transparency=0  " 透明度を指定
 endif
+"}}}
+
+" Settings for AlirLines {{{
+Bundle 'bling/vim-airline'
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_theme='tomorrow'
+let g:airline_left_sep = '>'
+let g:airline_right_sep = '<'
+let g:airline#extensions#tabline#left_sep = '>'
+let g:airline#extensions#tabline#left_alt_sep = '>'
+" let g:airline#exclude_filenames = ['NERD_Tree_1','default.rb']
+
+" カーソル位置と現在行を示す {{{
+:set cursorline
+:hi CursorLine term=underline cterm=underline
+"}}}
+
+" コメント行をグレー表示する(コンソール）{{{
+hi Comment ctermfg=7
+"}}}
+
+" 挿入モードかどうかで色を変える {{{
+augroup InsertHook
+autocmd!
+" autocmd InsertEnter * highlight StatusLine guifg=#ccdc90 guibg=#2E4340
+" autocmd InsertLeave * highlight StatusLine guifg=#2E4340 guibg=#ccdc90
+augroup END
 "}}}
 
 "// Look and Feel }}}
@@ -300,16 +333,6 @@ if v:version >= 703
 endif
 "}}}
 
-" Settings for AlirLines {{{
-Bundle 'bling/vim-airline'
-let g:airline#extensions#tabline#enabled = 1
-let g:airline_theme='tomorrow'
-let g:airline_left_sep = '>'
-let g:airline_right_sep = '<'
-let g:airline#extensions#tabline#left_sep = '>'
-let g:airline#extensions#tabline#left_alt_sep = '>'
-" let g:airline#exclude_filenames = ['NERD_Tree_1','default.rb']
-
 " manage git {{{
 Bundle 'tpope/vim-fugitive'
 "：Gstatus
@@ -332,21 +355,6 @@ Bundle 'tpope/vim-fugitive'
 
 "}}}
 
-" カーソル位置と現在行を示す {{{
-:set cursorline
-:hi CursorLine term=underline cterm=underline
-"}}}
-
-" コメント行をグレー表示する(コンソール）{{{
-hi Comment ctermfg=7
-"}}}
-
-" クリップボードの設定 {{{
-if has('gui')
-  set clipboard=unnamed,unnamedplus
-endif
-"}}}
-
 "全角スペースの位置を表示 {{{
 function! ZenkakuSpace()
   highlight ZenkakuSpace cterm=underline ctermfg=lightblue guibg=yellow
@@ -362,7 +370,18 @@ if has('syntax')
 endif
 " }}}
 
-" vim-refの設定 ｚR{
+" vim-refの設定 {{{
+" 利用可能なソースは以下の通り
+" - clojure  (|ref-clojure.txt|)
+" - erlang   (|ref-erlang.txt|)
+" - man      (|ref-man.txt|)
+" - perldoc  (|ref-perldoc.txt|)
+" - phpmanual(|ref-phpmanual.txt|)
+" - pydoc    (|ref-pydoc.txt|)
+" - refe     (|ref-refe.txt|)
+"
+" shifh + k でキーワード検索可能
+
 let g:ref_alc_cmd='lynx -dump -nonumbers %s'
 let g:ref_phpmanual_cmd='lynx -dump -nonumbers -display_charset utf-8 %s'
 
@@ -371,9 +390,10 @@ let g:ref_phpmanual_cmd='lynx -dump -nonumbers -display_charset utf-8 %s'
 " tar xvfz php_manual_ja.tar.gz -C ~/.vim/others/
 " また動作させる環境にlynxが必要なので、Macであれば、brew install lynxとしておく
 "
+" phpの場合は Ref phpmanual Hogehoge
 let g:ref_phpmanual_path = $HOME . '/.vim/others/php-chunked-xhtml'
 
-" カーソル位置の単語をalcで検索する。カーソルがある状態で:alcで実行 {{{
+" カーソル位置の単語をPHPマニュアルから検索する。カーソルがある状態で:phpで実行 {{{
 nnoremap <silent> :php :<C-u>call ref#jump('normal', 'phpmanual')<CR>
 vnoremap <silent> :php :<C-u>call ref#jump('visual', 'phpmanual')<CR>
 "}}}
@@ -499,11 +519,10 @@ if has("win32") || has("win64")
 else
   autocmd FileType ruby set dictionary+=~/.vim/dictionary/opscode_chef.vim_dict/*.dict
 end
+"}}}
 
 " Rubocopを使ってソースコードのフォーマットチェック {{{
 Bundle 'ngmy/vim-rubocop'
-"}}}
-
 "}}}
 
 "}}}
@@ -513,14 +532,6 @@ Bundle 'tpope/vim-markdown'
 Bundle 'kannokanno/previm'
 autocmd BufNewFile,BufRead *.md,*.rdoc set fileencoding=utf-8
 autocmd BufRead,BufNewFile *.md set filetype=markdown
-"}}}
-
-" 挿入モードかどうかで色を変える {{{
-augroup InsertHook
-autocmd!
-" autocmd InsertEnter * highlight StatusLine guifg=#ccdc90 guibg=#2E4340
-" autocmd InsertLeave * highlight StatusLine guifg=#2E4340 guibg=#ccdc90
-augroup END
 "}}}
 
 " 文字コードの自動認識 {{{
@@ -759,11 +770,14 @@ Bundle 'vim-scripts/AnsiEsc.vim'
 Bundle 'blueyed/vim-diminactive'
 " }}}
 
-" Japanese input
+" Japanese input {{{
 Bundle 'fuenor/im_control.vim'
 " 「日本語入力固定モード」切替キー
 inoremap <silent> <C-j> <C-r>=IMState('FixMode')<CR>
 " PythonによるIBus制御指定
 let IM_CtrlIBusPython = 1
-"バッファ毎に日本語入力固定モードの状態を制御。
+" バッファ毎に日本語入力固定モードの状態を制御。
 let g:IM_CtrlBufLocalMode = 1
+"}}}
+
+
