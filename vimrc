@@ -384,6 +384,7 @@ endif
 
 let g:ref_alc_cmd='lynx -dump -nonumbers %s'
 let g:ref_phpmanual_cmd='lynx -dump -nonumbers -display_charset utf-8 %s'
+let g:ref_source_webdict_cmd = 'lynx -dump -nonumbers -display_charset utf-8 %s'
 
 " 以下のコマンドでマニュアルを取得しておく
 " wget --trust-server-names http://jp1.php.net/get/php_manual_ja.tar.gz/from/this/mirror
@@ -780,4 +781,57 @@ let IM_CtrlIBusPython = 1
 let g:IM_CtrlBufLocalMode = 1
 "}}}
 
+" 翻訳 {{{
 
+" :ExciteTranslateとやれば翻訳される
+Bundle 'mattn/excitetranslate-vim'
+" trと入れれば翻訳できるように設定
+nnoremap <silent> tr :<C-u>ExciteTranslate<CR>
+"}}}
+
+" 英文を書くときに色々補完する {{{
+Bundle 'ujihisa/neco-look'
+" 補完を有効にしたい場合はset filetype=textなどにするとよい。
+let g:neocomplcache_text_mode_filetypes = {
+\  'tex': 1,
+\  'text': 1,
+\  'gitcommit': 1,
+\  'plaintex': 1,
+\}
+
+" Google Suggestも使う
+Bundle 'mopp/googlesuggest-source.vim'
+Bundle 'mattn/googlesuggest-complete-vim'
+Bundle 'sousu/neco-googlesuggest'
+let g:googlesuggest_language = 'en'
+
+" 辞書を引けるようにする(vim-refが必要)
+Bundle 'mfumi/ref-dicts-en'
+" 辞書定義
+let g:ref_source_webdict_sites = {
+\   'wiki': {
+\     'url': 'http://ja.wikipedia.org/wiki/%s',
+\   },
+\   'en' : {
+\     'url' : 'http://ejje.weblio.jp/content/%s'
+\   }
+\ }
+function! g:ref_source_webdict_sites.en.filter(output)
+      return join(split(a:output, "\n")[75 :], "\n")
+endfunction
+
+function! g:ref_source_webdict_sites.wiki.filter(output)
+  return join(split(a:output, "\n")[17 :], "\n")
+endfunction
+
+" デフォルトサイト
+let g:ref_source_webdict_sites.default = 'en'
+
+nnoremap <silent> en :<C-u>Ref webdict en<CR>
+nnoremap <silent> wiki :<C-u>Ref webdict wiki<CR>
+
+" Macの辞書を引く
+" http://itchyny.hatenablog.com/entry/20130916/1379305665
+" :Dictionaryで呼び出し
+Bundle 'itchyny/dictionary.vim'
+"}}}
