@@ -33,6 +33,4 @@ if has('gui_running')
   endif
 endif
 
-
-
-:hi CursorLine guibg=DarkGreen
+":hi CursorLine guibg=DarkGreen
