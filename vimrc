@@ -787,6 +787,7 @@ let g:IM_CtrlBufLocalMode = 1
 Bundle 'mattn/excitetranslate-vim'
 " trと入れれば翻訳できるように設定
 nnoremap <silent> tr :<C-u>ExciteTranslate<CR>
+autocmd BufEnter ==Translate==\ Excite nnoremap <buffer> <silent> q :<C-u>close<CR>
 "}}}
 
 " 英文を書くときに色々補完する {{{
