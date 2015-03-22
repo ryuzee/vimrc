@@ -16,6 +16,7 @@ set splitbelow                 " 標準で下分割
 set splitright                 " 右分割にする
 set showmatch                  " 括弧入力時に対応する括弧を表示
 set cindent
+set expandtab                  " タブは全部展開する
 set ruler                      " ルーラー表示
 set showcmd                    " コマンドをステータス行に表示
 set title                      " タイトルを表示
@@ -858,9 +859,15 @@ let eblook_entrywin_height = 10
 let eblook_contentwin_height = -1
 "}}}
 
-" ウィンドウサイズ制御
+" ウィンドウサイズ制御 {{{
 Bundle 'osyo-manga/vim-gift'
 Bundle 'osyo-manga/vim-automatic'
+
+let g:automatic_default_set_config = {
+\   'height' : '30%',
+\   'move' : 'bottom',
+\}
+
 let g:automatic_config = [
 \   {
 \       "match" : {
@@ -873,3 +880,4 @@ let g:automatic_config = [
 \       },
 \   },
 \]
+"}}}
