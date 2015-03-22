@@ -837,6 +837,7 @@ nnoremap <silent> wiki :<C-u>Ref webdict wiki<CR>
 Bundle 'itchyny/dictionary.vim'
 
 " eblookを使ってローカル辞書検索
+" CTRL+K y で検索できる
 Bundle 'deton/eblook.vim'
 " Download EB library from ftp://ftp.sra.co.jp/pub/misc/eb/eb-4.4.3.tar.bz2
 " See http://openlab.jp/edict/eblook/
@@ -853,4 +854,22 @@ let eblook_dictlist1 = [
 \]
 " eblookがeuc-jpで動作している？っぽいのでエンコードを指定しておく
 let eblookenc = 'euc-jp'
+let eblook_entrywin_height = 10
+let eblook_contentwin_height = -1
 "}}}
+
+" ウィンドウサイズ制御
+Bundle 'osyo-manga/vim-gift'
+Bundle 'osyo-manga/vim-automatic'
+let g:automatic_config = [
+\   {
+\       "match" : {
+\           "filetype" : "help",
+\           "buftype" : "help",
+\       },
+\       "set" : {
+\           "height" : "25%",
+\           "move" : "bottom",
+\       },
+\   },
+\]
