@@ -834,4 +834,22 @@ nnoremap <silent> wiki :<C-u>Ref webdict wiki<CR>
 " http://itchyny.hatenablog.com/entry/20130916/1379305665
 " :Dictionaryで呼び出し
 Bundle 'itchyny/dictionary.vim'
+
+" eblookを使ってローカル辞書検索
+Bundle 'deton/eblook.vim'
+" Download EB library from ftp://ftp.sra.co.jp/pub/misc/eb/eb-4.4.3.tar.bz2
+" See http://openlab.jp/edict/eblook/
+" Download eblook from http://openlab.jp/edict/eblook/dist/eblook-1.6.1.tar.gz
+" 辞書ファイルは以下から入手
+" http://www.vector.co.jp/soft/data/writing/se369320.html
+
+let eblook_dictlist1 = [
+  \{
+  \'book': $HOME . '/dictionary/epwing',
+  \'name': 'edict2',
+  \'title': 'edict2',
+  \},
+\]
+" eblookがeuc-jpで動作している？っぽいのでエンコードを指定しておく
+let eblookenc = 'euc-jp'
 "}}}
