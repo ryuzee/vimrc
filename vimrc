@@ -789,6 +789,9 @@ Bundle 'mattn/excitetranslate-vim'
 " trと入れれば翻訳できるように設定
 nnoremap <silent> tr :<C-u>ExciteTranslate<CR>
 autocmd BufEnter ==Translate==\ Excite nnoremap <buffer> <silent> q :<C-u>close<CR>
+
+Bundle 'mattn/googletranslate-vim'
+
 "}}}
 
 " 英文を書くときに色々補完する {{{
@@ -859,25 +862,3 @@ let eblook_entrywin_height = 10
 let eblook_contentwin_height = -1
 "}}}
 
-" ウィンドウサイズ制御 {{{
-Bundle 'osyo-manga/vim-gift'
-Bundle 'osyo-manga/vim-automatic'
-
-let g:automatic_default_set_config = {
-\   'height' : '30%',
-\   'move' : 'bottom',
-\}
-
-let g:automatic_config = [
-\   {
-\       "match" : {
-\           "filetype" : "help",
-\           "buftype" : "help",
-\       },
-\       "set" : {
-\           "height" : "25%",
-\           "move" : "bottom",
-\       },
-\   },
-\]
-"}}}
