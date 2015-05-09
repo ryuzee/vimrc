@@ -832,8 +832,8 @@ endfunction
 " デフォルトサイト
 let g:ref_source_webdict_sites.default = 'en'
 
-nnoremap <silent> en :<C-u>Ref webdict en<CR>
-nnoremap <silent> wiki :<C-u>Ref webdict wiki<CR>
+nnoremap <silent> en :<C-u>call ref#jump('normal', 'webdict')<CR>
+vnoremap <silent> en :<C-u>call ref#jump('visual', 'webdict')<CR>
 
 " Macの辞書を引く
 " http://itchyny.hatenablog.com/entry/20130916/1379305665
@@ -862,3 +862,4 @@ let eblook_entrywin_height = 10
 let eblook_contentwin_height = -1
 "}}}
 
+Bundle 'osyo-manga/vim-gift'
