@@ -1,4 +1,5 @@
-colorscheme molokai
+set background=dark
+colorscheme solarized
 
 " フォント設定
 
@@ -32,5 +33,3 @@ if has('gui_running')
     execute 'source' g:save_window_file
   endif
 endif
-
-":hi CursorLine guibg=DarkGreen

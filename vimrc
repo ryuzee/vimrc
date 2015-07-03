@@ -98,7 +98,6 @@ Bundle "markcornick/vim-vagrant"
 " Look and Feel {{{
 
 " 背景色の設定 {{{
-" evening / lucius / mrkn256 / zenburn / Diablo3 / molokai
 Bundle 'thinca/vim-guicolorscheme'
 Bundle 'vim-scripts/Diablo3.git'
 Bundle 'vim-scripts/Lucius'
@@ -108,7 +107,9 @@ Bundle 'tomasr/molokai'
 Bundle 'inkpot'
 Bundle 'nanotech/jellybeans.vim'
 Bundle 'sickill/vim-monokai'
-:colorscheme molokai
+Bundle 'altercation/vim-colors-solarized'
+"set background=dark
+":colorscheme solarized
 
 if !has('gui_running')
   set t_Co=256
@@ -126,12 +127,13 @@ endif
 "}}}
 
 " フォーカスがあたっていない場合は透明にする
+" 数字が大きいほど透明度が高い
 "{{{
 augroup hack234
   autocmd!
     if has('mac')
-    "  autocmd FocusGained * set transparency=10
-    "  autocmd FocusLost * set transparency=30
+      autocmd FocusGained * set transparency=0
+      autocmd FocusLost * set transparency=20
     endif
 augroup END
 "}}}
@@ -254,6 +256,16 @@ if v:version >= 703
     nmap <silent><buffer> <ESC><ESC> q
     imap <silent><buffer> <ESC><ESC> <ESC>q
   endfunction
+  let g:unite_source_history_yank_enable = 1
+  try
+          let g:unite_source_rec_async_command='ag --nocolor --nogroup -g ""'
+          call unite#filters#matcher_default#use(['matcher_fuzzy'])
+  catch
+  endtry
+  " search a file in the filetree
+  nnoremap <space><space> :split<cr> :<C-u>Unite -start-insert file_rec/async<cr>
+  " reset not it is <C-l> normally
+  :nnoremap <space>r <Plug>(unite_restart)
 endif
 "}}}
 
@@ -381,7 +393,7 @@ endif
 " - pydoc    (|ref-pydoc.txt|)
 " - refe     (|ref-refe.txt|)
 "
-" shifh + k でキーワード検索可能
+" shift + k でキーワード検索可能
 
 let g:ref_alc_cmd='lynx -dump -nonumbers %s'
 let g:ref_phpmanual_cmd='lynx -dump -nonumbers -display_charset utf-8 %s'
@@ -760,6 +772,7 @@ noremap <silent> :tt :TagbarToggle<CR>
 " }}}
 
 " Trailing whitespace {{{
+" :FixWhitespaceとすればまとめて文末削除できる
 Bundle 'bronson/vim-trailing-whitespace'
 let g:extra_whitespace_ignored_filetypes = ['unite']
 " }}}
@@ -788,6 +801,7 @@ let g:IM_CtrlBufLocalMode = 1
 Bundle 'mattn/excitetranslate-vim'
 " trと入れれば翻訳できるように設定
 nnoremap <silent> tr :<C-u>ExciteTranslate<CR>
+vnoremap <silent> tr :<C-u>ExciteTranslate<CR>
 autocmd BufEnter ==Translate==\ Excite nnoremap <buffer> <silent> q :<C-u>close<CR>
 
 Bundle 'mattn/googletranslate-vim'
