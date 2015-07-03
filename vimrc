@@ -542,7 +542,8 @@ Bundle 'ngmy/vim-rubocop'
 "}}}
 
 " 言語別 : markdown {{{
-Bundle 'tpope/vim-markdown'
+Bundle 'godlygeek/tabular'
+Bundle 'rcmdnk/vim-markdown'
 Bundle 'kannokanno/previm'
 autocmd BufNewFile,BufRead *.md,*.rdoc set fileencoding=utf-8
 autocmd BufRead,BufNewFile *.md set filetype=markdown
@@ -670,7 +671,7 @@ vmap ,, <Plug>NERDCommenterToggle
 
 " カーソル移動を楽にする {{{
 " http://blog.remora.cx/2012/08/vim-easymotion.html
-" ; + bwhjklなどで簡単選択
+" ; + (b|w)などで簡単選択
 Bundle 'Lokaltog/vim-easymotion'
 let g:EasyMotion_leader_key=";"
 " ホームポジションに近いキーを使う
