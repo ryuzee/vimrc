@@ -30,6 +30,7 @@ set shellslash                 " Windowsでもパス区切りにスラッシュ�
 set lazyredraw                 " Dont redraw screen while Macro proceeding
 set backspace=indent,eol,start " バックスペースでなんでも消せるように
 set formatoptions+=m           " 整形オプション，マルチバイト系を追加
+set formatoptions-=ro          " 挿入モードで改行した時に # を自動挿入しない
 set wildmenu                   " コマンド補完を強化
 set wildmode=list:full         " リスト表示，最長マッチ
 set fileformats=unix,dos,mac   " 改行コードの自動認識
@@ -55,6 +56,7 @@ set noundofile                 " undoファイル作りたくないんだよ
 set display+=lastline
 :syntax on                     " シンタックスハイライトを有効にする
 :imap <C-z> <C-y>
+let mapleader = "\<Space>"     " リーダーを|からスペースに変える
 "}}}
 
 " クリップボードの設定 {{{
@@ -885,4 +887,10 @@ let g:memolist_path = "~/Dropbox/memo"
 nnoremap mn  :MemoNew<CR>
 nnoremap ml  :MemoList<CR>
 nnoremap mg  :MemoGrep<CR>
+" }}}
+
+" 選択しやすくする vの連打で範囲が変えられる {{{
+Bundle 'terryma/vim-expand-region'
+vmap v <Plug>(expand_region_expand)
+vmap <C-v> <Plug>(expand_region_shrink)
 " }}}
