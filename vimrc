@@ -878,3 +878,11 @@ let eblook_contentwin_height = -1
 "}}}
 
 Bundle 'osyo-manga/vim-gift'
+
+" 簡単にメモ取りたい {{{
+Bundle 'glidenote/memolist.vim'
+let g:memolist_path = "~/Dropbox/memo"
+nnoremap mn  :MemoNew<CR>
+nnoremap ml  :MemoList<CR>
+nnoremap mg  :MemoGrep<CR>
+" }}}
