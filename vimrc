@@ -36,6 +36,7 @@ set wildmode=list:full         " リスト表示，最長マッチ
 set fileformats=unix,dos,mac   " 改行コードの自動認識
 set list                       " タブなどの制御文字を表示
 set tabstop=4
+set virtualedit=all            " 文字がなくても選択可能に
 set lcs=tab:>.,trail:_,extends:\  " タブを表示する。改行文字は表示しない
 set laststatus=2               "常にステータス行を表示
 " %< truncate long  line
@@ -898,4 +899,18 @@ Bundle 'tpope/vim-fugitive'
 "    現在のソースをgit blame。vimが色づけしてくれる
 "：Gdiff
 "    現在のソースの変更点をvimdiffで表示
+" }}}
+
+" Shift + 矢印でウィンドウサイズを変更
+nnoremap <S-Left>  <C-w><<CR>
+nnoremap <S-Right> <C-w>><CR>
+nnoremap <S-Up>    <C-w>-<CR>
+nnoremap <S-Down>  <C-w>+<CR>
+
+"最後の処理 {{{
+" ~/.vimrc.localが存在する場合のみ設定を読み込む
+let s:local_vimrc = expand('~/.vimrc.local')
+if filereadable(s:local_vimrc)
+    execute 'source ' . s:local_vimrc
+endif
 " }}}
