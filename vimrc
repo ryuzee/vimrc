@@ -64,6 +64,9 @@ if has('gui')
   set clipboard=unnamed,unnamedplus
 endif
 "}}}
+" autoindent有効時にコード貼り付けでインデントがぐっちゃぐちゃになるのを防ぐ
+set pastetoggle=<F10>
+nnoremap <F10> :set paste!<CR>:set paste?<CR>
 
 " Vundle設定 {{{
 " BundleInstallでうまくいかない場合はコマンドラインで
@@ -486,6 +489,9 @@ nnoremap <silent> :pcf :call PhpCsFixerFixFile()<CR>
 
 " 言語別 : ruby {{{
 " ruby
+Bundle 'tpope/vim-endwise'
+Bundle 'tomtom/tcomment_vim'
+
 :autocmd FileType ruby set tabstop=2 shiftwidth=2 expandtab softtabstop=2 autoindent smartindent fileencoding=utf-8
 :autocmd FileType eruby set tabstop=2 shiftwidth=2 expandtab softtabstop=2 autoindent smartindent fileencoding=utf-8
 autocmd BufNewFile,BufRead *.rb,*.rbw,*.gemspec    set filetype=ruby
