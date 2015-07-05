@@ -110,10 +110,9 @@ Bundle 'inkpot'
 Bundle 'nanotech/jellybeans.vim'
 Bundle 'sickill/vim-monokai'
 Bundle 'altercation/vim-colors-solarized'
-"set background=dark
-":colorscheme solarized
 
 if !has('gui_running')
+  :colorscheme jellybeans
   set t_Co=256
 endif
 "}}}
@@ -347,26 +346,6 @@ if v:version >= 703
   endfor
 endif
 "}}}
-
-" manage git {{{
-Bundle 'tpope/vim-fugitive'
-"：Gstatus
-"    新しい窓を作ってgit statusを表示
-"：Gwrite
-"    現在開いているソースをgit add
-"：Gread
-"    現在開いているソースの直前のコミット時のソースを表示
-"：Gmove destination/path
-"    現在開いているソースをgit mvする
-"：Gremove
-"    現在開いているソースをgit rmする
-"：Gcommit
-"    git commit
-"：Gblame
-"    現在のソースをgit blame。vimが色づけしてくれる
-"：Gdiff
-"    現在のソースの変更点をvimdiffで表示
-" }}}
 
 "}}}
 
@@ -893,4 +872,24 @@ nnoremap mg  :MemoGrep<CR>
 Bundle 'terryma/vim-expand-region'
 vmap v <Plug>(expand_region_expand)
 vmap <C-v> <Plug>(expand_region_shrink)
+" }}}
+
+" manage git {{{
+Bundle 'tpope/vim-fugitive'
+"：Gstatus
+"    新しい窓を作ってgit statusを表示
+"：Gwrite
+"    現在開いているソースをgit add
+"：Gread
+"    現在開いているソースの直前のコミット時のソースを表示
+"：Gmove destination/path
+"    現在開いているソースをgit mvする
+"：Gremove
+"    現在開いているソースをgit rmする
+"：Gcommit
+"    git commit
+"：Gblame
+"    現在のソースをgit blame。vimが色づけしてくれる
+"：Gdiff
+"    現在のソースの変更点をvimdiffで表示
 " }}}
