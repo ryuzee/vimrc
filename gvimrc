@@ -1,6 +1,6 @@
 " set background=dark
 " colorscheme solarized
-:colorscheme jellybeans
+:colorscheme molokai
 
 " フォント設定
 
