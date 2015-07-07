@@ -125,7 +125,7 @@ Bundle 'sickill/vim-monokai'
 Bundle 'altercation/vim-colors-solarized'
 
 if !has('gui_running')
-  :colorscheme jellybeans
+  :colorscheme molokai
   set t_Co=256
 endif
 "}}}
