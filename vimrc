@@ -972,6 +972,11 @@ let g:automatic_config = [
       \     'match' : {
       \       'filetype' : '\v^ref-.+',
       \       'autocmds' : [ 'FileType' ]
+      \     },
+      \     'set' : {
+      \       'move' : 'right',
+      \       'height' : '100%',
+      \       'width' : 60
       \     }
       \   },
       \   {
