@@ -863,7 +863,8 @@ vnoremap <silent> en :<C-u>call ref#jump('visual', 'webdict')<CR>
 Bundle 'itchyny/dictionary.vim'
 
 " eblookを使ってローカル辞書検索
-" CTRL+K y で検索できる
+" <LEADER> y でカーソル位置の文字を検索できる
+" <LEADER> CTRL + y で検索ウィンドウを表示できる
 Bundle 'deton/eblook.vim'
 " Download EB library from ftp://ftp.sra.co.jp/pub/misc/eb/eb-4.4.3.tar.bz2
 " See http://openlab.jp/edict/eblook/
@@ -881,10 +882,8 @@ let eblook_dictlist1 = [
 " eblookがeuc-jpで動作している？っぽいのでエンコードを指定しておく
 let eblookenc = 'euc-jp'
 let eblook_entrywin_height = 10
-let eblook_contentwin_height = -1
+let eblook_contentwin_height = 10
 "}}}
-
-Bundle 'osyo-manga/vim-gift'
 
 " 簡単にメモ取りたい {{{
 Bundle 'glidenote/memolist.vim'
@@ -942,4 +941,52 @@ if filereadable(s:local_vimrc)
 endif
 " }}}
 
+" ウィンドウをごにょごにょ楽に操作する {{{
+Bundle 'osyo-manga/vim-gift'
+Bundle 'osyo-manga/vim-automatic'
+nnoremap <silent> <plug>(quit) :<c -u>q<cr>
+" 新しいウィンドウは <ESC><ESC> で閉じれるようにする
+function! s:my_temporary_window_init(config, context)
+  silent! nunmap <ESC><ESC>
+  nmap <buffer> <C-[> :<C-u>q<CR>
+  nmap <buffer> <ESC> :<C-u>q<CR>
+endfunction
 
+let g:automatic_default_match_config = {
+      \   'is_open_other_window' : 1,
+      \ }
+let g:automatic_default_set_config = {
+      \   'height' : '20%',
+      \   'move' : 'bottom',
+      \   'apply' : function('s:my_temporary_window_init')
+      \ }
+let g:automatic_config = [
+      \   { 'match' : { 'buftype' : 'help' } },
+      \   { 'match' : { 'filetype' : 'eblook' } },
+      \   { 'match' : { 'bufname' : '^.vimshell' } },
+      \   { 'match' : { 'bufname' : '^.unite' } },
+      \   {
+      \     'match' : {
+      \       'filetype' : '\v^ref-.+',
+      \       'autocmds' : [ 'FileType' ]
+      \     }
+      \   },
+      \   {
+      \     'match' : {
+      \       'bufname' : '\[quickrun output\]',
+      \     },
+      \     'set' : {
+      \       'height' : 8,
+      \     }
+      \   },
+      \   {
+      \     'match' : {
+      \       'autocmds' : [ 'CmdwinEnter' ]
+      \     },
+      \     'set' : {
+      \       'is_close_focus_out' : 1,
+      \       'unsettings' : [ 'move', 'resize' ]
+      \     },
+      \   }
+      \ ]
+" }}}
