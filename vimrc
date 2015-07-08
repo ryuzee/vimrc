@@ -74,9 +74,11 @@ if has('gui')
   set clipboard=unnamed,unnamedplus
 endif
 "}}}
-" autoindent有効時にコード貼り付けでインデントがぐっちゃぐちゃになるのを防ぐ
+
+" autoindent有効時にコード貼り付けでインデントがぐっちゃぐちゃになるのを防ぐ {{{
 set pastetoggle=<F10>
 nnoremap <F10> :set paste!<CR>:set paste?<CR>
+" }}}
 
 " Vundle設定 {{{
 " BundleInstallでうまくいかない場合はコマンドラインで
@@ -919,11 +921,12 @@ Bundle 'tpope/vim-fugitive'
 "    現在のソースの変更点をvimdiffで表示
 " }}}
 
-" Shift + 矢印でウィンドウサイズを変更
+" Shift + 矢印でウィンドウサイズを変更 {{{
 nnoremap <S-Left>  <C-w><<CR>
 nnoremap <S-Right> <C-w>><CR>
 nnoremap <S-Up>    <C-w>-<CR>
 nnoremap <S-Down>  <C-w>+<CR>
+" }}}
 
 " インクリメンタル検索の機能改善 {{{
 Bundle 'haya14busa/incsearch.vim'
