@@ -1020,3 +1020,8 @@ let g:automatic_config = [
 " カレンダー {{{
 Bundle 'itchyny/calendar.vim'
 " }}}
+
+" 画面スクロール {{{
+nnoremap <SPACE><SPACE>   <PageDown>
+nnoremap ;;   <PageUp>
+" }}}
