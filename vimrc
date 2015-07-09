@@ -67,6 +67,7 @@ set display+=lastline
 :syntax on                     " シンタックスハイライトを有効にする
 :imap <C-z> <C-y>
 let mapleader = "\<Space>"     " リーダーを|からスペースに変える
+nmap <Esc><Esc> :nohlsearch<CR><Esc>
 "}}}
 
 " クリップボードの設定 {{{
@@ -156,6 +157,7 @@ if v:version >= 703
   let g:indent_guides_auto_colors = 1
   let g:indent_guides_color_change_percent = 30
   let g:indent_guides_guide_size = 1
+  let g:indent_guides_exclude_filetypes = ['help', 'nerdtree', 'calendar']
 endif
 "}}}
 
@@ -681,7 +683,7 @@ vmap ,, <Plug>NERDCommenterToggle
 " カーソル移動を楽にする {{{
 " http://blog.remora.cx/2012/08/vim-easymotion.html
 " ; + (b|w)などで簡単選択
-Bundle 'Lokaltog/vim-easymotion'
+Bundle 'easymotion/vim-easymotion'
 let g:EasyMotion_leader_key=";"
 " ホームポジションに近いキーを使う
 let g:EasyMotion_keys='hjklasdfgyuiopqwertnmzxcvbHJKLASDFGYUIOPQWERTNMZXCVB'
@@ -784,7 +786,7 @@ noremap <silent> :tt :TagbarToggle<CR>
 " Trailing whitespace {{{
 " :FixWhitespaceとすればまとめて文末削除できる
 Bundle 'bronson/vim-trailing-whitespace'
-let g:extra_whitespace_ignored_filetypes = ['unite']
+let g:extra_whitespace_ignored_filetypes = ['unite', 'calendar']
 " }}}
 
 " ログを色付け {{{
@@ -931,9 +933,25 @@ nnoremap <S-Down>  <C-w>+<CR>
 " インクリメンタル検索の機能改善 {{{
 Bundle 'haya14busa/incsearch.vim'
 Bundle 'haya14busa/incsearch-fuzzy.vim'
+Bundle 'haya14busa/incsearch-easymotion.vim'
 map z/ <Plug>(incsearch-fuzzy-/)
 map z? <Plug>(incsearch-fuzzy-?)
 map zg/ <Plug>(incsearch-fuzzy-stay)
+map zz/ <Plug>(incsearch-easymotion-/)
+map zz? <Plug>(incsearch-easymotion-?)
+map zzg/ <Plug>(incsearch-easymotion-stay)
+
+function! s:config_easyfuzzymotion(...) abort
+  return extend(copy({
+  \   'converters': [incsearch#config#fuzzy#converter()],
+  \   'modules': [incsearch#config#easymotion#module()],
+  \   'keymap': {"\<CR>": '<Over>(easymotion)'},
+  \   'is_expr': 0,
+  \   'is_stay': 1
+  \ }), get(a:, 1, {}))
+endfunction
+" <Space> + / でいい感じに曖昧に検索してeasy-motionで移動できるようになる!
+noremap <silent><expr> <Space>/ incsearch#go(<SID>config_easyfuzzymotion())
 " }}}
 
 "最後の処理 {{{
@@ -997,4 +1015,8 @@ let g:automatic_config = [
       \     },
       \   }
       \ ]
+" }}}
+
+" カレンダー {{{
+Bundle 'itchyny/calendar.vim'
 " }}}
