@@ -281,7 +281,7 @@ if v:version >= 703
     " 単語単位からパス単位で削除するように変更
     imap <buffer> <C-w> <Plug>(unite_delete_backward_path)
     " ESCキーを2回押すと終了する
-    nmap <silent><buffer> <ESC><ESC> q
+    Nmap <silent><buffer> <ESC><ESC> q
     imap <silent><buffer> <ESC><ESC> <ESC>q
   endfunction
   let g:unite_source_history_yank_enable = 1
@@ -723,8 +723,9 @@ Bundle 'mattn/emmet-vim'
 
 " 再起動を簡単にできるようにする {{{
 " :Restart あたりでOK
-Bundle 'tyru/restart.vim'
-let g:restart_sessionoptions = 'blank,curdir,folds,help,localoptions,tabpages'
+Bundle 'xolox/vim-session'
+:let g:session_autosave = 'no'
+nnoremap <silent> :Restart :RestartVim<CR>
 "}}}
 
 " タブ移動の設定 {{{
@@ -1024,4 +1025,8 @@ Bundle 'itchyny/calendar.vim'
 " 画面スクロール {{{
 nnoremap <SPACE><SPACE>   <PageDown>
 nnoremap ;;   <PageUp>
+" }}}
+
+" csv操作 {{{
+Bundle 'chrisbra/csv.vim'
 " }}}
