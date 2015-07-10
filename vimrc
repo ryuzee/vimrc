@@ -1029,4 +1029,7 @@ nnoremap ;;   <PageUp>
 
 " csv操作 {{{
 Bundle 'chrisbra/csv.vim'
+augroup filetypedetect
+  au! BufRead,BufNewFile *.csv,*.tsv set filetype=csv
+augroup END
 " }}}
