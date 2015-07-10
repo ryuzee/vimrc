@@ -1038,3 +1038,10 @@ augroup filetypedetect
   au! BufRead,BufNewFile *.csv,*.tsv set filetype=csv
 augroup END
 " }}}
+
+" Review {{{
+augroup Review
+  autocmd!
+  autocmd BufWinEnter,BufNewFile *.re set filetype=review
+augroup END
+" }}}
