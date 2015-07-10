@@ -629,10 +629,11 @@ vmap br <Plug>(openbrowser-smart-search)
 " Nerd_Commenter の基本設定 {{{
 let g:NERDCreateDefaultMappings = 0
 let NERDSpaceDelims = 1
-nmap <Leader>/ <Plug>NERDCommenterToggle
-vmap <Leader>/ <Plug>NERDCommenterToggle
-nmap <leader>/9 <Plug>NERDCommenterToEOL  " カーソル位置以降
-vmap <Leader>/s <Plug>NERDCommenterSexy
+" //// でコメントアウトをON/OFFする
+nmap //// <Plug>NERDCommenterToggle
+vmap //// <Plug>NERDCommenterToggle
+nmap ///9 <Plug>NERDCommenterToEOL  " カーソル位置以降
+vmap ///s <Plug>NERDCommenterSexy
 "}}}
 
 " VimShell {{{
