@@ -658,6 +658,10 @@ Bundle 'vim-scripts/Align'
 " easy-alignに置き換え？
 " http://alpaca.tc/blog/vim/plugins-best-of-vim-1.html
 Bundle 'junegunn/vim-easy-align'
+" VisualModeで選択してEnterを押下し、揃えたい文字を入れる
+vmap <Enter> <Plug>(EasyAlign)
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
 "}}}
 
 " SQLを整形 {{{
