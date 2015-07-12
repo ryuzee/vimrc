@@ -1000,7 +1000,14 @@ let g:automatic_config = [
       \   { 'match' : { 'buftype' : 'help' } },
       \   { 'match' : { 'filetype' : 'eblook' } },
       \   { 'match' : { 'bufname' : '^.vimshell' } },
-      \   { 'match' : { 'bufname' : '^.unite' } },
+      \   { 'match' : {
+      \        'bufname' : '^.unite'
+      \      },
+      \     'set' : {
+      \       'move' : 'top',
+      \       'width' : 8
+      \     }
+      \   },
       \   {
       \     'match' : {
       \       'filetype' : '\v^ref-.+',
