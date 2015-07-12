@@ -688,6 +688,15 @@ vmap ,, <Plug>NERDCommenterToggle
 " カーソル移動を楽にする {{{
 " http://blog.remora.cx/2012/08/vim-easymotion.html
 " ; + (b|w)などで簡単選択
+" w カーソルより右側の単語(word)の先頭にマッチ
+" W カーソルより右側の単語(WORD)の先頭にマッチ
+" b カーソルより左側の単語(word)の先頭にマッチ
+" B カーソルより左側の単語(WORD)の先頭にマッチ
+" e カーソルより右側の単語(word)の後ろにマッチ
+" E カーソルより右側の単語(WORD)の後ろにマッチ
+" geカーソルより左側の単語(word)の後ろにマッチ
+" gEカーソルより左側の単語(WORD)の後ろにマッチ
+" S 画面内すべてを対象として単語の先頭にマッチ
 Bundle 'easymotion/vim-easymotion'
 let g:EasyMotion_leader_key=";"
 " ホームポジションに近いキーを使う
