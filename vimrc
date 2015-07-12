@@ -1045,3 +1045,8 @@ augroup Review
   autocmd BufWinEnter,BufNewFile *.re set filetype=review
 augroup END
 " }}}
+
+" 複数行カーソル {{{
+" VisualModeで選択して、<CTRL>+n をクリックし編集するとまとめていける
+Bundle 'terryma/vim-multiple-cursors'
+" }}}
