@@ -969,13 +969,6 @@ endfunction
 noremap <silent><expr> <Space>/ incsearch#go(<SID>config_easyfuzzymotion())
 " }}}
 
-"最後の処理 {{{
-" ~/.vimrc.localが存在する場合のみ設定を読み込む
-let s:local_vimrc = expand('~/.vimrc.local')
-if filereadable(s:local_vimrc)
-    execute 'source ' . s:local_vimrc
-endif
-" }}}
 
 " ウィンドウをごにょごにょ楽に操作する {{{
 Bundle 'osyo-manga/vim-gift'
@@ -1066,3 +1059,18 @@ augroup END
 " VisualModeで選択して、<CTRL>+n をクリックし編集するとまとめていける
 Bundle 'terryma/vim-multiple-cursors'
 " }}}
+
+" Twitter {{{
+Bundle 'TwitVim'
+let twitvim_force_ssl = 1
+let twitvim_count = 80
+" }}}
+
+"最後の処理 {{{
+" ~/.vimrc.localが存在する場合のみ設定を読み込む
+let s:local_vimrc = expand('~/.vimrc.local')
+if filereadable(s:local_vimrc)
+    execute 'source ' . s:local_vimrc
+endif
+" }}}
+
