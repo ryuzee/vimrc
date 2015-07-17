@@ -794,6 +794,7 @@ set tags=./.tags;,~/.vim/tags
 " :TagbarToggle コマンドでタグを別窓で表示する
 Bundle 'majutsushi/tagbar'
 let g:tagbar_width = 40
+let g:tagbar_autofocus = 1
 " Map for toggle
 noremap <silent> :tt :TagbarToggle<CR>
 " }}}
@@ -1005,6 +1006,17 @@ let g:automatic_config = [
       \   {
       \     'match' : {
       \       'filetype' : '\v^ref-.+',
+      \       'autocmds' : [ 'FileType' ]
+      \     },
+      \     'set' : {
+      \       'move' : 'right',
+      \       'height' : '100%',
+      \       'width' : 60
+      \     }
+      \   },
+      \   {
+      \     'match' : {
+      \       'bufname' : 'Tagbar',
       \       'autocmds' : [ 'FileType' ]
       \     },
       \     'set' : {
