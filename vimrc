@@ -777,6 +777,20 @@ Bundle 'scrooloose/syntastic'
 " ファイルの一覧を表示 {{{
 Bundle 'scrooloose/nerdtree'
 nnoremap <silent><C-e> :NERDTreeToggle<CR>
+" Tree表示の際にgitの登録状況を表示する
+Bundle 'Xuyuanp/nerdtree-git-plugin'
+" デフォルト設定の文字はずれるので自分で記号を指定する
+let g:NERDTreeIndicatorMap = {
+                \ "Modified"  : "*",
+                \ "Staged"    : "s",
+                \ "Untracked" : "ut",
+                \ "Renamed"   : "r",
+                \ "Unmerged"  : "um",
+                \ "Deleted"   : "D",
+                \ "Dirty"     : "d",
+                \ "Clean"     : "c",
+                \ "Unknown"   : "?"
+                \ }
 "}}}
 
 " BootstrapのHTMLを簡単に書けるようにするスニペット {{{
