@@ -992,6 +992,7 @@ let g:automatic_default_set_config = {
 let g:automatic_config = [
       \   { 'match' : { 'buftype' : 'help' } },
       \   { 'match' : { 'filetype' : 'eblook' } },
+      \   { 'match' : { 'filetype' : 'gitcommit' } },
       \   { 'match' : { 'bufname' : '^.vimshell' } },
       \   { 'match' : {
       \        'bufname' : '^.unite'
