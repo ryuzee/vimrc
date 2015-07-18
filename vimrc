@@ -783,14 +783,16 @@ Bundle 'Xuyuanp/nerdtree-git-plugin'
 let g:NERDTreeIndicatorMap = {
                 \ "Modified"  : "*",
                 \ "Staged"    : "s",
-                \ "Untracked" : "ut",
+                \ "Untracked" : "-",
                 \ "Renamed"   : "r",
-                \ "Unmerged"  : "um",
+                \ "Unmerged"  : "u",
                 \ "Deleted"   : "D",
                 \ "Dirty"     : "d",
                 \ "Clean"     : "c",
                 \ "Unknown"   : "?"
                 \ }
+Bundle 'jistr/vim-nerdtree-tabs'
+let g:nerdtree_tabs_open_on_gui_startup = 0
 "}}}
 
 " BootstrapのHTMLを簡単に書けるようにするスニペット {{{
