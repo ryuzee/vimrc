@@ -9,6 +9,8 @@ if has('gui_macvim')
   set guifont=RictyDiminished-Regular-Powerline.ttf:h14
   set guifontwide=Courier:h12
   set antialias
+elseif has('gui')
+  set guifont=RictyDiminished-Regular-Powerline.ttf:h14
 elseif has('gui_running')
   set gfn=Takaoゴシック\ 10
 endif
