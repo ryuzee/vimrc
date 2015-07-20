@@ -185,20 +185,26 @@ if has('gui_macvim')
 endif
 "}}}
 
+" バッファをステータスラインに表示 {{{
+Bundle 'bling/vim-bufferline'
+" }}}
+
 " Settings for AlirLines {{{
 Bundle 'bling/vim-airline'
-let g:airline_powerline_fonts = 0
-let g:airline#extensions#tabline#enabled = 1
-let g:airline_theme='badwolf'
-let g:airline#extensions#tabline#left_sep = '>'
-let g:airline#extensions#tabline#left_alt_sep = '>'
-let g:airline#exclude_filenames = ['NERD_Tree_1']
-set guifont=RictyDiminished-Regular-Powerline.ttf:h14
 let g:Powerline_symbols = 'fancy'
+let g:airline_theme='badwolf'
+let g:airline_powerline_fonts = 0
 let g:airline_left_sep = '⮀'
 let g:airline_right_sep = '⮂'
+let g:airline_branch_prefix = '⭠ '
+let g:airline#exclude_filenames = ['NERD_Tree_1']
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#left_sep = '>'
+let g:airline#extensions#tabline#left_alt_sep = '>'
 let g:airline#extensions#tabline#left_sep = '⮀'
 let g:airline#extensions#tabline#left_alt_sep = '⮀'
+let g:airline#extensions#readonly#symbol = '⭤ '
+" set guifont=RictyDiminished-Regular-Powerline.ttf:h14
 
 " カーソル位置と現在行を示す {{{
 :set cursorline
