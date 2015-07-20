@@ -5,8 +5,8 @@
 " フォント設定
 
 if has('gui_macvim')
-  "set guifont=Inconsolata:h12
-  set guifont=RictyDiminished-Regular-Powerline.ttf:h14
+  set guifont=Inconsolata:h12
+  "set guifont=RictyDiminished-Regular-Powerline.ttf:h14
   set guifontwide=Courier:h12
   set antialias
 elseif has('gui')
