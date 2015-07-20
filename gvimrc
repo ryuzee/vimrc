@@ -5,13 +5,13 @@
 " フォント設定
 
 if has('gui_macvim')
-  set guifont=Inconsolata:h12
+  "set guifont=Inconsolata:h12
+  set guifont=RictyDiminished-Regular-Powerline.ttf:h14
   set guifontwide=Courier:h12
   set antialias
 elseif has('gui_running')
   set gfn=Takaoゴシック\ 10
 endif
-
 
 " gvimでウインドウの位置とサイズを記憶する
 " http://vim-users.jp/2010/01/hack120/
