@@ -874,10 +874,11 @@ let g:neocomplcache_text_mode_filetypes = {
 \}
 
 " Google Suggestも使う
-Bundle 'mopp/googlesuggest-source.vim'
-Bundle 'mattn/googlesuggest-complete-vim'
-Bundle 'sousu/neco-googlesuggest'
-let g:googlesuggest_language = 'en'
+" と思ったけどインターネット接続必須になり重いので一端取りやめる。環境次第
+" Bundle 'mopp/googlesuggest-source.vim'
+" Bundle 'mattn/googlesuggest-complete-vim'
+" Bundle 'sousu/neco-googlesuggest'
+" let g:googlesuggest_language = 'en'
 
 " 辞書を引けるようにする(vim-refが必要)
 Bundle 'mfumi/ref-dicts-en'
