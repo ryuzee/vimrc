@@ -998,6 +998,14 @@ endfunction
 noremap <silent><expr> <Space>/ incsearch#go(<SID>config_easyfuzzymotion())
 " }}}
 
+" 検索でヒットした件数を表示する {{{
+Bundle "osyo-manga/vim-anzu"
+nmap n <Plug>(anzu-n-with-echo)
+nmap N <Plug>(anzu-n-with-echo)
+nmap * <Plug>(anzu-star-with-echo)
+nmap # <Plug>(anzu-sharp-with-echo)
+" }}}
+
 
 " ウィンドウをごにょごにょ楽に操作する {{{
 Bundle 'osyo-manga/vim-gift'
