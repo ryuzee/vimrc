@@ -340,7 +340,10 @@ if v:version >= 703
   let g:neocomplcache_enable_ignore_case = 1
   "入力に大文字が入力されている場合、大文字小文字の区別をする
   let g:neocomplcache_enable_smart_case = 1
-
+  "シンタックス補完を無効に
+  let g:neocomplcache_plugin_disable = {
+  \ 'syntax_complete' : 1,
+  \ }
   let g:neosnippet#snippets_directory='~/.vim/bundle/neosnippet/autoload/neosnippet/snippets,~/.vim/bundle/neosnippet_chef_recipe_snippet/autoload/neosnippet/snippets,~/.vim/bundle/PHPSnippetsCreator/dist'
 
   " <C-k> にマッピング
@@ -443,12 +446,20 @@ vnoremap <silent> :php :<C-u>call ref#jump('visual', 'phpmanual')<CR>
 :autocmd FileType php let php_sql_query=1
 "}}}
 
+" Baselibメソッドのハイライトを行う {{{
+:autocmd FileType php let php_baselib=1
+"}}}
+
 " 文字列の中のHTMLをハイライトする {{{
 :autocmd FileType php let php_htmlInStrings=1
 "}}}
 
 " ショートタグのハイライトを無効にする {{{
 :autocmd FileType php let php_noShortTags=1
+"}}}
+
+" ] や ) の対応エラーをハイライトする {{{
+:autocmd FileType php let php_parent_error_close=1
 "}}}
 
 " 辞書から関数を選択できるようにする {{{
