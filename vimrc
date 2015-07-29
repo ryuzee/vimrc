@@ -17,6 +17,7 @@ scriptencoding utf-8
 set tags=~/.tags
 set vb t_vb=                   " ビープ音いらない
 set shortmess+=I               " 起動時のメッセージいらない
+let g:bufferline_echo=0        " うっとおしい表示を消す
 set hidden
 set nobackup                   " バックアップ作らない
 set noswapfile                 " swapファイル作らない
