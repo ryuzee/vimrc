@@ -10,15 +10,18 @@ if has('gui_macvim')
   set guifontwide=Courier:h12
   set antialias
 elseif has('gui')
-  set guifont=RictyDiminished-Regular-Powerline.ttf:h14
-elseif has('gui_running')
-  set gfn=Takaoゴシック\ 10
+  set guifont=Ricty\ Diminished\ for\ Powerline\ 12
+  set guifontwide=Ricty\ Diminished\ for\ Powerline\ 12
+else
+  set guifont=Ricty\ Diminished\ for\ Powerline\ 12
+  set guifontwide=Ricty\ Diminished\ for\ Powerline\ 12
 endif
 
 " gvimでウインドウの位置とサイズを記憶する
 " http://vim-users.jp/2010/01/hack120/
 
-if has('gui_running')
+"if has('gui_running')
+if has('gui')
   let g:save_window_file = expand('~/.vimwinpos')
   augroup SaveWindow
     autocmd!
