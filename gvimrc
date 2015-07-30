@@ -3,11 +3,9 @@
 :colorscheme molokai
 
 " フォント設定
-
 if has('gui_macvim')
-  set guifont=Inconsolata:h12
-  "set guifont=RictyDiminished-Regular-Powerline.ttf:h14
-  set guifontwide=Courier:h12
+  set guifont=RictyDiminished-RegularForPowerline:h14
+  set guifontwide=RictyDiminished-RegularForPowerline:h14
   set antialias
 elseif has('gui')
   set guifont=Ricty\ Diminished\ for\ Powerline\ 12
@@ -19,8 +17,6 @@ endif
 
 " gvimでウインドウの位置とサイズを記憶する
 " http://vim-users.jp/2010/01/hack120/
-
-"if has('gui_running')
 if has('gui')
   let g:save_window_file = expand('~/.vimwinpos')
   augroup SaveWindow
