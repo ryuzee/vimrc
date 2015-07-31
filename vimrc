@@ -99,17 +99,41 @@ let g:neobundle_default_git_protocol='https'
 
 " neobundle#begin - neobundle#end の間に導入するプラグインを記載します。
 NeoBundle 'Shougo/neobundle.vim'
-" }}}
-
-" Vundleで読み込むプラグインの設定 {{{
 NeoBundle 'thinca/vim-quickrun'
 " PHPUnit formatter http://www.karakaram.com/vim/phpunit-location-list/
 NeoBundle 'karakaram/vim-quickrun-phpunit'
 if v:version >= 703
   " http://d.hatena.ne.jp/yuhei_kagaya/20111216/1324023977
   NeoBundle 'violetyk/cake.vim'
+  NeoBundle 'nathanaelkane/vim-indent-guides'
+  NeoBundle 'Shougo/unite.vim'
+  NeoBundle 'ujihisa/unite-colorscheme'
+  NeoBundle 'ujihisa/unite-font'
+  NeoBundle 'Shougo/unite-outline'
+  NeoBundle 'ujihisa/unite-locate'
+  NeoBundle 'kmnk/vim-unite-svn'
+  NeoBundle 'choplin/unite-vim_hacks'
+  NeoBundle 'tsukkee/unite-help'
+  NeoBundle 'tsukkee/unite-tag'
+  NeoBundle 'oppara/vim-unite-cake'
+  NeoBundle 'Shougo/neocomplcache'
+  NeoBundle 'ryuzee/neocomplcache_php_selenium_snippet'
+  NeoBundle 'Shougo/neosnippet'
+  NeoBundle 'Shougo/neosnippet-snippets'
+  NeoBundle 'ryuzee/neosnippet_chef_recipe_snippet'
+  NeoBundle 'glidenote/serverspec-snippets'
+  " PHPの標準関数用スニペット
+  NeoBundle 'tekkoc/PHPSnippetsCreator'
+  NeoBundle 'Shougo/vimproc', {
+  \ 'build' : {
+    \ 'windows' : 'make -f make_mingw32.mak',
+    \ 'cygwin' : 'make -f make_cygwin.mak',
+    \ 'mac' : 'make -f make_mac.mak',
+    \ 'unix' : 'make -f make_unix.mak',
+    \ },
+  \ }
+  NeoBundle 'Shougo/vimshell'
 endif
-
 NeoBundle 'thinca/vim-ref'
 NeoBundle 'git://repo.or.cz/vcscommand'
 NeoBundle 'tyru/open-browser.vim'
@@ -117,9 +141,6 @@ NeoBundle 'tyru/open-browser.vim'
 NeoBundle 'mattn/webapi-vim'
 NeoBundle 'thinca/vim-openbuf'
 NeoBundle "markcornick/vim-vagrant"
-"}}}
-
-" Look and Feel {{{
 
 " 背景色の設定 {{{
 NeoBundle 'thinca/vim-guicolorscheme'
@@ -132,7 +153,85 @@ NeoBundle 'inkpot'
 NeoBundle 'nanotech/jellybeans.vim'
 NeoBundle 'sickill/vim-monokai'
 NeoBundle 'altercation/vim-colors-solarized'
+" }}}
+NeoBundle 'bling/vim-airline'
+" バッファをステータスラインに表示 {{{
+NeoBundle 'bling/vim-bufferline'
+" }}}
+NeoBundle 'tpope/vim-endwise'
+NeoBundle 'tomtom/tcomment_vim'
+NeoBundle 'stephpy/vim-php-cs-fixer'
+" Rubocopを使ってソースコードのフォーマットチェック {{{
+NeoBundle 'ngmy/vim-rubocop'
+"}}}
+NeoBundle 'godlygeek/tabular'
+NeoBundle 'rcmdnk/vim-markdown'
+NeoBundle 'kannokanno/previm'
+NeoBundle 'kien/ctrlp.vim'
+" http://nanasi.jp/articles/vim/align/align_vim_ctrl.html
+NeoBundle 'vim-scripts/Align'
+" easy-alignに置き換え？
+" http://alpaca.tc/blog/vim/plugins-best-of-vim-1.html
+NeoBundle 'junegunn/vim-easy-align'
+NeoBundle 'vim-scripts/SQLUtilities'
+NeoBundle 'sudo.vim'
+NeoBundle 'thinca/vim-fontzoom'
+NeoBundle 'scrooloose/nerdcommenter'
+NeoBundle 'easymotion/vim-easymotion'
+" Yankの履歴をいい感じに取り出す{{{
+" 一旦ペーストしたあとCtrl+p または Ctrl + n で入れ替える
+NeoBundle 'vim-scripts/YankRing.vim'
+" メソッドや変数宣言の一覧を表示 {{{
+" vim-script
+" タグを作りたいところで、ctags -R したあとに:TlistすればOK
+NeoBundle 'taglist.vim'
+"}}}
 
+" 文字列をいい感じに囲ったり、囲んでるものを外す {{{
+" See http://vimblog.hatenablog.com/entry/vim_plugin_surround_vim
+" 例) 文字列上でdtsとかやるとタグを全部外せる
+NeoBundle 'tpope/vim-surround'
+"}}}
+
+" zencodingを使って楽にhtmlを書く {{{
+" https://github.com/mattn/emmet-vim/blob/master/doc/emmet.txt
+" 例) table>tr*3>td*2<Ctrl+y>, みたいにすると展開される
+NeoBundle 'mattn/emmet-vim'
+"}}}
+
+" vimの戦闘力を明らかにする {{{
+" :Scouterコマンド
+NeoBundle 'thinca/vim-scouter'
+"}}}
+
+" 直近開いたファイルとかを起動時に開く {{{
+NeoBundle "mhinz/vim-startify"
+"}}}
+
+" さまざまなファイルのフォーマットチェック系 {{{
+" :SyntasticCheck で実行
+NeoBundle 'scrooloose/syntastic'
+"}}}
+
+" ログを色付け {{{
+NeoBundle 'vim-scripts/AnsiEsc.vim'
+" }}}
+
+" {{{ Dim inactive window
+NeoBundle 'blueyed/vim-diminactive'
+" }}}
+
+
+" :ExciteTranslateとやれば翻訳される
+NeoBundle 'mattn/excitetranslate-vim'
+
+
+
+"}}}
+
+" }}}
+
+" Look and Feel {{{
 if !has('gui_running')
   :colorscheme molokai
   set t_Co=256
@@ -158,7 +257,6 @@ augroup END
 
 " インデントをわかりやすく表示する {{{
 if v:version >= 703
-  NeoBundle 'nathanaelkane/vim-indent-guides'
   let g:indent_guides_enable_on_vim_startup = 1
   let g:indent_guides_auto_colors = 1
   let g:indent_guides_color_change_percent = 30
@@ -191,12 +289,7 @@ if has('gui_macvim')
 endif
 "}}}
 
-" バッファをステータスラインに表示 {{{
-NeoBundle 'bling/vim-bufferline'
-" }}}
-
 " Settings for AlirLines {{{
-NeoBundle 'bling/vim-airline'
 let g:Powerline_symbols = 'fancy'
 let g:airline_theme='badwolf'
 let g:airline_powerline_fonts = 0
@@ -250,16 +343,7 @@ filetype plugin indent on
 
 " unite.vim {{{
 if v:version >= 703
-  NeoBundle 'Shougo/unite.vim'
-  NeoBundle 'ujihisa/unite-colorscheme'
-  NeoBundle 'ujihisa/unite-font'
-  NeoBundle 'Shougo/unite-outline'
-  NeoBundle 'ujihisa/unite-locate'
-  NeoBundle 'kmnk/vim-unite-svn'
-  NeoBundle 'choplin/unite-vim_hacks'
-  NeoBundle 'tsukkee/unite-help'
-  NeoBundle 'tsukkee/unite-tag'
-  NeoBundle 'oppara/vim-unite-cake'
+
   " 入力モードで開始する
   let g:unite_enable_start_insert=1
   " 縦分割で開く(オフにする)
@@ -319,15 +403,6 @@ endif
 
 " neocomplcacheを有効にする {{{
 if v:version >= 703
-  NeoBundle 'Shougo/neocomplcache'
-  NeoBundle 'ryuzee/neocomplcache_php_selenium_snippet'
-  NeoBundle 'Shougo/neosnippet'
-  NeoBundle 'Shougo/neosnippet-snippets'
-  NeoBundle 'ryuzee/neosnippet_chef_recipe_snippet'
-  NeoBundle 'glidenote/serverspec-snippets'
-  " PHPの標準関数用スニペット
-  NeoBundle 'tekkoc/PHPSnippetsCreator'
-
   let g:neocomplcache_enable_at_startup = 1
   " 大文字小文字を区別する
   let g:neocomplcache_SmartCase = 1
@@ -508,7 +583,7 @@ set foldmethod=marker
 "}}}
 
 " PHPのコードを整形する http://docs.komagata.org/4988 {{{
-NeoBundle 'stephpy/vim-php-cs-fixer'
+
 let g:php_cs_fixer_path = "/usr/local/bin/php-cs-fixer"
 nnoremap <silent> :pcd :call PhpCsFixerFixDirectory()<CR>
 nnoremap <silent> :pcf :call PhpCsFixerFixFile()<CR>
@@ -523,9 +598,6 @@ nnoremap <silent> :pcf :call PhpCsFixerFixFile()<CR>
 
 " 言語別 : ruby {{{
 " ruby
-NeoBundle 'tpope/vim-endwise'
-NeoBundle 'tomtom/tcomment_vim'
-
 :autocmd FileType ruby set tabstop=2 shiftwidth=2 expandtab softtabstop=2 autoindent smartindent fileencoding=utf-8
 :autocmd FileType eruby set tabstop=2 shiftwidth=2 expandtab softtabstop=2 autoindent smartindent fileencoding=utf-8
 autocmd BufNewFile,BufRead *.rb,*.rbw,*.gemspec    set filetype=ruby
@@ -577,16 +649,9 @@ else
 end
 "}}}
 
-" Rubocopを使ってソースコードのフォーマットチェック {{{
-NeoBundle 'ngmy/vim-rubocop'
-"}}}
-
 "}}}
 
 " 言語別 : markdown {{{
-NeoBundle 'godlygeek/tabular'
-NeoBundle 'rcmdnk/vim-markdown'
-NeoBundle 'kannokanno/previm'
 autocmd BufNewFile,BufRead *.md,*.rdoc set fileencoding=utf-8
 autocmd BufRead,BufNewFile *.md set filetype=markdown
 "}}}
@@ -633,7 +698,6 @@ if has('iconv')
   unlet s:enc_jis
 endif
 
-
 " 日本語を含まない場合は fileencoding に encoding を使うようにする
 if has('autocmd')
   function! AU_ReCheck_FENC()
@@ -669,15 +733,6 @@ vmap ///s <Plug>NERDCommenterSexy
 
 " VimShell {{{
 if v:version >= 703
-  NeoBundle 'Shougo/vimproc', {
-  \ 'build' : {
-    \ 'windows' : 'make -f make_mingw32.mak',
-    \ 'cygwin' : 'make -f make_cygwin.mak',
-    \ 'mac' : 'make -f make_mac.mak',
-    \ 'unix' : 'make -f make_unix.mak',
-    \ },
-  \ }
-  NeoBundle 'Shougo/vimshell'
   let g:vimshell_prompt = '$ '
 endif
 "}}}
@@ -686,16 +741,10 @@ endif
 " このコマンドを使うと、同一ディレクトリ内のファイルを簡単に
 " リストアップして編集できる
 " http://mattn.kaoriya.net/software/vim/20111228013428.htm
-NeoBundle 'kien/ctrlp.vim'
 let g:ctrlp_map = '<c-x>'
 "}}}
-
 " Alignでテキスト整形 {{{
-" http://nanasi.jp/articles/vim/align/align_vim_ctrl.html
-NeoBundle 'vim-scripts/Align'
-" easy-alignに置き換え？
-" http://alpaca.tc/blog/vim/plugins-best-of-vim-1.html
-NeoBundle 'junegunn/vim-easy-align'
+
 " VisualModeで選択してEnterを押下し、揃えたい文字を入れる
 vmap <Enter> <Plug>(EasyAlign)
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
@@ -703,21 +752,20 @@ nmap ga <Plug>(EasyAlign)
 "}}}
 
 " SQLを整形 {{{
-NeoBundle 'vim-scripts/SQLUtilities'
 "}}}
 
 " sudoつけて特権で編集可能にする {{{
 " http://nanasi.jp/articles/vim/sudo_vim.html
-NeoBundle 'sudo.vim'
+
 "}}}
 
 " フォントの大小切り替え {{{
 " - で縮小、+で拡大、:Fontzoom size指定
-NeoBundle 'thinca/vim-fontzoom'
+
 "}}}
 
 " コメントアウトを簡単に実現 {{{
-NeoBundle 'scrooloose/nerdcommenter'
+
 let NERDSpaceDelims = 1
 nmap ,, <Plug>NERDCommenterToggle
 vmap ,, <Plug>NERDCommenterToggle
@@ -735,7 +783,7 @@ vmap ,, <Plug>NERDCommenterToggle
 " geカーソルより左側の単語(word)の後ろにマッチ
 " gEカーソルより左側の単語(WORD)の後ろにマッチ
 " S 画面内すべてを対象として単語の先頭にマッチ
-NeoBundle 'easymotion/vim-easymotion'
+
 let g:EasyMotion_leader_key=";"
 " ホームポジションに近いキーを使う
 let g:EasyMotion_keys='hjklasdfgyuiopqwertnmzxcvbHJKLASDFGYUIOPQWERTNMZXCVB'
@@ -750,28 +798,7 @@ au BufEnter * hi EasyMotionTarget ctermfg=25 guifg=#ff0000
 au BufEnter * hi EasyMotionShade ctermfg=25 guifg=#aaaaaa"
 "}}}
 
-" Yankの履歴をいい感じに取り出す{{{
-" 一旦ペーストしたあとCtrl+p または Ctrl + n で入れ替える
-NeoBundle 'vim-scripts/YankRing.vim'
-"}}}
 
-" メソッドや変数宣言の一覧を表示 {{{
-" vim-script
-" タグを作りたいところで、ctags -R したあとに:TlistすればOK
-NeoBundle 'taglist.vim'
-"}}}
-
-" 文字列をいい感じに囲ったり、囲んでるものを外す {{{
-" See http://vimblog.hatenablog.com/entry/vim_plugin_surround_vim
-" 例) 文字列上でdtsとかやるとタグを全部外せる
-NeoBundle 'tpope/vim-surround'
-"}}}
-
-" zencodingを使って楽にhtmlを書く {{{
-" https://github.com/mattn/emmet-vim/blob/master/doc/emmet.txt
-" 例) table>tr*3>td*2<Ctrl+y>, みたいにすると展開される
-NeoBundle 'mattn/emmet-vim'
-"}}}
 
 " 再起動を簡単にできるようにする {{{
 " :Restart あたりでOK
@@ -796,20 +823,6 @@ map <silent> [Tag]x :tabclose<CR>
 map <silent> [Tag]n :tabnext<CR>
 " tp 前のタブ
 map <silent> [Tag]p :tabprevious<CR>
-"}}}
-
-" vimの戦闘力を明らかにする {{{
-" :Scouterコマンド
-NeoBundle 'thinca/vim-scouter'
-"}}}
-
-" 直近開いたファイルとかを起動時に開く {{{
-NeoBundle "mhinz/vim-startify"
-"}}}
-
-" さまざまなファイルのフォーマットチェック系 {{{
-" :SyntasticCheck で実行
-NeoBundle 'scrooloose/syntastic'
 "}}}
 
 " ファイルの一覧を表示 {{{
@@ -859,14 +872,6 @@ NeoBundle 'bronson/vim-trailing-whitespace'
 let g:extra_whitespace_ignored_filetypes = ['unite', 'calendar']
 " }}}
 
-" ログを色付け {{{
-NeoBundle 'vim-scripts/AnsiEsc.vim'
-" }}}
-
-" {{{ Dim inactive window
-NeoBundle 'blueyed/vim-diminactive'
-" }}}
-
 " Japanese input {{{
 NeoBundle 'fuenor/im_control.vim'
 " 「日本語入力固定モード」切替キー
@@ -879,8 +884,7 @@ let g:IM_CtrlBufLocalMode = 1
 
 " 翻訳 {{{
 
-" :ExciteTranslateとやれば翻訳される
-NeoBundle 'mattn/excitetranslate-vim'
+
 " trと入れれば翻訳できるように設定
 nnoremap <silent> tr :<C-u>ExciteTranslate<CR>
 vnoremap <silent> tr :<C-u>ExciteTranslate<CR>
@@ -1045,6 +1049,7 @@ function! s:my_temporary_window_init(config, context)
   nmap <buffer> <ESC> :<C-u>q<CR>
 endfunction
 
+if has('gui')
 let g:automatic_default_match_config = {
       \   'is_open_other_window' : 1,
       \ }
@@ -1106,6 +1111,7 @@ let g:automatic_config = [
       \     },
       \   }
       \ ]
+endif
 " }}}
 
 " カレンダー {{{
@@ -1168,3 +1174,5 @@ endif
 " vimrc に記述されたプラグインでインストールされていないものがないかチェックする
 NeoBundleCheck
 call neobundle#end()
+
+
