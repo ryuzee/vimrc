@@ -1,5 +1,4 @@
 " _/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
-" " }}}
 "
 "      _ __ ___  _   _  __   _(_)_ __ ___  _ __ ___
 "     | '_ ` _ \| | | | \ \ / / | '_ ` _ \| '__/ __|
@@ -70,7 +69,6 @@ set display+=lastline
 :imap <C-z> <C-y>
 let mapleader = "\<Space>"     " リーダーを|からスペースに変える
 nmap <Esc><Esc> :nohlsearch<CR><Esc>
-"}}}
 
 " クリップボードの設定 {{{
 if has('gui')
@@ -81,6 +79,124 @@ endif
 " autoindent有効時にコード貼り付けでインデントがぐっちゃぐちゃになるのを防ぐ {{{
 set pastetoggle=<F10>
 nnoremap <F10> :set paste!<CR>:set paste?<CR>
+" }}}
+
+" (),[],{},<>,””,’’,“入力+()の中にカーソル戻す {{{
+imap {} {}<LEFT>
+imap [] []<LEFT>
+imap () ()<LEFT>
+imap <> <><Left>
+imap "" ""<Left>
+imap '' ''<Left>
+" }}}
+
+"全角スペースの位置を表示 {{{
+function! ZenkakuSpace()
+  highlight ZenkakuSpace cterm=underline ctermfg=lightblue guibg=yellow
+endfunction
+
+if has('syntax')
+  augroup ZenkakuSpace
+    autocmd!
+    autocmd ColorScheme * call ZenkakuSpace()
+    autocmd VimEnter,WinEnter,BufRead * let w:m1=matchadd('ZenkakuSpace', '　')
+  augroup END
+  call ZenkakuSpace()
+endif
+" }}}
+
+" □とか○の文字があってもカーソル位置がずれないようにする {{{
+if exists('&ambiwidth')
+  set ambiwidth=double
+endif
+" }}}
+
+" 文字コードの自動認識 {{{
+if &encoding !=# 'utf-8'
+  set encoding=japan
+  set fileencoding=japan
+endif
+if has('iconv')
+  let s:enc_euc = 'euc-jp'
+  let s:enc_jis = 'iso-2022-jp'
+  " iconvがeucJP-msに対応しているかをチェック
+  if iconv("\x87\x64\x87\x6a", 'cp932', 'eucjp-ms') ==# "\xad\xc5\xad\xcb"
+    let s:enc_euc = 'eucjp-ms'
+    let s:enc_jis = 'iso-2022-jp-3'
+  " iconvがJISX0213に対応しているかをチェック
+  elseif iconv("\x87\x64\x87\x6a", 'cp932', 'euc-jisx0213') ==# "\xad\xc5\xad\xcb"
+    let s:enc_euc = 'euc-jisx0213'
+    let s:enc_jis = 'iso-2022-jp-3'
+  endif
+  " fileencodingsを構築
+  if &encoding ==# 'utf-8'
+    let s:fileencodings_default = &fileencodings
+    let &fileencodings = s:enc_jis .','. s:enc_euc .',cp932'
+    let &fileencodings = &fileencodings .','. s:fileencodings_default
+    unlet s:fileencodings_default
+  else
+    let &fileencodings = &fileencodings .','. s:enc_jis
+    set fileencodings+=utf-8,ucs-2le,ucs-2
+    if &encoding =~# '^\(euc-jp\|euc-jisx0213\|eucjp-ms\)$'
+      set fileencodings+=cp932
+      set fileencodings-=euc-jp
+      set fileencodings-=euc-jisx0213
+      set fileencodings-=eucjp-ms
+      let &encoding = s:enc_euc
+      let &fileencoding = s:enc_euc
+    else
+      let &fileencodings = &fileencodings .','. s:enc_euc
+    endif
+  endif
+  " 定数を処分
+  unlet s:enc_euc
+  unlet s:enc_jis
+endif
+
+" 日本語を含まない場合は fileencoding に encoding を使うようにする
+if has('autocmd')
+  function! AU_ReCheck_FENC()
+    if &fileencoding =~# 'iso-2022-jp' && search("[^\x01-\x7e]", 'n') == 0
+      let &fileencoding=&encoding
+    endif
+  endfunction
+  autocmd BufReadPost * call AU_ReCheck_FENC()
+endif
+" }}}
+
+" Shift + 矢印でウィンドウサイズを変更 {{{
+nnoremap <S-Left>  <C-w><<CR>
+nnoremap <S-Right> <C-w>><CR>
+nnoremap <S-Up>    <C-w>-<CR>
+nnoremap <S-Down>  <C-w>+<CR>
+" }}}
+
+" 画面スクロール {{{
+nnoremap <SPACE><SPACE>   <PageDown>
+nnoremap ;;   <PageUp>
+" }}}
+
+" タブ移動の設定 {{{
+" The prefix key.
+nnoremap    [Tag]   <Nop>
+nmap    t [Tag]
+" Shift + Tab でタブ移動、Tab + Tab で左移動する
+nnoremap <S-Tab> gt
+nnoremap <Tab><Tab> gT
+" t1 で1番左のタブ、t2 で1番左から2番目のタブにジャンプ
+for n in range(1, 9)
+  execute 'nnoremap <silent> [Tag]'.n  ':<C-u>tabnext'.n.'<CR>'
+endfor
+" tc 新しいタブを一番右に作る
+map <silent> [Tag]c :tablast <bar> tabnew<CR>
+" tx タブを閉じる
+map <silent> [Tag]x :tabclose<CR>
+" tn 次のタブ
+map <silent> [Tag]n :tabnext<CR>
+" tp 前のタブ
+map <silent> [Tag]p :tabprevious<CR>
+" }}}
+
 " }}}
 
 " NeoBundle settings {{{
@@ -496,7 +612,6 @@ let g:airline#extensions#readonly#symbol = '⭤ '
 hi Comment ctermfg=7
 "}}}
 
-
 "// Look and Feel }}}
 
 " QuickRunによる設定 {{{
@@ -522,7 +637,6 @@ filetype plugin indent on
 
 " unite.vim {{{
 if v:version >= 703
-
   " 入力モードで開始する
   let g:unite_enable_start_insert=1
   " 縦分割で開く(オフにする)
@@ -638,40 +752,6 @@ if v:version >= 703
   endif
 endif
 "}}}
-
-" (),[],{},<>,””,’’,“入力+()の中にカーソル戻す {{{
-imap {} {}<LEFT>
-imap [] []<LEFT>
-imap () ()<LEFT>
-imap <> <><Left>
-imap "" ""<Left>
-imap '' ''<Left>
-"}}}
-
-" Shift + Tab でタブ移動、Tab + Tab で左移動する {{{
-if v:version >= 703
-  nnoremap <S-Tab> gt
-  nnoremap <Tab><Tab> gT
-  for i in range(1, 9)
-    execute 'nnoremap <Tab>' . i . ' ' . i . 'gt'
-  endfor
-endif
-"}}}
-
-"全角スペースの位置を表示 {{{
-function! ZenkakuSpace()
-  highlight ZenkakuSpace cterm=underline ctermfg=lightblue guibg=yellow
-endfunction
-
-if has('syntax')
-  augroup ZenkakuSpace
-    autocmd!
-    autocmd ColorScheme * call ZenkakuSpace()
-    autocmd VimEnter,WinEnter,BufRead * let w:m1=matchadd('ZenkakuSpace', '　')
-  augroup END
-  call ZenkakuSpace()
-endif
-" }}}
 
 " vim-ref {{{1
 " 利用可能なソースは以下の通り
@@ -851,65 +931,6 @@ augroup Review
 augroup END
 " }}}
 
-" 文字コードの自動認識 {{{
-if &encoding !=# 'utf-8'
-  set encoding=japan
-  set fileencoding=japan
-endif
-if has('iconv')
-  let s:enc_euc = 'euc-jp'
-  let s:enc_jis = 'iso-2022-jp'
-  " iconvがeucJP-msに対応しているかをチェック
-  if iconv("\x87\x64\x87\x6a", 'cp932', 'eucjp-ms') ==# "\xad\xc5\xad\xcb"
-    let s:enc_euc = 'eucjp-ms'
-    let s:enc_jis = 'iso-2022-jp-3'
-  " iconvがJISX0213に対応しているかをチェック
-  elseif iconv("\x87\x64\x87\x6a", 'cp932', 'euc-jisx0213') ==# "\xad\xc5\xad\xcb"
-    let s:enc_euc = 'euc-jisx0213'
-    let s:enc_jis = 'iso-2022-jp-3'
-  endif
-  " fileencodingsを構築
-  if &encoding ==# 'utf-8'
-    let s:fileencodings_default = &fileencodings
-    let &fileencodings = s:enc_jis .','. s:enc_euc .',cp932'
-    let &fileencodings = &fileencodings .','. s:fileencodings_default
-    unlet s:fileencodings_default
-  else
-    let &fileencodings = &fileencodings .','. s:enc_jis
-    set fileencodings+=utf-8,ucs-2le,ucs-2
-    if &encoding =~# '^\(euc-jp\|euc-jisx0213\|eucjp-ms\)$'
-      set fileencodings+=cp932
-      set fileencodings-=euc-jp
-      set fileencodings-=euc-jisx0213
-      set fileencodings-=eucjp-ms
-      let &encoding = s:enc_euc
-      let &fileencoding = s:enc_euc
-    else
-      let &fileencodings = &fileencodings .','. s:enc_euc
-    endif
-  endif
-  " 定数を処分
-  unlet s:enc_euc
-  unlet s:enc_jis
-endif
-
-" 日本語を含まない場合は fileencoding に encoding を使うようにする
-if has('autocmd')
-  function! AU_ReCheck_FENC()
-    if &fileencoding =~# 'iso-2022-jp' && search("[^\x01-\x7e]", 'n') == 0
-      let &fileencoding=&encoding
-    endif
-  endfunction
-  autocmd BufReadPost * call AU_ReCheck_FENC()
-endif
-"}}}
-
-" □とか○の文字があってもカーソル位置がずれないようにする {{{
-if exists('&ambiwidth')
-  set ambiwidth=double
-endif
-"}}}
-
 " open-browser の設定 / URLの上でと押すとブラウザを開く {{{
 let g:netrw_nogx = 1 " disable netrw's gx mapping.
 nmap br <Plug>(openbrowser-smart-search)
@@ -976,24 +997,6 @@ au BufEnter * hi EasyMotionShade ctermfg=25 guifg=#aaaaaa"
 " vim-sessionの設定 / 再起動を簡単にできるようにする {{{
 :let g:session_autosave = 'no'
 nnoremap <silent> :Restart :RestartVim<CR>
-"}}}
-
-" タブ移動の設定 {{{
-" The prefix key.
-nnoremap    [Tag]   <Nop>
-nmap    t [Tag]
-" t1 で1番左のタブ、t2 で1番左から2番目のタブにジャンプ
-for n in range(1, 9)
-  execute 'nnoremap <silent> [Tag]'.n  ':<C-u>tabnext'.n.'<CR>'
-endfor
-" tc 新しいタブを一番右に作る
-map <silent> [Tag]c :tablast <bar> tabnew<CR>
-" tx タブを閉じる
-map <silent> [Tag]x :tabclose<CR>
-" tn 次のタブ
-map <silent> [Tag]n :tabnext<CR>
-" tp 前のタブ
-map <silent> [Tag]p :tabprevious<CR>
 "}}}
 
 " nerdtree / ファイルの一覧を表示 {{{
@@ -1098,13 +1101,6 @@ vmap v <Plug>(expand_region_expand)
 vmap <C-v> <Plug>(expand_region_shrink)
 " }}}
 
-" Shift + 矢印でウィンドウサイズを変更 {{{
-nnoremap <S-Left>  <C-w><<CR>
-nnoremap <S-Right> <C-w>><CR>
-nnoremap <S-Up>    <C-w>-<CR>
-nnoremap <S-Down>  <C-w>+<CR>
-" }}}
-
 " incsearch.vim / インクリメンタル検索の機能改善 {{{
 map z/ <Plug>(incsearch-fuzzy-/)
 map z? <Plug>(incsearch-fuzzy-?)
@@ -1206,13 +1202,6 @@ let g:automatic_config = [
       \ ]
 endif
 " }}}
-
-" 画面スクロール {{{
-nnoremap <SPACE><SPACE>   <PageDown>
-nnoremap ;;   <PageUp>
-" }}}
-
-
 
 " TwitVimの設定 {{{
 let twitvim_force_ssl = 1
