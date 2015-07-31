@@ -1033,6 +1033,7 @@ function! s:my_temporary_window_init(config, context)
   nmap <buffer> <ESC> :<C-u>q<CR>
 endfunction
 
+if has('gui')
 let g:automatic_default_match_config = {
       \   'is_open_other_window' : 1,
       \ }
@@ -1094,6 +1095,7 @@ let g:automatic_config = [
       \     },
       \   }
       \ ]
+endif
 " }}}
 
 " カレンダー {{{
