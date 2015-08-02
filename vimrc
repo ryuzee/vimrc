@@ -346,8 +346,7 @@ NeoBundle 'easymotion/vim-easymotion'
 " }}}
 
 " Yankの履歴をいい感じに取り出す {{{
-" 一旦ペーストしたあとCtrl+p または Ctrl + n で入れ替える
-NeoBundle 'vim-scripts/YankRing.vim'
+NeoBundle 'LeafCage/yankround.vim'
 " }}}
 
 " メソッドや変数宣言の一覧を表示 {{{
@@ -664,6 +663,8 @@ if v:version >= 703
   nnoremap <silent> ,ur :<C-u>Unite -no-quit -buffer-name=register register<CR>
   " 常用セット
   nnoremap <silent> ,uu :<C-u>Unite -no-quit buffer file_mru<CR>
+  " Yankround
+  nnoremap <silent> ,uy :<C-u>Unite yankround<CR>
 
   " ウィンドウを分割して開く
   au FileType unite nnoremap <silent> <buffer> <expr> <C-j> unite#do_action('split')
@@ -752,6 +753,17 @@ if v:version >= 703
   endif
 endif
 "}}}
+
+" yankroundの設定 {{{
+nmap p <Plug>(yankround-p)
+xmap p <Plug>(yankround-p)
+nmap P <Plug>(yankround-P)
+nmap gp <Plug>(yankround-gp)
+xmap gp <Plug>(yankround-gp)
+nmap gP <Plug>(yankround-gP)
+nmap <C-p> <Plug>(yankround-prev)
+nmap <C-n> <Plug>(yankround-next)
+" }}}
 
 " vim-ref {{{1
 " 利用可能なソースは以下の通り
@@ -847,7 +859,7 @@ set foldmethod=marker
 "}}}
 
 " vim-php-cs-fixer の設定 {{{2
-let g:php_cs_fixer_path = "/usr/local/bin/php-cs-fixer"
+let g:php_cs_fixer_path = "/usr/local/bin/php-cs-fixer.phar"
 nnoremap <silent> :pcd :call PhpCsFixerFixDirectory()<CR>
 nnoremap <silent> :pcf :call PhpCsFixerFixFile()<CR>
 "}}}
