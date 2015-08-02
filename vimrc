@@ -172,7 +172,7 @@ nnoremap <S-Down>  <C-w>+<CR>
 " }}}
 
 " 画面スクロール {{{
-nnoremap <SPACE><SPACE>   <PageDown>
+nnoremap <Space><Space>   <PageDown>
 nnoremap ;;   <PageUp>
 " }}}
 
@@ -689,9 +689,9 @@ if v:version >= 703
   catch
   endtry
   " search a file in the filetree
-  nnoremap <space><space> :split<cr> :<C-u>Unite -start-insert file_rec/async<cr>
+  nnoremap <Space>s :split<cr> :<C-u>Unite -start-insert file_rec/async<cr>
   " reset not it is <C-l> normally
-  :nnoremap <space>r <Plug>(unite_restart)
+  :nnoremap <Space>r <Plug>(unite_restart)
 endif
 "}}}
 
