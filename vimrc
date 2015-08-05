@@ -419,6 +419,14 @@ NeoBundle 'xolox/vim-easytags'
 NeoBundle 'majutsushi/tagbar'
 " }}}
 
+" phpでタグをいい感じに扱う {{{
+NeoBundle 'vim-scripts/tagbar-phpctags', {
+  \   'build' : {
+  \     'others' : 'chmod +x bin/phpctags',
+  \   },
+  \ }
+" }}}
+
 " 文末の空白を削除する {{{
 " :FixWhitespaceとすればまとめて文末削除できる
 NeoBundle 'bronson/vim-trailing-whitespace'
