@@ -299,6 +299,14 @@ NeoBundle 'tomtom/tcomment_vim'
 NeoBundle 'stephpy/vim-php-cs-fixer'
 " }}}
 
+" PDV - PHP Documentor for VIM - 2 {{{
+if v:version >= 704
+  NeoBundle 'SirVer/ultisnips'
+  NeoBundle 'tobyS/vmustache'
+  NeoBundle 'ryuzee/pdv' " Forked ver from tobyS/pdv
+endif
+" }}}
+
 " Rubocopを使ってソースコードのフォーマットチェック {{{
 NeoBundle 'ngmy/vim-rubocop'
 "}}}
@@ -834,6 +842,16 @@ vnoremap <silent> :php :<C-u>call ref#jump('visual', 'phpmanual')<CR>
 " キーワード上でctrl + x ctrl + kを入力
 :autocmd FileType php set dictionary=~/.vim/dictionary/PHP.dict
 "}}}
+
+" PHP documenter script bound to Control-P {{{
+if v:version >= 704
+  let g:pdv_template_dir = $HOME ."/.vim/bundle/pdv/templates_snip"
+  autocmd Filetype php nnoremap <buffer> <C-p> :call pdv#DocumentWithSnip()<CR>
+" autocmd FileType php inoremap <C-p> <ESC>:call PhpDocSingle()<CR>i
+" autocmd FileType php nnoremap <C-p> :call PhpDocSingle()<CR>
+" autocmd FileType php vnoremap <C-p> :call PhpDocRange()<CR>
+endif
+" }}}
 
 " cakephpのスニペットを有効にする {{{2
 :autocmd FileType ctp set ft=php.cakephp
