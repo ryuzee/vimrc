@@ -182,7 +182,7 @@ nnoremap    [Tag]   <Nop>
 nmap    t [Tag]
 " Shift + Tab でタブ移動、Tab + Tab で左移動する
 nnoremap <S-Tab> gt
-nnoremap <Tab><Tab> gT
+nnoremap ;; gT
 " t1 で1番左のタブ、t2 で1番左から2番目のタブにジャンプ
 for n in range(1, 9)
   execute 'nnoremap <silent> [Tag]'.n  ':<C-u>tabnext'.n.'<CR>'
@@ -843,13 +843,10 @@ vnoremap <silent> :php :<C-u>call ref#jump('visual', 'phpmanual')<CR>
 :autocmd FileType php set dictionary=~/.vim/dictionary/PHP.dict
 "}}}
 
-" PHP documenter script bound to Control-P {{{
+" PHP documenter script bound to ,pdoc {{{
 if v:version >= 704
   let g:pdv_template_dir = $HOME ."/.vim/bundle/pdv/templates_snip"
-  autocmd Filetype php nnoremap <buffer> <C-p> :call pdv#DocumentWithSnip()<CR>
-" autocmd FileType php inoremap <C-p> <ESC>:call PhpDocSingle()<CR>i
-" autocmd FileType php nnoremap <C-p> :call PhpDocSingle()<CR>
-" autocmd FileType php vnoremap <C-p> :call PhpDocRange()<CR>
+  autocmd Filetype php nnoremap <buffer> ,pdoc :call pdv#DocumentWithSnip()<CR>
 endif
 " }}}
 
