@@ -307,6 +307,10 @@ if v:version >= 704
 endif
 " }}}
 
+" PHPファイルの中にHTMLがある場合のインデントをいい感じに扱う {{{
+NeoBundle 'ryuzee/php.vim-html-enhanced'
+" }}}
+
 " Rubocopを使ってソースコードのフォーマットチェック {{{
 NeoBundle 'ngmy/vim-rubocop'
 "}}}
@@ -681,6 +685,12 @@ if v:version >= 703
   nnoremap <silent> ,uu :<C-u>Unite -no-quit buffer file_mru<CR>
   " Yankround
   nnoremap <silent> ,uy :<C-u>Unite yankround<CR>
+
+  " CakePHP
+  nnoremap <silent> ,ucc :<C-u>Unite cake_controller<CR>
+  nnoremap <silent> ,ucm :<C-u>Unite cake_model<CR>
+  nnoremap <silent> ,ucv :<C-u>Unite cake_view<CR>
+  nnoremap <silent> ,uch :<C-u>Unite cake_helper<CR>
 
   " ウィンドウを分割して開く
   au FileType unite nnoremap <silent> <buffer> <expr> <C-j> unite#do_action('split')
@@ -1260,6 +1270,12 @@ let g:quickhl_manual_keywords = [
 "最後の処理 {{{
 " ~/.vimrc.localが存在する場合のみ設定を読み込む
 let s:local_vimrc = expand('~/.vimrc.local')
+if filereadable(s:local_vimrc)
+    execute 'source ' . s:local_vimrc
+endif
+
+" プロジェクトローカル
+let s:local_vimrc = expand('.vimrc.local')
 if filereadable(s:local_vimrc)
     execute 'source ' . s:local_vimrc
 endif
