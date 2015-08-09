@@ -542,6 +542,11 @@ NeoBundle 'TwitVim'
 NeoBundle 't9md/vim-quickhl'
 " }}}
 
+" DBの定義とかを直接見れるようにする {{{
+" 個別の設定はローカルファイルで行う。
+NeoBundle 'vim-scripts/dbext.vim'
+" }}}
+
 " vimrc に記述されたプラグインでインストールされていないものがないかチェックする
 NeoBundleCheck
 call neobundle#end()
