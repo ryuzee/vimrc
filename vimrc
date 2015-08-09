@@ -1272,6 +1272,11 @@ let g:quickhl_manual_keywords = [
         \ ]
 " }}}
 
+" dbextの設定 {{{
+" 詳細は、http://qiita.com/0829/items/ce92a752bf832a06bcf2
+let g:dbext_map_prefix = ':s'
+" }}}
+
 "最後の処理 {{{
 " ~/.vimrc.localが存在する場合のみ設定を読み込む
 let s:local_vimrc = expand('~/.vimrc.local')
