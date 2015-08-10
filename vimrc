@@ -544,7 +544,12 @@ NeoBundle 't9md/vim-quickhl'
 
 " DBの定義とかを直接見れるようにする {{{
 " 個別の設定はローカルファイルで行う。
-NeoBundle 'vim-scripts/dbext.vim'
+" 例外処理を追加したFork版を使う
+NeoBundle 'ryuzee/dbext.vim'
+" }}}
+
+" GitHubのIssueをいい感じに扱う {{{
+NeoBundle 'jaxbot/github-issues.vim'
 " }}}
 
 " vimrc に記述されたプラグインでインストールされていないものがないかチェックする
