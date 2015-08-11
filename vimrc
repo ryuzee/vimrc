@@ -1206,6 +1206,7 @@ let g:automatic_config = [
       \   { 'match' : { 'buftype' : 'help' } },
       \   { 'match' : { 'filetype' : 'eblook' } },
       \   { 'match' : { 'filetype' : 'gitcommit' } },
+      \   { 'match' : { 'bufname' : 'gissues/*' } },
       \   { 'match' : { 'bufname' : '^.vimshell' } },
       \   { 'match' : {
       \        'bufname' : '^.unite'
