@@ -553,9 +553,9 @@ NeoBundle 'jaxbot/github-issues.vim'
 " }}}
 
 " JavascriptやHTML編集系 {{{
-NeoBundle 'vim-css3-syntax'
-NeoBundle 'vim-javascript'
-NeoBundle 'html5.vim'
+NeoBundle 'hail2u/vim-css3-syntax'
+NeoBundle 'pangloss/:Gm-javascript'
+NeoBundle 'othree/html5.vim'
 " }}}
 
 " vimrc に記述されたプラグインでインストールされていないものがないかチェックする
