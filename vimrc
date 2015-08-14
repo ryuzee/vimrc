@@ -554,7 +554,7 @@ NeoBundle 'jaxbot/github-issues.vim'
 
 " JavascriptやHTML編集系 {{{
 NeoBundle 'hail2u/vim-css3-syntax'
-NeoBundle 'pangloss/:Gm-javascript'
+NeoBundle 'pangloss/vim-javascript'
 NeoBundle 'othree/html5.vim'
 " }}}
 
@@ -1286,7 +1286,7 @@ let g:quickhl_manual_keywords = [
 
 " dbextの設定 {{{
 " 詳細は、http://qiita.com/0829/items/ce92a752bf832a06bcf2
-let g:dbext_map_prefix = '[s'
+let g:dbext_map_prefix = '&s'
 " }}}
 
 "最後の処理 {{{
