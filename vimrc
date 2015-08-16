@@ -655,7 +655,7 @@ let g:quickrun_config['*'] = {'split': ''}
 
 augroup QuickRunPHPUnit
   autocmd!
-  autocmd BufWinEnter,BufNewFile *Test.php set filetype=phpunit
+  autocmd BufWinEnter,BufNewFile *Test.php set filetype=phpunit.php
 augroup END
 
 let g:quickrun_config['phpunit'] = {}
