@@ -636,12 +636,6 @@ let g:airline#extensions#tabline#left_alt_sep = '>'
 let g:airline#extensions#tabline#left_sep = '⮀'
 let g:airline#extensions#tabline#left_alt_sep = '⮀'
 let g:airline#extensions#readonly#symbol = '⭤ '
-" set guifont=RictyDiminished-Regular-Powerline.ttf:h14
-
-" カーソル位置と現在行を示す {{{
-:set cursorline
-:hi CursorLine term=underline cterm=underline
-"}}}
 
 " コメント行をグレー表示する(コンソール）{{{
 hi Comment ctermfg=7
@@ -908,6 +902,7 @@ set foldmethod=marker
 "}}}
 
 " vim-php-cs-fixer の設定 {{{2
+let g:php_cs_fixer_level = "psr2"
 let g:php_cs_fixer_path = "/usr/local/bin/php-cs-fixer.phar"
 nnoremap <silent> :pcd :call PhpCsFixerFixDirectory()<CR>
 nnoremap <silent> :pcf :call PhpCsFixerFixFile()<CR>
