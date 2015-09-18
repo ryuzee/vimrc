@@ -220,41 +220,40 @@ NeoBundle 'thinca/vim-quickrun'
 " http://www.karakaram.com/vim/phpunit-location-list/
 NeoBundle 'karakaram/vim-quickrun-phpunit'
 " }}}
-if v:version >= 703
-  " http://d.hatena.ne.jp/yuhei_kagaya/20111216/1324023977
-  NeoBundle 'violetyk/cake.vim'
-  " インデントをわかりやすく表示する {{{
-  NeoBundle 'nathanaelkane/vim-indent-guides'
-  " }}}
-  NeoBundle 'Shougo/unite.vim'
-  NeoBundle 'ujihisa/unite-colorscheme'
-  NeoBundle 'ujihisa/unite-font'
-  NeoBundle 'Shougo/unite-outline'
-  NeoBundle 'ujihisa/unite-locate'
-  NeoBundle 'kmnk/vim-unite-svn'
-  NeoBundle 'choplin/unite-vim_hacks'
-  NeoBundle 'tsukkee/unite-help'
-  NeoBundle 'tsukkee/unite-tag'
-  NeoBundle 'oppara/vim-unite-cake'
-  NeoBundle 'Shougo/neocomplcache'
-  NeoBundle 'ryuzee/neocomplcache_php_selenium_snippet'
-  NeoBundle 'Shougo/neosnippet'
-  NeoBundle 'Shougo/neosnippet-snippets'
-  NeoBundle 'ryuzee/neosnippet_chef_recipe_snippet'
-  NeoBundle 'glidenote/serverspec-snippets'
-  " PHPの標準関数用スニペット {{{
-  NeoBundle 'tekkoc/PHPSnippetsCreator'
-  " }}}
-  NeoBundle 'Shougo/vimproc', {
-  \ 'build' : {
-    \ 'windows' : 'make -f make_mingw32.mak',
-    \ 'cygwin' : 'make -f make_cygwin.mak',
-    \ 'mac' : 'make -f make_mac.mak',
-    \ 'unix' : 'make -f make_unix.mak',
-    \ },
-  \ }
-  NeoBundle 'Shougo/vimshell'
-endif
+" http://d.hatena.ne.jp/yuhei_kagaya/20111216/1324023977
+NeoBundle 'violetyk/cake.vim'
+" インデントをわかりやすく表示する {{{
+NeoBundle 'nathanaelkane/vim-indent-guides'
+" }}}
+NeoBundle 'Shougo/unite.vim'
+NeoBundle 'ujihisa/unite-colorscheme'
+NeoBundle 'ujihisa/unite-font'
+NeoBundle 'Shougo/unite-outline'
+NeoBundle 'ujihisa/unite-locate'
+NeoBundle 'kmnk/vim-unite-svn'
+NeoBundle 'choplin/unite-vim_hacks'
+NeoBundle 'tsukkee/unite-help'
+NeoBundle 'tsukkee/unite-tag'
+NeoBundle 'oppara/vim-unite-cake'
+NeoBundle 'Shougo/neocomplcache'
+NeoBundle 'ryuzee/neocomplcache_php_selenium_snippet'
+NeoBundle 'nishigori/neocomplcache-phpunit-snippet'
+NeoBundle 'Shougo/neosnippet'
+NeoBundle 'Shougo/neosnippet-snippets'
+NeoBundle 'ryuzee/neosnippet_chef_recipe_snippet'
+NeoBundle 'glidenote/serverspec-snippets'
+" PHPの標準関数用スニペット {{{
+NeoBundle 'tekkoc/PHPSnippetsCreator'
+" }}}
+NeoBundle 'Shougo/vimproc', {
+\ 'build' : {
+  \ 'windows' : 'make -f make_mingw32.mak',
+  \ 'cygwin' : 'make -f make_cygwin.mak',
+  \ 'mac' : 'make -f make_mac.mak',
+  \ 'unix' : 'make -f make_unix.mak',
+  \ },
+\ }
+NeoBundle 'Shougo/vimshell'
 
 " マニュアルやWebを参照できるようにする {{{
 NeoBundle 'thinca/vim-ref'
@@ -300,11 +299,9 @@ NeoBundle 'stephpy/vim-php-cs-fixer'
 " }}}
 
 " PDV - PHP Documentor for VIM - 2 {{{
-if v:version >= 704
-  NeoBundle 'SirVer/ultisnips'
-  NeoBundle 'tobyS/vmustache'
-  NeoBundle 'ryuzee/pdv' " Forked ver from tobyS/pdv
-endif
+NeoBundle 'SirVer/ultisnips'
+NeoBundle 'tobyS/vmustache'
+NeoBundle 'ryuzee/pdv' " Forked ver from tobyS/pdv
 " }}}
 
 " PHPファイルの中にHTMLがある場合のインデントをいい感じに扱う {{{
@@ -556,6 +553,10 @@ NeoBundle 'jaxbot/github-issues.vim'
 NeoBundle 'hail2u/vim-css3-syntax'
 NeoBundle 'pangloss/vim-javascript'
 NeoBundle 'othree/html5.vim'
+NeoBundle 'heavenshell/vim-jsdoc'
+NeoBundle 'moll/vim-node'
+NeoBundle 'mattn/jscomplete-vim'
+NeoBundle 'myhere/vim-nodejs-complete'
 " }}}
 
 " vimrc に記述されたプラグインでインストールされていないものがないかチェックする
@@ -588,13 +589,11 @@ augroup END
 "}}}
 
 " vim-indent-guides設定 / インデントをわかりやすく表示する {{{
-if v:version >= 703
-  let g:indent_guides_enable_on_vim_startup = 1
-  let g:indent_guides_auto_colors = 1
-  let g:indent_guides_color_change_percent = 30
-  let g:indent_guides_guide_size = 1
-  let g:indent_guides_exclude_filetypes = ['help', 'nerdtree', 'calendar']
-endif
+let g:indent_guides_enable_on_vim_startup = 1
+let g:indent_guides_auto_colors = 1
+let g:indent_guides_color_change_percent = 30
+let g:indent_guides_guide_size = 1
+let g:indent_guides_exclude_filetypes = ['help', 'nerdtree', 'calendar']
 "}}}
 
 " フォーカスがあたっていない場合は透明にする {{{
@@ -665,128 +664,124 @@ filetype plugin indent on
 "}}}
 
 " unite.vim {{{
-if v:version >= 703
-  " 入力モードで開始する
-  let g:unite_enable_start_insert=1
-  " 縦分割で開く(オフにする)
-  let g:unite_enable_split_vertically = 0
-  " Windowの幅
-  let g:unite_winwidth = 40
-  " Window
-  let g:unite_winheight = 10
-  " 全部乗せ
-  nnoremap <silent> ,ua :<C-u>UniteWithBufferDir -no-quit -buffer-name=files buffer file_mru bookmark file<CR>
-  " バッファ一覧
-  nnoremap <silent> ,ub :<C-u>Unite buffer<CR>
-  " colorscheme
-  nnoremap <silent> ,uc :<C-u>Unite colorscheme<CR>
-  " ファイル一覧
-  nnoremap <silent> ,uf :<C-u>UniteWithBufferDir -no-quit -buffer-name=files file<CR>
-  nnoremap <silent> ,ufl :<C-u>UniteWithBufferDir -vertical -winwidth=30 -no-quit -buffer-name=files file<CR>
-  " 最近使用したファイル一覧
-  nnoremap <silent> ,um :<C-u>Unite -no-quit file_mru<CR>
-  nnoremap <silent> ,uml :<C-u>Unite -no-quit -vertical -winwidth=30 file_mru<CR>
-  " outline
-  nnoremap <silent> ,uo :<C-u>Unite outline<CR>
-  nnoremap <silent> ,uol :<C-u>Unite -vertical -no-quit -winwidth=30 outline<CR>
-  " レジスタ一覧
-  nnoremap <silent> ,ur :<C-u>Unite -no-quit -buffer-name=register register<CR>
-  " 常用セット
-  nnoremap <silent> ,uu :<C-u>Unite -no-quit buffer file_mru<CR>
-  " Yankround
-  nnoremap <silent> ,uy :<C-u>Unite yankround<CR>
+" 入力モードで開始する
+let g:unite_enable_start_insert=1
+" 縦分割で開く(オフにする)
+let g:unite_enable_split_vertically = 0
+" Windowの幅
+let g:unite_winwidth = 40
+" Window
+let g:unite_winheight = 10
+" 全部乗せ
+nnoremap <silent> ,ua :<C-u>UniteWithBufferDir -no-quit -buffer-name=files buffer file_mru bookmark file<CR>
+" バッファ一覧
+nnoremap <silent> ,ub :<C-u>Unite buffer<CR>
+" colorscheme
+nnoremap <silent> ,uc :<C-u>Unite colorscheme<CR>
+" ファイル一覧
+nnoremap <silent> ,uf :<C-u>UniteWithBufferDir -no-quit -buffer-name=files file<CR>
+nnoremap <silent> ,ufl :<C-u>UniteWithBufferDir -vertical -winwidth=30 -no-quit -buffer-name=files file<CR>
+" 最近使用したファイル一覧
+nnoremap <silent> ,um :<C-u>Unite -no-quit file_mru<CR>
+nnoremap <silent> ,uml :<C-u>Unite -no-quit -vertical -winwidth=30 file_mru<CR>
+" outline
+nnoremap <silent> ,uo :<C-u>Unite outline<CR>
+nnoremap <silent> ,uol :<C-u>Unite -vertical -no-quit -winwidth=30 outline<CR>
+" レジスタ一覧
+nnoremap <silent> ,ur :<C-u>Unite -no-quit -buffer-name=register register<CR>
+" 常用セット
+nnoremap <silent> ,uu :<C-u>Unite -no-quit buffer file_mru<CR>
+" Yankround
+nnoremap <silent> ,uy :<C-u>Unite yankround<CR>
 
-  " CakePHP
-  nnoremap <silent> ,ucc :<C-u>Unite cake_controller<CR>
-  nnoremap <silent> ,ucm :<C-u>Unite cake_model<CR>
-  nnoremap <silent> ,ucv :<C-u>Unite cake_view<CR>
-  nnoremap <silent> ,uch :<C-u>Unite cake_helper<CR>
+" CakePHP
+nnoremap <silent> ,ucc :<C-u>Unite cake_controller<CR>
+nnoremap <silent> ,ucm :<C-u>Unite cake_model<CR>
+nnoremap <silent> ,ucv :<C-u>Unite cake_view<CR>
+nnoremap <silent> ,uch :<C-u>Unite cake_helper<CR>
 
-  " ウィンドウを分割して開く
-  au FileType unite nnoremap <silent> <buffer> <expr> <C-j> unite#do_action('split')
-  au FileType unite inoremap <silent> <buffer> <expr> <C-j> unite#do_action('split')
-  " ウィンドウを縦に分割して開く
-  au FileType unite nnoremap <silent> <buffer> <expr> <C-l> unite#do_action('vsplit')
-  au FileType unite inoremap <silent> <buffer> <expr> <C-l> unite#do_action('vsplit')
+" ウィンドウを分割して開く
+au FileType unite nnoremap <silent> <buffer> <expr> <C-j> unite#do_action('split')
+au FileType unite inoremap <silent> <buffer> <expr> <C-j> unite#do_action('split')
+" ウィンドウを縦に分割して開く
+au FileType unite nnoremap <silent> <buffer> <expr> <C-l> unite#do_action('vsplit')
+au FileType unite inoremap <silent> <buffer> <expr> <C-l> unite#do_action('vsplit')
 
-  " unite.vim上でのキーマッピング
-  autocmd FileType unite call s:unite_my_settings()
-  function! s:unite_my_settings()
-    " 単語単位からパス単位で削除するように変更
-    imap <buffer> <C-w> <Plug>(unite_delete_backward_path)
-    " ESCキーを2回押すと終了する
-    nmap <silent><buffer> <ESC><ESC> q
-    imap <silent><buffer> <ESC><ESC> <ESC>q
-  endfunction
-  let g:unite_source_history_yank_enable = 1
-  try
-          let g:unite_source_rec_async_command='ag --nocolor --nogroup -g ""'
-          call unite#filters#matcher_default#use(['matcher_fuzzy'])
-  catch
-  endtry
-  " search a file in the filetree
-  nnoremap <Space>s :split<cr> :<C-u>Unite -start-insert file_rec/async<cr>
-  " reset not it is <C-l> normally
-  :nnoremap <Space>r <Plug>(unite_restart)
-endif
+" unite.vim上でのキーマッピング
+autocmd FileType unite call s:unite_my_settings()
+function! s:unite_my_settings()
+  " 単語単位からパス単位で削除するように変更
+  imap <buffer> <C-w> <Plug>(unite_delete_backward_path)
+  " ESCキーを2回押すと終了する
+  nmap <silent><buffer> <ESC><ESC> q
+  imap <silent><buffer> <ESC><ESC> <ESC>q
+endfunction
+let g:unite_source_history_yank_enable = 1
+try
+  let g:unite_source_rec_async_command='ag --nocolor --nogroup -g ""'
+  call unite#filters#matcher_default#use(['matcher_fuzzy'])
+catch
+endtry
+" search a file in the filetree
+nnoremap <Space>s :split<cr> :<C-u>Unite -start-insert file_rec/async<cr>
+" reset not it is <C-l> normally
+:nnoremap <Space>r <Plug>(unite_restart)
 "}}}
 
 " neocomplcacheを有効にする {{{
-if v:version >= 703
-  let g:neocomplcache_enable_at_startup = 1
-  " 大文字小文字を区別する
-  let g:neocomplcache_SmartCase = 1
-  " キャメルケース補完を有効にする
-  let g:neocomplcache_enable_camel_case_completion = 1
-  " アンダーバー補完を有効にする
-  let g:NeoComplCache_EnableUnderbarCompletion = 1
-  "ポップアップメニューで表示される候補の数。初期値は100
-  let g:neocomplcache_max_list = 20
-  "自動補完を行う入力数を設定。初期値は2
-  let g:neocomplcache_auto_completion_start_length = 2
-  "手動補完時に補完を行う入力数を制御。値を小さくすると文字の削除時に重くなる
-  let g:neocomplcache_manual_completion_start_length = 5
-  "バッファや辞書ファイル中で、補完の対象となるキーワードの最小長さ。初期値は4。
-  let g:neocomplcache_min_keyword_length = 4
-  "シンタックスファイル中で、補完の対象となるキーワードの最小長さ。初期値は4。
-  let g:neocomplcache_min_syntax_length = 4
-  "1:補完候補検索時に大文字・小文字を無視する
-  let g:neocomplcache_enable_ignore_case = 1
-  "入力に大文字が入力されている場合、大文字小文字の区別をする
-  let g:neocomplcache_enable_smart_case = 1
-  "シンタックス補完を無効に
-  let g:neocomplcache_plugin_disable = {
-  \ 'syntax_complete' : 1,
-  \ }
-  let g:neosnippet#snippets_directory='~/.vim/bundle/neosnippet/autoload/neosnippet/snippets,~/.vim/bundle/neosnippet_chef_recipe_snippet/autoload/neosnippet/snippets,~/.vim/bundle/PHPSnippetsCreator/dist'
-  " 補完を有効にしたい場合はset filetype=textなどにするとよい。
-  let g:neocomplcache_text_mode_filetypes = {
-  \  'tex': 1,
-  \  'text': 1,
-  \  'gitcommit': 1,
-  \  'plaintex': 1,
-  \}
+let g:neocomplcache_enable_at_startup = 1
+" 大文字小文字を区別する
+let g:neocomplcache_SmartCase = 1
+" キャメルケース補完を有効にする
+let g:neocomplcache_enable_camel_case_completion = 1
+" アンダーバー補完を有効にする
+let g:NeoComplCache_EnableUnderbarCompletion = 1
+"ポップアップメニューで表示される候補の数。初期値は100
+let g:neocomplcache_max_list = 20
+"自動補完を行う入力数を設定。初期値は2
+let g:neocomplcache_auto_completion_start_length = 2
+"手動補完時に補完を行う入力数を制御。値を小さくすると文字の削除時に重くなる
+let g:neocomplcache_manual_completion_start_length = 5
+"バッファや辞書ファイル中で、補完の対象となるキーワードの最小長さ。初期値は4。
+let g:neocomplcache_min_keyword_length = 4
+"シンタックスファイル中で、補完の対象となるキーワードの最小長さ。初期値は4。
+let g:neocomplcache_min_syntax_length = 4
+"1:補完候補検索時に大文字・小文字を無視する
+let g:neocomplcache_enable_ignore_case = 1
+"入力に大文字が入力されている場合、大文字小文字の区別をする
+let g:neocomplcache_enable_smart_case = 1
+"シンタックス補完を無効に
+let g:neocomplcache_plugin_disable = {
+\ 'syntax_complete' : 1,
+\ }
+let g:neosnippet#snippets_directory='~/.vim/bundle/neosnippet/autoload/neosnippet/snippets,~/.vim/bundle/neosnippet_chef_recipe_snippet/autoload/neosnippet/snippets,~/.vim/bundle/PHPSnippetsCreator/dist'
+" 補完を有効にしたい場合はset filetype=textなどにするとよい。
+let g:neocomplcache_text_mode_filetypes = {
+\  'tex': 1,
+\  'text': 1,
+\  'gitcommit': 1,
+\  'plaintex': 1,
+\}
 
-  " <C-k> にマッピング
-  " Snippetの候補の選択およびプレースホルダーの移動は以下のコマンドで行う
-  " ★なお展開前に候補が出るのでC-nで選択することが必要★
-  imap <C-k> <Plug>(neosnippet_expand_or_jump)
-  smap <C-k> <Plug>(neosnippet_expand_or_jump)
-  imap <C-s> <Plug>(neosnippet_start_unite_snippet)
-  xmap <C-k> <Plug>(neosnippet_expand_target)
+" <C-k> にマッピング
+" Snippetの候補の選択およびプレースホルダーの移動は以下のコマンドで行う
+" ★なお展開前に候補が出るのでC-nで選択することが必要★
+imap <C-k> <Plug>(neosnippet_expand_or_jump)
+smap <C-k> <Plug>(neosnippet_expand_or_jump)
+imap <C-s> <Plug>(neosnippet_start_unite_snippet)
+xmap <C-k> <Plug>(neosnippet_expand_target)
 
-  " 展開された後はTabでいい感じにプレースホルダを移動していく
-  imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-  \ "\<Plug>(neosnippet_expand_or_jump)"
-  \: pumvisible() ? "\<C-n>" : "\<TAB>"
-  smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-  \ "\<Plug>(neosnippet_expand_or_jump)"
-  \: "\<TAB>"
-  "
-  " For snippet_complete marker.
-  if has('conceal')
-    set conceallevel=2 concealcursor=i
-  endif
+" 展開された後はTabでいい感じにプレースホルダを移動していく
+imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+\ "\<Plug>(neosnippet_expand_or_jump)"
+\: pumvisible() ? "\<C-n>" : "\<TAB>"
+smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+\ "\<Plug>(neosnippet_expand_or_jump)"
+\: "\<TAB>"
+"
+" For snippet_complete marker.
+if has('conceal')
+  set conceallevel=2 concealcursor=i
 endif
 "}}}
 
@@ -1005,9 +1000,7 @@ vmap ,, <Plug>NERDCommenterToggle
 "}}}
 
 " VimShell {{{
-if v:version >= 703
-  let g:vimshell_prompt = '$ '
-endif
+let g:vimshell_prompt = '$ '
 "}}}
 
 " ctrlp <c-x> {{{
@@ -1282,6 +1275,15 @@ let g:quickhl_manual_keywords = [
 " dbextの設定 {{{
 " 詳細は、http://qiita.com/0829/items/ce92a752bf832a06bcf2
 let g:dbext_map_prefix = '&s'
+" }}}
+
+" Nodejsまわり {{{
+:setl omnifunc=jscomplete#CompleteJS
+if !exists('g:neocomplcache_omni_functions')
+  let g:neocomplcache_omni_functions = {}
+endif
+let g:neocomplcache_omni_functions.javascript = 'nodejscomplete#CompleteJS'
+let g:node_usejscomplete = 1
 " }}}
 
 "最後の処理 {{{
