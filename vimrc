@@ -475,29 +475,18 @@ let g:unite_enable_split_vertically = 0
 let g:unite_winwidth = 40
 " Window
 let g:unite_winheight = 10
-" 全部乗せ
 nnoremap <silent> ,ua :<C-u>UniteWithBufferDir -no-quit -buffer-name=files buffer file_mru bookmark file<CR>
-" バッファ一覧
 nnoremap <silent> ,ub :<C-u>Unite buffer<CR>
-" colorscheme
 nnoremap <silent> ,uc :<C-u>Unite colorscheme<CR>
-" ファイル一覧
 nnoremap <silent> ,uf :<C-u>UniteWithBufferDir -no-quit -buffer-name=files file<CR>
 nnoremap <silent> ,ufl :<C-u>UniteWithBufferDir -vertical -winwidth=30 -no-quit -buffer-name=files file<CR>
-" 最近使用したファイル一覧
 nnoremap <silent> ,um :<C-u>Unite -no-quit file_mru<CR>
 nnoremap <silent> ,uml :<C-u>Unite -no-quit -vertical -winwidth=30 file_mru<CR>
-" outline
 nnoremap <silent> ,uo :<C-u>Unite outline<CR>
 nnoremap <silent> ,uol :<C-u>Unite -vertical -no-quit -winwidth=30 outline<CR>
-" レジスタ一覧
 nnoremap <silent> ,ur :<C-u>Unite -no-quit -buffer-name=register register<CR>
-" 常用セット
 nnoremap <silent> ,uu :<C-u>Unite -no-quit buffer file_mru<CR>
-" Yankround
 nnoremap <silent> ,uy :<C-u>Unite yankround<CR>
-
-" CakePHP
 nnoremap <silent> ,ucc :<C-u>Unite cake_controller<CR>
 nnoremap <silent> ,ucm :<C-u>Unite cake_model<CR>
 nnoremap <silent> ,ucv :<C-u>Unite cake_view<CR>
