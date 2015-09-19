@@ -782,7 +782,8 @@ nmap <Space>] <Plug>(quickhl-tag-toggle)
 map H <Plug>(operator-quickhl-manual-this-motion)
 let g:quickhl_manual_enable_at_startup = 1
 let g:quickhl_manual_keywords = [
-        \ "@TODO",
+        \ "TODO",
+        \ "FIXME",
         \ ]
 "}}}
 "<=== 検索系の設定ここまで}}}
