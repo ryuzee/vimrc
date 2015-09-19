@@ -260,170 +260,72 @@ NeoBundle 'sickill/vim-monokai'
 NeoBundle 'altercation/vim-colors-solarized'
 " }}}
 
-" マニュアルやWebを参照できるようにする {{{
-NeoBundle 'thinca/vim-ref'
-" }}}
-
-NeoBundle 'git://repo.or.cz/vcscommand'
-
 " ブラウザを開く {{{
 NeoBundle 'tyru/open-browser.vim'
 NeoBundle 'mattn/webapi-vim'
 NeoBundle 'thinca/vim-openbuf'
 " }}}
 
+NeoBundle 'thinca/vim-ref'
+NeoBundle 'git://repo.or.cz/vcscommand'
 NeoBundle "markcornick/vim-vagrant"
-
-
-" ステータスラインをCoooolにする {{{
 NeoBundle 'bling/vim-airline'
-" }}}
-
-" バッファをステータスラインに表示 {{{
 NeoBundle 'bling/vim-bufferline'
-" }}}
-
 NeoBundle 'tpope/vim-endwise'
 NeoBundle 'tomtom/tcomment_vim'
-
-" Rubocopを使ってソースコードのフォーマットチェック {{{
 NeoBundle 'ngmy/vim-rubocop'
-"}}}
-
 NeoBundle 'godlygeek/tabular'
 NeoBundle 'rcmdnk/vim-markdown'
-
-" マークダウンをブラウザを使ってプレビュー表示する {{{
 NeoBundle 'kannokanno/previm'
-" }}}
-
-" 同一ディレクトリ内のファイルを簡単にリストアップして編集 {{{
-" http://mattn.kaoriya.net/software/vim/20111228013428.htm
 NeoBundle 'kien/ctrlp.vim'
-" }}}
-
-" Alignでテキスト整形 {{{
-" http://nanasi.jp/articles/vim/align/align_vim_ctrl.html
 NeoBundle 'vim-scripts/Align'
-" easy-alignに置き換え？
-" http://alpaca.tc/blog/vim/plugins-best-of-vim-1.html
 NeoBundle 'junegunn/vim-easy-align'
-" }}}
-
-" SQLを整形 {{{
 NeoBundle 'vim-scripts/SQLUtilities'
-"}}}
-
-" sudoつけて特権で編集可能にする {{{
-" http://nanasi.jp/articles/vim/sudo_vim.html
 NeoBundle 'sudo.vim'
-"}}}
-
-" フォントの大小切り替え {{{
-" - で縮小、+で拡大、:Fontzoom size指定
 NeoBundle 'thinca/vim-fontzoom'
-"}}}
-
-" コメントアウトを楽にする {{{
 NeoBundle 'scrooloose/nerdcommenter'
-" }}}
-
-" キーボードで簡単に移動候補を出して操作 {{{
 NeoBundle 'easymotion/vim-easymotion'
-" }}}
-
-" Yankの履歴をいい感じに取り出す {{{
 NeoBundle 'LeafCage/yankround.vim'
-" }}}
-
-" メソッドや変数宣言の一覧を表示 {{{
-" vim-script
-" タグを作りたいところで、ctags -R したあとに:TlistすればOK
 NeoBundle 'taglist.vim'
-"}}}
-
-" 文字列をいい感じに囲ったり、囲んでるものを外す {{{
-" See http://vimblog.hatenablog.com/entry/vim_plugin_surround_vim
-" 例) 文字列上でdtsとかやるとタグを全部外せる
 NeoBundle 'tpope/vim-surround'
-"}}}
-
-" zencodingを使って楽にhtmlを書く {{{
-" https://github.com/mattn/emmet-vim/blob/master/doc/emmet.txt
-" 例) table>tr*3>td*2<Ctrl+y>, みたいにすると展開される
 NeoBundle 'mattn/emmet-vim'
-"}}}
-
-" vimの戦闘力を明らかにする {{{
-" :Scouterコマンド
 NeoBundle 'thinca/vim-scouter'
-"}}}
-
-" 直近開いたファイルとかを起動時に開く {{{
 NeoBundle "mhinz/vim-startify"
-"}}}
-
-" さまざまなファイルのフォーマットチェック系 {{{
-" :SyntasticCheck で実行
 NeoBundle 'scrooloose/syntastic'
-"}}}
-
-" ログを色付け {{{
 NeoBundle 'vim-scripts/AnsiEsc.vim'
-" }}}
-
-" Dim inactive window / 日本語入力の設定 {{{
 NeoBundle 'blueyed/vim-diminactive'
-" }}}
-
-" :ExciteTranslateとやれば翻訳される {{{
 NeoBundle 'mattn/excitetranslate-vim'
-" }}}
-
-" 再起動を簡単にできるようにする {{{
-" :Restart あたりでOK
 NeoBundle 'xolox/vim-session'
-" }}}
-
-" ファイルリストをツリー表示する {{{
 NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'Xuyuanp/nerdtree-git-plugin'
 NeoBundle 'jistr/vim-nerdtree-tabs'
-" }}}
-
-" BootstrapのHTMLを簡単に書けるようにするスニペット {{{
 NeoBundle 'chrisgillis/vim-bootstrap3-snippets'
-"}}}
-
-" JSONファイルをハイライトしていい感じに表示してくれる {{{
 NeoBundle 'elzr/vim-json'
-"}}}
-
 NeoBundle 'xolox/vim-misc'
 NeoBundle 'xolox/vim-easytags'
-
-" :TagbarToggle コマンドでタグを別窓で表示する {{{
 NeoBundle 'majutsushi/tagbar'
-" }}}
-
-" 文末の空白を削除する {{{
-" :FixWhitespaceとすればまとめて文末削除できる
 NeoBundle 'bronson/vim-trailing-whitespace'
-" }}}
-
 NeoBundle 'fuenor/im_control.vim'
-
 NeoBundle 'ujihisa/neco-look'
-
-" 英語のオンライン辞書などを引けるようにする {{{
 NeoBundle 'mfumi/ref-dicts-en'
-" }}}
-
-" Macの辞書を引く {{{
-" http://itchyny.hatenablog.com/entry/20130916/1379305665
-" :Dictionaryで呼び出し
 NeoBundle 'itchyny/dictionary.vim'
-" }}}
+NeoBundle 'glidenote/memolist.vim'
+NeoBundle 'terryma/vim-expand-region'
+NeoBundle 'mattn/googletranslate-vim'
+NeoBundle 'tpope/vim-fugitive'
+NeoBundle 'haya14busa/incsearch.vim'
+NeoBundle 'haya14busa/incsearch-fuzzy.vim'
+NeoBundle 'haya14busa/incsearch-easymotion.vim'
+NeoBundle "osyo-manga/vim-anzu"
+NeoBundle 'osyo-manga/vim-gift'
+NeoBundle 'osyo-manga/vim-automatic'
+NeoBundle 'itchyny/calendar.vim'
+NeoBundle 'chrisbra/csv.vim'
+NeoBundle 'terryma/vim-multiple-cursors'
+NeoBundle 'TwitVim'
+NeoBundle 't9md/vim-quickhl'
+NeoBundle 'ryuzee/dbext.vim'
+NeoBundle 'jaxbot/github-issues.vim'
 
 " eblookを使ってローカル辞書検索 {{{
 " <LEADER> y でカーソル位置の文字を検索できる
@@ -434,89 +336,6 @@ NeoBundle 'deton/eblook.vim'
 " Download eblook from http://openlab.jp/edict/eblook/dist/eblook-1.6.1.tar.gz
 " 辞書ファイルは以下から入手
 " http://www.vector.co.jp/soft/data/writing/se369320.html
-" }}}
-
-" Google Suggestも使う {{{
-NeoBundle 'mattn/googletranslate-vim'
-" と思ったけどインターネット接続必須になり重いので一端取りやめる。環境次第
-" NeoBundle 'mopp/googlesuggest-source.vim'
-" NeoBundle 'mattn/googlesuggest-complete-vim'
-" NeoBundle 'sousu/neco-googlesuggest'
-" }}}
-
-" 簡単にメモを取る {{{
-NeoBundle 'glidenote/memolist.vim'
-" }}}
-
-" vの連打で範囲が変えられるようにする {{{
-NeoBundle 'terryma/vim-expand-region'
-" }}}
-
-" Gitを扱う {{{
-
-"：Gstatus
-"    新しい窓を作ってgit statusを表示
-"：Gwrite
-"    現在開いているソースをgit add
-"：Gread
-"    現在開いているソースの直前のコミット時のソースを表示
-"：Gmove destination/path
-"    現在開いているソースをgit mvする
-"：Gremove
-"    現在開いているソースをgit rmする
-"：Gcommit
-"    git commit
-"：Gblame
-"    現在のソースをgit blame。vimが色づけしてくれる
-"：Gdiff
-"    現在のソースの変更点をvimdiffで表示
-NeoBundle 'tpope/vim-fugitive'
-" }}}
-
-" インクリメンタル検索の機能改善 {{{
-NeoBundle 'haya14busa/incsearch.vim'
-NeoBundle 'haya14busa/incsearch-fuzzy.vim'
-NeoBundle 'haya14busa/incsearch-easymotion.vim'
-" }}}
-
-" 検索にヒットした件数をステータスラインに表示する {{{
-NeoBundle "osyo-manga/vim-anzu"
-" }}}
-
-" ウィンドウをごにょごにょ楽に操作する {{{
-NeoBundle 'osyo-manga/vim-gift'
-NeoBundle 'osyo-manga/vim-automatic'
-" }}}
-
-" カレンダー {{{
-NeoBundle 'itchyny/calendar.vim'
-" }}}
-
-" CSVファイルをいい感じに扱う {{{
-NeoBundle 'chrisbra/csv.vim'
-" }}}
-
-" 複数行カーソル {{{
-" VisualModeで選択して、<CTRL>+n をクリックし編集するとまとめていける
-NeoBundle 'terryma/vim-multiple-cursors'
-" }}}
-
-" VimでTwitter {{{
-NeoBundle 'TwitVim'
-" }}}
-
-" 文字列をいい感じに簡単にハイライトする {{{
-NeoBundle 't9md/vim-quickhl'
-" }}}
-
-" DBの定義とかを直接見れるようにする {{{
-" 個別の設定はローカルファイルで行う。
-" 例外処理を追加したFork版を使う
-NeoBundle 'ryuzee/dbext.vim'
-" }}}
-
-" GitHubのIssueをいい感じに扱う {{{
-NeoBundle 'jaxbot/github-issues.vim'
 " }}}
 
 " vimrc に記述されたプラグインでインストールされていないものがないかチェックする
@@ -913,6 +732,7 @@ if !exists('g:neocomplcache_omni_functions')
 endif
 let g:neocomplcache_omni_functions.javascript = 'nodejscomplete#CompleteJS'
 let g:node_usejscomplete = 1
+autocmd BufNewFile,BufRead *.js set filetype=javascript
 "<=== JavaScript関連の設定ここまで }}}
 
 "===> Markdown関連の設定 {{{
@@ -1118,18 +938,13 @@ let IM_CtrlIBusPython = 1
 let g:IM_CtrlBufLocalMode = 1
 "}}}
 
+"===> 英文関係の設定 {{{
 " Excitetranslate {{{
 " trと入れれば翻訳できるように設定
 nnoremap <silent> tr :<C-u>ExciteTranslate<CR>
 vnoremap <silent> tr :<C-u>ExciteTranslate<CR>
 autocmd BufEnter ==Translate==\ Excite nnoremap <buffer> <silent> q :<C-u>close<CR>
 "}}}
-
-" 英文を書くときに色々補完する {{{
-
-" googlesuggest* {{{
-" let g:googlesuggest_language = 'en'
-" }}}
 
 " ref-dicts-en / 辞書を引けるようにする(vim-refが必要) {{{
 let g:ref_source_webdict_sites = {
@@ -1167,6 +982,7 @@ let eblookenc = 'euc-jp'
 let eblook_entrywin_height = 10
 let eblook_contentwin_height = 10
 "}}}
+"<=== 英文関連の設定ここまで}}}
 
 " memolist / 簡単にメモ取りたい {{{
 let g:memolist_path = "~/Dropbox/memo"
