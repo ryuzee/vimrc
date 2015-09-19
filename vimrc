@@ -58,7 +58,9 @@ set laststatus=2               "常にステータス行を表示
 " %= separator between leftside and right side
 " %l cursor position
 " %c column number
-set statusline=%<%f\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).'][%{fugitive#statusline()}]['.&ft.']['.&ff.']'}%=%l,%c%V%8P
+if filereadable(expand('~/.vim/bundle/vim-fugitive'))
+  set statusline=%<%f\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).'][%{fugitive#statusline()}]['.&ft.']['.&ff.']'}%=%l,%c%V%8P
+endif
 set listchars=tab:»-,trail:-,eol:↲,extends:»,precedes:«,nbsp:%
 set modeline
 set modelines=5
@@ -163,40 +165,6 @@ if has('autocmd')
   autocmd BufReadPost * call AU_ReCheck_FENC()
 endif
 " }}}
-
-" Shift + 矢印でウィンドウサイズを変更 {{{
-nnoremap <S-Left>  <C-w><<CR>
-nnoremap <S-Right> <C-w>><CR>
-nnoremap <S-Up>    <C-w>-<CR>
-nnoremap <S-Down>  <C-w>+<CR>
-" }}}
-
-" 画面スクロール {{{
-nnoremap <Space><Space>   <PageDown>
-nnoremap ;;   <PageUp>
-" }}}
-
-" タブ移動の設定 {{{
-" The prefix key.
-nnoremap    [Tag]   <Nop>
-nmap    t [Tag]
-" Shift + Tab でタブ移動、Tab + Tab で左移動する
-nnoremap <S-Tab> gt
-nnoremap ;; gT
-" t1 で1番左のタブ、t2 で1番左から2番目のタブにジャンプ
-for n in range(1, 9)
-  execute 'nnoremap <silent> [Tag]'.n  ':<C-u>tabnext'.n.'<CR>'
-endfor
-" tc 新しいタブを一番右に作る
-map <silent> [Tag]c :tablast <bar> tabnew<CR>
-" tx タブを閉じる
-map <silent> [Tag]x :tabclose<CR>
-" tn 次のタブ
-map <silent> [Tag]n :tabnext<CR>
-" tp 前のタブ
-map <silent> [Tag]p :tabprevious<CR>
-" }}}
-
 "<=== 一般的な設定[ここまで] }}}
 
 "===> NeoBundleの設定 {{{
@@ -291,7 +259,6 @@ NeoBundle 'nanotech/jellybeans.vim'
 NeoBundle 'sickill/vim-monokai'
 NeoBundle 'altercation/vim-colors-solarized'
 " }}}
-
 
 " マニュアルやWebを参照できるようにする {{{
 NeoBundle 'thinca/vim-ref'
@@ -552,7 +519,6 @@ NeoBundle 'ryuzee/dbext.vim'
 NeoBundle 'jaxbot/github-issues.vim'
 " }}}
 
-
 " vimrc に記述されたプラグインでインストールされていないものがないかチェックする
 NeoBundleCheck
 call neobundle#end()
@@ -613,6 +579,13 @@ if has('gui_macvim')
   set transparency=0  " 透明度を指定
 endif
 "}}}
+
+" Shift + 矢印でウィンドウサイズを変更 {{{
+nnoremap <S-Left>  <C-w><<CR>
+nnoremap <S-Right> <C-w>><CR>
+nnoremap <S-Up>    <C-w>-<CR>
+nnoremap <S-Down>  <C-w>+<CR>
+" }}}
 
 " vim-airline / ステータスラインをいい感じにする {{{
 let g:Powerline_symbols = 'fancy'
@@ -788,7 +761,7 @@ nmap <C-p> <Plug>(yankround-prev)
 nmap <C-n> <Plug>(yankround-next)
 " }}}
 
-" vim-ref {{{1
+"===> vim-refの設定 {{{1
 " 利用可能なソースは以下の通り
 " - clojure  (|ref-clojure.txt|)
 " - erlang   (|ref-erlang.txt|)
@@ -815,11 +788,9 @@ let g:ref_phpmanual_path = $HOME . '/.vim/others/php-chunked-xhtml'
 nnoremap <silent> :php :<C-u>call ref#jump('normal', 'phpmanual')<CR>
 vnoremap <silent> :php :<C-u>call ref#jump('visual', 'phpmanual')<CR>
 "}}}
-
-"}}}
+"<=== vim-refの設定ここまで}}}
 
 "===> PHP関連の設定 {{{1
-
 " makeコマンドを入力すると、PHPの構文エラーがないかどうかもチェック可能
 " PSR2に従いタブからスペースに展開するように変更
 :autocmd FileType php set tabstop=4 shiftwidth=4 expandtab makeprg=php\ -l\ % errorformat=%m\ in\ %f\ on\ line\ %l
@@ -1032,6 +1003,32 @@ vmap ,, <Plug>NERDCommenterToggle
 "<=== ファイル整形系の設定ここまで}}}
 
 "===> 移動・ファイル選択の設定{{{
+" 画面スクロール {{{
+nnoremap <Space><Space>   <PageDown>
+nnoremap ;;   <PageUp>
+" }}}
+
+" タブ移動の設定 {{{
+" The prefix key.
+nnoremap    [Tag]   <Nop>
+nmap    t [Tag]
+" Shift + Tab でタブ移動、Tab + Tab で左移動する
+nnoremap <S-Tab> gt
+nnoremap ;; gT
+" t1 で1番左のタブ、t2 で1番左から2番目のタブにジャンプ
+for n in range(1, 9)
+  execute 'nnoremap <silent> [Tag]'.n  ':<C-u>tabnext'.n.'<CR>'
+endfor
+" tc 新しいタブを一番右に作る
+map <silent> [Tag]c :tablast <bar> tabnew<CR>
+" tx タブを閉じる
+map <silent> [Tag]x :tabclose<CR>
+" tn 次のタブ
+map <silent> [Tag]n :tabnext<CR>
+" tp 前のタブ
+map <silent> [Tag]p :tabprevious<CR>
+" }}}
+
 " ctrlp <c-x> {{{
 " このコマンドを使うと、同一ディレクトリ内のファイルを簡単に
 " リストアップして編集できる
