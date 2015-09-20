@@ -266,6 +266,7 @@ NeoBundle 'haya14busa/incsearch-fuzzy.vim'
 NeoBundle 'haya14busa/incsearch-easymotion.vim'
 NeoBundle "osyo-manga/vim-anzu"
 NeoBundle 't9md/vim-quickhl'
+NeoBundle 'osyo-manga/vim-over'
 " }}}
 
 " バージョン管理 {{{
@@ -785,6 +786,14 @@ let g:quickhl_manual_keywords = [
         \ "TODO",
         \ "FIXME",
         \ ]
+"}}}
+" over.vim {{{
+" over.vimの起動
+nnoremap <silent> ,m :OverCommandLine<CR>
+" カーソル下の単語をハイライト付きで置換
+nnoremap sub :OverCommandLine<CR>%s/<C-r><C-w>//g<Left><Left>
+" コピーした文字列をハイライト付きで置換
+nnoremap subp y:OverCommandLine<CR>%s!<C-r>=substitute(@0, '!', '\\!', 'g')<CR>!!gI<Left><Left><Left>
 "}}}
 "<=== 検索系の設定ここまで}}}
 
