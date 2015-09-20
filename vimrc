@@ -304,6 +304,7 @@ NeoBundle 'chrisgillis/vim-bootstrap3-snippets'
 NeoBundle 'elzr/vim-json'
 NeoBundle 'chrisbra/csv.vim'
 NeoBundle 'mattn/emmet-vim'
+NeoBundle 'ryuzee/vim-ruby-dict'
 " }}}
 
 " PHP関連 {{{
@@ -913,6 +914,7 @@ let g:neocomplcache_text_mode_filetypes = {
 " Define dictionary.
 let g:neocomplcache_dictionary_filetype_lists = {
 \ 'javascript' : '~/.vim/bundle/vim-node-dict/dict/node.dict,~/.vim/bundle/vim-jquery-dict/dict/jquery.dict',
+\ 'ruby' : '~/.vim/bundle/vim-ruby-dict/dict/ruby.dict',
 \ 'default' : ''
 \ }
 
