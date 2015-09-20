@@ -285,13 +285,15 @@ NeoBundle 'mfumi/ref-dicts-en'
 " }}}
 
 " 言語関連 {{{
+NeoBundle 'othree/html5.vim'
 NeoBundle 'hail2u/vim-css3-syntax'
 NeoBundle 'pangloss/vim-javascript'
-NeoBundle 'othree/html5.vim'
+NeoBundle 'mattn/jscomplete-vim'
 NeoBundle 'heavenshell/vim-jsdoc'
 NeoBundle 'moll/vim-node'
-NeoBundle 'mattn/jscomplete-vim'
 NeoBundle 'myhere/vim-nodejs-complete'
+NeoBundle 'guileen/vim-node-dict'
+NeoBundle 'ryuzee/vim-jquery-dict'
 NeoBundle 'ryuzee/neosnippet_chef_recipe_snippet'
 NeoBundle 'glidenote/serverspec-snippets'
 NeoBundle 'scrooloose/syntastic'
@@ -320,7 +322,9 @@ NeoBundle 'vim-scripts/tagbar-phpctags', {
 " PHPファイルの中にHTMLがある場合のインデントをいい感じに扱う
 NeoBundle 'ryuzee/php.vim-html-enhanced'
 " PDV - PHP Documentor for VIM - 2
-NeoBundle 'SirVer/ultisnips'
+if v:version >= 704
+  NeoBundle 'SirVer/ultisnips'
+endif
 NeoBundle 'tobyS/vmustache'
 NeoBundle 'ryuzee/pdv' " Forked ver from tobyS/pdv
 " PHPUnit formatter http://www.karakaram.com/vim/phpunit-location-list/
@@ -529,62 +533,7 @@ nnoremap <Space>s :split<cr> :<C-u>Unite -start-insert file_rec/async<cr>
 :nnoremap <Space>r <Plug>(unite_restart)
 "<=== unite.vimの設定ここまで}}}
 
-"===> neocomplcacheの設定 {{{
-let g:neocomplcache_enable_at_startup = 1
-" 大文字小文字を区別する
-let g:neocomplcache_SmartCase = 1
-" キャメルケース補完を有効にする
-let g:neocomplcache_enable_camel_case_completion = 1
-" アンダーバー補完を有効にする
-let g:NeoComplCache_EnableUnderbarCompletion = 1
-"ポップアップメニューで表示される候補の数。初期値は100
-let g:neocomplcache_max_list = 20
-"自動補完を行う入力数を設定。初期値は2
-let g:neocomplcache_auto_completion_start_length = 2
-"手動補完時に補完を行う入力数を制御。値を小さくすると文字の削除時に重くなる
-let g:neocomplcache_manual_completion_start_length = 5
-"バッファや辞書ファイル中で、補完の対象となるキーワードの最小長さ。初期値は4。
-let g:neocomplcache_min_keyword_length = 4
-"シンタックスファイル中で、補完の対象となるキーワードの最小長さ。初期値は4。
-let g:neocomplcache_min_syntax_length = 4
-"1:補完候補検索時に大文字・小文字を無視する
-let g:neocomplcache_enable_ignore_case = 1
-"入力に大文字が入力されている場合、大文字小文字の区別をする
-let g:neocomplcache_enable_smart_case = 1
-"シンタックス補完を無効に
-let g:neocomplcache_plugin_disable = {
-\ 'syntax_complete' : 1,
-\ }
-let g:neosnippet#snippets_directory='~/.vim/bundle/neosnippet/autoload/neosnippet/snippets,~/.vim/bundle/neosnippet_chef_recipe_snippet/autoload/neosnippet/snippets,~/.vim/bundle/PHPSnippetsCreator/dist'
-" 補完を有効にしたい場合はset filetype=textなどにするとよい。
-let g:neocomplcache_text_mode_filetypes = {
-\  'tex': 1,
-\  'text': 1,
-\  'gitcommit': 1,
-\  'plaintex': 1,
-\}
 
-" <C-k> にマッピング
-" Snippetの候補の選択およびプレースホルダーの移動は以下のコマンドで行う
-" ★なお展開前に候補が出るのでC-nで選択することが必要★
-imap <C-k> <Plug>(neosnippet_expand_or_jump)
-smap <C-k> <Plug>(neosnippet_expand_or_jump)
-imap <C-s> <Plug>(neosnippet_start_unite_snippet)
-xmap <C-k> <Plug>(neosnippet_expand_target)
-
-" 展開された後はTabでいい感じにプレースホルダを移動していく
-imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-\ "\<Plug>(neosnippet_expand_or_jump)"
-\: pumvisible() ? "\<C-n>" : "\<TAB>"
-smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-\ "\<Plug>(neosnippet_expand_or_jump)"
-\: "\<TAB>"
-"
-" For snippet_complete marker.
-if has('conceal')
-  set conceallevel=2 concealcursor=i
-endif
-"<=== neocomplcacheの設定ここまで}}}
 
 " yankroundの設定 {{{
 nmap p <Plug>(yankround-p)
@@ -640,8 +589,6 @@ vnoremap <silent> :php :<C-u>call ref#jump('visual', 'phpmanual')<CR>
 :autocmd FileType php let php_noShortTags=1
 " ] や ) の対応エラーをハイライトする
 :autocmd FileType php let php_parent_error_close=1
-" 辞書から関数を選択できるようにする。キーワード上でctrl + x ctrl + kを入力
-:autocmd FileType php set dictionary=~/.vim/dictionary/PHP.dict
 " PHP documenter script bound to ,pdoc {{{
 if v:version >= 704
   let g:pdv_template_dir = $HOME ."/.vim/bundle/pdv/templates_snip"
@@ -928,6 +875,68 @@ let g:multi_cursor_skip_key='<C-x>'
 let g:multi_cursor_quit_key='<Esc>'
 " }}}
 "<=== 移動・ファイル選択の設定ここまで}}}
+
+"===> neocomplcacheの設定 {{{
+let g:neocomplcache_enable_at_startup = 1
+" 大文字小文字を区別する
+let g:neocomplcache_SmartCase = 1
+" キャメルケース補完を有効にする
+let g:neocomplcache_enable_camel_case_completion = 1
+" アンダーバー補完を有効にする
+let g:NeoComplCache_EnableUnderbarCompletion = 1
+"ポップアップメニューで表示される候補の数。初期値は100
+let g:neocomplcache_max_list = 20
+"自動補完を行う入力数を設定。初期値は2
+let g:neocomplcache_auto_completion_start_length = 2
+"手動補完時に補完を行う入力数を制御。値を小さくすると文字の削除時に重くなる
+let g:neocomplcache_manual_completion_start_length = 5
+"バッファや辞書ファイル中で、補完の対象となるキーワードの最小長さ。初期値は4。
+let g:neocomplcache_min_keyword_length = 4
+"シンタックスファイル中で、補完の対象となるキーワードの最小長さ。初期値は4。
+let g:neocomplcache_min_syntax_length = 4
+"1:補完候補検索時に大文字・小文字を無視する
+let g:neocomplcache_enable_ignore_case = 1
+"入力に大文字が入力されている場合、大文字小文字の区別をする
+let g:neocomplcache_enable_smart_case = 1
+"シンタックス補完を無効に
+let g:neocomplcache_plugin_disable = {
+\ 'syntax_complete' : 1,
+\ }
+let g:neosnippet#snippets_directory='~/.vim/bundle/neosnippet/autoload/neosnippet/snippets,~/.vim/bundle/neosnippet_chef_recipe_snippet/autoload/neosnippet/snippets,~/.vim/bundle/PHPSnippetsCreator/dist'
+" 補完を有効にしたい場合はset filetype=textなどにするとよい。
+let g:neocomplcache_text_mode_filetypes = {
+\  'tex': 1,
+\  'text': 1,
+\  'gitcommit': 1,
+\  'plaintex': 1,
+\}
+" Define dictionary.
+let g:neocomplcache_dictionary_filetype_lists = {
+\ 'javascript' : '~/.vim/bundle/vim-node-dict/dict/node.dict,~/.vim/bundle/vim-jquery-dict/dict/jquery.dict',
+\ 'default' : ''
+\ }
+
+" <C-k> にマッピング
+" Snippetの候補の選択およびプレースホルダーの移動は以下のコマンドで行う
+" ★なお展開前に候補が出るのでC-nで選択することが必要★
+imap <C-k> <Plug>(neosnippet_expand_or_jump)
+smap <C-k> <Plug>(neosnippet_expand_or_jump)
+imap <C-s> <Plug>(neosnippet_start_unite_snippet)
+xmap <C-k> <Plug>(neosnippet_expand_target)
+
+" 展開された後はTabでいい感じにプレースホルダを移動していく
+imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+\ "\<Plug>(neosnippet_expand_or_jump)"
+\: pumvisible() ? "\<C-n>" : "\<TAB>"
+smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+\ "\<Plug>(neosnippet_expand_or_jump)"
+\: "\<TAB>"
+"
+" For snippet_complete marker.
+if has('conceal')
+  set conceallevel=2 concealcursor=i
+endif
+"<=== neocomplcacheの設定ここまで}}}
 
 " open-browser の設定 / URLの上でと押すとブラウザを開く {{{
 let g:netrw_nogx = 1 " disable netrw's gx mapping.
