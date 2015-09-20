@@ -232,6 +232,7 @@ NeoBundle 'bling/vim-bufferline'
 NeoBundle 'osyo-manga/vim-gift'
 NeoBundle 'osyo-manga/vim-automatic'
 NeoBundle 'thinca/vim-fontzoom'
+NeoBundle 'LeafCage/foldCC'
 " }}}
 
 " 移動・ファイル操作 {{{
@@ -300,6 +301,7 @@ NeoBundle 'rcmdnk/vim-markdown'
 NeoBundle 'chrisgillis/vim-bootstrap3-snippets'
 NeoBundle 'elzr/vim-json'
 NeoBundle 'chrisbra/csv.vim'
+NeoBundle 'mattn/emmet-vim'
 " }}}
 
 " PHP関連 {{{
@@ -330,7 +332,6 @@ NeoBundle 'violetyk/cake.vim'
 " その他分類不能 {{{
 NeoBundle 'kannokanno/previm'
 NeoBundle 'sudo.vim'
-NeoBundle 'mattn/emmet-vim'
 NeoBundle 'thinca/vim-scouter'
 NeoBundle "mhinz/vim-startify"
 NeoBundle 'blueyed/vim-diminactive'
@@ -449,6 +450,11 @@ let g:airline#extensions#readonly#symbol = '⭤ '
 
 " コメント行をグレー表示する(コンソール）{{{
 hi Comment ctermfg=7
+"}}}
+
+" 折りたたみの設定を変える {{{
+" NOTE: 一端微妙なのでやめておく
+" set foldtext=foldCCtext()
 "}}}
 "<=== 見栄え関連の設定ここまで }}}
 
