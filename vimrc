@@ -912,6 +912,13 @@ noremap <silent> :tt :TagbarToggle<CR>
 vmap v <Plug>(expand_region_expand)
 vmap <C-v> <Plug>(expand_region_shrink)
 "}}}
+" 複数行カーソルのキーマップ {{{
+let g:multi_cursor_start_key='<F6>' " Macの場合はFn + F6で起動
+let g:multi_cursor_next_key='<C-n>'
+let g:multi_cursor_prev_key='<C-p>'
+let g:multi_cursor_skip_key='<C-x>'
+let g:multi_cursor_quit_key='<Esc>'
+" }}}
 "<=== 移動・ファイル選択の設定ここまで}}}
 
 " open-browser の設定 / URLの上でと押すとブラウザを開く {{{
