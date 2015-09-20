@@ -382,6 +382,8 @@ augroup InsertHook
 autocmd!
   autocmd InsertEnter * highlight StatusLine guifg=#ccdc90 guibg=#2E4340
   autocmd InsertLeave * highlight StatusLine guifg=#2E4340 guibg=#ccdc90
+  autocmd InsertLeave * setlocal nocursorline
+  autocmd InsertEnter * setlocal cursorline
 augroup END
 "}}}
 
