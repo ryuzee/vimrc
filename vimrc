@@ -672,6 +672,7 @@ end
 "<=== Ruby関連の設定ここまで}}}
 
 "===> JavaScript関連の設定 {{{1
+:let g:jscomplete_use = ['dom', 'moz']
 :autocmd FileType javascript set tabstop=4 shiftwidth=4 expandtab fileencoding=utf-8
 " Nodejs補完
 :setl omnifunc=jscomplete#CompleteJS
@@ -905,7 +906,7 @@ let g:neocomplcache_plugin_disable = {
 \ 'syntax_complete' : 1,
 \ }
 let g:neosnippet#enable_snipmate_compatibility = 1
-" let g:neosnippet#snippets_directory='~/.vim/bundle/vim-snippets/snippets/javascript,~/.vim/bundle/neosnippet/autoload/neosnippet/snippets,~/.vim/bundle/neosnippet_chef_recipe_snippet/autoload/neosnippet/snippets,~/.vim/bundle/PHPSnippetsCreator/dist'
+let g:neosnippet#snippets_directory='~/.vim/bundle/vim-snippets/snippets/javascript,~/.vim/bundle/neosnippet/autoload/neosnippet/snippets,~/.vim/bundle/neosnippet_chef_recipe_snippet/neosnippets,~/.vim/bundle/PHPSnippetsCreator/dist'
 " 補完を有効にしたい場合はset filetype=textなどにするとよい。
 let g:neocomplcache_text_mode_filetypes = {
 \  'tex': 1,
