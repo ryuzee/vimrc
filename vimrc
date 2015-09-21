@@ -79,7 +79,6 @@ endif
 "}}}
 
 " autoindent有効時にコード貼り付けでインデントがぐっちゃぐちゃになるのを防ぐ {{{
-set paste
 set pastetoggle=<F10>
 nnoremap <F10> :set paste!<CR>:set paste?<CR>
 " }}}
@@ -295,6 +294,7 @@ NeoBundle 'moll/vim-node'
 NeoBundle 'myhere/vim-nodejs-complete'
 NeoBundle 'guileen/vim-node-dict'
 NeoBundle 'ryuzee/vim-jquery-dict'
+NeoBundle 'honza/vim-snippets'
 NeoBundle 'ryuzee/neosnippet_chef_recipe_snippet'
 NeoBundle 'glidenote/serverspec-snippets'
 NeoBundle 'scrooloose/syntastic'
@@ -904,7 +904,8 @@ let g:neocomplcache_enable_smart_case = 1
 let g:neocomplcache_plugin_disable = {
 \ 'syntax_complete' : 1,
 \ }
-let g:neosnippet#snippets_directory='~/.vim/bundle/neosnippet/autoload/neosnippet/snippets,~/.vim/bundle/neosnippet_chef_recipe_snippet/autoload/neosnippet/snippets,~/.vim/bundle/PHPSnippetsCreator/dist'
+let g:neosnippet#enable_snipmate_compatibility = 1
+" let g:neosnippet#snippets_directory='~/.vim/bundle/vim-snippets/snippets/javascript,~/.vim/bundle/neosnippet/autoload/neosnippet/snippets,~/.vim/bundle/neosnippet_chef_recipe_snippet/autoload/neosnippet/snippets,~/.vim/bundle/PHPSnippetsCreator/dist'
 " 補完を有効にしたい場合はset filetype=textなどにするとよい。
 let g:neocomplcache_text_mode_filetypes = {
 \  'tex': 1,
