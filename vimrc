@@ -538,8 +538,6 @@ nnoremap <Space>s :split<cr> :<C-u>Unite -start-insert file_rec/async<cr>
 :nnoremap <Space>r <Plug>(unite_restart)
 "<=== unite.vimの設定ここまで}}}
 
-
-
 " yankroundの設定 {{{
 nmap p <Plug>(yankround-p)
 xmap p <Plug>(yankround-p)
