@@ -282,6 +282,7 @@ NeoBundle 'mattn/webapi-vim'
 NeoBundle 'thinca/vim-openbuf'
 NeoBundle 'thinca/vim-ref'
 NeoBundle 'mfumi/ref-dicts-en'
+NeoBundle 'mojako/ref-sources.vim'
 " }}}
 
 " 言語関連 {{{
@@ -306,6 +307,8 @@ NeoBundle 'elzr/vim-json'
 NeoBundle 'chrisbra/csv.vim'
 NeoBundle 'mattn/emmet-vim'
 NeoBundle 'ryuzee/vim-ruby-dict'
+NeoBundle 'mustardamus/jqapi'
+NeoBundle 'tokuhirom/jsref'
 " }}}
 
 " PHP関連 {{{
@@ -570,6 +573,8 @@ let g:ref_source_webdict_cmd = 'lynx -dump -nonumbers -display_charset utf-8 %s'
 "
 " phpの場合は Ref phpmanual Hogehoge
 let g:ref_phpmanual_path = $HOME . '/.vim/others/php-chunked-xhtml'
+let g:ref_jquery_doc_path = $HOME . '/.vim/bundle/jqapi'
+let g:ref_javascript_doc_path = $HOME . '/.vim/bundle/jsref/htdocs'
 
 " カーソル位置の単語をPHPマニュアルから検索する。カーソルがある状態で:phpで実行 {{{2
 nnoremap <silent> :php :<C-u>call ref#jump('normal', 'phpmanual')<CR>
@@ -1054,7 +1059,7 @@ let g:automatic_config = [
       \   },
       \   {
       \     'match' : {
-      \       'filetype' : '\v^ref-.+',
+      \       'filetype' : '^ref-.+',
       \       'autocmds' : [ 'FileType' ]
       \     },
       \     'set' : {
