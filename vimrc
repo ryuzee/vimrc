@@ -298,6 +298,7 @@ NeoBundle 'ryuzee/vim-jquery-dict'
 NeoBundle 'honza/vim-snippets'
 NeoBundle 'ryuzee/neosnippet_chef_recipe_snippet'
 NeoBundle 'glidenote/serverspec-snippets'
+" Javascriptをチェックする場合は、npm install jslint -g を先に実施しておく
 NeoBundle 'scrooloose/syntastic'
 NeoBundle "markcornick/vim-vagrant"
 NeoBundle 'ngmy/vim-rubocop'
@@ -309,7 +310,6 @@ NeoBundle 'mattn/emmet-vim'
 NeoBundle 'ryuzee/vim-ruby-dict'
 NeoBundle 'mustardamus/jqapi'
 NeoBundle 'tokuhirom/jsref'
-" }}}
 
 " PHP関連 {{{
 NeoBundle 'ryuzee/neocomplcache_php_selenium_snippet'
@@ -355,6 +355,7 @@ NeoBundle 'mattn/googletranslate-vim'
 NeoBundle 'itchyny/calendar.vim'
 NeoBundle 'TwitVim'
 NeoBundle 'ryuzee/dbext.vim'
+NeoBundle 'kakkyz81/evervim'
 
 " eblookを使ってローカル辞書検索 {{{
 " <LEADER> y でカーソル位置の文字を検索できる
@@ -465,6 +466,16 @@ hi Comment ctermfg=7
 " NOTE: 一端微妙なのでやめておく
 " set foldtext=foldCCtext()
 "}}}
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+let g:syntastic_loc_list_height = 5
+
 "<=== 見栄え関連の設定ここまで }}}
 
 "===> QuickRunによる設定 {{{
