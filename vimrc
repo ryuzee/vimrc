@@ -298,7 +298,7 @@ NeoBundle 'ryuzee/vim-jquery-dict'
 NeoBundle 'honza/vim-snippets'
 NeoBundle 'ryuzee/neosnippet_chef_recipe_snippet'
 NeoBundle 'glidenote/serverspec-snippets'
-" Javascriptをチェックする場合は、npm install jslint -g を先に実施しておく
+" Javascriptをチェックする場合は、npm install jshint -g を先に実施しておく
 NeoBundle 'scrooloose/syntastic'
 NeoBundle "markcornick/vim-vagrant"
 NeoBundle 'ngmy/vim-rubocop'
@@ -475,6 +475,7 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_loc_list_height = 5
+let g:syntastic_javascript_checkers = ['jshint']
 
 "<=== 見栄え関連の設定ここまで }}}
 
