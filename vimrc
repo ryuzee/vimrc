@@ -864,16 +864,16 @@ nnoremap <silent><C-e> :NERDTreeToggle<CR>
 
 " デフォルト設定の文字はずれるので自分で記号を指定する
 let g:NERDTreeIndicatorMap = {
-                \ "Modified"  : "*",
-                \ "Staged"    : "s",
-                \ "Untracked" : "-",
-                \ "Renamed"   : "r",
-                \ "Unmerged"  : "u",
-                \ "Deleted"   : "D",
-                \ "Dirty"     : "d",
-                \ "Clean"     : "c",
-                \ "Unknown"   : "?"
-                \ }
+  \ "Modified"  : "*",
+  \ "Staged"    : "s",
+  \ "Untracked" : "-",
+  \ "Renamed"   : "r",
+  \ "Unmerged"  : "u",
+  \ "Deleted"   : "D",
+  \ "Dirty"     : "d",
+  \ "Clean"     : "c",
+  \ "Unknown"   : "?"
+  \ }
 let g:nerdtree_tabs_open_on_gui_startup = 0
 "}}}
 
