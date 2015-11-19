@@ -64,6 +64,7 @@ endif
 set listchars=tab:»-,trail:-,eol:↲,extends:»,precedes:«,nbsp:%
 set modeline
 set modelines=5
+set cursorline
 set complete+=k                " ctrl + n で補完
 set noundofile                 " undoファイル作りたくないんだよ
 set display+=lastline
@@ -393,8 +394,6 @@ augroup InsertHook
 autocmd!
   autocmd InsertEnter * highlight StatusLine guifg=#ccdc90 guibg=#2E4340
   autocmd InsertLeave * highlight StatusLine guifg=#2E4340 guibg=#ccdc90
-  autocmd InsertLeave * setlocal nocursorline
-  autocmd InsertEnter * setlocal cursorline
 augroup END
 "}}}
 

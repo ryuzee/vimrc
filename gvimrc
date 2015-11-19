@@ -1,6 +1,7 @@
 " set background=dark
 " colorscheme solarized
 :colorscheme molokai
+highlight CursorLine gui=underline guifg=NONE guibg=NONE
 
 " フォント設定
 if has('gui_macvim')
