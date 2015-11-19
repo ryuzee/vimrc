@@ -68,6 +68,7 @@ set cursorline
 set complete+=k                " ctrl + n で補完
 set noundofile                 " undoファイル作りたくないんだよ
 set display+=lastline
+set imdisable
 :syntax on                     " シンタックスハイライトを有効にする
 :imap <C-z> <C-y>
 let mapleader = "\<Space>"     " リーダーを|からスペースに変える
@@ -810,6 +811,7 @@ nmap    t [Tag]
 " Shift + Tab でタブ移動、Tab + Tab で左移動する
 nnoremap <S-Tab> gt
 nnoremap ;; gT
+nnoremap <Tab><Tab> gT
 " t1 で1番左のタブ、t2 で1番左から2番目のタブにジャンプ
 for n in range(1, 9)
   execute 'nnoremap <silent> [Tag]'.n  ':<C-u>tabnext'.n.'<CR>'
