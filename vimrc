@@ -648,7 +648,6 @@ let g:php_cs_fixer_level = "psr2"
 let g:php_cs_fixer_path = "/usr/local/bin/php-cs-fixer.phar"
 nnoremap <silent> :pcd :call PhpCsFixerFixDirectory()<CR>
 nnoremap <silent> :pcf :call PhpCsFixerFixFile()<CR>
-nnoremap <silent> :pcf :call PhpCsFunc1()<CR>
 "}}}
 "<=== PHP関連の設定ここまで}}}
 
