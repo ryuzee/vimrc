@@ -598,7 +598,7 @@ vnoremap <silent> :php :<C-u>call ref#jump('visual', 'phpmanual')<CR>
 "===> PHP関連の設定 {{{1
 " makeコマンドを入力すると、PHPの構文エラーがないかどうかもチェック可能
 " PSR2に従いタブからスペースに展開するように変更
-:autocmd FileType php set tabstop=4 shiftwidth=4 expandtab makeprg=php\ -l\ % errorformat=%m\ in\ %f\ on\ line\ %l
+:autocmd FileType php set tabstop=4 shiftwidth=4 autoindent smartindent expandtab makeprg=php\ -l\ % errorformat=%m\ in\ %f\ on\ line\ %l
 " 文字列の中のSQLをハイライトする
 :autocmd FileType php let php_sql_query=1
 " Baselibメソッドのハイライトを行う
@@ -643,10 +643,12 @@ let php_folding=3
 set foldmethod=marker
 "}}}
 " vim-php-cs-fixer の設定 {{{2
+" 現状ではコメントブロックが崩れるバグがある...
 let g:php_cs_fixer_level = "psr2"
 let g:php_cs_fixer_path = "/usr/local/bin/php-cs-fixer.phar"
 nnoremap <silent> :pcd :call PhpCsFixerFixDirectory()<CR>
 nnoremap <silent> :pcf :call PhpCsFixerFixFile()<CR>
+nnoremap <silent> :pcf :call PhpCsFunc1()<CR>
 "}}}
 "<=== PHP関連の設定ここまで}}}
 
@@ -810,7 +812,6 @@ nnoremap    [Tag]   <Nop>
 nmap    t [Tag]
 " Shift + Tab でタブ移動、Tab + Tab で左移動する
 nnoremap <S-Tab> gt
-nnoremap ;; gT
 nnoremap <Tab><Tab> gT
 " t1 で1番左のタブ、t2 で1番左から2番目のタブにジャンプ
 for n in range(1, 9)
@@ -826,7 +827,7 @@ map <silent> [Tag]n :tabnext<CR>
 map <silent> [Tag]p :tabprevious<CR>
 " }}}
 
-" ctrlp <c-x> {{{
+
 " このコマンドを使うと、同一ディレクトリ内のファイルを簡単に
 " リストアップして編集できる
 " http://mattn.kaoriya.net/software/vim/20111228013428.htm
