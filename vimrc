@@ -248,6 +248,7 @@ NeoBundle 'jistr/vim-nerdtree-tabs'
 NeoBundle 'majutsushi/tagbar'
 NeoBundle 'terryma/vim-multiple-cursors'
 NeoBundle 'terryma/vim-expand-region'
+NeoBundle 'thinca/vim-singleton'
 " }}}
 
 " ファイル編集 {{{
@@ -273,7 +274,6 @@ NeoBundle 'osyo-manga/vim-over'
 " }}}
 
 " バージョン管理 {{{
-NeoBundle 'git://repo.or.cz/vcscommand'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'jaxbot/github-issues.vim'
 " }}}
@@ -303,15 +303,21 @@ NeoBundle 'glidenote/serverspec-snippets'
 " Javascriptをチェックする場合は、npm install jshint -g を先に実施しておく
 NeoBundle 'scrooloose/syntastic'
 NeoBundle "markcornick/vim-vagrant"
-NeoBundle 'ngmy/vim-rubocop'
 NeoBundle 'rcmdnk/vim-markdown'
 NeoBundle 'chrisgillis/vim-bootstrap3-snippets'
 NeoBundle 'elzr/vim-json'
 NeoBundle 'chrisbra/csv.vim'
 NeoBundle 'mattn/emmet-vim'
-NeoBundle 'ryuzee/vim-ruby-dict'
 NeoBundle 'mustardamus/jqapi'
 NeoBundle 'tokuhirom/jsref'
+
+" Ruby関連 {{{
+NeoBundle 'ngmy/vim-rubocop'
+NeoBundle 'ryuzee/vim-ruby-dict'
+NeoBundle 'tpope/vim-rails', { 'autoload' : {
+      \ 'filetypes' : ['haml', 'ruby', 'eruby'] }}
+" }}}
+NeoBundle 'basyura/unite-rails'
 
 " PHP関連 {{{
 NeoBundle 'ryuzee/neocomplcache_php_selenium_snippet'
@@ -551,6 +557,7 @@ endtry
 nnoremap <Space>s :split<cr> :<C-u>Unite -start-insert file_rec/async<cr>
 " reset not it is <C-l> normally
 :nnoremap <Space>r <Plug>(unite_restart)
+call unite#custom_default_action('file', 'tabopen')
 "<=== unite.vimの設定ここまで}}}
 
 " yankroundの設定 {{{
@@ -643,7 +650,6 @@ let php_folding=3
 set foldmethod=marker
 "}}}
 " vim-php-cs-fixer の設定 {{{2
-" 現状ではコメントブロックが崩れるバグがある...
 let g:php_cs_fixer_level = "psr2"
 let g:php_cs_fixer_path = "/usr/local/bin/php-cs-fixer.phar"
 nnoremap <silent> :pcd :call PhpCsFixerFixDirectory()<CR>
