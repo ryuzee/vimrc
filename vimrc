@@ -316,8 +316,9 @@ NeoBundle 'ngmy/vim-rubocop'
 NeoBundle 'ryuzee/vim-ruby-dict'
 NeoBundle 'tpope/vim-rails', { 'autoload' : {
       \ 'filetypes' : ['haml', 'ruby', 'eruby'] }}
-" }}}
 NeoBundle 'basyura/unite-rails'
+NeoBundle 'AndrewRadev/switch.vim'
+" }}}
 
 " PHP関連 {{{
 NeoBundle 'ryuzee/neocomplcache_php_selenium_snippet'
@@ -557,7 +558,27 @@ endtry
 nnoremap <Space>s :split<cr> :<C-u>Unite -start-insert file_rec/async<cr>
 " reset not it is <C-l> normally
 :nnoremap <Space>r <Plug>(unite_restart)
-call unite#custom_default_action('file', 'tabopen')
+" call unite#custom_default_action('file', 'tabopen')
+
+" Rails用 {{{
+function! UniteRailsSetting()
+  nnoremap <C-s><C-s><C-s>  :<C-U>Unite rails/view<CR>
+  nnoremap <C-s><C-s>       :<C-U>Unite rails/model<CR>
+  nnoremap <C-s>            :<C-U>Unite rails/controller<CR>
+  nnoremap <C-s>c           :<C-U>Unite rails/config<CR>
+  nnoremap <C-s>s           :<C-U>Unite rails/spec<CR>
+  nnoremap <C-s>m           :<C-U>Unite rails/db -input=migrate<CR>
+  nnoremap <C-s>l           :<C-U>Unite rails/lib<CR>
+  nnoremap <C-s>g     ':e '.b:rails_root.'/Gemfile<CR>'
+  nnoremap <C-s>r     ':e '.b:rails_root.'/config/routes.rb<CR>'
+  nnoremap <C-s>se    ':e '.b:rails_root.'/db/seeds.rb<CR>'
+  nnoremap <C-s>ra          :<C-U>Unite rails/rake<CR>
+  nnoremap <C-s>h           :<C-U>Unite rails/heroku<CR>
+endfunction
+aug MyAutoCmd
+  au User Rails call UniteRailsSetting()
+aug END
+"}}}
 "<=== unite.vimの設定ここまで}}}
 
 " yankroundの設定 {{{
@@ -701,6 +722,14 @@ else
   autocmd FileType ruby set dictionary+=~/.vim/dictionary/opscode_chef.vim_dict/*.dict
 end
 "}}}
+
+" vim-railsの設定 {{{
+" 横着移動
+nnoremap Rc :Econtroller<CR>
+nnoremap Rm :Emodel<CR>
+nnoremap Rv :Eview<CR>
+" }}}
+
 "<=== Ruby関連の設定ここまで}}}
 
 "===> JavaScript関連の設定 {{{1
