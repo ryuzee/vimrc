@@ -569,9 +569,9 @@ function! UniteRailsSetting()
   nnoremap <C-s>s           :<C-U>Unite rails/spec<CR>
   nnoremap <C-s>m           :<C-U>Unite rails/db -input=migrate<CR>
   nnoremap <C-s>l           :<C-U>Unite rails/lib<CR>
-  nnoremap <C-s>g     ':e '.b:rails_root.'/Gemfile<CR>'
-  nnoremap <C-s>r     ':e '.b:rails_root.'/config/routes.rb<CR>'
-  nnoremap <C-s>se    ':e '.b:rails_root.'/db/seeds.rb<CR>'
+  nnoremap <C-s>g           ':e '.b:rails_root.'/Gemfile<CR>'
+  nnoremap <C-s>r           ':e '.b:rails_root.'/config/routes.rb<CR>'
+  nnoremap <C-s>se          ':e '.b:rails_root.'/db/seeds.rb<CR>'
   nnoremap <C-s>ra          :<C-U>Unite rails/rake<CR>
   nnoremap <C-s>h           :<C-U>Unite rails/heroku<CR>
 endfunction
