@@ -214,16 +214,21 @@ NeoBundle 'tsukkee/unite-tag'
 "}}}
 
 " ColorScheme {{{
+NeoBundle 'altercation/vim-colors-solarized'
+NeoBundle 'baskerville/bubblegum'
+NeoBundle 'inkpot'
+NeoBundle 'jnurmine/Zenburn'
+NeoBundle 'jonathanfilip/vim-lucius'
+NeoBundle 'jpo/vim-railscasts-theme'
+NeoBundle 'nanotech/jellybeans.vim'
+NeoBundle 'sickill/vim-monokai'
 NeoBundle 'thinca/vim-guicolorscheme'
+NeoBundle 'tomasr/molokai'
 NeoBundle 'vim-scripts/Diablo3.git'
 NeoBundle 'vim-scripts/Lucius'
 NeoBundle 'vim-scripts/mrkn256.vim'
-NeoBundle 'jnurmine/Zenburn'
-NeoBundle 'tomasr/molokai'
-NeoBundle 'inkpot'
-NeoBundle 'nanotech/jellybeans.vim'
-NeoBundle 'sickill/vim-monokai'
-NeoBundle 'altercation/vim-colors-solarized'
+NeoBundle 'vim-scripts/twilight'
+NeoBundle 'w0ng/vim-hybrid'
 " }}}
 
 " 見栄え {{{
@@ -318,6 +323,7 @@ NeoBundle 'tpope/vim-rails', { 'autoload' : {
       \ 'filetypes' : ['haml', 'ruby', 'eruby'] }}
 NeoBundle 'basyura/unite-rails'
 NeoBundle 'AndrewRadev/switch.vim'
+NeoBundle 'vim-scripts/ruby-matchit'
 " }}}
 
 " PHP関連 {{{
@@ -363,7 +369,7 @@ NeoBundle 'glidenote/memolist.vim'
 NeoBundle 'mattn/googletranslate-vim'
 NeoBundle 'itchyny/calendar.vim'
 NeoBundle 'TwitVim'
-NeoBundle 'ryuzee/dbext.vim'
+NeoBundle 'vim-scripts/dbext.vim'
 NeoBundle 'kakkyz81/evervim'
 
 " eblookを使ってローカル辞書検索 {{{
