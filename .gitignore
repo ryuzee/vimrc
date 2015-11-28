@@ -1,2 +1,3 @@
 *.un~
 restart_session*.vim
+.DS_Store
