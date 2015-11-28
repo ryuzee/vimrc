@@ -9,6 +9,226 @@
 " _/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
 " ryuzee's vimrc
 
+"===> NeoBundleの設定 {{{
+if has('vim_starting')
+  set nocompatible
+  " neobundle をインストールしていない場合は自動インストール
+  if !isdirectory(expand("~/.vim/bundle/neobundle.vim/"))
+    echo "install neobundle..."
+    " vim からコマンド呼び出しているだけ neobundle.vim のクローン
+    :call system("git clone git://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim")
+  endif
+  " runtimepath の追加は必須
+  set runtimepath+=~/.vim/bundle/neobundle.vim/
+endif
+call neobundle#begin(expand('~/.vim/bundle'))
+let g:neobundle_default_git_protocol='https'
+
+" 基本 {{{
+NeoBundle 'Shougo/neobundle.vim'
+NeoBundle 'Shougo/vimproc', {
+\ 'build' : {
+  \ 'windows' : 'make -f make_mingw32.mak',
+  \ 'cygwin' : 'make -f make_cygwin.mak',
+  \ 'mac' : 'make -f make_mac.mak',
+  \ 'unix' : 'make -f make_unix.mak',
+  \ },
+\ }
+NeoBundle 'Shougo/vimshell'
+NeoBundle 'Shougo/neocomplcache'
+NeoBundle 'Shougo/neosnippet'
+NeoBundle 'Shougo/neosnippet-snippets'
+NeoBundle 'thinca/vim-quickrun'
+" }}}
+
+" Unite関連 {{{
+NeoBundle 'Shougo/unite.vim'
+NeoBundle 'ujihisa/unite-colorscheme'
+NeoBundle 'ujihisa/unite-font'
+NeoBundle 'Shougo/unite-outline'
+NeoBundle 'ujihisa/unite-locate'
+NeoBundle 'kmnk/vim-unite-svn'
+NeoBundle 'choplin/unite-vim_hacks'
+NeoBundle 'tsukkee/unite-help'
+NeoBundle 'tsukkee/unite-tag'
+"}}}
+
+" ColorScheme {{{
+NeoBundle 'altercation/vim-colors-solarized'
+NeoBundle 'baskerville/bubblegum'
+NeoBundle 'inkpot'
+NeoBundle 'jnurmine/Zenburn'
+NeoBundle 'jonathanfilip/vim-lucius'
+NeoBundle 'jpo/vim-railscasts-theme'
+NeoBundle 'nanotech/jellybeans.vim'
+NeoBundle 'sickill/vim-monokai'
+NeoBundle 'thinca/vim-guicolorscheme'
+NeoBundle 'tomasr/molokai'
+NeoBundle 'vim-scripts/Diablo3.git'
+NeoBundle 'vim-scripts/Lucius'
+NeoBundle 'vim-scripts/mrkn256.vim'
+NeoBundle 'vim-scripts/twilight'
+NeoBundle 'w0ng/vim-hybrid'
+" }}}
+
+" 見栄え {{{
+NeoBundle 'nathanaelkane/vim-indent-guides'
+NeoBundle 'vim-scripts/AnsiEsc.vim'
+NeoBundle 'bling/vim-airline'
+NeoBundle 'bling/vim-bufferline'
+NeoBundle 'osyo-manga/vim-gift'
+NeoBundle 'osyo-manga/vim-automatic'
+NeoBundle 'thinca/vim-fontzoom'
+NeoBundle 'LeafCage/foldCC'
+" }}}
+
+" 移動・ファイル操作 {{{
+NeoBundle 'xolox/vim-easytags'
+NeoBundle 'taglist.vim'
+NeoBundle 'godlygeek/tabular'
+NeoBundle 'easymotion/vim-easymotion'
+NeoBundle 'scrooloose/nerdtree'
+NeoBundle 'Xuyuanp/nerdtree-git-plugin'
+NeoBundle 'jistr/vim-nerdtree-tabs'
+NeoBundle 'majutsushi/tagbar'
+NeoBundle 'terryma/vim-multiple-cursors'
+NeoBundle 'terryma/vim-expand-region'
+NeoBundle 'thinca/vim-singleton'
+" }}}
+
+" ファイル編集 {{{
+NeoBundle 'tomtom/tcomment_vim'
+NeoBundle 'scrooloose/nerdcommenter'
+NeoBundle 'tpope/vim-endwise'
+NeoBundle 'kien/ctrlp.vim'
+NeoBundle 'vim-scripts/Align'
+NeoBundle 'junegunn/vim-easy-align'
+NeoBundle 'tpope/vim-surround'
+NeoBundle 'bronson/vim-trailing-whitespace'
+NeoBundle 'LeafCage/yankround.vim'
+NeoBundle 'vim-scripts/SQLUtilities'
+" }}}
+
+" 検索 {{{
+NeoBundle 'haya14busa/incsearch.vim'
+NeoBundle 'haya14busa/incsearch-fuzzy.vim'
+NeoBundle 'haya14busa/incsearch-easymotion.vim'
+NeoBundle "osyo-manga/vim-anzu"
+NeoBundle 't9md/vim-quickhl'
+NeoBundle 'osyo-manga/vim-over'
+" }}}
+
+" バージョン管理 {{{
+NeoBundle 'tpope/vim-fugitive'
+NeoBundle 'jaxbot/github-issues.vim'
+" }}}
+
+" 外部リソース参照 {{{
+NeoBundle 'tyru/open-browser.vim'
+NeoBundle 'mattn/webapi-vim'
+NeoBundle 'thinca/vim-openbuf'
+NeoBundle 'thinca/vim-ref'
+NeoBundle 'mfumi/ref-dicts-en'
+NeoBundle 'mojako/ref-sources.vim'
+" }}}
+
+" 言語関連 {{{
+NeoBundle 'othree/html5.vim'
+NeoBundle 'hail2u/vim-css3-syntax'
+NeoBundle 'pangloss/vim-javascript'
+NeoBundle 'mattn/jscomplete-vim'
+NeoBundle 'heavenshell/vim-jsdoc'
+NeoBundle 'moll/vim-node'
+NeoBundle 'myhere/vim-nodejs-complete'
+NeoBundle 'guileen/vim-node-dict'
+NeoBundle 'ryuzee/vim-jquery-dict'
+NeoBundle 'honza/vim-snippets'
+NeoBundle 'ryuzee/neosnippet_chef_recipe_snippet'
+NeoBundle 'glidenote/serverspec-snippets'
+" Javascriptをチェックする場合は、npm install jshint -g を先に実施しておく
+NeoBundle 'scrooloose/syntastic'
+NeoBundle "markcornick/vim-vagrant"
+NeoBundle 'rcmdnk/vim-markdown'
+NeoBundle 'chrisgillis/vim-bootstrap3-snippets'
+NeoBundle 'elzr/vim-json'
+NeoBundle 'chrisbra/csv.vim'
+NeoBundle 'mattn/emmet-vim'
+NeoBundle 'mustardamus/jqapi'
+NeoBundle 'tokuhirom/jsref'
+
+" Ruby関連 {{{
+NeoBundle 'ngmy/vim-rubocop'
+NeoBundle 'ryuzee/vim-ruby-dict'
+NeoBundle 'tpope/vim-rails', { 'autoload' : {
+      \ 'filetypes' : ['haml', 'ruby', 'eruby'] }}
+NeoBundle 'basyura/unite-rails'
+NeoBundle 'AndrewRadev/switch.vim'
+NeoBundle 'vim-scripts/ruby-matchit'
+" }}}
+
+" PHP関連 {{{
+NeoBundle 'ryuzee/neocomplcache_php_selenium_snippet'
+NeoBundle 'nishigori/neocomplcache-phpunit-snippet'
+NeoBundle 'oppara/vim-unite-cake'
+NeoBundle 'tekkoc/PHPSnippetsCreator'
+" PHPのコードを整形する http://docs.komagata.org/4988
+NeoBundle 'stephpy/vim-php-cs-fixer'
+" phpでタグをいい感じに扱う
+NeoBundle 'vim-scripts/tagbar-phpctags', {
+  \   'build' : {
+  \     'others' : 'chmod +x bin/phpctags',
+  \   },
+  \ }
+" PHPファイルの中にHTMLがある場合のインデントをいい感じに扱う
+NeoBundle 'ryuzee/php.vim-html-enhanced'
+" PDV - PHP Documentor for VIM - 2
+if v:version >= 704
+  NeoBundle 'SirVer/ultisnips'
+endif
+NeoBundle 'tobyS/vmustache'
+NeoBundle 'ryuzee/pdv' " Forked ver from tobyS/pdv
+" PHPUnit formatter http://www.karakaram.com/vim/phpunit-location-list/
+NeoBundle 'karakaram/vim-quickrun-phpunit'
+" http://d.hatena.ne.jp/yuhei_kagaya/20111216/1324023977
+NeoBundle 'violetyk/cake.vim'
+" }}}
+
+" その他分類不能 {{{
+NeoBundle 'kannokanno/previm'
+NeoBundle 'sudo.vim'
+NeoBundle 'thinca/vim-scouter'
+NeoBundle "mhinz/vim-startify"
+NeoBundle 'blueyed/vim-diminactive'
+NeoBundle 'mattn/excitetranslate-vim'
+NeoBundle 'xolox/vim-session'
+NeoBundle 'xolox/vim-misc'
+NeoBundle 'fuenor/im_control.vim'
+NeoBundle 'ujihisa/neco-look'
+NeoBundle 'itchyny/dictionary.vim'
+NeoBundle 'glidenote/memolist.vim'
+NeoBundle 'mattn/googletranslate-vim'
+NeoBundle 'itchyny/calendar.vim'
+NeoBundle 'TwitVim'
+NeoBundle 'vim-scripts/dbext.vim'
+NeoBundle 'kakkyz81/evervim'
+
+" eblookを使ってローカル辞書検索 {{{
+" <LEADER> y でカーソル位置の文字を検索できる
+" <LEADER> CTRL + y で検索ウィンドウを表示できる
+NeoBundle 'deton/eblook.vim'
+" Download EB library from ftp://ftp.sra.co.jp/pub/misc/eb/eb-4.4.3.tar.bz2
+" See http://openlab.jp/edict/eblook/
+" Download eblook from http://openlab.jp/edict/eblook/dist/eblook-1.6.1.tar.gz
+" 辞書ファイルは以下から入手
+" http://www.vector.co.jp/soft/data/writing/se369320.html
+" }}}
+" }}}
+
+" vimrc に記述されたプラグインでインストールされていないものがないかチェックする
+NeoBundleCheck
+call neobundle#end()
+" }}}
+
 "===> 一般的な設定 {{{
 set nocompatible
 filetype off
@@ -168,226 +388,6 @@ if has('autocmd')
 endif
 " }}}
 "<=== 一般的な設定[ここまで] }}}
-
-"===> NeoBundleの設定 {{{
-if has('vim_starting')
-  set nocompatible
-  " neobundle をインストールしていない場合は自動インストール
-  if !isdirectory(expand("~/.vim/bundle/neobundle.vim/"))
-    echo "install neobundle..."
-    " vim からコマンド呼び出しているだけ neobundle.vim のクローン
-    :call system("git clone git://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim")
-  endif
-  " runtimepath の追加は必須
-  set runtimepath+=~/.vim/bundle/neobundle.vim/
-endif
-call neobundle#begin(expand('~/.vim/bundle'))
-let g:neobundle_default_git_protocol='https'
-
-" 基本 {{{
-NeoBundle 'Shougo/neobundle.vim'
-NeoBundle 'Shougo/vimproc', {
-\ 'build' : {
-  \ 'windows' : 'make -f make_mingw32.mak',
-  \ 'cygwin' : 'make -f make_cygwin.mak',
-  \ 'mac' : 'make -f make_mac.mak',
-  \ 'unix' : 'make -f make_unix.mak',
-  \ },
-\ }
-NeoBundle 'Shougo/vimshell'
-NeoBundle 'thinca/vim-quickrun'
-NeoBundle 'Shougo/neocomplcache'
-NeoBundle 'Shougo/neosnippet'
-NeoBundle 'Shougo/neosnippet-snippets'
-" }}}
-
-" Unite関連 {{{
-NeoBundle 'Shougo/unite.vim'
-NeoBundle 'ujihisa/unite-colorscheme'
-NeoBundle 'ujihisa/unite-font'
-NeoBundle 'Shougo/unite-outline'
-NeoBundle 'ujihisa/unite-locate'
-NeoBundle 'kmnk/vim-unite-svn'
-NeoBundle 'choplin/unite-vim_hacks'
-NeoBundle 'tsukkee/unite-help'
-NeoBundle 'tsukkee/unite-tag'
-"}}}
-
-" ColorScheme {{{
-NeoBundle 'altercation/vim-colors-solarized'
-NeoBundle 'baskerville/bubblegum'
-NeoBundle 'inkpot'
-NeoBundle 'jnurmine/Zenburn'
-NeoBundle 'jonathanfilip/vim-lucius'
-NeoBundle 'jpo/vim-railscasts-theme'
-NeoBundle 'nanotech/jellybeans.vim'
-NeoBundle 'sickill/vim-monokai'
-NeoBundle 'thinca/vim-guicolorscheme'
-NeoBundle 'tomasr/molokai'
-NeoBundle 'vim-scripts/Diablo3.git'
-NeoBundle 'vim-scripts/Lucius'
-NeoBundle 'vim-scripts/mrkn256.vim'
-NeoBundle 'vim-scripts/twilight'
-NeoBundle 'w0ng/vim-hybrid'
-" }}}
-
-" 見栄え {{{
-NeoBundle 'nathanaelkane/vim-indent-guides' " インデントをわかりやすく表示する
-NeoBundle 'vim-scripts/AnsiEsc.vim'
-NeoBundle 'bling/vim-airline'
-NeoBundle 'bling/vim-bufferline'
-NeoBundle 'osyo-manga/vim-gift'
-NeoBundle 'osyo-manga/vim-automatic'
-NeoBundle 'thinca/vim-fontzoom'
-NeoBundle 'LeafCage/foldCC'
-" }}}
-
-" 移動・ファイル操作 {{{
-NeoBundle 'xolox/vim-easytags'
-NeoBundle 'taglist.vim'
-NeoBundle 'godlygeek/tabular'
-NeoBundle 'easymotion/vim-easymotion'
-NeoBundle 'scrooloose/nerdtree'
-NeoBundle 'Xuyuanp/nerdtree-git-plugin'
-NeoBundle 'jistr/vim-nerdtree-tabs'
-NeoBundle 'majutsushi/tagbar'
-NeoBundle 'terryma/vim-multiple-cursors'
-NeoBundle 'terryma/vim-expand-region'
-NeoBundle 'thinca/vim-singleton'
-" }}}
-
-" ファイル編集 {{{
-NeoBundle 'tomtom/tcomment_vim'
-NeoBundle 'scrooloose/nerdcommenter'
-NeoBundle 'tpope/vim-endwise'
-NeoBundle 'kien/ctrlp.vim'
-NeoBundle 'vim-scripts/Align'
-NeoBundle 'junegunn/vim-easy-align'
-NeoBundle 'tpope/vim-surround'
-NeoBundle 'bronson/vim-trailing-whitespace'
-NeoBundle 'LeafCage/yankround.vim'
-NeoBundle 'vim-scripts/SQLUtilities'
-" }}}
-
-" 検索 {{{
-NeoBundle 'haya14busa/incsearch.vim'
-NeoBundle 'haya14busa/incsearch-fuzzy.vim'
-NeoBundle 'haya14busa/incsearch-easymotion.vim'
-NeoBundle "osyo-manga/vim-anzu"
-NeoBundle 't9md/vim-quickhl'
-NeoBundle 'osyo-manga/vim-over'
-" }}}
-
-" バージョン管理 {{{
-NeoBundle 'tpope/vim-fugitive'
-NeoBundle 'jaxbot/github-issues.vim'
-" }}}
-
-" 外部リソース参照 {{{
-NeoBundle 'tyru/open-browser.vim'
-NeoBundle 'mattn/webapi-vim'
-NeoBundle 'thinca/vim-openbuf'
-NeoBundle 'thinca/vim-ref'
-NeoBundle 'mfumi/ref-dicts-en'
-NeoBundle 'mojako/ref-sources.vim'
-" }}}
-
-" 言語関連 {{{
-NeoBundle 'othree/html5.vim'
-NeoBundle 'hail2u/vim-css3-syntax'
-NeoBundle 'pangloss/vim-javascript'
-NeoBundle 'mattn/jscomplete-vim'
-NeoBundle 'heavenshell/vim-jsdoc'
-NeoBundle 'moll/vim-node'
-NeoBundle 'myhere/vim-nodejs-complete'
-NeoBundle 'guileen/vim-node-dict'
-NeoBundle 'ryuzee/vim-jquery-dict'
-NeoBundle 'honza/vim-snippets'
-NeoBundle 'ryuzee/neosnippet_chef_recipe_snippet'
-NeoBundle 'glidenote/serverspec-snippets'
-" Javascriptをチェックする場合は、npm install jshint -g を先に実施しておく
-NeoBundle 'scrooloose/syntastic'
-NeoBundle "markcornick/vim-vagrant"
-NeoBundle 'rcmdnk/vim-markdown'
-NeoBundle 'chrisgillis/vim-bootstrap3-snippets'
-NeoBundle 'elzr/vim-json'
-NeoBundle 'chrisbra/csv.vim'
-NeoBundle 'mattn/emmet-vim'
-NeoBundle 'mustardamus/jqapi'
-NeoBundle 'tokuhirom/jsref'
-
-" Ruby関連 {{{
-NeoBundle 'ngmy/vim-rubocop'
-NeoBundle 'ryuzee/vim-ruby-dict'
-NeoBundle 'tpope/vim-rails', { 'autoload' : {
-      \ 'filetypes' : ['haml', 'ruby', 'eruby'] }}
-NeoBundle 'basyura/unite-rails'
-NeoBundle 'AndrewRadev/switch.vim'
-NeoBundle 'vim-scripts/ruby-matchit'
-" }}}
-
-" PHP関連 {{{
-NeoBundle 'ryuzee/neocomplcache_php_selenium_snippet'
-NeoBundle 'nishigori/neocomplcache-phpunit-snippet'
-NeoBundle 'oppara/vim-unite-cake'
-NeoBundle 'tekkoc/PHPSnippetsCreator'
-" PHPのコードを整形する http://docs.komagata.org/4988
-NeoBundle 'stephpy/vim-php-cs-fixer'
-" phpでタグをいい感じに扱う
-NeoBundle 'vim-scripts/tagbar-phpctags', {
-  \   'build' : {
-  \     'others' : 'chmod +x bin/phpctags',
-  \   },
-  \ }
-" PHPファイルの中にHTMLがある場合のインデントをいい感じに扱う
-NeoBundle 'ryuzee/php.vim-html-enhanced'
-" PDV - PHP Documentor for VIM - 2
-if v:version >= 704
-  NeoBundle 'SirVer/ultisnips'
-endif
-NeoBundle 'tobyS/vmustache'
-NeoBundle 'ryuzee/pdv' " Forked ver from tobyS/pdv
-" PHPUnit formatter http://www.karakaram.com/vim/phpunit-location-list/
-NeoBundle 'karakaram/vim-quickrun-phpunit'
-" http://d.hatena.ne.jp/yuhei_kagaya/20111216/1324023977
-NeoBundle 'violetyk/cake.vim'
-" }}}
-
-" その他分類不能 {{{
-NeoBundle 'kannokanno/previm'
-NeoBundle 'sudo.vim'
-NeoBundle 'thinca/vim-scouter'
-NeoBundle "mhinz/vim-startify"
-NeoBundle 'blueyed/vim-diminactive'
-NeoBundle 'mattn/excitetranslate-vim'
-NeoBundle 'xolox/vim-session'
-NeoBundle 'xolox/vim-misc'
-NeoBundle 'fuenor/im_control.vim'
-NeoBundle 'ujihisa/neco-look'
-NeoBundle 'itchyny/dictionary.vim'
-NeoBundle 'glidenote/memolist.vim'
-NeoBundle 'mattn/googletranslate-vim'
-NeoBundle 'itchyny/calendar.vim'
-NeoBundle 'TwitVim'
-NeoBundle 'vim-scripts/dbext.vim'
-NeoBundle 'kakkyz81/evervim'
-
-" eblookを使ってローカル辞書検索 {{{
-" <LEADER> y でカーソル位置の文字を検索できる
-" <LEADER> CTRL + y で検索ウィンドウを表示できる
-NeoBundle 'deton/eblook.vim'
-" Download EB library from ftp://ftp.sra.co.jp/pub/misc/eb/eb-4.4.3.tar.bz2
-" See http://openlab.jp/edict/eblook/
-" Download eblook from http://openlab.jp/edict/eblook/dist/eblook-1.6.1.tar.gz
-" 辞書ファイルは以下から入手
-" http://www.vector.co.jp/soft/data/writing/se369320.html
-" }}}
-" }}}
-
-" vimrc に記述されたプラグインでインストールされていないものがないかチェックする
-NeoBundleCheck
-call neobundle#end()
-" }}}
 
 "===> 見栄え関連の設定 {{{
 if !has('gui_running')
