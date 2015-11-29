@@ -159,8 +159,15 @@ NeoBundle 'tokuhirom/jsref'
 " Ruby関連 {{{
 NeoBundle 'ngmy/vim-rubocop'
 NeoBundle 'ryuzee/vim-ruby-dict'
-NeoBundle 'tpope/vim-rails', { 'autoload' : {
-      \ 'filetypes' : ['haml', 'ruby', 'eruby'] }}
+NeoBundle 'tpope/vim-rails', {
+  \   'autoload' : {
+  \     'filetypes' : [
+  \       'haml',
+  \       'ruby',
+  \       'eruby'
+  \     ]
+  \   }
+  \ }
 NeoBundle 'basyura/unite-rails'
 NeoBundle 'AndrewRadev/switch.vim'
 NeoBundle 'vim-scripts/ruby-matchit'
@@ -171,9 +178,7 @@ NeoBundle 'ryuzee/neocomplcache_php_selenium_snippet'
 NeoBundle 'nishigori/neocomplcache-phpunit-snippet'
 NeoBundle 'oppara/vim-unite-cake'
 NeoBundle 'tekkoc/PHPSnippetsCreator'
-" PHPのコードを整形する http://docs.komagata.org/4988
 NeoBundle 'stephpy/vim-php-cs-fixer'
-" phpでタグをいい感じに扱う
 NeoBundle 'vim-scripts/tagbar-phpctags', {
   \   'build' : {
   \     'others' : 'chmod +x bin/phpctags',
@@ -224,9 +229,9 @@ NeoBundle 'deton/eblook.vim'
 " }}}
 " }}}
 
-" vimrc に記述されたプラグインでインストールされていないものがないかチェックする
-NeoBundleCheck
+filetype plugin indent on
 call neobundle#end()
+NeoBundleCheck
 " }}}
 
 "===> 一般的な設定 {{{
@@ -266,21 +271,9 @@ set wildmode=list:full         " リスト表示，最長マッチ
 set fileformats=unix,dos,mac   " 改行コードの自動認識
 set list                       " タブなどの制御文字を表示
 set tabstop=4
-" set virtualedit=all            " 文字がなくても選択可能に
 set lcs=tab:>.,trail:_,extends:\  " タブを表示する。改行文字は表示しない
 set laststatus=2               "常にステータス行を表示
-" %< truncate long  line
-" %f relative filename
-" %m modofication flag
-" %r readonly flag
-" %h help buffer
-" %w preview window flag
-" %= separator between leftside and right side
-" %l cursor position
-" %c column number
-if filereadable(expand('~/.vim/bundle/vim-fugitive'))
-  set statusline=%<%f\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).'][%{fugitive#statusline()}]['.&ft.']['.&ff.']'}%=%l,%c%V%8P
-endif
+set statusline=%<%f\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).'][%{fugitive#statusline()}]['.&ft.']['.&ff.']'}%=%l,%c%V%8P
 set listchars=tab:»-,trail:-,eol:↲,extends:»,precedes:«,nbsp:%
 set modeline
 set modelines=5
@@ -289,30 +282,14 @@ set complete+=k                " ctrl + n で補完
 set noundofile                 " undoファイル作りたくないんだよ
 set display+=lastline
 set imdisable
-syntax on                     " シンタックスハイライトを有効にする
-imap <C-z> <C-y>
-let mapleader = "\<Space>"     " リーダーを|からスペースに変える
-nmap <Esc><Esc> :nohlsearch<CR><Esc>
+syntax on                      " シンタックスハイライトを有効にする
+
 
 " クリップボードの設定 {{{
 if has('gui')
   set clipboard=unnamed,unnamedplus
 endif
 "}}}
-
-" autoindent有効時にコード貼り付けでインデントがぐっちゃぐちゃになるのを防ぐ {{{
-set pastetoggle=<F10>
-nnoremap <F10> :set paste!<CR>:set paste?<CR>
-" }}}
-
-" (),[],{},<>,””,’’,“入力+()の中にカーソル戻す {{{
-imap {} {}<LEFT>
-imap [] []<LEFT>
-imap () ()<LEFT>
-imap <> <><Left>
-imap "" ""<Left>
-imap '' ''<Left>
-" }}}
 
 "全角スペースの位置を表示 {{{
 function! ZenkakuSpace()
@@ -395,11 +372,11 @@ if !has('gui_running')
   set t_Co=256
 endif
 function! s:hl_colorscheme_modify_molokai()
-  hi! DiffText term=reverse cterm=bold ctermbg=239 gui=bold,italic guibg=#4C4745
-  hi! DiffDelete term=bold ctermfg=180 ctermbg=0 gui=bold guifg=#960050 guibg=#1E0010
-  hi! DiffAdd term=bold ctermbg=0 guibg=#13354A
-  hi! Visual ctermfg=236 ctermbg=119 guifg=#353535 guibg=#95e454
-  hi! default link MatchParen Title
+  highlight! DiffText term=reverse cterm=bold ctermbg=239 gui=bold,italic guibg=#4C4745
+  highlight! DiffDelete term=bold ctermfg=180 ctermbg=0 gui=bold guifg=#960050 guibg=#1E0010
+  highlight! DiffAdd term=bold ctermbg=0 guibg=#13354A
+  highlight! Visual ctermfg=236 ctermbg=119 guifg=#353535 guibg=#95e454
+  highlight! default link MatchParen Title
 endfunction
 autocmd BufWinEnter,ColorScheme * call s:hl_colorscheme_modify_molokai()
 
@@ -411,8 +388,8 @@ augroup InsertHook
 augroup END
 "}}}
 
-" ファイル種類別にインデントする {{{
-filetype plugin indent on
+" コメント行をグレー表示する(コンソール）{{{
+highlight Comment ctermfg=7
 "}}}
 
 " vim-indent-guides設定 / インデントをわかりやすく表示する {{{
@@ -434,7 +411,7 @@ augroup hack234
 augroup END
 "}}}
 
-" Windowの形状設定 {{{
+" Windowの形状設定 {{{2
 if has('gui')
   set showtabline=2  " タブを常に表示
   set imdisable  " IMを無効化
@@ -443,16 +420,9 @@ endif
 if has('gui_macvim')
   set transparency=0  " 透明度を指定
 endif
-"}}}
-
-" Shift + 矢印でウィンドウサイズを変更 {{{
-nnoremap <S-Left>  <C-w><<CR>
-nnoremap <S-Right> <C-w>><CR>
-nnoremap <S-Up>    <C-w>-<CR>
-nnoremap <S-Down>  <C-w>+<CR>
 " }}}
 
-" vim-airline / ステータスラインをいい感じにする {{{
+" vim-airline / ステータスラインをいい感じにする {{{2
 let g:Powerline_symbols = 'fancy'
 let g:airline_theme='badwolf'
 let g:airline_powerline_fonts = 0
@@ -469,18 +439,9 @@ let g:airline#extensions#tabline#left_alt_sep = '>'
 let g:airline#extensions#tabline#left_sep = '⮀'
 let g:airline#extensions#tabline#left_alt_sep = '⮀'
 let g:airline#extensions#readonly#symbol = '⭤ '
-"}}}
+" }}}
 
-" コメント行をグレー表示する(コンソール）{{{
-hi Comment ctermfg=7
-"}}}
-
-" 折りたたみの設定を変える {{{
-" NOTE: 一端微妙なのでやめておく
-" set foldtext=foldCCtext()
-"}}}
-
-" Syntasticの設定 {{{
+" Syntasticの設定 {{{2
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
@@ -584,18 +545,7 @@ augroup MyAutoCmd
   autocmd User Rails call UniteRailsSetting()
 augroup END
 "}}}
-"<=== unite.vimの設定ここまで}}}
-
-" yankroundの設定 {{{
-nmap p <Plug>(yankround-p)
-xmap p <Plug>(yankround-p)
-nmap P <Plug>(yankround-P)
-nmap gp <Plug>(yankround-gp)
-xmap gp <Plug>(yankround-gp)
-nmap gP <Plug>(yankround-gP)
-nmap <C-p> <Plug>(yankround-prev)
-nmap <C-n> <Plug>(yankround-next)
-" }}}
+" <=== unite.vimの設定ここまで }}}
 
 "===> vim-refの設定 {{{1
 " 利用可能なソースは以下の通り
@@ -642,7 +592,7 @@ autocmd FileType php let php_htmlInStrings=1
 autocmd FileType php let php_noShortTags=1
 " ] や ) の対応エラーをハイライトする
 autocmd FileType php let php_parent_error_close=1
-" PHP documenter script bound to ,pdoc {{{
+" PHP documenter script bound to ,pdoc {{{2
 if v:version >= 704
   let g:pdv_template_dir = $HOME ."/.vim/bundle/pdv/templates_snip"
   autocmd Filetype php nnoremap <buffer> ,pdoc :call pdv#DocumentWithSnip()<CR>
@@ -691,7 +641,10 @@ endfunction
 "<=== PHP関連の設定ここまで}}}
 
 "===> python関連の設定 {{{1
-autocmd FileType py set tabstop=4 shiftwidth=4 expandtab
+augroup pythonype
+  autocmd!
+  autocmd FileType py set tabstop=4 shiftwidth=4 expandtab
+augroup END
 "<=== python関連の設定ここまで}}}
 
 "===> vim関連の設定 {{{1
@@ -707,6 +660,8 @@ augroup rubytype
   autocmd!
   autocmd FileType ruby set tabstop=2 shiftwidth=2 expandtab softtabstop=2 autoindent smartindent fileencoding=utf-8
   autocmd FileType eruby set tabstop=2 shiftwidth=2 expandtab softtabstop=2 autoindent smartindent fileencoding=utf-8
+  " git clone https://github.com/OpsRockin/opscode_chef.vim_dict.git ~/.vim/dictionary/opscode_chef.dict
+  autocmd FileType ruby set dictionary+=~/.vim/dictionary/opscode_chef.vim_dict/*.dict
   autocmd BufNewFile,BufRead *.rb,*.rbw,*.gemspec    set filetype=ruby
   autocmd BufNewFile,BufRead *.builder,*.rxml,*.rjs  set filetype=ruby
   autocmd BufNewFile,BufRead [rR]akefile,*.rake      set filetype=ruby
@@ -728,16 +683,6 @@ augroup rubytype
   autocmd BufNewFile,BufRead [Bb]uildfile            set filetype=ruby
   autocmd BufNewFile,BufRead *.erb,*.rhtml           set filetype=eruby
 augroup END
-
-" chef_dict {{{2
-" 辞書ファイル追加
-" git clone https://github.com/OpsRockin/opscode_chef.vim_dict.git ~/.vim/dictionary/opscode_chef.dict
-if has("win32") || has("win64")
-  autocmd FileType ruby set dictionary+=~/vimfiles/dictionary/opscode_chef.vim_dict/*.dict
-else
-  autocmd FileType ruby set dictionary+=~/.vim/dictionary/opscode_chef.vim_dict/*.dict
-end
-"}}}
 
 " vim-railsの設定 {{{
 " 横着移動
@@ -787,7 +732,7 @@ augroup END
 "<=== Reviewファイル関連の設定ここまで }}}
 
 "===> 検索系の設定 {{{
-" incsearch.vim / インクリメンタル検索の機能改善 {{{
+" incsearch.vim / インクリメンタル検索の機能改善 {{{2
 map z/ <Plug>(incsearch-fuzzy-/)
 map z? <Plug>(incsearch-fuzzy-?)
 map zg/ <Plug>(incsearch-fuzzy-stay)
@@ -806,16 +751,16 @@ function! s:config_easyfuzzymotion(...) abort
 endfunction
 " <Space> + / でいい感じに曖昧に検索してeasy-motionで移動できるようになる!
 noremap <silent><expr> <Space>/ incsearch#go(<SID>config_easyfuzzymotion())
-"}}}
+" }}}
 
-" vim-anzu / 検索でヒットした件数を表示する {{{
+" vim-anzu / 検索でヒットした件数を表示する {{{2
 nmap n <Plug>(anzu-n-with-echo)
 nmap N <Plug>(anzu-n-with-echo)
 nmap * <Plug>(anzu-star-with-echo)
 nmap # <Plug>(anzu-sharp-with-echo)
 "}}}
 
-" quickhlの設定 / 文字列をいい感じに簡単にハイライトする {{{
+" quickhlの設定 / 文字列をいい感じに簡単にハイライトする {{{2
 nmap <Space>m <Plug>(quickhl-manual-this)
 xmap <Space>m <Plug>(quickhl-manual-this)
 nmap <Space>M <Plug>(quickhl-manual-reset)
@@ -825,34 +770,35 @@ nmap <Space>] <Plug>(quickhl-tag-toggle)
 map H <Plug>(operator-quickhl-manual-this-motion)
 let g:quickhl_manual_enable_at_startup = 1
 let g:quickhl_manual_keywords = [
-        \ "TODO",
-        \ "FIXME",
-        \ ]
-"}}}
-" over.vim {{{
+  \ "TODO",
+  \ "FIXME",
+  \ ]
+" }}}
+
+" over.vim {{{2
 " over.vimの起動
 nnoremap <silent> ,m :OverCommandLine<CR>
 " カーソル下の単語をハイライト付きで置換
 nnoremap sub :OverCommandLine<CR>%s/<C-r><C-w>//g<Left><Left>
 " コピーした文字列をハイライト付きで置換
 nnoremap subp y:OverCommandLine<CR>%s!<C-r>=substitute(@0, '!', '\\!', 'g')<CR>!!gI<Left><Left><Left>
-"}}}
-"<=== 検索系の設定ここまで}}}
+" }}}
+"<=== 検索系の設定ここまで }}}
 
 "===> ファイル整形系の設定 {{{
-" vim-trailing-whitespaceの設定 {{{
+" vim-trailing-whitespaceの設定 {{{2
 " :FixWhitespaceとすればまとめて文末削除できる
 let g:extra_whitespace_ignored_filetypes = ['unite', 'calendar']
 " }}}
 
-" vim-easy-align / Alignでテキスト整形 {{{
+" vim-easy-align / Alignでテキスト整形 {{{2
 " VisualModeで選択してEnterを押下し、揃えたい文字を入れる
 vmap <Enter> <Plug>(EasyAlign)
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)
 "}}}
 
-" Nerd_Commenterでコメントアウトを簡単にする {{{
+" Nerd_Commenterでコメントアウトを簡単にする {{{2
 let g:NERDCreateDefaultMappings = 0
 let NERDSpaceDelims = 1
 nmap //// <Plug>NERDCommenterToggle
@@ -861,44 +807,19 @@ nmap ///9 <Plug>NERDCommenterToEOL  " カーソル位置以降
 vmap ///s <Plug>NERDCommenterSexy
 nmap ,, <Plug>NERDCommenterToggle
 vmap ,, <Plug>NERDCommenterToggle
-"}}}
-"<=== ファイル整形系の設定ここまで}}}
-
-"===> 移動・ファイル選択の設定{{{
-" 画面スクロール {{{
-nnoremap <Space><Space>   <PageDown>
-nnoremap ;;   <PageUp>
 " }}}
+"<=== ファイル整形系の設定ここまで }}}
 
-" タブ移動の設定 {{{
-" The prefix key.
-nnoremap    [Tag]   <Nop>
-nmap    t [Tag]
-" Shift + Tab でタブ移動、Tab + Tab で左移動する
-nnoremap <S-Tab> gt
-nnoremap <Tab><Tab> gT
-" t1 で1番左のタブ、t2 で1番左から2番目のタブにジャンプ
-for n in range(1, 9)
-  execute 'nnoremap <silent> [Tag]'.n  ':<C-u>tabnext'.n.'<CR>'
-endfor
-" tc 新しいタブを一番右に作る
-map <silent> [Tag]c :tablast <bar> tabnew<CR>
-" tx タブを閉じる
-map <silent> [Tag]x :tabclose<CR>
-" tn 次のタブ
-map <silent> [Tag]n :tabnext<CR>
-" tp 前のタブ
-map <silent> [Tag]p :tabprevious<CR>
-" }}}
+"===> 移動・ファイル選択の設定 {{{
 
-
+" ctrlp {{{2
 " このコマンドを使うと、同一ディレクトリ内のファイルを簡単に
 " リストアップして編集できる
 " http://mattn.kaoriya.net/software/vim/20111228013428.htm
 let g:ctrlp_map = '<c-x>'
-"}}}
+" }}}
 
-" easymotion / カーソル移動を楽にする {{{
+" easymotion / カーソル移動を楽にする {{{2
 " http://blog.remora.cx/2012/08/vim-easymotion.html
 " ; + (b|w)などで簡単選択
 " w カーソルより右側の単語(word)の先頭にマッチ
@@ -922,12 +843,11 @@ hi clear EasyMotionTarget
 hi clear EasyMotionShade
 autocmd BufEnter * hi EasyMotionTarget ctermfg=25 guifg=#ff0000
 autocmd BufEnter * hi EasyMotionShade ctermfg=25 guifg=#aaaaaa"
-"}}}
+" }}}
 
-" nerdtree / ファイルの一覧を表示 {{{
+" nerdtree / ファイルの一覧を表示 {{{2
 nnoremap <silent><C-e> :NERDTreeToggle<CR>
 " Tree表示の際にgitの登録状況を表示する
-
 " デフォルト設定の文字はずれるので自分で記号を指定する
 let g:NERDTreeIndicatorMap = {
   \ "Modified"  : "*",
@@ -941,20 +861,16 @@ let g:NERDTreeIndicatorMap = {
   \ "Unknown"   : "?"
   \ }
 let g:nerdtree_tabs_open_on_gui_startup = 0
-"}}}
+" }}}
 
-" tagbar / タグをいい感じに扱う {{{
+" tagbar / タグをいい感じに扱う {{{2
 let g:tagbar_width = 40
 let g:tagbar_autofocus = 1
 " Map for toggle
 noremap <silent> :tt :TagbarToggle<CR>
-"}}}
+" }}}
 
-" vim-expand-region / 選択しやすくする vの連打で範囲が変えられる {{{
-vmap v <Plug>(expand_region_expand)
-vmap <C-v> <Plug>(expand_region_shrink)
-"}}}
-" 複数行カーソルのキーマップ {{{
+" 複数行カーソルのキーマップ {{{2
 let g:multi_cursor_start_key='<F6>' " Macの場合はFn + F6で起動
 let g:multi_cursor_next_key='<C-n>'
 let g:multi_cursor_prev_key='<C-p>'
@@ -1025,22 +941,22 @@ smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
 if has('conceal')
   set conceallevel=2 concealcursor=i
 endif
-"<=== neocomplcacheの設定ここまで}}}
+"<=== neocomplcacheの設定ここまで }}}
 
 " open-browser の設定 / URLの上でと押すとブラウザを開く {{{
 let g:netrw_nogx = 1 " disable netrw's gx mapping.
 nmap br <Plug>(openbrowser-smart-search)
 vmap br <Plug>(openbrowser-smart-search)
-"}}}
+" }}}
 
 " VimShell {{{
 let g:vimshell_prompt = '$ '
-"}}}
+" }}}
 
 " vim-sessionの設定 / 再起動を簡単にできるようにする {{{
 :let g:session_autosave = 'no'
 nnoremap <silent> :Restart :RestartVim<CR>
-"}}}
+" }}}
 
 " Japanese input {{{
 " 「日本語入力固定モード」切替キー
@@ -1049,17 +965,18 @@ inoremap <silent> <C-j> <C-r>=IMState('FixMode')<CR>
 let IM_CtrlIBusPython = 1
 " バッファ毎に日本語入力固定モードの状態を制御。
 let g:IM_CtrlBufLocalMode = 1
-"}}}
+" }}}
 
 "===> 英文関係の設定 {{{
-" Excitetranslate {{{
+
+" Excitetranslate {{{2
 " trと入れれば翻訳できるように設定
 nnoremap <silent> tr :<C-u>ExciteTranslate<CR>
 vnoremap <silent> tr :<C-u>ExciteTranslate<CR>
 autocmd BufEnter ==Translate==\ Excite nnoremap <buffer> <silent> q :<C-u>close<CR>
-"}}}
+" }}}
 
-" ref-dicts-en / 辞書を引けるようにする(vim-refが必要) {{{
+" ref-dicts-en / 辞書を引けるようにする(vim-refが必要) {{{2
 let g:ref_source_webdict_sites = {
 \   'wiki': {
 \     'url': 'http://ja.wikipedia.org/wiki/%s',
@@ -1082,7 +999,7 @@ nnoremap <silent> en :<C-u>call ref#jump('normal', 'webdict')<CR>
 vnoremap <silent> en :<C-u>call ref#jump('visual', 'webdict')<CR>
 " }}}
 
-" eblookの設定 {{{
+" eblookの設定 {{{2
 let eblook_dictlist1 = [
   \{
   \'book': $HOME . '/dictionary/epwing',
@@ -1094,8 +1011,8 @@ let eblook_dictlist1 = [
 let eblookenc = 'euc-jp'
 let eblook_entrywin_height = 10
 let eblook_contentwin_height = 10
-"}}}
-"<=== 英文関連の設定ここまで}}}
+" }}}
+"<=== 英文関連の設定ここまで }}}
 
 " memolist / 簡単にメモ取りたい {{{
 let g:memolist_path = "~/Dropbox/memo"
@@ -1114,68 +1031,68 @@ function! s:my_temporary_window_init(config, context)
 endfunction
 
 if has('gui')
-let g:automatic_default_match_config = {
-      \   'is_open_other_window' : 1,
-      \ }
-let g:automatic_default_set_config = {
-      \   'height' : '20%',
-      \   'move' : 'bottom',
-      \   'apply' : function('s:my_temporary_window_init')
-      \ }
-let g:automatic_config = [
-      \   { 'match' : { 'buftype' : 'help' } },
-      \   { 'match' : { 'filetype' : 'eblook' } },
-      \   { 'match' : { 'filetype' : 'gitcommit' } },
-      \   { 'match' : { 'bufname' : 'gissues/*' } },
-      \   { 'match' : { 'bufname' : '^.vimshell' } },
-      \   { 'match' : {
-      \        'bufname' : '^.unite'
-      \      },
-      \     'set' : {
-      \       'move' : 'top',
-      \       'width' : 8
-      \     }
-      \   },
-      \   {
-      \     'match' : {
-      \       'filetype' : '^ref-.+',
-      \       'autocmds' : [ 'FileType' ]
-      \     },
-      \     'set' : {
-      \       'move' : 'right',
-      \       'height' : '100%',
-      \       'width' : 60
-      \     }
-      \   },
-      \   {
-      \     'match' : {
-      \       'bufname' : 'Tagbar',
-      \       'autocmds' : [ 'FileType' ]
-      \     },
-      \     'set' : {
-      \       'move' : 'right',
-      \       'height' : '100%',
-      \       'width' : 60
-      \     }
-      \   },
-      \   {
-      \     'match' : {
-      \       'bufname' : '\[quickrun output\]',
-      \     },
-      \     'set' : {
-      \       'height' : 8,
-      \     }
-      \   },
-      \   {
-      \     'match' : {
-      \       'autocmds' : [ 'CmdwinEnter' ]
-      \     },
-      \     'set' : {
-      \       'is_close_focus_out' : 1,
-      \       'unsettings' : [ 'move', 'resize' ]
-      \     },
-      \   }
-      \ ]
+  let g:automatic_default_match_config = {
+    \   'is_open_other_window' : 1,
+    \ }
+  let g:automatic_default_set_config = {
+    \   'height' : '20%',
+    \   'move' : 'bottom',
+    \   'apply' : function('s:my_temporary_window_init')
+    \ }
+  let g:automatic_config = [
+    \   { 'match' : { 'buftype' : 'help' } },
+    \   { 'match' : { 'filetype' : 'eblook' } },
+    \   { 'match' : { 'filetype' : 'gitcommit' } },
+    \   { 'match' : { 'bufname' : 'gissues/*' } },
+    \   { 'match' : { 'bufname' : '^.vimshell' } },
+    \   { 'match' : {
+    \        'bufname' : '^.unite'
+    \      },
+    \     'set' : {
+    \       'move' : 'top',
+    \       'width' : 8
+    \     }
+    \   },
+    \   {
+    \     'match' : {
+    \       'filetype' : '^ref-.+',
+    \       'autocmds' : [ 'FileType' ]
+    \     },
+    \     'set' : {
+    \       'move' : 'right',
+    \       'height' : '100%',
+    \       'width' : 60
+    \     }
+    \   },
+    \   {
+    \     'match' : {
+    \       'bufname' : 'Tagbar',
+    \       'autocmds' : [ 'FileType' ]
+    \     },
+    \     'set' : {
+    \       'move' : 'right',
+    \       'height' : '100%',
+    \       'width' : 60
+    \     }
+    \   },
+    \   {
+    \     'match' : {
+    \       'bufname' : '\[quickrun output\]',
+    \     },
+    \     'set' : {
+    \       'height' : 8,
+    \     }
+    \   },
+    \   {
+    \     'match' : {
+    \       'autocmds' : [ 'CmdwinEnter' ]
+    \     },
+    \     'set' : {
+    \       'is_close_focus_out' : 1,
+    \       'unsettings' : [ 'move', 'resize' ]
+    \     },
+    \   }
+    \ ]
 endif
 " }}}
 
@@ -1189,7 +1106,70 @@ let twitvim_count = 80
 let g:dbext_map_prefix = '&s'
 " }}}
 
-"最後の処理 {{{
+" Keymap Settings {{{
+imap <C-z> <C-y>
+let mapleader = "\<Space>"     " リーダーを|からスペースに変える
+nmap <Esc><Esc> :nohlsearch<CR><Esc>
+
+" ウィンドウサイズ {{{2
+nnoremap <S-Left>  <C-w><<CR>
+nnoremap <S-Right> <C-w>><CR>
+nnoremap <S-Up>    <C-w>-<CR>
+nnoremap <S-Down>  <C-w>+<CR>
+" }}}
+
+" (),[],{},<>,””,’’,“入力+()の中にカーソル戻す {{{2
+imap {} {}<LEFT>
+imap [] []<LEFT>
+imap () ()<LEFT>
+imap <> <><Left>
+imap "" ""<Left>
+imap '' ''<Left>
+" }}}
+
+" yankroundの設定 {{{2
+nmap p <Plug>(yankround-p)
+xmap p <Plug>(yankround-p)
+nmap P <Plug>(yankround-P)
+nmap gp <Plug>(yankround-gp)
+xmap gp <Plug>(yankround-gp)
+nmap gP <Plug>(yankround-gP)
+nmap <C-p> <Plug>(yankround-prev)
+nmap <C-n> <Plug>(yankround-next)
+" }}}
+
+" vim-expand-region / 選択しやすくする vの連打で範囲が変えられる {{{2
+vmap v <Plug>(expand_region_expand)
+vmap <C-v> <Plug>(expand_region_shrink)
+" }}}
+
+" タブ移動の設定 {{{2
+nnoremap <S-Tab> gt
+nnoremap <Tab><Tab> gT
+nnoremap  [Tag]   <Nop>
+nmap      t [Tag]
+for n in range(1, 9)
+  execute 'nnoremap <silent> [Tag]'.n  ':<C-u>tabnext'.n.'<CR>'
+endfor
+map <silent> [Tag]c :tablast <bar> tabnew<CR>
+map <silent> [Tag]x :tabclose<CR>
+map <silent> [Tag]n :tabnext<CR>
+map <silent> [Tag]p :tabprevious<CR>
+" }}}
+
+" 画面スクロール {{{2
+nnoremap <Space><Space>   <PageDown>
+nnoremap ;;   <PageUp>
+" }}}
+
+" autoindent有効時にコード貼り付けでインデントがぐっちゃぐちゃになるのを防ぐ {{{2
+set pastetoggle=<F10>
+nnoremap <F10> :set paste!<CR>:set paste?<CR>
+" }}}
+
+" }}}
+
+" 最後の処理 {{{
 " ~/.vimrc.localが存在する場合のみ設定を読み込む
 let s:local_vimrc = expand('~/.vimrc.local')
 if filereadable(s:local_vimrc)
