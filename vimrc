@@ -405,7 +405,7 @@ autocmd BufWinEnter,ColorScheme * call s:hl_colorscheme_modify_molokai()
 
 " 挿入モードかどうかで色を変える {{{
 augroup InsertHook
-autocmd!
+  autocmd!
   autocmd InsertEnter * highlight StatusLine guifg=#ccdc90 guibg=#2E4340
   autocmd InsertLeave * highlight StatusLine guifg=#2E4340 guibg=#ccdc90
 augroup END
@@ -539,11 +539,11 @@ nnoremap <silent> ,ucv :<C-u>Unite cake_view<CR>
 nnoremap <silent> ,uch :<C-u>Unite cake_helper<CR>
 
 " ウィンドウを分割して開く
-au FileType unite nnoremap <silent> <buffer> <expr> <C-j> unite#do_action('split')
-au FileType unite inoremap <silent> <buffer> <expr> <C-j> unite#do_action('split')
+autocmd FileType unite nnoremap <silent> <buffer> <expr> <C-j> unite#do_action('split')
+autocmd FileType unite inoremap <silent> <buffer> <expr> <C-j> unite#do_action('split')
 " ウィンドウを縦に分割して開く
-au FileType unite nnoremap <silent> <buffer> <expr> <C-l> unite#do_action('vsplit')
-au FileType unite inoremap <silent> <buffer> <expr> <C-l> unite#do_action('vsplit')
+autocmd FileType unite nnoremap <silent> <buffer> <expr> <C-l> unite#do_action('vsplit')
+autocmd FileType unite inoremap <silent> <buffer> <expr> <C-l> unite#do_action('vsplit')
 
 " unite.vim上でのキーマッピング
 autocmd FileType unite call s:unite_my_settings()
@@ -578,9 +578,9 @@ function! UniteRailsSetting()
   nnoremap <C-s>ra          :<C-U>Unite rails/rake<CR>
   nnoremap <C-s>h           :<C-U>Unite rails/heroku<CR>
 endfunction
-aug MyAutoCmd
-  au User Rails call UniteRailsSetting()
-aug END
+augroup MyAutoCmd
+  autocmd User Rails call UniteRailsSetting()
+augroup END
 "}}}
 "<=== unite.vimの設定ここまで}}}
 
@@ -755,7 +755,7 @@ autocmd BufRead,BufNewFile *.md set filetype=markdown
 
 "===> CSVファイル関連の設定 {{{
 augroup filetypedetect
-  au! BufRead,BufNewFile *.csv,*.tsv set filetype=csv
+  autocmd! BufRead,BufNewFile *.csv,*.tsv set filetype=csv
 augroup END
 "<=== CSVファイル関連の設定ここまで }}}
 
@@ -900,8 +900,8 @@ let g:EasyMotion_use_migemo = 1
 " カラー設定変更
 hi clear EasyMotionTarget
 hi clear EasyMotionShade
-au BufEnter * hi EasyMotionTarget ctermfg=25 guifg=#ff0000
-au BufEnter * hi EasyMotionShade ctermfg=25 guifg=#aaaaaa"
+autocmd BufEnter * hi EasyMotionTarget ctermfg=25 guifg=#ff0000
+autocmd BufEnter * hi EasyMotionShade ctermfg=25 guifg=#aaaaaa"
 "}}}
 
 " nerdtree / ファイルの一覧を表示 {{{
