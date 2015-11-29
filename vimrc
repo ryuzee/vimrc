@@ -694,6 +694,14 @@ endfunction
 autocmd FileType py set tabstop=4 shiftwidth=4 expandtab
 "<=== python関連の設定ここまで}}}
 
+"===> vim関連の設定 {{{1
+augroup vimtype
+  autocmd!
+  autocmd BufNewFile,BufRead *vimrc,*.vim            set filetype=vim
+  autocmd FileType vim set tabstop=2 shiftwidth=2 expandtab
+augroup END
+"<=== vim関連の設定ここまで}}}
+
 "===> Ruby関連の設定 {{{1
 augroup rubytype
   autocmd!
@@ -741,21 +749,28 @@ nnoremap Rv :Eview<CR>
 "<=== Ruby関連の設定ここまで}}}
 
 "===> JavaScript関連の設定 {{{1
-let g:jscomplete_use = ['dom', 'moz']
-autocmd FileType javascript set tabstop=4 shiftwidth=4 expandtab fileencoding=utf-8
+augroup jstype
+  autocmd!
+  autocmd FileType javascript set tabstop=4 shiftwidth=4 expandtab fileencoding=utf-8
+  autocmd BufNewFile,BufRead *.js set filetype=javascript
+augroup END
+
 " Nodejs補完
+let g:jscomplete_use = ['dom', 'moz']
 setl omnifunc=jscomplete#CompleteJS
 if !exists('g:neocomplcache_omni_functions')
   let g:neocomplcache_omni_functions = {}
 endif
 let g:neocomplcache_omni_functions.javascript = 'nodejscomplete#CompleteJS'
 let g:node_usejscomplete = 1
-autocmd BufNewFile,BufRead *.js set filetype=javascript
 "<=== JavaScript関連の設定ここまで }}}
 
 "===> Markdown関連の設定 {{{
-autocmd BufNewFile,BufRead *.md,*.rdoc set fileencoding=utf-8
-autocmd BufRead,BufNewFile *.md set filetype=markdown
+augroup markdowntype
+  autocmd!
+  autocmd BufNewFile,BufRead *.md,*.rdoc set fileencoding=utf-8
+  autocmd BufRead,BufNewFile *.md set filetype=markdown
+augroup END
 "<=== Markdown関連の設定ここまで}}}
 
 "===> CSVファイル関連の設定 {{{
