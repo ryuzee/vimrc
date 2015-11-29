@@ -16,7 +16,7 @@ if has('vim_starting')
   if !isdirectory(expand("~/.vim/bundle/neobundle.vim/"))
     echo "install neobundle..."
     " vim からコマンド呼び出しているだけ neobundle.vim のクローン
-    :call system("git clone git://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim")
+    call system("git clone git://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim")
   endif
   " runtimepath の追加は必須
   set runtimepath+=~/.vim/bundle/neobundle.vim/
@@ -289,8 +289,8 @@ set complete+=k                " ctrl + n で補完
 set noundofile                 " undoファイル作りたくないんだよ
 set display+=lastline
 set imdisable
-:syntax on                     " シンタックスハイライトを有効にする
-:imap <C-z> <C-y>
+syntax on                     " シンタックスハイライトを有効にする
+imap <C-z> <C-y>
 let mapleader = "\<Space>"     " リーダーを|からスペースに変える
 nmap <Esc><Esc> :nohlsearch<CR><Esc>
 
@@ -391,7 +391,7 @@ endif
 
 "===> 見栄え関連の設定 {{{
 if !has('gui_running')
-  :colorscheme molokai
+  colorscheme molokai
   set t_Co=256
 endif
 function! s:hl_colorscheme_modify_molokai()
@@ -521,22 +521,24 @@ let g:unite_enable_split_vertically = 0
 let g:unite_winwidth = 40
 " Window
 let g:unite_winheight = 10
-nnoremap <silent> ,ua :<C-u>UniteWithBufferDir -no-quit -buffer-name=files buffer file_mru bookmark file<CR>
-nnoremap <silent> ,ub :<C-u>Unite buffer<CR>
-nnoremap <silent> ,uc :<C-u>Unite colorscheme<CR>
-nnoremap <silent> ,uf :<C-u>UniteWithBufferDir -no-quit -buffer-name=files file<CR>
-nnoremap <silent> ,ufl :<C-u>UniteWithBufferDir -vertical -winwidth=30 -no-quit -buffer-name=files file<CR>
-nnoremap <silent> ,um :<C-u>Unite -no-quit file_mru<CR>
-nnoremap <silent> ,uml :<C-u>Unite -no-quit -vertical -winwidth=30 file_mru<CR>
-nnoremap <silent> ,uo :<C-u>Unite outline<CR>
-nnoremap <silent> ,uol :<C-u>Unite -vertical -no-quit -winwidth=30 outline<CR>
-nnoremap <silent> ,ur :<C-u>Unite -no-quit -buffer-name=register register<CR>
-nnoremap <silent> ,uu :<C-u>Unite -no-quit buffer file_mru<CR>
-nnoremap <silent> ,uy :<C-u>Unite yankround<CR>
-nnoremap <silent> ,ucc :<C-u>Unite cake_controller<CR>
-nnoremap <silent> ,ucm :<C-u>Unite cake_model<CR>
-nnoremap <silent> ,ucv :<C-u>Unite cake_view<CR>
-nnoremap <silent> ,uch :<C-u>Unite cake_helper<CR>
+nnoremap [unite] <Nop>
+nmap     ,u [unite]
+nnoremap [unite]a   :<C-u>UniteWithBufferDir -no-quit -buffer-name=files buffer file_mru bookmark file<CR>
+nnoremap [unite]b   :<C-u>Unite buffer<CR>
+nnoremap [unite]c   :<C-u>Unite colorscheme<CR>
+nnoremap [unite]f   :<C-u>UniteWithBufferDir -no-quit -buffer-name=files file<CR>
+nnoremap [unite]fl  :<C-u>UniteWithBufferDir -vertical -winwidth=30 -no-quit -buffer-name=files file<CR>
+nnoremap [unite]m   :<C-u>Unite -no-quit file_mru<CR>
+nnoremap [unite]uml :<C-u>Unite -no-quit -vertical -winwidth=30 file_mru<CR>
+nnoremap [unite]o   :<C-u>Unite outline<CR>
+nnoremap [unite]ol  :<C-u>Unite -vertical -no-quit -winwidth=30 outline<CR>
+nnoremap [unite]r   :<C-u>Unite -no-quit -buffer-name=register register<CR>
+nnoremap [unite]u   :<C-u>Unite -no-quit buffer file_mru<CR>
+nnoremap [unite]y   :<C-u>Unite yankround<CR>
+nnoremap [unite]cc  :<C-u>Unite cake_controller<CR>
+nnoremap [unite]cm  :<C-u>Unite cake_model<CR>
+nnoremap [unite]cv  :<C-u>Unite cake_view<CR>
+nnoremap [unite]ch  :<C-u>Unite cake_helper<CR>
 
 " ウィンドウを分割して開く
 autocmd FileType unite nnoremap <silent> <buffer> <expr> <C-j> unite#do_action('split')
@@ -563,7 +565,7 @@ endtry
 " search a file in the filetree
 nnoremap <Space>s :split<cr> :<C-u>Unite -start-insert file_rec/async<cr>
 " reset not it is <C-l> normally
-:nnoremap <Space>r <Plug>(unite_restart)
+nnoremap <Space>r <Plug>(unite_restart)
 " call unite#custom_default_action('file', 'tabopen')
 
 " Rails用 {{{
@@ -629,17 +631,17 @@ vnoremap <silent> :php :<C-u>call ref#jump('visual', 'phpmanual')<CR>
 "===> PHP関連の設定 {{{1
 " makeコマンドを入力すると、PHPの構文エラーがないかどうかもチェック可能
 " PSR2に従いタブからスペースに展開するように変更
-:autocmd FileType php set tabstop=4 shiftwidth=4 autoindent smartindent expandtab makeprg=php\ -l\ % errorformat=%m\ in\ %f\ on\ line\ %l
+autocmd FileType php set tabstop=4 shiftwidth=4 autoindent smartindent expandtab makeprg=php\ -l\ % errorformat=%m\ in\ %f\ on\ line\ %l
 " 文字列の中のSQLをハイライトする
-:autocmd FileType php let php_sql_query=1
+autocmd FileType php let php_sql_query=1
 " Baselibメソッドのハイライトを行う
-:autocmd FileType php let php_baselib=1
+autocmd FileType php let php_baselib=1
 " 文字列の中のHTMLをハイライトする
-:autocmd FileType php let php_htmlInStrings=1
+autocmd FileType php let php_htmlInStrings=1
 " ショートタグのハイライトを無効にする
-:autocmd FileType php let php_noShortTags=1
+autocmd FileType php let php_noShortTags=1
 " ] や ) の対応エラーをハイライトする
-:autocmd FileType php let php_parent_error_close=1
+autocmd FileType php let php_parent_error_close=1
 " PHP documenter script bound to ,pdoc {{{
 if v:version >= 704
   let g:pdv_template_dir = $HOME ."/.vim/bundle/pdv/templates_snip"
@@ -647,7 +649,7 @@ if v:version >= 704
 endif
 " }}}
 " cakephpのスニペットを有効にする
-:autocmd FileType ctp set ft=php.cakephp
+autocmd FileType ctp set ft=php.cakephp
 " cake.vimの設定 {{{2
 " 自動でルートディレクトリを決める
 " 詳細は :help cake
@@ -689,12 +691,12 @@ endfunction
 "<=== PHP関連の設定ここまで}}}
 
 "===> python関連の設定 {{{1
-:autocmd FileType py set tabstop=4 shiftwidth=4 expandtab
+autocmd FileType py set tabstop=4 shiftwidth=4 expandtab
 "<=== python関連の設定ここまで}}}
 
 "===> Ruby関連の設定 {{{1
-:autocmd FileType ruby set tabstop=2 shiftwidth=2 expandtab softtabstop=2 autoindent smartindent fileencoding=utf-8
-:autocmd FileType eruby set tabstop=2 shiftwidth=2 expandtab softtabstop=2 autoindent smartindent fileencoding=utf-8
+autocmd FileType ruby set tabstop=2 shiftwidth=2 expandtab softtabstop=2 autoindent smartindent fileencoding=utf-8
+autocmd FileType eruby set tabstop=2 shiftwidth=2 expandtab softtabstop=2 autoindent smartindent fileencoding=utf-8
 autocmd BufNewFile,BufRead *.rb,*.rbw,*.gemspec    set filetype=ruby
 autocmd BufNewFile,BufRead *.builder,*.rxml,*.rjs  set filetype=ruby
 autocmd BufNewFile,BufRead [rR]akefile,*.rake      set filetype=ruby
@@ -736,10 +738,10 @@ nnoremap Rv :Eview<CR>
 "<=== Ruby関連の設定ここまで}}}
 
 "===> JavaScript関連の設定 {{{1
-:let g:jscomplete_use = ['dom', 'moz']
-:autocmd FileType javascript set tabstop=4 shiftwidth=4 expandtab fileencoding=utf-8
+let g:jscomplete_use = ['dom', 'moz']
+autocmd FileType javascript set tabstop=4 shiftwidth=4 expandtab fileencoding=utf-8
 " Nodejs補完
-:setl omnifunc=jscomplete#CompleteJS
+setl omnifunc=jscomplete#CompleteJS
 if !exists('g:neocomplcache_omni_functions')
   let g:neocomplcache_omni_functions = {}
 endif
