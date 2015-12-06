@@ -775,6 +775,15 @@ let g:quickhl_manual_keywords = [
   \ ]
 " }}}
 
+" 検索後にジャンプした際に検索単語を画面中央に持ってくる {{{
+nnoremap n nzz
+nnoremap N Nzz
+nnoremap * *zz
+nnoremap # #zz
+nnoremap g* g*zz
+nnoremap g# g#zz
+" }}}
+
 " over.vim {{{2
 " over.vimの起動
 nnoremap <silent> ,m :OverCommandLine<CR>
@@ -930,12 +939,9 @@ imap <C-s> <Plug>(neosnippet_start_unite_snippet)
 xmap <C-k> <Plug>(neosnippet_expand_target)
 
 " 展開された後はTabでいい感じにプレースホルダを移動していく
-imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-\ "\<Plug>(neosnippet_expand_or_jump)"
-\: pumvisible() ? "\<C-n>" : "\<TAB>"
-smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-\ "\<Plug>(neosnippet_expand_or_jump)"
-\: "\<TAB>"
+imap <expr><C-l>
+\ neosnippet#expandable() <Bar><Bar> neosnippet#jumpable() ?
+\ "\<Plug>(neosnippet_expand_or_jump)" : "\<C-n>"
 "
 " For snippet_complete marker.
 if has('conceal')
