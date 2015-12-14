@@ -207,7 +207,7 @@ NeoBundle 'blueyed/vim-diminactive'
 NeoBundle 'mattn/excitetranslate-vim'
 NeoBundle 'xolox/vim-session'
 NeoBundle 'xolox/vim-misc'
-NeoBundle 'fuenor/im_control.vim'
+" NeoBundle 'fuenor/im_control.vim'
 NeoBundle 'ujihisa/neco-look'
 NeoBundle 'itchyny/dictionary.vim'
 NeoBundle 'glidenote/memolist.vim'
@@ -694,9 +694,16 @@ nnoremap Rv :Eview<CR>
 "<=== Ruby関連の設定ここまで}}}
 
 "===> JavaScript関連の設定 {{{1
+augroup htmltype
+  autocmd!
+  autocmd FileType html set tabstop=2 shiftwidth=2 expandtab fileencoding=utf-8
+  autocmd BufNewFile,BufRead *.html set filetype=html
+augroup END
+
+"===> JavaScript関連の設定 {{{1
 augroup jstype
   autocmd!
-  autocmd FileType javascript set tabstop=4 shiftwidth=4 expandtab fileencoding=utf-8
+  autocmd FileType javascript set tabstop=2 shiftwidth=2 expandtab fileencoding=utf-8
   autocmd BufNewFile,BufRead *.js set filetype=javascript
 augroup END
 
@@ -966,11 +973,11 @@ nnoremap <silent> :Restart :RestartVim<CR>
 
 " Japanese input {{{
 " 「日本語入力固定モード」切替キー
-inoremap <silent> <C-j> <C-r>=IMState('FixMode')<CR>
+" inoremap <silent> <C-j> <C-r>=IMState('FixMode')<CR>
 " PythonによるIBus制御指定
-let IM_CtrlIBusPython = 1
+" let IM_CtrlIBusPython = 1
 " バッファ毎に日本語入力固定モードの状態を制御。
-let g:IM_CtrlBufLocalMode = 1
+" let g:IM_CtrlBufLocalMode = 1
 " }}}
 
 "===> 英文関係の設定 {{{
