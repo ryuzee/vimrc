@@ -273,7 +273,9 @@ set list                       " タブなどの制御文字を表示
 set tabstop=4
 set lcs=tab:>.,trail:_,extends:\  " タブを表示する。改行文字は表示しない
 set laststatus=2               "常にステータス行を表示
-set statusline=%<%f\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).'][%{fugitive#statusline()}]['.&ft.']['.&ff.']'}%=%l,%c%V%8P
+if filereadable(expand('~/.vim/bundle/vim-fugitive'))
+  set statusline=%<%f\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).'][%{fugitive#statusline()}]['.&ft.']['.&ff.']'}%=%l,%c%V%8P
+endif
 set listchars=tab:»-,trail:-,eol:↲,extends:»,precedes:«,nbsp:%
 set modeline
 set modelines=5
@@ -862,6 +864,7 @@ autocmd BufEnter * hi EasyMotionShade ctermfg=25 guifg=#aaaaaa"
 " }}}
 
 " nerdtree / ファイルの一覧を表示 {{{2
+" nmap <silent>R :NERDTreeCWD<CR>
 nnoremap <silent><C-e> :NERDTreeToggle<CR>
 " Tree表示の際にgitの登録状況を表示する
 " デフォルト設定の文字はずれるので自分で記号を指定する
