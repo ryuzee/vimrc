@@ -686,6 +686,12 @@ augroup rubytype
   autocmd BufNewFile,BufRead *.erb,*.rhtml           set filetype=eruby
 augroup END
 
+augroup railstype
+  autocmd!
+  autocmd BufEnter * if (exists("b:rails_root") && expand("%") =~ ".*\.rb$" && expand("%") !~ ".*\.erb$") | set filetype=ruby.rails | endif
+  autocmd BufEnter * if (expand("%") =~ "_spec\.rb$") || (expand("%") =~ "^spec.*\.rb$") | set filetype=ruby.rspec | endif
+augroup END
+
 " vim-railsの設定 {{{
 " 横着移動
 nnoremap Rc :Econtroller<CR>
@@ -864,7 +870,7 @@ autocmd BufEnter * hi EasyMotionShade ctermfg=25 guifg=#aaaaaa"
 " }}}
 
 " nerdtree / ファイルの一覧を表示 {{{2
-" nmap <silent>R :NERDTreeCWD<CR>
+nnoremap <silent><C-c> :NERDTreeCWD<CR>
 nnoremap <silent><C-e> :NERDTreeToggle<CR>
 " Tree表示の際にgitの登録状況を表示する
 " デフォルト設定の文字はずれるので自分で記号を指定する
