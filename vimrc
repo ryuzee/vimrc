@@ -207,7 +207,6 @@ NeoBundle 'blueyed/vim-diminactive'
 NeoBundle 'mattn/excitetranslate-vim'
 NeoBundle 'xolox/vim-session'
 NeoBundle 'xolox/vim-misc'
-" NeoBundle 'fuenor/im_control.vim'
 NeoBundle 'ujihisa/neco-look'
 NeoBundle 'itchyny/dictionary.vim'
 NeoBundle 'glidenote/memolist.vim'
@@ -216,17 +215,7 @@ NeoBundle 'itchyny/calendar.vim'
 NeoBundle 'TwitVim'
 NeoBundle 'vim-scripts/dbext.vim'
 NeoBundle 'kakkyz81/evervim'
-
-" eblookを使ってローカル辞書検索 {{{
-" <LEADER> y でカーソル位置の文字を検索できる
-" <LEADER> CTRL + y で検索ウィンドウを表示できる
 NeoBundle 'deton/eblook.vim'
-" Download EB library from ftp://ftp.sra.co.jp/pub/misc/eb/eb-4.4.3.tar.bz2
-" See http://openlab.jp/edict/eblook/
-" Download eblook from http://openlab.jp/edict/eblook/dist/eblook-1.6.1.tar.gz
-" 辞書ファイルは以下から入手
-" http://www.vector.co.jp/soft/data/writing/se369320.html
-" }}}
 " }}}
 
 filetype plugin indent on
@@ -526,9 +515,9 @@ try
 catch
 endtry
 " search a file in the filetree
-nnoremap <Space>s :split<cr> :<C-u>Unite -start-insert file_rec/async<cr>
+nnoremap <Space>search :split<cr> :<C-u>Unite -start-insert file_rec/async<cr>
 " reset not it is <C-l> normally
-nnoremap <Space>r <Plug>(unite_restart)
+nnoremap <Space>reset <Plug>(unite_restart)
 " call unite#custom_default_action('file', 'tabopen')
 
 " Rails用 {{{
@@ -980,15 +969,6 @@ let g:vimshell_prompt = '$ '
 nnoremap <silent> :Restart :RestartVim<CR>
 " }}}
 
-" Japanese input {{{
-" 「日本語入力固定モード」切替キー
-" inoremap <silent> <C-j> <C-r>=IMState('FixMode')<CR>
-" PythonによるIBus制御指定
-" let IM_CtrlIBusPython = 1
-" バッファ毎に日本語入力固定モードの状態を制御。
-" let g:IM_CtrlBufLocalMode = 1
-" }}}
-
 "===> 英文関係の設定 {{{
 
 " Excitetranslate {{{2
@@ -1021,7 +1001,10 @@ nnoremap <silent> en :<C-u>call ref#jump('normal', 'webdict')<CR>
 vnoremap <silent> en :<C-u>call ref#jump('visual', 'webdict')<CR>
 " }}}
 
-" eblookの設定 {{{2
+" eblookを使ってローカル辞書検索 {{{2
+" <LEADER> y でカーソル位置の文字を検索できる
+" <LEADER> CTRL + y で検索ウィンドウを表示できる
+" See eblook.sh
 let eblook_dictlist1 = [
   \{
   \'book': $HOME . '/dictionary/epwing',
@@ -1077,13 +1060,13 @@ if has('gui')
     \   },
     \   {
     \     'match' : {
-    \       'filetype' : '^ref-.+',
+    \       'filetype' : 'ref-webdict',
     \       'autocmds' : [ 'FileType' ]
     \     },
     \     'set' : {
-    \       'move' : 'right',
-    \       'height' : '100%',
-    \       'width' : 60
+    \       'move' : 'bottom',
+    \       'width' : '100%',
+    \       'height' : 20
     \     }
     \   },
     \   {
@@ -1125,7 +1108,7 @@ let twitvim_count = 80
 
 " dbextの設定 {{{
 " 詳細は、http://qiita.com/0829/items/ce92a752bf832a06bcf2
-let g:dbext_map_prefix = '&s'
+" let g:dbext_map_prefix = '&s'
 " }}}
 
 " Keymap Settings {{{
