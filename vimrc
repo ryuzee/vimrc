@@ -51,7 +51,7 @@ NeoBundle 'kmnk/vim-unite-svn'
 NeoBundle 'choplin/unite-vim_hacks'
 NeoBundle 'tsukkee/unite-help'
 NeoBundle 'tsukkee/unite-tag'
-"}}}
+" }}}
 
 " ColorScheme {{{
 NeoBundle 'altercation/vim-colors-solarized'
@@ -280,7 +280,7 @@ syntax on                      " シンタックスハイライトを有効に�
 if has('gui')
   set clipboard=unnamed,unnamedplus
 endif
-"}}}
+" }}}
 
 "全角スペースの位置を表示 {{{
 function! ZenkakuSpace()
@@ -377,11 +377,11 @@ augroup InsertHook
   autocmd InsertEnter * highlight StatusLine guifg=#ccdc90 guibg=#2E4340
   autocmd InsertLeave * highlight StatusLine guifg=#2E4340 guibg=#ccdc90
 augroup END
-"}}}
+" }}}
 
 " コメント行をグレー表示する(コンソール）{{{
 highlight Comment ctermfg=7
-"}}}
+" }}}
 
 " vim-indent-guides設定 / インデントをわかりやすく表示する {{{
 let g:indent_guides_enable_on_vim_startup = 1
@@ -389,7 +389,7 @@ let g:indent_guides_auto_colors = 1
 let g:indent_guides_color_change_percent = 30
 let g:indent_guides_guide_size = 1
 let g:indent_guides_exclude_filetypes = ['help', 'nerdtree', 'calendar']
-"}}}
+" }}}
 
 " フォーカスがあたっていない場合は透明にする {{{
 " 数字が大きいほど透明度が高い
@@ -400,7 +400,7 @@ augroup hack234
       autocmd FocusLost * set transparency=20
     endif
 augroup END
-"}}}
+" }}}
 
 " Windowの形状設定 {{{2
 if has('gui')
@@ -535,7 +535,7 @@ endfunction
 augroup MyAutoCmd
   autocmd User Rails call UniteRailsSetting()
 augroup END
-"}}}
+" }}}
 " <=== unite.vimの設定ここまで }}}
 
 "===> vim-refの設定 {{{1
@@ -566,7 +566,7 @@ let g:ref_javascript_doc_path = $HOME . '/.vim/bundle/jsref/htdocs'
 " カーソル位置の単語をPHPマニュアルから検索する。カーソルがある状態で:phpで実行 {{{2
 nnoremap <silent> :php :<C-u>call ref#jump('normal', 'phpmanual')<CR>
 vnoremap <silent> :php :<C-u>call ref#jump('visual', 'phpmanual')<CR>
-"}}}
+" }}}
 "<=== vim-refの設定ここまで}}}
 
 "===> PHP関連の設定 {{{1
@@ -605,7 +605,7 @@ let g:cakephp_enable_auto_mode = 1
 " :Ccontrollervsp {controller-name}
 " 新しいタブページにコントローラを開く
 " :Ccontrollertab {controller-name}
-"}}}
+" }}}
 " クラスと関数の折り畳みを許可する {{{2
 " zo 折り畳みを開く
 " zc 折り畳みを閉じる
@@ -615,7 +615,7 @@ let g:cakephp_enable_auto_mode = 1
 " zk 前の折り畳みに移動
 let php_folding=3
 set foldmethod=marker
-"}}}
+" }}}
 " vim-php-cs-fixer の設定 {{{2
 let g:php_cs_fixer_level = "psr2"
 let g:php_cs_fixer_path = "/usr/local/bin/php-cs-fixer.phar"
@@ -628,7 +628,7 @@ function! PhpCsFunc1()
   let g:php_cs_fixer_level = "psr2"
   call PhpCsFixerFixFile()
 endfunction
-"}}}
+" }}}
 "<=== PHP関連の設定ここまで}}}
 
 "===> python関連の設定 {{{1
@@ -762,7 +762,7 @@ nmap n <Plug>(anzu-n-with-echo)
 nmap N <Plug>(anzu-n-with-echo)
 nmap * <Plug>(anzu-star-with-echo)
 nmap # <Plug>(anzu-sharp-with-echo)
-"}}}
+" }}}
 
 " quickhlの設定 / 文字列をいい感じに簡単にハイライトする {{{2
 nmap <Space>m <Plug>(quickhl-manual-this)
@@ -809,7 +809,7 @@ let g:extra_whitespace_ignored_filetypes = ['unite', 'calendar']
 vmap <Enter> <Plug>(EasyAlign)
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)
-"}}}
+" }}}
 
 " Nerd_Commenterでコメントアウトを簡単にする {{{2
 let g:NERDCreateDefaultMappings = 0
