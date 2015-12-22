@@ -212,9 +212,7 @@ NeoBundle 'itchyny/dictionary.vim'
 NeoBundle 'glidenote/memolist.vim'
 NeoBundle 'mattn/googletranslate-vim'
 NeoBundle 'itchyny/calendar.vim'
-NeoBundle 'TwitVim'
 NeoBundle 'vim-scripts/dbext.vim'
-NeoBundle 'kakkyz81/evervim'
 NeoBundle 'deton/eblook.vim'
 " }}}
 
@@ -1099,11 +1097,6 @@ if has('gui')
     \   }
     \ ]
 endif
-" }}}
-
-" TwitVimの設定 {{{
-let twitvim_force_ssl = 1
-let twitvim_count = 80
 " }}}
 
 " dbextの設定 {{{
