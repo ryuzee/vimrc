@@ -537,25 +537,11 @@ augroup END
 " <=== unite.vimの設定ここまで }}}
 
 "===> vim-refの設定 {{{1
-" 利用可能なソースは以下の通り
-" - clojure  (|ref-clojure.txt|)
-" - erlang   (|ref-erlang.txt|)
-" - man      (|ref-man.txt|)
-" - perldoc  (|ref-perldoc.txt|)
-" - phpmanual(|ref-phpmanual.txt|)
-" - pydoc    (|ref-pydoc.txt|)
-" - refe     (|ref-refe.txt|)
-"
 " shift + k でキーワード検索可能
 let g:ref_alc_cmd='lynx -dump -nonumbers %s'
 let g:ref_phpmanual_cmd='lynx -dump -nonumbers -display_charset utf-8 %s'
 let g:ref_source_webdict_cmd = 'lynx -dump -nonumbers -display_charset utf-8 %s'
 
-" 以下のコマンドでマニュアルを取得しておく
-" wget --trust-server-names http://jp1.php.net/get/php_manual_ja.tar.gz/from/this/mirror
-" tar xvfz php_manual_ja.tar.gz -C ~/.vim/others/
-" また動作させる環境にlynxが必要なので、Macであれば、brew install lynxとしておく
-"
 " phpの場合は Ref phpmanual Hogehoge
 let g:ref_phpmanual_path = $HOME . '/.vim/others/php-chunked-xhtml'
 let g:ref_jquery_doc_path = $HOME . '/.vim/bundle/jqapi'
