@@ -69,6 +69,7 @@ NeoBundle 'vim-scripts/Lucius'
 NeoBundle 'vim-scripts/mrkn256.vim'
 NeoBundle 'vim-scripts/twilight'
 NeoBundle 'w0ng/vim-hybrid'
+NeoBundle 'pasela/edark.vim'
 " }}}
 
 " 見栄え {{{
