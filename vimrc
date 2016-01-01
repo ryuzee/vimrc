@@ -1154,6 +1154,10 @@ nnoremap <F10> :set paste!<CR>:set paste?<CR>
 
 " }}}
 
+" Shortcut {{{
+:command! StripTags :%s/<.\{-}>//cg
+" }}}
+
 " 最後の処理 {{{
 " ~/.vimrc.localが存在する場合のみ設定を読み込む
 let s:local_vimrc = expand('~/.vimrc.local')
