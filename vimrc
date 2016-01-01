@@ -1156,6 +1156,7 @@ nnoremap <F10> :set paste!<CR>:set paste?<CR>
 
 " Shortcut {{{
 :command! StripTags :%s/<.\{-}>//cg
+:command! StripTagsAll :%s/<.\{-}>//g
 " }}}
 
 " 最後の処理 {{{
