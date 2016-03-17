@@ -728,10 +728,11 @@ noremap <silent><expr> <Space>/ incsearch#go(<SID>config_easyfuzzymotion())
 " }}}
 
 " vim-anzu / 検索でヒットした件数を表示する {{{2
-nmap n <Plug>(anzu-n-with-echo)
-nmap N <Plug>(anzu-n-with-echo)
-nmap * <Plug>(anzu-star-with-echo)
-nmap # <Plug>(anzu-sharp-with-echo)
+nmap n <Plug>(anzu-n-with-echo)zz<Plug>(anzu-update-search-status-with-echo)
+nmap N <Plug>(anzu-N-with-echo)zz<Plug>(anzu-update-search-status-with-echo)
+nmap * <Plug>(anzu-star-with-echo)zz<Plug>(anzu-update-search-status-with-echo)
+nmap # <Plug>(anzu-sharp-with-echo)zz<Plug>(anzu-update-search-status-with-echo)
+nmap <Esc><Esc> <Plug>(anzu-clear-search-status)
 " }}}
 
 " quickhlの設定 / 文字列をいい感じに簡単にハイライトする {{{2
@@ -750,12 +751,8 @@ let g:quickhl_manual_keywords = [
 " }}}
 
 " 検索後にジャンプした際に検索単語を画面中央に持ってくる {{{
-nnoremap n nzz
-nnoremap N Nzz
-nnoremap * *zz
-nnoremap # #zz
-nnoremap g* g*zz
-nnoremap g# g#zz
+noremap g* g*zz
+noremap g# g#zz
 " }}}
 
 " over.vim {{{2
