@@ -262,7 +262,7 @@ set imdisable
 syntax on                      " シンタックスハイライトを有効にする
 
 " クリップボードの設定 {{{
-if has('gui')
+if has('gui_running')
   set clipboard=unnamed,unnamedplus
 endif
 " }}}
@@ -370,7 +370,7 @@ let g:indent_guides_exclude_filetypes = ['help', 'nerdtree', 'calendar']
 
 " フォーカスがあたっていない場合は透明にする {{{
 " 数字が大きいほど透明度が高い
-augroup hack234
+augroup transparency
   autocmd!
     if has('mac')
       autocmd FocusGained * set transparency=0
@@ -380,7 +380,7 @@ augroup END
 " }}}
 
 " Windowの形状設定 {{{2
-if has('gui')
+if has('gui_running')
   set showtabline=2  " タブを常に表示
   set imdisable  " IMを無効化
   set guioptions-=T   " ツールバー非表示
@@ -822,11 +822,9 @@ let g:EasyMotion_keys='hjklasdfgyuiopqwertnmzxcvbHJKLASDFGYUIOPQWERTNMZXCVB'
 let g:EasyMotion_grouping=1
 " migemoを使って日本語文字列をアルファベットのまま検索可能にする
 let g:EasyMotion_use_migemo = 1
-" カラー設定変更 @TODO....
-hi clear EasyMotionTarget
-hi clear EasyMotionShade
-autocmd BufEnter * hi EasyMotionTarget ctermfg=25 guifg=#ff0000
-autocmd BufEnter * hi EasyMotionShade ctermfg=25 guifg=#aaaaaa"
+" カラー設定変更
+hi EasyMotionTarget ctermfg=25 guifg=#ff0000
+hi EasyMotionShade  ctermfg=25 guifg=#aaaaaa
 " }}}
 
 " nerdtree / ファイルの一覧を表示 {{{2
@@ -962,7 +960,7 @@ let g:ref_source_webdict_sites = {
 \   }
 \ }
 function! g:ref_source_webdict_sites.en.filter(output)
-      return join(split(a:output, "\n")[75 :], "\n")
+  return join(split(a:output, "\n")[75 :], "\n")
 endfunction
 
 function! g:ref_source_webdict_sites.wiki.filter(output)
@@ -1009,7 +1007,7 @@ function! s:my_temporary_window_init(config, context)
   nmap <buffer> <ESC> :<C-u>q<CR>
 endfunction
 
-if has('gui')
+if has('gui_running')
   let g:automatic_default_match_config = {
     \   'is_open_other_window' : 1,
     \ }
@@ -1152,12 +1150,12 @@ nnoremap <F10> :set paste!<CR>:set paste?<CR>
 " ~/.vimrc.localが存在する場合のみ設定を読み込む
 let s:local_vimrc = expand('~/.vimrc.local')
 if filereadable(s:local_vimrc)
-    execute 'source ' . s:local_vimrc
+  execute 'source ' . s:local_vimrc
 endif
 
 " プロジェクトローカル
 let s:local_vimrc = expand('.vimrc.local')
 if filereadable(s:local_vimrc)
-    execute 'source ' . s:local_vimrc
+  execute 'source ' . s:local_vimrc
 endif
 " }}}
