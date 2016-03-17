@@ -468,15 +468,18 @@ nnoremap [unite]cm  :<C-u>Unite cake_model<CR>
 nnoremap [unite]cv  :<C-u>Unite cake_view<CR>
 nnoremap [unite]ch  :<C-u>Unite cake_helper<CR>
 
-" ウィンドウを分割して開く
-autocmd FileType unite nnoremap <silent> <buffer> <expr> <C-j> unite#do_action('split')
-autocmd FileType unite inoremap <silent> <buffer> <expr> <C-j> unite#do_action('split')
-" ウィンドウを縦に分割して開く
-autocmd FileType unite nnoremap <silent> <buffer> <expr> <C-l> unite#do_action('vsplit')
-autocmd FileType unite inoremap <silent> <buffer> <expr> <C-l> unite#do_action('vsplit')
+augroup unite_settings
+  autocmd!
+  " ウィンドウを分割して開く
+  autocmd FileType unite nnoremap <silent> <buffer> <expr> <C-j> unite#do_action('split')
+  autocmd FileType unite inoremap <silent> <buffer> <expr> <C-j> unite#do_action('split')
+  " ウィンドウを縦に分割して開く
+  autocmd FileType unite nnoremap <silent> <buffer> <expr> <C-l> unite#do_action('vsplit')
+  autocmd FileType unite inoremap <silent> <buffer> <expr> <C-l> unite#do_action('vsplit')
+  " unite.vim上でのキーマッピング
+  autocmd FileType unite call s:unite_my_settings()
+augroup END
 
-" unite.vim上でのキーマッピング
-autocmd FileType unite call s:unite_my_settings()
 function! s:unite_my_settings()
   " 単語単位からパス単位で削除するように変更
   imap <buffer> <C-w> <Plug>(unite_delete_backward_path)
@@ -509,6 +512,7 @@ function! UniteRailsSetting()
   nnoremap <C-s>h           :<C-U>Unite rails/heroku<CR>
 endfunction
 augroup MyAutoCmd
+  autocmd!
   autocmd User Rails call UniteRailsSetting()
 augroup END
 " }}}
@@ -532,27 +536,31 @@ vnoremap <silent> :php :<C-u>call ref#jump('visual', 'phpmanual')<CR>
 "<=== vim-refの設定ここまで}}}
 
 "===> PHP関連の設定 {{{1
-" makeコマンドを入力すると、PHPの構文エラーがないかどうかもチェック可能
-" PSR2に従いタブからスペースに展開するように変更
-autocmd FileType php set tabstop=4 shiftwidth=4 autoindent smartindent expandtab makeprg=php\ -l\ % errorformat=%m\ in\ %f\ on\ line\ %l
-" 文字列の中のSQLをハイライトする
-autocmd FileType php let php_sql_query=1
-" Baselibメソッドのハイライトを行う
-autocmd FileType php let php_baselib=1
-" 文字列の中のHTMLをハイライトする
-autocmd FileType php let php_htmlInStrings=1
-" ショートタグのハイライトを無効にする
-autocmd FileType php let php_noShortTags=1
-" ] や ) の対応エラーをハイライトする
-autocmd FileType php let php_parent_error_close=1
-" PHP documenter script bound to ,pdoc {{{2
-if v:version >= 704
-  let g:pdv_template_dir = $HOME ."/.vim/bundle/pdv/templates_snip"
-  autocmd Filetype php nnoremap <buffer> ,pdoc :call pdv#DocumentWithSnip()<CR>
-endif
+augroup php_settings
+  autocmd!
+  " makeコマンドを入力すると、PHPの構文エラーがないかどうかもチェック可能
+  " PSR2に従いタブからスペースに展開するように変更
+  autocmd FileType php set tabstop=4 shiftwidth=4 autoindent smartindent expandtab makeprg=php\ -l\ % errorformat=%m\ in\ %f\ on\ line\ %l
+  " 文字列の中のSQLをハイライトする
+  autocmd FileType php let php_sql_query=1
+  " Baselibメソッドのハイライトを行う
+  autocmd FileType php let php_baselib=1
+  " 文字列の中のHTMLをハイライトする
+  autocmd FileType php let php_htmlInStrings=1
+  " ショートタグのハイライトを無効にする
+  autocmd FileType php let php_noShortTags=1
+  " ] や ) の対応エラーをハイライトする
+  autocmd FileType php let php_parent_error_close=1
+  " PHP documenter script bound to ,pdoc {{{2
+  if v:version >= 704
+    let g:pdv_template_dir = $HOME ."/.vim/bundle/pdv/templates_snip"
+    autocmd Filetype php nnoremap <buffer> ,pdoc :call pdv#DocumentWithSnip()<CR>
+  endif
+  " cakephpのスニペットを有効にする
+  autocmd FileType ctp set ft=php.cakephp
+augroup END
 " }}}
-" cakephpのスニペットを有効にする
-autocmd FileType ctp set ft=php.cakephp
+
 " cake.vimの設定 {{{2
 " 自動でルートディレクトリを決める
 " 詳細は :help cake
@@ -686,7 +694,8 @@ augroup END
 
 "===> CSVファイル関連の設定 {{{
 augroup filetypedetect
-  autocmd! BufRead,BufNewFile *.csv,*.tsv set filetype=csv
+  autocmd!
+  autocmd BufRead,BufNewFile *.csv,*.tsv set filetype=csv
 augroup END
 "<=== CSVファイル関連の設定ここまで }}}
 
@@ -813,7 +822,7 @@ let g:EasyMotion_keys='hjklasdfgyuiopqwertnmzxcvbHJKLASDFGYUIOPQWERTNMZXCVB'
 let g:EasyMotion_grouping=1
 " migemoを使って日本語文字列をアルファベットのまま検索可能にする
 let g:EasyMotion_use_migemo = 1
-" カラー設定変更
+" カラー設定変更 @TODO....
 hi clear EasyMotionTarget
 hi clear EasyMotionShade
 autocmd BufEnter * hi EasyMotionTarget ctermfg=25 guifg=#ff0000
@@ -937,7 +946,10 @@ nnoremap <silent> :Restart :RestartVim<CR>
 " trと入れれば翻訳できるように設定
 nnoremap <silent> tr :<C-u>ExciteTranslate<CR>
 vnoremap <silent> tr :<C-u>ExciteTranslate<CR>
-autocmd BufEnter ==Translate==\ Excite nnoremap <buffer> <silent> q :<C-u>close<CR>
+augroup translate_settings
+  autocmd!
+  autocmd BufEnter ==Translate==\ Excite nnoremap <buffer> <silent> q :<C-u>close<CR>
+augroup END
 " }}}
 
 " ref-dicts-en / 辞書を引けるようにする(vim-refが必要) {{{2
