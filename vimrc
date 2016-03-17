@@ -54,22 +54,11 @@ NeoBundle 'tsukkee/unite-tag'
 " }}}
 
 " ColorScheme {{{
-NeoBundle 'altercation/vim-colors-solarized'
-NeoBundle 'baskerville/bubblegum'
-NeoBundle 'inkpot'
-NeoBundle 'jnurmine/Zenburn'
-NeoBundle 'jonathanfilip/vim-lucius'
 NeoBundle 'jpo/vim-railscasts-theme'
 NeoBundle 'nanotech/jellybeans.vim'
 NeoBundle 'sickill/vim-monokai'
 NeoBundle 'thinca/vim-guicolorscheme'
 NeoBundle 'tomasr/molokai'
-NeoBundle 'vim-scripts/Diablo3.git'
-NeoBundle 'vim-scripts/Lucius'
-NeoBundle 'vim-scripts/mrkn256.vim'
-NeoBundle 'vim-scripts/twilight'
-NeoBundle 'w0ng/vim-hybrid'
-NeoBundle 'pasela/edark.vim'
 " }}}
 
 " 見栄え {{{
