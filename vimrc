@@ -10,8 +10,8 @@
 " ryuzee's vimrc
 
 "===> NeoBundleの設定 {{{
+set nocompatible
 if has('vim_starting')
-  set nocompatible
   " neobundle をインストールしていない場合は自動インストール
   if !isdirectory(expand("~/.vim/bundle/neobundle.vim/"))
     echo "install neobundle..."
@@ -82,6 +82,7 @@ NeoBundle 'osyo-manga/vim-gift'
 NeoBundle 'osyo-manga/vim-automatic'
 NeoBundle 'thinca/vim-fontzoom'
 NeoBundle 'LeafCage/foldCC'
+NeoBundle 'thinca/vim-zenspace'
 " }}}
 
 " 移動・ファイル操作 {{{
@@ -102,7 +103,7 @@ NeoBundle 'thinca/vim-singleton'
 NeoBundle 'tomtom/tcomment_vim'
 NeoBundle 'scrooloose/nerdcommenter'
 NeoBundle 'tpope/vim-endwise'
-NeoBundle 'kien/ctrlp.vim'
+NeoBundle 'ctrlpvim/ctrlp.vim'
 NeoBundle 'vim-scripts/Align'
 NeoBundle 'junegunn/vim-easy-align'
 NeoBundle 'tpope/vim-surround'
@@ -128,7 +129,6 @@ NeoBundle 'jaxbot/github-issues.vim'
 " 外部リソース参照 {{{
 NeoBundle 'tyru/open-browser.vim'
 NeoBundle 'mattn/webapi-vim'
-NeoBundle 'thinca/vim-openbuf'
 NeoBundle 'thinca/vim-ref'
 NeoBundle 'mfumi/ref-dicts-en'
 NeoBundle 'mojako/ref-sources.vim'
@@ -149,7 +149,7 @@ NeoBundle 'ryuzee/neosnippet_chef_recipe_snippet'
 NeoBundle 'glidenote/serverspec-snippets'
 " Javascriptをチェックする場合は、npm install jshint -g を先に実施しておく
 NeoBundle 'scrooloose/syntastic'
-NeoBundle "markcornick/vim-vagrant"
+NeoBundle 'markcornick/vim-vagrant'
 NeoBundle 'rcmdnk/vim-markdown'
 NeoBundle 'chrisgillis/vim-bootstrap3-snippets'
 NeoBundle 'elzr/vim-json'
@@ -223,8 +223,6 @@ NeoBundleCheck
 " }}}
 
 "===> 一般的な設定 {{{
-set nocompatible
-filetype off
 set encoding=utf-8
 scriptencoding utf-8
 set tags=./.tags;,~/.vim/tags
@@ -274,26 +272,17 @@ set display+=lastline
 set imdisable
 syntax on                      " シンタックスハイライトを有効にする
 
-
 " クリップボードの設定 {{{
 if has('gui')
   set clipboard=unnamed,unnamedplus
 endif
 " }}}
 
-"全角スペースの位置を表示 {{{
-function! ZenkakuSpace()
-  highlight ZenkakuSpace cterm=underline ctermfg=lightblue guibg=yellow
-endfunction
-
-if has('syntax')
-  augroup ZenkakuSpace
-    autocmd!
-    autocmd ColorScheme * call ZenkakuSpace()
-    autocmd VimEnter,WinEnter,BufRead * let w:m1=matchadd('ZenkakuSpace', '　')
-  augroup END
-  call ZenkakuSpace()
-endif
+" 全角ハイライト {{{
+augroup vimrc-highlight
+  autocmd!
+  autocmd ColorScheme * highlight ZenSpace ctermbg=Yellow guibg=Yellow
+augroup END
 " }}}
 
 " □とか○の文字があってもカーソル位置がずれないようにする {{{
@@ -413,7 +402,6 @@ endif
 " }}}
 
 " vim-airline / ステータスラインをいい感じにする {{{2
-let g:Powerline_symbols = 'fancy'
 let g:airline_theme='badwolf'
 let g:airline_powerline_fonts = 0
 let g:airline_left_sep = '⮀'
@@ -617,7 +605,7 @@ endfunction
 "<=== PHP関連の設定ここまで}}}
 
 "===> python関連の設定 {{{1
-augroup pythonype
+augroup pythontype
   autocmd!
   autocmd FileType py set tabstop=4 shiftwidth=4 expandtab
 augroup END
@@ -1104,9 +1092,9 @@ nnoremap <S-Down>  <C-w>+<CR>
 " }}}
 
 " (),[],{},<>,””,’’,“入力+()の中にカーソル戻す {{{2
-imap {} {}<LEFT>
-imap [] []<LEFT>
-imap () ()<LEFT>
+imap {} {}<Left>
+imap [] []<Left>
+imap () ()<Left>
 imap <> <><Left>
 imap "" ""<Left>
 imap '' ''<Left>
