@@ -3,6 +3,9 @@
 :colorscheme molokai
 highlight CursorLine gui=underline guifg=NONE guibg=NONE
 
+" ビープ音いらない
+set visualbell t_vb=
+
 " フォント設定
 if has('gui_macvim')
   set guifont=RictyDiminished-RegularForPowerline:h14
@@ -18,7 +21,7 @@ endif
 
 " gvimでウインドウの位置とサイズを記憶する
 " http://vim-users.jp/2010/01/hack120/
-if has('gui')
+if has('gui_running')
   let g:save_window_file = expand('~/.vimwinpos')
   augroup SaveWindow
     autocmd!
