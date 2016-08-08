@@ -8,12 +8,10 @@ set visualbell t_vb=
 
 " フォント設定
 if has('gui_macvim')
-  set guifont=RictyDiminished-RegularForPowerline:h14
-  set guifontwide=RictyDiminished-RegularForPowerline:h14
+  set guifont=Ricty\ Diminished\ Regular\ for\ Powerline\ Nerd\ Font:h14
   set antialias
 elseif has('gui')
   set guifont=Ricty\ Diminished\ for\ Powerline\ 12
-  set guifontwide=Ricty\ Diminished\ for\ Powerline\ 12
 else
   set guifont=Ricty\ Diminished\ for\ Powerline\ 12
   set guifontwide=Ricty\ Diminished\ for\ Powerline\ 12

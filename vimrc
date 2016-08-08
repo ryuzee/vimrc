@@ -82,6 +82,10 @@ NeoBundle 'easymotion/vim-easymotion'
 NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'Xuyuanp/nerdtree-git-plugin'
 NeoBundle 'jistr/vim-nerdtree-tabs'
+if has('gui_macvim')
+NeoBundle 'ryanoasis/vim-devicons'
+NeoBundle 'tiagofumo/vim-nerdtree-syntax-highlight'
+end
 NeoBundle 'majutsushi/tagbar'
 NeoBundle 'terryma/vim-multiple-cursors'
 NeoBundle 'terryma/vim-expand-region'
