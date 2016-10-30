@@ -77,14 +77,13 @@ NeoBundle 'thinca/vim-zenspace'
 " 移動・ファイル操作 {{{
 NeoBundle 'xolox/vim-easytags'
 NeoBundle 'taglist.vim'
-NeoBundle 'godlygeek/tabular'
 NeoBundle 'easymotion/vim-easymotion'
 NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'Xuyuanp/nerdtree-git-plugin'
 NeoBundle 'jistr/vim-nerdtree-tabs'
 if has('gui_macvim')
-NeoBundle 'ryanoasis/vim-devicons'
-NeoBundle 'tiagofumo/vim-nerdtree-syntax-highlight'
+  NeoBundle 'ryanoasis/vim-devicons'
+  NeoBundle 'tiagofumo/vim-nerdtree-syntax-highlight'
 end
 NeoBundle 'majutsushi/tagbar'
 NeoBundle 'terryma/vim-multiple-cursors'
@@ -93,6 +92,7 @@ NeoBundle 'thinca/vim-singleton'
 " }}}
 
 " ファイル編集 {{{
+NeoBundle 'godlygeek/tabular'
 NeoBundle 'tomtom/tcomment_vim'
 NeoBundle 'scrooloose/nerdcommenter'
 NeoBundle 'tpope/vim-endwise'
@@ -690,8 +690,8 @@ let g:node_usejscomplete = 1
 "===> Markdown関連の設定 {{{
 augroup markdowntype
   autocmd!
-  autocmd BufNewFile,BufRead *.md,*.rdoc set fileencoding=utf-8
-  autocmd BufRead,BufNewFile *.md set filetype=markdown
+  autocmd BufNewFile,BufRead *.md,*.markdown,*.rdoc set fileencoding=utf-8
+  autocmd BufRead,BufNewFile *.md,*.markdown set filetype=markdown
 augroup END
 "<=== Markdown関連の設定ここまで}}}
 
