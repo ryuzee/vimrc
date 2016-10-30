@@ -38,6 +38,7 @@ NeoBundle 'Shougo/vimshell'
 NeoBundle 'Shougo/neocomplcache'
 NeoBundle 'Shougo/neosnippet'
 NeoBundle 'Shougo/neosnippet-snippets'
+NeoBundle 'Shougo/neomru.vim'
 NeoBundle 'thinca/vim-quickrun'
 " }}}
 
