@@ -117,7 +117,9 @@ NeoBundle 'osyo-manga/vim-over'
 
 " バージョン管理 {{{
 NeoBundle 'tpope/vim-fugitive'
-NeoBundle 'jaxbot/github-issues.vim'
+if has('python')
+  NeoBundle 'jaxbot/github-issues.vim'
+endif
 " }}}
 
 " 外部リソース参照 {{{
