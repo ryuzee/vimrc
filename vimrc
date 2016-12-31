@@ -627,8 +627,6 @@ augroup rubytype
   autocmd!
   autocmd FileType ruby set tabstop=2 shiftwidth=2 expandtab softtabstop=2 autoindent smartindent fileencoding=utf-8
   autocmd FileType eruby set tabstop=2 shiftwidth=2 expandtab softtabstop=2 autoindent smartindent fileencoding=utf-8
-  " git clone https://github.com/OpsRockin/opscode_chef.vim_dict.git ~/.vim/dictionary/opscode_chef.dict
-  autocmd FileType ruby set dictionary+=~/.vim/dictionary/opscode_chef.vim_dict/*.dict
   autocmd BufNewFile,BufRead *.rb,*.rbw,*.gemspec    set filetype=ruby
   autocmd BufNewFile,BufRead *.builder,*.rxml,*.rjs  set filetype=ruby
   autocmd BufNewFile,BufRead [rR]akefile,*.rake      set filetype=ruby
