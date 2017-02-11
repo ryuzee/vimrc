@@ -1102,8 +1102,8 @@ nnoremap <F10> :set paste!<CR>:set paste?<CR>
 :command! StripTags :%s/<.\{-}>//cg
 :command! StripTagsAll :%s/<.\{-}>//g
 " }}}
-"
-"
+
+" 文字数 {{{
 augroup char_counter
   autocmd!
   autocmd BufCreate,BufEnter * call s:char_counter_initialize()
@@ -1128,6 +1128,7 @@ endfunction
 if !exists('b:char_counter_count')
   let b:char_counter_count = 0
 endif
+" }}}
 
 " 最後の処理 {{{
 " ~/.vimrc.localが存在する場合のみ設定を読み込む
