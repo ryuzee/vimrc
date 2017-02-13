@@ -24,8 +24,6 @@ endif
 call neobundle#begin(expand('~/.vim/bundle'))
 let g:neobundle_default_git_protocol='https'
 
-
-
 " 基本 {{{
 NeoBundle 'Shougo/neobundle.vim'
 NeoBundle 'Shougo/vimproc', {
@@ -365,15 +363,15 @@ let g:airline_section_x =
         \ "%{strlen(&fenc)?&fenc:&enc}".s:sep.
         \ "%{strlen(&filetype)?&filetype:'no ft'}"
 let g:airline_section_y = '%3p%%'
-let g:airline_section_z = '%{b:char_counter_count} chars '.get(g:, 'airline_linecolumn_prefix', 'L').'%3l:%-2v'
+let g:airline_section_z = '%{g:char_counter_count} chars '.get(g:, 'airline_linecolumn_prefix', 'L').'%3l:%-2v'
 let g:airline#extensions#whitespace#enabled = 0
+let g:airline#extensions#tagbar#enabled = 1
+let g:airline#extensions#syntastic#enabled = 1
+let g:airline#extensions#wordcount#enabled = 1
+let g:airline#extensions#wordcount#filetypes = '\vhelp|markdown|rst|org|text|asciidoc|tex|mail|vim'
 " }}}
 
 " Syntasticの設定 {{{2
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
@@ -1104,19 +1102,26 @@ nnoremap <F10> :set paste!<CR>:set paste?<CR>
 " }}}
 
 " 文字数 {{{
+if !exists('g:char_counter_count')
+  let g:char_counter_count = 0
+endif
+
 augroup char_counter
   autocmd!
   autocmd BufCreate,BufEnter * call s:char_counter_initialize()
   autocmd BufNew,BufEnter,BufWrite,InsertLeave * call s:char_counter_update()
 augroup END
+
 function! s:char_counter_initialize()
-  if !exists('b:char_counter_count')
-    let b:char_counter_count = 0
+  if !exists('g:char_counter_count')
+    let g:char_counter_count = 0
   endif
 endfunction
+
 function! s:char_counter_update()
-  let b:char_counter_count = s:char_counter()
+  let g:char_counter_count = s:char_counter()
 endfunction
+
 function! s:char_counter()
   let result = 0
   for linenum in range(0, line('$'))
@@ -1125,9 +1130,6 @@ function! s:char_counter()
   endfor
   return result
 endfunction
-if !exists('b:char_counter_count')
-  let b:char_counter_count = 0
-endif
 " }}}
 
 " 最後の処理 {{{
