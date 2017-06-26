@@ -184,12 +184,6 @@ NeoBundle 'vim-scripts/tagbar-phpctags', {
   \ }
 " PHPファイルの中にHTMLがある場合のインデントをいい感じに扱う
 NeoBundle 'ryuzee/php.vim-html-enhanced'
-" PDV - PHP Documentor for VIM - 2
-if v:version >= 704
-  NeoBundle 'SirVer/ultisnips'
-endif
-NeoBundle 'tobyS/vmustache'
-NeoBundle 'ryuzee/pdv' " Forked ver from tobyS/pdv
 " PHPUnit formatter http://www.karakaram.com/vim/phpunit-location-list/
 NeoBundle 'karakaram/vim-quickrun-phpunit'
 " http://d.hatena.ne.jp/yuhei_kagaya/20111216/1324023977
@@ -236,7 +230,7 @@ set expandtab                  " タブは全部展開する
 set ruler                      " ルーラー表示
 set showcmd                    " コマンドをステータス行に表示
 set title                      " タイトルを表示
-set number                     " 行番号表示
+" set number                     " 行番号表示
 set ignorecase                 " 大文字小文字を無視して検索
 set smartcase                  " 大文字を入力すると大文字小文字無視を解除
 set wrapscan                   " 先頭に戻って検索
