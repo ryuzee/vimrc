@@ -195,14 +195,11 @@ NeoBundle 'kannokanno/previm'
 NeoBundle 'sudo.vim'
 NeoBundle "mhinz/vim-startify"
 NeoBundle 'blueyed/vim-diminactive'
-NeoBundle 'mattn/excitetranslate-vim'
 NeoBundle 'xolox/vim-session'
 NeoBundle 'xolox/vim-misc'
 NeoBundle 'ujihisa/neco-look'
 NeoBundle 'itchyny/dictionary.vim'
 NeoBundle 'glidenote/memolist.vim'
-NeoBundle 'mattn/googletranslate-vim'
-NeoBundle 'itchyny/calendar.vim'
 NeoBundle 'deton/eblook.vim'
 " }}}
 
@@ -882,17 +879,6 @@ nnoremap <silent> :Restart :RestartVim<CR>
 " }}}
 
 "===> 英文関係の設定 {{{
-
-" Excitetranslate {{{2
-" trと入れれば翻訳できるように設定
-nnoremap <silent> tr :<C-u>ExciteTranslate<CR>
-vnoremap <silent> tr :<C-u>ExciteTranslate<CR>
-augroup translate_settings
-  autocmd!
-  autocmd BufEnter ==Translate==\ Excite nnoremap <buffer> <silent> q :<C-u>close<CR>
-augroup END
-" }}}
-
 " ref-dicts-en / 辞書を引けるようにする(vim-refが必要) {{{2
 let g:ref_source_webdict_sites = {
 \   'wiki': {
