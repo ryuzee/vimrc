@@ -193,7 +193,6 @@ NeoBundle 'violetyk/cake.vim'
 " その他分類不能 {{{
 NeoBundle 'kannokanno/previm'
 NeoBundle 'sudo.vim'
-NeoBundle 'thinca/vim-scouter'
 NeoBundle "mhinz/vim-startify"
 NeoBundle 'blueyed/vim-diminactive'
 NeoBundle 'mattn/excitetranslate-vim'
@@ -230,7 +229,7 @@ set expandtab                  " タブは全部展開する
 set ruler                      " ルーラー表示
 set showcmd                    " コマンドをステータス行に表示
 set title                      " タイトルを表示
-" set number                     " 行番号表示
+set number                     " 行番号表示
 set ignorecase                 " 大文字小文字を無視して検索
 set smartcase                  " 大文字を入力すると大文字小文字無視を解除
 set wrapscan                   " 先頭に戻って検索
@@ -504,11 +503,6 @@ augroup php_settings
   autocmd FileType php let php_noShortTags=1
   " ] や ) の対応エラーをハイライトする
   autocmd FileType php let php_parent_error_close=1
-  " PHP documenter script bound to ,pdoc {{{2
-  if v:version >= 704
-    let g:pdv_template_dir = $HOME ."/.vim/bundle/pdv/templates_snip"
-    autocmd Filetype php nnoremap <buffer> ,pdoc :call pdv#DocumentWithSnip()<CR>
-  endif
   " cakephpのスニペットを有効にする
   autocmd FileType ctp set ft=php.cakephp
 augroup END
