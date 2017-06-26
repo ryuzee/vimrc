@@ -248,9 +248,6 @@ set list                       " タブなどの制御文字を表示
 set tabstop=4
 set lcs=tab:>.,trail:_,extends:\  " タブを表示する。改行文字は表示しない
 set laststatus=2               "常にステータス行を表示
-if filereadable(expand('~/.vim/bundle/vim-fugitive'))
-  set statusline=%<%f\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).'][%{fugitive#statusline()}]['.&ft.']['.&ff.']'}%=%l,%c%V%8P
-endif
 set listchars=tab:»-,trail:-,eol:↲,extends:»,precedes:«,nbsp:%
 set modeline
 set modelines=5
@@ -354,13 +351,21 @@ let g:airline#extensions#tabline#left_alt_sep = '>'
 let g:airline#extensions#tabline#left_sep = '⮀'
 let g:airline#extensions#tabline#left_alt_sep = '⮀'
 let g:airline#extensions#readonly#symbol = '⭤ '
+let s:sep = " %{get(g:, 'airline_right_alt_sep', '')} "
+let g:airline_section_x =
+        \ "%{strlen(&fileformat)?&fileformat:''}".s:sep.
+        \ "%{strlen(&fenc)?&fenc:&enc}".s:sep.
+        \ "%{strlen(&filetype)?&filetype:'no ft'}"
+let g:airline_section_y = '%3p%%'
+let g:airline_section_z = '%{g:char_counter_count} chars '.get(g:, 'airline_linecolumn_prefix', 'L').'%3l:%-2v'
+let g:airline#extensions#whitespace#enabled = 0
+let g:airline#extensions#tagbar#enabled = 1
+let g:airline#extensions#syntastic#enabled = 1
+let g:airline#extensions#wordcount#enabled = 1
+let g:airline#extensions#wordcount#filetypes = '\vhelp|markdown|rst|org|text|asciidoc|tex|mail|vim'
 " }}}
 
 " Syntasticの設定 {{{2
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
@@ -1088,6 +1093,37 @@ nnoremap <F10> :set paste!<CR>:set paste?<CR>
 " Shortcut {{{
 :command! StripTags :%s/<.\{-}>//cg
 :command! StripTagsAll :%s/<.\{-}>//g
+" }}}
+
+" 文字数 {{{
+if !exists('g:char_counter_count')
+  let g:char_counter_count = 0
+endif
+
+augroup char_counter
+  autocmd!
+  autocmd BufCreate,BufEnter * call s:char_counter_initialize()
+  autocmd BufNew,BufEnter,BufWrite,InsertLeave * call s:char_counter_update()
+augroup END
+
+function! s:char_counter_initialize()
+  if !exists('g:char_counter_count')
+    let g:char_counter_count = 0
+  endif
+endfunction
+
+function! s:char_counter_update()
+  let g:char_counter_count = s:char_counter()
+endfunction
+
+function! s:char_counter()
+  let result = 0
+  for linenum in range(0, line('$'))
+    let line = getline(linenum)
+    let result += strlen(substitute(line, '.', 'x', 'g'))
+  endfor
+  return result
+endfunction
 " }}}
 
 " 最後の処理 {{{
