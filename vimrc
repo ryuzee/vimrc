@@ -917,6 +917,7 @@ let eblook_dictlist1 = [
 let eblookenc = 'euc-jp'
 let eblook_entrywin_height = 10
 let eblook_contentwin_height = 10
+let eblook_stemming = 1
 " }}}
 "<=== 英文関連の設定ここまで }}}
 
