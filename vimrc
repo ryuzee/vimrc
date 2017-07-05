@@ -199,7 +199,6 @@ NeoBundle 'xolox/vim-session'
 NeoBundle 'xolox/vim-misc'
 NeoBundle 'ujihisa/neco-look'
 NeoBundle 'itchyny/dictionary.vim'
-NeoBundle 'glidenote/memolist.vim'
 NeoBundle 'deton/eblook.vim'
 " }}}
 
@@ -920,13 +919,6 @@ let eblook_contentwin_height = 10
 let eblook_stemming = 1
 " }}}
 "<=== 英文関連の設定ここまで }}}
-
-" memolist / 簡単にメモ取りたい {{{
-let g:memolist_path = "~/Dropbox/memo"
-nnoremap mn  :MemoNew<CR>
-nnoremap ml  :MemoList<CR>
-nnoremap mg  :MemoGrep<CR>
-" }}}
 
 " vim-automatic / ウィンドウをごにょごにょ楽に操作する {{{
 nnoremap <silent> <plug>(quit) :<c -u>q<cr>
