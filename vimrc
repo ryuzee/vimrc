@@ -113,6 +113,7 @@ NeoBundle 'haya14busa/incsearch-easymotion.vim'
 NeoBundle "osyo-manga/vim-anzu"
 NeoBundle 't9md/vim-quickhl'
 NeoBundle 'osyo-manga/vim-over'
+NeoBundle 'pelodelfuego/vim-swoop'
 " }}}
 
 " バージョン管理 {{{
@@ -943,6 +944,7 @@ if has('gui_running')
     \   { 'match' : { 'filetype' : 'eblook' } },
     \   { 'match' : { 'filetype' : 'gitcommit' } },
     \   { 'match' : { 'bufname' : 'gissues/*' } },
+    \   { 'match' : { 'bufname' : 'swoopBuf' } },
     \   { 'match' : { 'bufname' : '^.vimshell' } },
     \   { 'match' : {
     \        'bufname' : '^.unite'
