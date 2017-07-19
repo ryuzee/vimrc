@@ -1,4 +1,4 @@
-"===> unite.vimの設定 {{{
+" unite.vimの設定
 " 入力モードで開始する
 let g:unite_enable_start_insert=1
 " 縦分割で開く(オフにする)

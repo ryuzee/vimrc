@@ -1,4 +1,4 @@
-" eblookを使ってローカル辞書検索 {{{1
+" eblookを使ってローカル辞書検索
 " <LEADER> y でカーソル位置の文字を検索できる
 " <LEADER> CTRL + y で検索ウィンドウを表示できる
 " See eblook.sh
@@ -14,4 +14,3 @@ let eblookenc = 'euc-jp'
 let eblook_entrywin_height = 10
 let eblook_contentwin_height = 10
 let eblook_stemming = 1
-" }}}

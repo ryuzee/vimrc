@@ -1,4 +1,4 @@
-"===> neocomplcacheの設定
+" neocomplcacheの設定
 let g:neocomplcache_enable_at_startup = 1
 " 大文字小文字を区別する
 let g:neocomplcache_SmartCase = 1

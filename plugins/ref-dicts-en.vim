@@ -1,4 +1,4 @@
-" ref-dicts-en / 辞書を引けるようにする(vim-refが必要) {{{2
+" ref-dicts-en / 辞書を引けるようにする(vim-refが必要)
 let g:ref_source_webdict_sites = {
 \   'wiki': {
 \     'url': 'http://ja.wikipedia.org/wiki/%s',
@@ -19,4 +19,3 @@ endfunction
 let g:ref_source_webdict_sites.default = 'en'
 nnoremap <silent> en :<C-u>call ref#jump('normal', 'webdict')<CR>
 vnoremap <silent> en :<C-u>call ref#jump('visual', 'webdict')<CR>
-" }}}
