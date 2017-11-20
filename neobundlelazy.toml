@@ -1,49 +1,126 @@
 [[plugins]]
+repository =  'ryuzee/neosnippet_chef_recipe_snippet'
+filetypes = ['haml', 'ruby', 'eruby']
+
+[[plugins]]
+repository =  'glidenote/serverspec-snippets'
+filetypes = ['haml', 'ruby', 'eruby']
+
+[[plugins]]
 repository =  'ngmy/vim-rubocop'
+filetypes = ['haml', 'ruby', 'eruby']
 
 [[plugins]]
 repository =  'ryuzee/vim-ruby-dict'
+filetypes = ['haml', 'ruby', 'eruby']
 
 [[plugins]]
 repository =  'tpope/vim-rails'
-filetypes = 'haml,ruby.eruby'
+filetypes = ['haml', 'ruby', 'eruby']
 
 [[plugins]]
 repository =  'basyura/unite-rails'
-filetypes = 'haml,ruby.eruby'
+filetypes = ['haml', 'ruby', 'eruby']
 
 [[plugins]]
 repository =  'AndrewRadev/switch.vim'
+filetypes = ['haml', 'ruby', 'eruby']
 
 [[plugins]]
 repository =  'vim-scripts/ruby-matchit'
-filetypes = 'haml,ruby.eruby'
+filetypes = ['haml', 'ruby', 'eruby']
 
 [[plugins]]
 repository =  'ryuzee/neocomplcache_php_selenium_snippet'
+filetypes = 'php'
 
 [[plugins]]
 repository =  'nishigori/neocomplcache-phpunit-snippet'
+filetypes = 'php'
 
 [[plugins]]
 repository =  'oppara/vim-unite-cake'
+filetypes = 'php'
 
 [[plugins]]
 repository =  'tekkoc/PHPSnippetsCreator'
+filetypes = 'php'
 
 [[plugins]]
 repository =  'stephpy/vim-php-cs-fixer'
+filetypes = 'php'
 
 [[plugins]]
 repository =  'vim-scripts/tagbar-phpctags'
+filetypes = 'php'
   [plugins.build]
   others = 'chmod +x bin/phpctags'
 
 [[plugins]]
 repository =  'ryuzee/php.vim-html-enhanced'
+filetypes = 'php'
 
 [[plugins]]
 repository =  'karakaram/vim-quickrun-phpunit'
+filetypes = 'php'
 
 [[plugins]]
 repository =  'violetyk/cake.vim'
+filetypes = 'php'
+
+[[plugins]]
+repository =  'rcmdnk/vim-markdown'
+filetypes = ['markdown', 'md']
+
+[[plugins]]
+repository =  'chrisbra/csv.vim'
+filetypes = 'csv'
+
+[[plugins]]
+repository =  'elzr/vim-json'
+filetypes = ['json', 'javascript']
+
+[[plugins]]
+repository =  'pangloss/vim-javascript'
+filetypes = ['javascript']
+
+[[plugins]]
+repository =  'mattn/jscomplete-vim'
+filetypes = ['javascript']
+
+[[plugins]]
+repository =  'heavenshell/vim-jsdoc'
+filetypes = ['javascript']
+
+[[plugins]]
+repository =  'moll/vim-node'
+filetypes = ['javascript']
+
+[[plugins]]
+repository =  'myhere/vim-nodejs-complete'
+filetypes = ['javascript']
+
+[[plugins]]
+repository =  'guileen/vim-node-dict'
+filetypes = ['javascript']
+
+[[plugins]]
+repository =  'ryuzee/vim-jquery-dict'
+filetypes = ['javascript']
+
+[[plugins]]
+repository =  'othree/html5.vim'
+filetypes = ['html', 'css']
+
+[[plugins]]
+repository =  'hail2u/vim-css3-syntax'
+filetypes = ['html', 'css']
+
+[[plugins]]
+repository =  'chrisgillis/vim-bootstrap3-snippets'
+filetypes = ['html']
+
+[[plugins]]
+repository =  'mattn/emmet-vim'
+filetypes = ['html']
+
