@@ -1,0 +1,49 @@
+[[plugins]]
+repository =  'ngmy/vim-rubocop'
+
+[[plugins]]
+repository =  'ryuzee/vim-ruby-dict'
+
+[[plugins]]
+repository =  'tpope/vim-rails'
+filetypes = 'haml,ruby.eruby'
+
+[[plugins]]
+repository =  'basyura/unite-rails'
+filetypes = 'haml,ruby.eruby'
+
+[[plugins]]
+repository =  'AndrewRadev/switch.vim'
+
+[[plugins]]
+repository =  'vim-scripts/ruby-matchit'
+filetypes = 'haml,ruby.eruby'
+
+[[plugins]]
+repository =  'ryuzee/neocomplcache_php_selenium_snippet'
+
+[[plugins]]
+repository =  'nishigori/neocomplcache-phpunit-snippet'
+
+[[plugins]]
+repository =  'oppara/vim-unite-cake'
+
+[[plugins]]
+repository =  'tekkoc/PHPSnippetsCreator'
+
+[[plugins]]
+repository =  'stephpy/vim-php-cs-fixer'
+
+[[plugins]]
+repository =  'vim-scripts/tagbar-phpctags'
+  [plugins.build]
+  others = 'chmod +x bin/phpctags'
+
+[[plugins]]
+repository =  'ryuzee/php.vim-html-enhanced'
+
+[[plugins]]
+repository =  'karakaram/vim-quickrun-phpunit'
+
+[[plugins]]
+repository =  'violetyk/cake.vim'
