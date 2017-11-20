@@ -26,6 +26,28 @@ if has('vim_starting')
   "echo &runtimepath
 endif
 
+" NeoBundle
+call neobundle#begin(expand('~/.vim/bundle'))
+let g:neobundle_default_git_protocol='https'
+
+if neobundle#load_cache()
+  NeoBundleFetch 'Shougo/neobundle.vim'
+  call neobundle#load_toml('neobundle.toml')
+  if has('gui_macvim')
+    call neobundle#load_toml('neobundle_mac.toml')
+  end
+  if has('python')
+    call neobundle#load_toml('neobundle_python.toml')
+  end
+  call neobundle#load_toml('neobundlelazy.toml', {'lazy' : 1} )
+  NeoBundleSaveCache
+endif
+
+call neobundle#end()
+filetype plugin indent on
+NeoBundleCheck
+
+" Load scripts
 runtime! init/*.vim
 runtime! plugins/*.vim
 runtime! languages/*.vim

@@ -1,0 +1,239 @@
+[[plugins]]
+repository = 'Shougo/neobundle.vim'
+
+[[plugins]]
+repository = 'Shougo/vimproc'
+
+  [plugins.build]
+  windows = 'make -f make_mingw32.mak'
+  cygwin = 'make -f make_cygwin.mak'
+  mac = 'make -f make_mac.mak'
+  unix' = 'make -f make_unix.mak'
+
+
+[[plugins]]
+repository =  'Shougo/vimshell'
+
+[[plugins]]
+repository =  'Shougo/neocomplcache'
+
+[[plugins]]
+repository =  'Shougo/neosnippet'
+
+[[plugins]]
+repository =  'Shougo/neosnippet-snippets'
+
+[[plugins]]
+repository =  'Shougo/neomru.vim'
+
+[[plugins]]
+repository =  'thinca/vim-quickrun'
+
+[[plugins]]
+repository =  'Shougo/unite.vim'
+
+[[plugins]]
+repository =  'ujihisa/unite-colorscheme'
+
+[[plugins]]
+repository =  'ujihisa/unite-font'
+
+[[plugins]]
+repository =  'Shougo/unite-outline'
+
+[[plugins]]
+repository =  'ujihisa/unite-locate'
+
+[[plugins]]
+repository =  'kmnk/vim-unite-svn'
+
+[[plugins]]
+repository =  'choplin/unite-vim_hacks'
+
+[[plugins]]
+repository =  'tsukkee/unite-help'
+
+[[plugins]]
+repository =  'tsukkee/unite-tag'
+
+# Theme
+[[plugins]]
+repository =  'jpo/vim-railscasts-theme'
+
+[[plugins]]
+repository =  'nanotech/jellybeans.vim'
+
+[[plugins]]
+repository =  'sickill/vim-monokai'
+
+[[plugins]]
+repository =  'thinca/vim-guicolorscheme'
+
+[[plugins]]
+repository =  'tomasr/molokai'
+
+# UI
+[[plugins]]
+repository =  'nathanaelkane/vim-indent-guides'
+
+[[plugins]]
+repository =  'vim-scripts/AnsiEsc.vim'
+
+[[plugins]]
+repository =  'bling/vim-airline'
+
+[[plugins]]
+repository =  'vim-airline/vim-airline-themes'
+
+[[plugins]]
+repository =  'bling/vim-bufferline'
+
+[[plugins]]
+repository =  'osyo-manga/vim-gift'
+
+[[plugins]]
+repository =  'osyo-manga/vim-automatic'
+
+[[plugins]]
+repository =  'thinca/vim-fontzoom'
+
+[[plugins]]
+repository =  'LeafCage/foldCC'
+
+[[plugins]]
+repository =  'thinca/vim-zenspace'
+
+[[plugins]]
+repository =  'xolox/vim-easytags'
+
+[[plugins]]
+repository =  'taglist.vim'
+
+[[plugins]]
+repository =  'easymotion/vim-easymotion'
+
+[[plugins]]
+repository =  'scrooloose/nerdtree'
+
+[[plugins]]
+repository =  'Xuyuanp/nerdtree-git-plugin'
+
+[[plugins]]
+repository =  'jistr/vim-nerdtree-tabs'
+
+[[plugins]]
+repository =  'majutsushi/tagbar'
+
+[[plugins]]
+repository =  'terryma/vim-multiple-cursors'
+
+[[plugins]]
+repository =  'terryma/vim-expand-region'
+
+[[plugins]]
+repository =  'thinca/vim-singleton'
+
+[[plugins]]
+repository =  'godlygeek/tabular'
+
+[[plugins]]
+repository =  'tomtom/tcomment_vim'
+
+[[plugins]]
+repository =  'scrooloose/nerdcommenter'
+
+[[plugins]]
+repository =  'tpope/vim-endwise'
+
+[[plugins]]
+repository =  'ctrlpvim/ctrlp.vim'
+
+[[plugins]]
+repository =  'vim-scripts/Align'
+
+[[plugins]]
+repository =  'junegunn/vim-easy-align'
+
+[[plugins]]
+repository =  'tpope/vim-surround'
+
+[[plugins]]
+repository =  'bronson/vim-trailing-whitespace'
+
+[[plugins]]
+repository =  'LeafCage/yankround.vim'
+
+[[plugins]]
+repository =  'vim-scripts/SQLUtilities'
+
+# Search
+[[plugins]]
+repository =  'haya14busa/incsearch.vim'
+
+[[plugins]]
+repository =  'haya14busa/incsearch-fuzzy.vim'
+
+[[plugins]]
+repository =  'haya14busa/incsearch-easymotion.vim'
+
+[[plugins]]
+repository =  'osyo-manga/vim-anzu'
+
+[[plugins]]
+repository =  't9md/vim-quickhl'
+
+# Misc
+[[plugins]]
+repository =  'osyo-manga/vim-over'
+
+[[plugins]]
+repository =  'tpope/vim-fugitive'
+
+[[plugins]]
+repository =  'tyru/open-browser.vim'
+
+[[plugins]]
+repository =  'mattn/webapi-vim'
+
+[[plugins]]
+repository =  'thinca/vim-ref'
+
+[[plugins]]
+repository =  'mfumi/ref-dicts-en'
+
+[[plugins]]
+repository =  'mojako/ref-sources.vim'
+
+[[plugins]]
+repository =  'honza/vim-snippets'
+
+[[plugins]]
+repository =  'scrooloose/syntastic'
+
+[[plugins]]
+repository =  'kannokanno/previm'
+
+[[plugins]]
+repository =  'sudo.vim'
+
+[[plugins]]
+repository =  'mhinz/vim-startify'
+
+[[plugins]]
+repository =  'blueyed/vim-diminactive'
+
+[[plugins]]
+repository =  'xolox/vim-session'
+
+[[plugins]]
+repository =  'xolox/vim-misc'
+
+[[plugins]]
+repository =  'ujihisa/neco-look'
+
+[[plugins]]
+repository =  'itchyny/dictionary.vim'
+
+[[plugins]]
+repository =  'deton/eblook.vim'
+
