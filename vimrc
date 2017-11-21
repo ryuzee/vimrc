@@ -8,6 +8,7 @@
 "
 " _/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
 " ryuzee's vimrc
+let s:actual_dir = fnamemodify(resolve(expand('<sfile>:p')), ':h')
 
 " NeoBundleの設定
 set nocompatible
@@ -21,7 +22,6 @@ if has('vim_starting')
   " runtimepath の追加は必須
   set runtimepath+=~/.vim/bundle/neobundle.vim/
   " 自分のスクリプトも追加する
-  let s:actual_dir = fnamemodify(resolve(expand('<sfile>:p')), ':h')
   execute "set runtimepath+=" . s:actual_dir
   "echo &runtimepath
 endif
@@ -32,14 +32,14 @@ let g:neobundle_default_git_protocol='https'
 
 if neobundle#load_cache()
   NeoBundleFetch 'Shougo/neobundle.vim'
-  call neobundle#load_toml('neobundle.toml')
+  call neobundle#load_toml(s:actual_dir . '/neobundle.toml')
   if has('gui_macvim')
-    call neobundle#load_toml('neobundle_mac.toml')
+    call neobundle#load_toml(s:actual_dir . '/neobundle_mac.toml')
   end
   if has('python')
-    call neobundle#load_toml('neobundle_python.toml')
+    call neobundle#load_toml(s:actual_dir . '/neobundle_python.toml')
   end
-  call neobundle#load_toml('neobundlelazy.toml', {'lazy' : 1} )
+  call neobundle#load_toml(s:actual_dir . '/neobundlelazy.toml', {'lazy' : 1} )
   NeoBundleSaveCache
 endif
 
