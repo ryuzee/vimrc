@@ -33,9 +33,6 @@ let g:neobundle_default_git_protocol='https'
 if neobundle#load_cache()
   NeoBundleFetch 'Shougo/neobundle.vim'
   call neobundle#load_toml(s:actual_dir . '/neobundle.toml')
-  if has('gui_macvim')
-    call neobundle#load_toml(s:actual_dir . '/neobundle_mac.toml')
-  end
   if has('python')
     call neobundle#load_toml(s:actual_dir . '/neobundle_python.toml')
   end

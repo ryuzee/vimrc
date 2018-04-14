@@ -1,5 +1,0 @@
-[[plugins]]
-repository =  'ryanoasis/vim-devicons'
-
-[[plugins]]
-repository =  'tiagofumo/vim-nerdtree-syntax-highlight'

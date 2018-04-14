@@ -15,7 +15,8 @@ repository = 'Shougo/vimproc'
 repository =  'Shougo/vimshell'
 
 [[plugins]]
-repository =  'Shougo/neocomplcache'
+# repository =  'Shougo/neocomplcache'
+repository =  'Shougo/neocomplete.vim'
 
 [[plugins]]
 repository =  'Shougo/neosnippet'
@@ -237,3 +238,5 @@ repository =  'itchyny/dictionary.vim'
 [[plugins]]
 repository =  'deton/eblook.vim'
 
+[[plugins]]
+repository = 'glidenote/memolist.vim'
