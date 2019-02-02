@@ -238,7 +238,4 @@ repository =  'itchyny/dictionary.vim'
 repository =  'deton/eblook.vim'
 
 [[plugins]]
-repository = 'glidenote/memolist.vim'
-
-[[plugins]]
 repository = 'hashivim/vim-terraform'
