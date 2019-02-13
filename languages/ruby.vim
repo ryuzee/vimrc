@@ -22,7 +22,7 @@ augroup rubytype
   autocmd BufNewFile,BufRead *.jbuilder              set filetype=ruby
   autocmd BufNewFile,BufRead Puppetfile              set filetype=ruby
   autocmd BufNewFile,BufRead [Bb]uildfile            set filetype=ruby
-  autocmd BufNewFile,BufRead *.erb,*.rhtml           set filetype=eruby
+  autocmd BufNewFile,BufRead *.tt,*.erb,*.rhtml      set filetype=eruby
 augroup END
 
 augroup railstype
