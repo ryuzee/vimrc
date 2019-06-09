@@ -13,3 +13,6 @@ repository =  'thinca/vim-guicolorscheme'
 
 [[plugins]]
 repository =  'tomasr/molokai'
+
+[[plugins]]
+repository =  'sjl/badwolf'
