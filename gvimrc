@@ -1,6 +1,6 @@
-" set background=dark
 " colorscheme solarized
-:colorscheme molokai
+" set background=dark
+colorscheme molokai
 highlight CursorLine gui=underline guifg=NONE guibg=NONE
 
 " ビープ音いらない

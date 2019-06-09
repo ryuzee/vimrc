@@ -2,6 +2,8 @@
 if !has('gui_running')
   colorscheme molokai
   set t_Co=256
+  " set background=dark
+  " colorscheme solarized
 endif
 function! s:hl_colorscheme_modify_molokai()
   highlight! DiffText term=reverse cterm=bold ctermbg=239 gui=bold,italic guibg=#4C4745

@@ -16,3 +16,6 @@ repository =  'tomasr/molokai'
 
 [[plugins]]
 repository =  'sjl/badwolf'
+
+[[plugins]]
+repository = 'altercation/vim-colors-solarized'
