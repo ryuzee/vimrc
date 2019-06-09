@@ -1,0 +1,15 @@
+# Search
+[[plugins]]
+repository =  'haya14busa/incsearch.vim'
+
+[[plugins]]
+repository =  'haya14busa/incsearch-fuzzy.vim'
+
+[[plugins]]
+repository =  'haya14busa/incsearch-easymotion.vim'
+
+[[plugins]]
+repository =  'osyo-manga/vim-anzu'
+
+[[plugins]]
+repository =  't9md/vim-quickhl'

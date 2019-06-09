@@ -33,6 +33,13 @@ let g:neobundle_default_git_protocol='https'
 if neobundle#load_cache()
   NeoBundleFetch 'Shougo/neobundle.vim'
   call neobundle#load_toml(s:actual_dir . '/neobundle.toml')
+  call neobundle#load_toml(s:actual_dir . '/neobundle_colorscheme.toml')
+  call neobundle#load_toml(s:actual_dir . '/neobundle_unite_neocomplete.toml')
+  call neobundle#load_toml(s:actual_dir . '/neobundle_ui.toml')
+  call neobundle#load_toml(s:actual_dir . '/neobundle_ui_base.toml')
+  call neobundle#load_toml(s:actual_dir . '/neobundle_text.toml')
+  call neobundle#load_toml(s:actual_dir . '/neobundle_search.toml')
+  call neobundle#load_toml(s:actual_dir . '/neobundle_misc.toml')
   if has('python')
     call neobundle#load_toml(s:actual_dir . '/neobundle_python.toml')
   end

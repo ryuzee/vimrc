@@ -1,0 +1,57 @@
+# Misc
+[[plugins]]
+repository =  'osyo-manga/vim-over'
+
+[[plugins]]
+repository =  'tpope/vim-fugitive'
+
+[[plugins]]
+repository =  'tyru/open-browser.vim'
+
+[[plugins]]
+repository =  'mattn/webapi-vim'
+
+[[plugins]]
+repository =  'thinca/vim-ref'
+
+[[plugins]]
+repository =  'mfumi/ref-dicts-en'
+
+[[plugins]]
+repository =  'mojako/ref-sources.vim'
+
+[[plugins]]
+repository =  'honza/vim-snippets'
+
+[[plugins]]
+repository =  'scrooloose/syntastic'
+
+[[plugins]]
+repository =  'kannokanno/previm'
+
+[[plugins]]
+repository =  'sudo.vim'
+
+[[plugins]]
+repository =  'mhinz/vim-startify'
+
+[[plugins]]
+repository =  'blueyed/vim-diminactive'
+
+[[plugins]]
+repository =  'xolox/vim-session'
+
+[[plugins]]
+repository =  'xolox/vim-misc'
+
+[[plugins]]
+repository =  'ujihisa/neco-look'
+
+[[plugins]]
+repository =  'itchyny/dictionary.vim'
+
+[[plugins]]
+repository =  'deton/eblook.vim'
+
+[[plugins]]
+repository = 'hashivim/vim-terraform'

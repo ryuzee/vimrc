@@ -1,0 +1,29 @@
+#[[plugins]]
+#repository =  'tomtom/tcomment_vim'
+
+#[[plugins]]
+#repository =  'scrooloose/nerdcommenter'
+
+#[[plugins]]
+#repository =  'vim-scripts/Align'
+
+#[[plugins]]
+#repository =  'junegunn/vim-easy-align'
+
+#[[plugins]]
+#repository =  'tpope/vim-surround'
+
+#[[plugins]]
+#repository =  'tpope/vim-endwise'
+
+#[[plugins]]
+#repository =  'bronson/vim-trailing-whitespace'
+
+[[plugins]]
+repository =  'LeafCage/yankround.vim'
+
+#[[plugins]]
+#repository =  'vim-scripts/SQLUtilities'
+
+#[[plugins]]
+#repository =  'thinca/vim-zenspace'

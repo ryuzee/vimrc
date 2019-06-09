@@ -1,0 +1,15 @@
+# Theme
+[[plugins]]
+repository =  'jpo/vim-railscasts-theme'
+
+[[plugins]]
+repository =  'nanotech/jellybeans.vim'
+
+[[plugins]]
+repository =  'sickill/vim-monokai'
+
+[[plugins]]
+repository =  'thinca/vim-guicolorscheme'
+
+[[plugins]]
+repository =  'tomasr/molokai'

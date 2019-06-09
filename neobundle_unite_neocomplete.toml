@@ -1,0 +1,48 @@
+[[plugins]]
+repository =  'Shougo/vimshell'
+
+[[plugins]]
+repository =  'Shougo/neocomplete.vim'
+
+[[plugins]]
+repository =  'Shougo/neosnippet'
+
+[[plugins]]
+repository =  'Shougo/neosnippet-snippets'
+
+[[plugins]]
+repository =  'Shougo/neomru.vim'
+
+[[plugins]]
+repository =  'thinca/vim-quickrun'
+
+[[plugins]]
+repository =  'Shougo/unite.vim'
+
+[[plugins]]
+repository =  'ujihisa/unite-colorscheme'
+
+[[plugins]]
+repository =  'ujihisa/unite-font'
+
+[[plugins]]
+repository =  'Shougo/unite-outline'
+
+[[plugins]]
+repository =  'ujihisa/unite-locate'
+
+[[plugins]]
+repository =  'kmnk/vim-unite-svn'
+
+[[plugins]]
+repository =  'choplin/unite-vim_hacks'
+
+[[plugins]]
+repository =  'tsukkee/unite-help'
+
+[[plugins]]
+repository =  'tsukkee/unite-tag'
+
+[[plugins]]
+repository =  'nathanaelkane/vim-indent-guides'
+

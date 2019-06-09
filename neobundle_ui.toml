@@ -1,0 +1,61 @@
+# UI
+[[plugins]]
+repository =  'nathanaelkane/vim-indent-guides'
+
+[[plugins]]
+repository =  'vim-scripts/AnsiEsc.vim'
+
+[[plugins]]
+repository =  'bling/vim-airline'
+
+[[plugins]]
+repository =  'vim-airline/vim-airline-themes'
+
+[[plugins]]
+repository =  'bling/vim-bufferline'
+
+[[plugins]]
+repository =  'osyo-manga/vim-gift'
+
+[[plugins]]
+repository =  'osyo-manga/vim-automatic'
+
+[[plugins]]
+repository =  'thinca/vim-fontzoom'
+
+[[plugins]]
+repository =  'LeafCage/foldCC'
+
+[[plugins]]
+repository =  'xolox/vim-easytags'
+
+[[plugins]]
+repository =  'taglist.vim'
+
+[[plugins]]
+repository =  'easymotion/vim-easymotion'
+
+[[plugins]]
+repository =  'Xuyuanp/nerdtree-git-plugin'
+
+[[plugins]]
+repository =  'jistr/vim-nerdtree-tabs'
+
+[[plugins]]
+repository =  'majutsushi/tagbar'
+
+[[plugins]]
+repository =  'terryma/vim-multiple-cursors'
+
+[[plugins]]
+repository =  'terryma/vim-expand-region'
+
+[[plugins]]
+repository =  'thinca/vim-singleton'
+
+[[plugins]]
+repository =  'godlygeek/tabular'
+
+[[plugins]]
+repository =  'ctrlpvim/ctrlp.vim'
+
